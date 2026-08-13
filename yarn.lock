@@ -1,0 +1,2 @@
+# Cache anchor for the root-level actions/setup-node dependency cache.
+# The deployed application installs from AZ-400/web/package-lock.json.
