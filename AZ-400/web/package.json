@@ -1,7 +1,7 @@
 {
   "name": "web",
   "version": "1.0.0",
-  "description": "",
+  "description": "Skunkworks Academy Microsoft learning hub and AZ-400 self-paced course site",
   "main": "index.js",
   "directories": {
     "lib": "lib"
