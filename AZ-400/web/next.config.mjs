@@ -9,6 +9,7 @@ export default withMDX({
   trailingSlash: true,
   images: { unoptimized: true },
   outputFileTracingRoot: path.join(process.cwd()),
+  experimental: { mdxRs: true },
   allowedDevOrigins: [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
