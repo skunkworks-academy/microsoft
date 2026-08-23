@@ -78,7 +78,7 @@ export default function Home() {
         </div>
       </header>
 
-      <main id="main">
+      <main id="main" data-swa-contrast="preserve">
         <section className="hero" id="top">
           <div className="shell hero-grid">
             <div className="hero-copy">
