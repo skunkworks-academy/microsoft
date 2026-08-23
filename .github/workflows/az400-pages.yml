@@ -5,6 +5,11 @@ on:
     branches: [main]
     paths:
       - "AZ-400/**"
+      - "index.html"
+      - "404.html"
+      - "robots.txt"
+      - "CNAME"
+      - "assets/**"
       - ".github/workflows/az400-pages.yml"
   workflow_dispatch:
 
@@ -43,7 +48,7 @@ jobs:
           import re
 
           root = Path('AZ-400/web/out')
-          current = 'https://skunkworksacademy.com/assets/academy-navigation.js?v=2026.08.15.1'
+          current = 'https://skunkworksacademy.com/assets/academy-navigation.js?v=2026.08.23.1'
           marker = 'data-skunkworks-global-nav="v10"'
           loader = f'<script defer src="{current}" {marker}></script>'
           old_tags = re.compile(r'<script\b[^>]*(?:academy-navigation(?:-loader)?\.js|data-skunkworks-global-nav|data-skunkworks-global-shell)[^>]*>\s*</script>', re.I | re.S)
