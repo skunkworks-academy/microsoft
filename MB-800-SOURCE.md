@@ -1,7 +1,7 @@
 # MB-800 publication source
 
 - Source repository: https://github.com/skunkworks-academy/MB-800-Business-Central-Functional-Consultant
-- Source commit: dbf4dcc6606b82c952537fdb4abf729d61c106f5
+- Source commit: 36a002f45b070316c0fbf33a9477ea38ea4c8c12
 - Public route: https://microsoft.skunkworksacademy.com/MB-800/
 - Generated with: `npm ci --ignore-scripts && npm run build` in the source repository.
 - Output: course overview, setup guide, 26 HTML lab guides, original supporting files and MIT license.

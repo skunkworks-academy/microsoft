@@ -19,6 +19,8 @@ catalog also includes the course before and after live Microsoft Learn loading.
 
 ## Build and validate
 
+Use `python3` instead of `python` below if that is your Python 3 executable.
+
 ```sh
 cd AZ-400/web
 npm ci
