@@ -106,6 +106,29 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="section" id="academy-courses" aria-labelledby="academy-courses-title">
+          <div className="shell">
+            <div className="section-head">
+              <div><p className="eyebrow">Skunkworks Academy Microsoft courses</p><h2 id="academy-courses-title">Featured role-based training.</h2></div>
+              <p>Launch directly into Academy-hosted Microsoft course experiences and hands-on labs.</p>
+            </div>
+            <div className="offering-grid">
+              <a className="offering-card" href="/MB-800-Business-Central-Functional-Consultant/">
+                <span className="offering-icon">MB</span>
+                <h3>MB-800 — Business Central Functional Consultant</h3>
+                <p>Dynamics 365 Business Central implementation, financials, sales, purchasing, inventory, workflows and Copilot across 26 hands-on labs.</p>
+                <span>Open MB-800 →</span>
+              </a>
+              <a className="offering-card" href="/course/">
+                <span className="offering-icon">AZ</span>
+                <h3>AZ-400 — DevOps Accelerator</h3>
+                <p>Self-paced, hands-on Azure DevOps and GitHub learning with structured modules and practical exercises.</p>
+                <span>Open AZ-400 →</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
         <section className="section catalog-section" id="catalog" aria-labelledby="catalog-title">
           <div className="shell">
             <div className="section-head catalog-heading"><div><p className="eyebrow">Full course catalog browser</p><h2 id="catalog-title">Search Microsoft learning by what you need to achieve.</h2></div><div className="catalog-source"><span id="catalogSourceBadge" className="source-badge">Starter catalog</span><button id="loadLiveCatalog" className="button button-small button-primary" type="button">Load Microsoft Learn catalog</button></div></div>
