@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en-ZA"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab 15: Set Up Accounts Receivable | Skunkworks Academy</title><meta name="description" content="Work with Trade master data in Microsoft Dynamics 365 Business Central">
+<link rel="canonical" href="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab15_Set_up_Accounts_Receivable.html"><meta name="theme-color" content="#0b1220">
+<meta property="og:type" content="website"><meta property="og:title" content="Lab 15: Set Up Accounts Receivable"><meta property="og:description" content="Work with Trade master data in Microsoft Dynamics 365 Business Central"><meta property="og:url" content="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab15_Set_up_Accounts_Receivable.html">
+<link rel="stylesheet" href="../../assets/microsoft-hub.css"><link rel="stylesheet" href="../../assets/course.css">
+<script defer src="https://skunkworksacademy.com/assets/academy-navigation.js?v=2026.08.23.1" data-skunkworks-global-nav="v10"></script>
+</head><body><a class="skip-link" href="#main">Skip to content</a>
+<nav class="shell course-nav" aria-label="Course navigation"><a href="https://microsoft.skunkworksacademy.com/#catalog">Microsoft catalog</a><a href="../../index.html">MB-800 overview</a><a href="../../index.html#labs">Lab directory</a></nav>
+<main id="main" data-swa-contrast="preserve"><section class="shell course-section"><p class="eyebrow">MB-800 · 50 minutes</p><h1>Lab 15: Set Up Accounts Receivable</h1><p>Work with Trade master data in Microsoft Dynamics 365 Business Central</p><nav class="course-pagination" aria-label="Lab sequence"><a href="Lab14_Configure_Purchasing.html">← Lab 14: Configure Purchasing</a><a href="Lab16_Set_up_Inventory.html">Lab 16: Set up Inventory →</a></nav><article class="lab-body" aria-label="Lab instructions"><h2>Exercise 15: Set Up Accounts Receivable</h2>
+<h2>Task 1: Configure the Sales &amp; Receivables Setup</h2>
+<h2>Scenario</h2>
+<p>Concerning the processing of sales transactions, Contoso’s account manager has expressed the following requirements:</p>
+<ul>
+<li>Web shop customers will be numbered separately from other customers. Regular customers are numbered C00010 and incremented by 10. Web shop customers are numbered CWEB00010 and incremented by 10.</li>
+</ul>
+<p><em>(Remark: The number series for regular customers is already created (CUST) and assigned in the Sales &amp; Receivables Setup)</em></p>
+<ul>
+<li>Posted sales invoices are numbered based on the year and month in which they are posted. The first sales invoice, as of January 1st, 2026, will be posted with the number S26/01/0001. The next month will be S26/02/0001 and so on.</li>
+<li>A separate G/L account 40300 is setup to record invoice discounts only that were given to the customer. Line discounts are also given but considered as part of the net sales price and thus not posted separately from the normal sales account.</li>
+<li>Contoso works with a credit insurer, who provides credit limits for each customer. When this limit is reached, salespeople have to communicate with the finance department before going ahead with the sale.</li>
+</ul>
+<p>You will perform</p>
+<ol>
+<li>Set up and assign number series</li>
+<li>Complete discount posting setup</li>
+<li>Activate credit limit warning</li>
+</ol>
+<h3>Steps</h3>
+<ol>
+<li>Set up and assign number series.
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Sales &amp; Receivables Setup, and then choose the related link.</li>
+<li>In the <strong>Sales &amp; Receivables Setup</strong> page, go to the <strong>Number Series</strong> FastTab.</li>
+<li>In the <strong>Customer Nos.</strong> field, the value CUST is already filled in. Select on the Look Up Value button and select <strong>+ New</strong>.</li>
+<li>In the opened <strong>No. Series</strong> page, fill in the following fields:
+<ol>
+<li>In the <strong>Code</strong> field, enter <strong>CUST WEB</strong></li>
+<li>In the <strong>Description</strong> field, enter <strong>Customers Web Shop</strong>.</li>
+<li>Select the <strong>Default Nos.</strong> check box.</li>
+</ol>
+</li>
+<li>Select on the ellipses (…) in the top ribbon and then select <strong>Lines</strong>.</li>
+<li>In the opened <strong>No. Series Lines</strong> page, select <strong>+ New</strong>.
+<ol>
+<li>Leave the <strong>Starting Date</strong> field blank.</li>
+<li>In the <strong>Starting No.</strong> field, enter <strong>CWEB0001</strong>.</li>
+<li>In the <strong>Increment-by No.</strong> field, enter the value <strong>10</strong>.</li>
+</ol>
+</li>
+<li>Close the <strong>No. Series Lines</strong> page.</li>
+<li>In the opened <strong>No. Series</strong> page, select the number series <strong>CUST</strong>.</li>
+<li>Select the ellipses (…) and then select <strong>Relationships</strong>.</li>
+<li>In the <strong>No. Series Relationships</strong> page, select <strong>+ New</strong>.</li>
+<li>In the <strong>Series Code</strong> field, enter <strong>CUST WEB.</strong></li>
+<li>Close the <strong>No. Series Relationships</strong> page.</li>
+<li>Close the <strong>No. Series</strong> page by selecting <strong>OK</strong>.</li>
+<li>You are now back in the <strong>Sales &amp; Receivables Setup</strong> page, on the <strong>Number Series</strong> FastTab.</li>
+<li>In the <strong>Posted Invoice Nos.</strong> field, the value <strong>S-INV+</strong> is already filled in. Select on the Look Up Value button and then select <strong>Select from full list.</strong></li>
+<li>In the opened <strong>No. Series</strong> page, the number series <strong>S-INV+</strong> is automatically selected. Choose **Show Details.**Select <strong>Lines</strong>.</li>
+<li>In the opened <strong>No. Series Lines</strong> page, select <strong>+ New</strong>.
+<ol>
+<li>In the <strong>Starting Date</strong> field, enter <strong>1/1/2026</strong>.</li>
+<li>In the <strong>Starting No.</strong> field, enter <strong>S26/01/0001</strong>.</li>
+<li>In the <strong>Increment-by No.</strong> field, leave the value <strong>1</strong>.</li>
+</ol>
+</li>
+<li>In the opened <strong>No. Series Lines</strong> page, select <strong>+ New</strong>.
+<ol>
+<li>In the <strong>Starting Date</strong> field, enter <strong>2/1/2026</strong>.</li>
+<li>In the <strong>Starting No.</strong> field, enter <strong>S26/02/0001</strong>.</li>
+<li>In the <strong>Increment-by No.</strong> field, leave the value <strong>1</strong>.</li>
+</ol>
+</li>
+<li>Close the <strong>No. Series Lines</strong> page.</li>
+<li>Close the <strong>No. Series</strong> page by selecting <strong>OK</strong>.</li>
+<li>The number series <strong>S-INV+</strong> remains filled in in the <strong>Posted Invoice Nos.</strong> field, in the <strong>Sales &amp; Receivables Setup</strong> page.</li>
+</ol>
+</li>
+<li>Complete discount posting setup.
+<ol>
+<li>In the <strong>Sales &amp; Receivables Setup</strong> page, go to the <strong>General</strong> FastTab.</li>
+<li>In the <strong>Discount Posting</strong> field, select the <strong>Invoice Discounts</strong> option.</li>
+<li>Select the search for page icon in the top-right corner of the page, enter <strong>General Posting Setup</strong>, and then choose the related link.</li>
+<li>In the <strong>General Posting Setup</strong> page, for each possible combination of <strong>Gen. Bus. Posting Group</strong> and <strong>Gen. Prod. Posting Group</strong>, make sure the <strong>Sales Inv. Disc. Account</strong> field is filled in with the value <strong>40301</strong>. If you are unable to see, please proceed with the creating a new.</li>
+</ol>
+</li>
+<li>Activate credit limit warning
+<ol>
+<li>In the <strong>Sales &amp; Receivables Setup</strong> page, go to the <strong>General</strong> FastTab.</li>
+<li>In the <strong>Credit Warnings</strong> field, select the <strong>Credit Limit</strong> option.</li>
+</ol>
+</li>
+</ol>
+<h2>Task 2: Create and configure customers</h2>
+<h2>Scenario</h2>
+<p>Based on the chart of accounts, you will set up the different customer posting groups. With their fast-growing business abroad, they want to keep track of their accounts receivables in the US (domestic) and in other EU countries (EU separately. A third group will be set up to register transactions with EU third-party alliances (intercompany) they have set up to expand their business even further.</p>
+<p>The DOMESTIC customer posting group is already set up. The other customer posting groups will be based on this group, but with different balance accounts (10450 for foreign customers and 10475 for intercompany customers).</p>
+<p>A generic EU web shop customer will be created for all end-user customers that prefer not to create a Contoso customer account. Make sure to fill in the correct posting groups and that the following requirements are met:</p>
+<ul>
+<li>All sales documents will be mailed as a pdf-file to the customer’s default Email-address and the document will also be stored as a pdf-file.</li>
+<li>End user customers need to pay sales invoices before delivery using a credit card service. Credit card payments will be posted to the g/l account 20500 when processing the sales invoice.</li>
+<li>This fictitious customer is considered to always be part of the small business customer group.</li>
+</ul>
+<p>You need to create this customer manually.</p>
+<p><em>Remark: before starting this exercise, first disable the existing configuration templates for customers: CUST000001 &amp; CUST000002</em></p>
+<p>You will perform</p>
+<ol>
+<li>Set up a Customer Posting Group.</li>
+<li>Create and configure a new customer</li>
+</ol>
+<h3>Steps</h3>
+<ol>
+<li>Set up a Customer Posting Group
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Customer Posting Groups, and then choose the related link.</li>
+<li>In the <strong>Customer Posting Groups</strong> page, select <strong>+ New</strong>.</li>
+<li>In the <strong>Customer Posting Group Card</strong> page, choose line EU in the following fields:
+<ol>
+<li>In the <strong>Receivables Account</strong> field, fill in <strong>10450</strong>.</li>
+<li>Close the page.</li>
+</ol>
+</li>
+<li>In the <strong>Customer Posting Groups</strong> page, select <strong>+ New</strong>.</li>
+<li>In the <strong>Customer Posting Group Card</strong> page, fill in the following fields:
+<ol>
+<li>In the <strong>Code</strong> field, fill in <strong>INTERCOMPANY</strong>.</li>
+<li>In the <strong>Description</strong> field, fill in <strong>Intercompany customers</strong>.</li>
+<li>In the <strong>Receivables Account</strong> field fill in <strong>10475</strong>.</li>
+<li>Close the page.</li>
+</ol>
+</li>
+<li>From the <strong>Customer Posting Groups</strong> page, copy the other g/l accounts from the DOMESTIC customer posting group to the EU and <strong>INTERCOMPANY</strong> customer posting groups using F8. Copy the following fields:
+<ol>
+<li>Payment Disc. Debit Acc.</li>
+<li>Payment Disc. Credit Acc.</li>
+<li>Interest Account</li>
+<li>Additional Fee Account</li>
+<li>Invoice Rouding Account</li>
+<li>Debit Curr. Appln. Rndg. Acc.</li>
+<li>Credit Curr. Appln. Rndg. Acc.</li>
+<li>Debit Rounding Account</li>
+<li>Credit Rounding Account</li>
+<li>Payment Tolerance Debit Acc.</li>
+<li>Payment Tolerance Credit Acc.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Create and configure a new customer.
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Customers, and then choose the related link.</li>
+<li>In the <strong>Customers</strong> page, select <strong>+ New</strong>.</li>
+<li>Select the <strong>CUSTOMER COMPANY</strong> template and then select <strong>OK</strong>.</li>
+<li>Go to the <strong>General</strong> FastTab.</li>
+<li>Open the assist edit button to the right of the <strong>No.</strong> field.</li>
+<li>In the window that opens, select the number series for web shop customers <strong>CUST WEB</strong> and select <strong>OK</strong>.</li>
+<li>Select <strong>Yes</strong>.</li>
+<li>In the <strong>Name</strong> field, enter <strong>Generic EU web shop</strong>.</li>
+<li>Select <strong>Show more</strong>.</li>
+<li>In the <strong>Document Sending Profile</strong> field, select on the Look Up Value button and select <strong>+ New</strong>.</li>
+<li>In the opened <strong>Document Sending Profile</strong> card page, fill in the following fields:
+<ol>
+<li>In the <strong>Code</strong> field, enter <strong>MAIL&amp;PDF</strong>.</li>
+<li>In the <strong>Description</strong> field, enter <strong>Mail &amp; PDF</strong>.</li>
+<li>In the <strong>Email</strong> field, select the <strong>Yes (Use Default Settings)</strong> option.</li>
+<li>The <strong>Email Attachment</strong> field is automatically set to the <strong>PDF</strong> option.</li>
+<li>In the <strong>Disk</strong> field, select the <strong>PDF</strong> option.</li>
+<li>Select <strong>OK</strong>.</li>
+</ol>
+</li>
+<li>The new code is now automatically filled in the <strong>Document Sending Profile</strong> field on the customer card.</li>
+<li>Go to the <strong>Invoicing</strong> FastTab.</li>
+<li>In the <strong>Gen. Bus. Posting Group</strong> field, enter <strong>EU</strong>.</li>
+<li>In the <strong>Customer Posting Group</strong>, enter EU**.**</li>
+<li>Go to the <strong>Payments</strong> FastTab.</li>
+<li>In the <strong>Payment Terms Code</strong> field, select on the Look Up Value button and select <strong>+ New</strong>.</li>
+<li>In the opened <strong>Payment Terms</strong> page, select <strong>+ New</strong> and fill in the following fields:
+<ol>
+<li>In the <strong>Code</strong> field, enter <strong>0 DAYS</strong>.</li>
+<li>In the <strong>Due Date Calculation</strong> field, enter <strong>0D</strong>.</li>
+<li>In the <strong>Description</strong> field, enter <strong>Pay before delivery</strong>.</li>
+<li>Select <strong>OK</strong>.</li>
+</ol>
+</li>
+<li>The new code is now automatically filled in in the <strong>Payment Terms Code</strong> field on the customer card.</li>
+<li>On the <strong>Payments</strong> FastTab, select <strong>Show more</strong>.</li>
+<li>In the <strong>Payment Method Code</strong> field, select on the Look Up Value button and select <strong>+ New</strong>.</li>
+<li>In the opened <strong>Payment Methods</strong> page, select <strong>+ New</strong> and fill in the following fields:
+<ol>
+<li>In the <strong>Code</strong> field, enter <strong>CREDITCARD</strong>.</li>
+<li>In the <strong>Description</strong> field, enter <strong>Payment Credit card</strong>.</li>
+<li>In the <strong>Bal. Account Type</strong> field, select the <strong>G/L Account</strong> option.</li>
+<li>Select the <strong>Bal. Account No.</strong> field, and then select <strong>Select from full list</strong>.</li>
+<li>On the <strong>G/L Account List</strong> page, select account number <strong>20500/Credit Cards</strong> and select <strong>Edit</strong>. Create a new account if you do not find it from the list.</li>
+<li>On the <strong>G/L Account Card</strong> of <strong>20500</strong>, enable <strong>Direct Posting</strong> toggle.</li>
+<li>Close the <strong>G/L Account Card</strong>.</li>
+<li>The account number <strong>20500</strong> is automatically filled in the <strong>Bal. Account No.</strong> field.</li>
+<li>Select <strong>OK</strong>.</li>
+</ol>
+</li>
+<li>The new code is now automatically filled in the <strong>Payment Method Code</strong> field on the customer card.</li>
+<li>In the customer card, select <strong>Customer</strong> and then select <strong>Dimensions</strong>.</li>
+<li>In the opened <strong>Default Dimensions</strong> page, select <strong>+ New</strong>.</li>
+<li>Fill in the following fields:
+<ol>
+<li>In the <strong>Dimension Code</strong> field, enter <strong>CUSTOMERGROUP</strong></li>
+<li>In the <strong>Dimension Value Code</strong> field, enter <strong>SMALL</strong></li>
+<li>In the <strong>Value Posting</strong> field, select the <strong>Same Code</strong> option.</li>
+</ol>
+</li>
+<li>Close the <strong>Default Dimensions</strong> page.</li>
+</ol>
+</li>
+</ol>
+<h2>Task 3: Import customers using data templates</h2>
+<h2>Scenario</h2>
+<p>The rest of the domestic customers will be imported using a configuration package and a configuration template. Make sure the appropriate posting groups are filled in and that the following requirements are met:</p>
+<ul>
+<li>All sales documents will be mailed as a pdf-file to the customer’s default Email-address and the document will also be stored as a pdf-file.</li>
+<li>Domestic customers need to pay sales invoices within 30 days of the invoice.</li>
+<li>The CUSTOMERGROUP dimension needs to be set up as a fixed default on the customer card.</li>
+</ul>
+<p>The following list of domestic customers is returned to you by Contoso’s super user.</p>
+<p>You will perform</p>
+<ol>
+<li>Create and export a configuration package.</li>
+<li>Create and assign data template to the configuration package.</li>
+<li>Prepare data in excel.</li>
+<li>Import and apply the configuration package.</li>
+</ol>
+<h3>Steps</h3>
+<ol>
+<li>Create and export a configuration package.
+<ol>
+<li>Select the Search for page icon in the top-right corner of the page, enter Configuration Packages, and then choose the related link.</li>
+<li>In the <strong>Configuration Packages</strong> page, select <strong>+ New</strong> to create a new configuration package.</li>
+<li>In the <strong>Code</strong> field, enter <strong>CUST</strong>.</li>
+<li>In the <strong>Package Name</strong> field, enter <strong>Customer List</strong>.</li>
+<li>On the <strong>Tables</strong> section of the Config. Package Card, enter a new line as follows.</li>
+<li>Open the assist edit button to the right of the <strong>Table ID</strong> field.</li>
+<li>In the window that opens, select the <strong>Customer</strong> table(Table ID 18), and select <strong>OK</strong>.</li>
+<li>Then press <strong>ENTER</strong> or <strong>TAB</strong>.</li>
+<li>Select the <strong>Dimensions as Columns</strong> check box.</li>
+<li>Select <strong>Yes</strong> to add the related dimension tables.</li>
+<li>Make sure the customer table line is selected, select <strong>Table</strong> and then <strong>Fields</strong>.</li>
+<li>Select on <strong>No.</strong></li>
+<li>Select on <strong>Fields</strong> again. On the field list page, first select <strong>Clear Included</strong>, to deselect the <strong>Include Field</strong> checkbox for all the fields.</li>
+<li>Then select the <strong>Include Field</strong> checkbox for the following fields:
+<ol>
+<li>Name</li>
+<li>Address</li>
+<li>City</li>
+<li>Country/Region Code</li>
+<li>Post Code</li>
+</ol>
+</li>
+<li>The <strong>Validate Field</strong> checkbox is automatically selected.</li>
+<li>Select <strong>Close</strong>.</li>
+<li>In the <strong>Config. Package Card</strong> page, select <strong>Export to Excel</strong>.</li>
+<li>Select <strong>Yes</strong> to export the configuration package.</li>
+</ol>
+</li>
+<li>Create and assign data template to the configuration package.
+<ol>
+<li>In the <strong>Tables</strong> section of the Config. Package Card, make sure the <strong>Customer</strong> table line is selected.</li>
+<li>Open the assist edit button to the right of the <strong>Data Template</strong> field.</li>
+<li>In the opened <strong>Configuration Templates</strong> page, select <strong>+ New</strong>.</li>
+<li>In the <strong>Config. Template Header</strong> page, fill in the following fields:
+<ol>
+<li>In the <strong>Code</strong> field, enter <strong>CUST DOM</strong></li>
+<li>In the <strong>Description</strong> field, enter <strong>Domestic customers</strong></li>
+<li>Open the assist edit button to the right of the <strong>Table ID</strong> field.</li>
+<li>Select the table for <strong>Customers</strong> (ID = 18) and select <strong>OK</strong>.</li>
+<li>Select the <strong>Enabled</strong> check box.</li>
+<li>In the <strong>Lines</strong> section on the page, create the following line:
+<ol>
+<li>In the <strong>Type</strong> field, enter <strong>Field</strong>.</li>
+<li>In the <strong>Field Name</strong> field, enter <strong>Gen. Bus. Posting Group</strong>.(ID=88)</li>
+<li>In the <strong>Default Value</strong> field, enter <strong>DOMESTIC</strong></li>
+</ol>
+</li>
+<li>In the Lines section on the page, create the following line:
+<ol>
+<li>In the <strong>Type</strong> field, enter <strong>Field</strong>.</li>
+<li>In the <strong>Field Name</strong> field, enter <strong>Customer Posting Group</strong>.(ID=21)</li>
+<li>In the <strong>Default Value</strong> field, enter <strong>DOMESTIC</strong></li>
+</ol>
+</li>
+<li>In the Lines section on the page, create the following line:
+<ol>
+<li>In the <strong>Type</strong> field, enter <strong>Field</strong>.</li>
+<li>In the <strong>Field Name</strong> field, enter <strong>Document Sending Profile</strong>.(ID=11)</li>
+<li>In the <strong>Default Value</strong> field, enter <strong>MAIL&amp;PDF</strong></li>
+</ol>
+</li>
+<li>In the Lines section on the page, create the following line:
+<ol>
+<li>In the <strong>Type</strong> field, enter <strong>Field</strong>.</li>
+<li>In the <strong>Field Name</strong> field, enter <strong>Payment Terms Code</strong>.(ID=27)</li>
+<li>In the <strong>Default Value</strong> field, enter <strong>30 DAYS</strong></li>
+</ol>
+</li>
+<li>Close the configuration template.</li>
+</ol>
+</li>
+<li>In the <strong>Configuration Templates</strong> page, make sure the new template for domestic customers is selected, and select <strong>OK</strong>.</li>
+<li>The new code is now automatically filled in in the <strong>Data Template</strong> field on the configuration package card.</li>
+</ol>
+</li>
+<li>Prepare data in excel.
+<ol>
+<li>Open the exported excel file from the download folder.</li>
+<li>Enter the information as provided by Contoso.</li>
+<li>Save the excel file.</li>
+</ol>
+</li>
+<li>Import and apply the configuration package.
+<ol>
+<li>In the <strong>Configuration Packages</strong> page, select the new configuration package for customers and select <strong>Manage</strong> and then <strong>Edit</strong>.</li>
+<li>In the <strong>Config. Package Card</strong> page, select <strong>Import from Excel</strong>.</li>
+<li>Select Select here to browse and select the excel file.</li>
+<li>Select <strong>Open</strong>.</li>
+<li>In the preview page, select <strong>Import</strong>.</li>
+<li>In the <strong>Config. Package Card</strong> page, select <strong>Apply Package</strong>.</li>
+<li>Select <strong>Yes</strong>.</li>
+<li>Select <strong>OK</strong>.</li>
+</ol>
+</li>
+</ol>
+<h2>Task 4: Set up cash receipt journal</h2>
+<h2>Scenario</h2>
+<p>The accounting manager at Contoso would now like to register checks from customers manually.</p>
+<p>You must set up a cash receipt journal for this purpose.</p>
+<h3>Steps</h3>
+<p>Create a general journal template batch.</p>
+<ol>
+<li>In the <strong>General Journal Templates</strong> page, make sure <strong>the  CASHRCPT</strong> journal is selected.</li>
+<li>Select <strong>Batches</strong>.</li>
+<li>In the opened <strong>General Journal Batches</strong> page, select <strong>+ New.</strong></li>
+<li>Fill in the following fields:
+<ol>
+<li>In the <strong>Name</strong> field, enter<strong>CHECKS.</strong></li>
+<li>In the <strong>Description</strong> field, enter <strong>Manual Checks.</strong></li>
+<li>In the <strong>Bal.Account type</strong> select <strong>Bank.</strong></li>
+<li>In the <strong>Bal.Account No.</strong> Enter <strong>CHECKING.</strong></li>
+</ol>
+</li>
+</ol>
+</article><nav class="course-pagination" aria-label="Continue learning"><a href="Lab14_Configure_Purchasing.html">← Lab 14: Configure Purchasing</a><a href="Lab16_Set_up_Inventory.html">Lab 16: Set up Inventory →</a></nav></section></main>
+<footer class="site-footer"><div class="shell"><strong>Skunkworks Academy · Microsoft learning</strong><p>Lab materials from the Skunkworks Academy MB-800 repository. Microsoft product names and trademarks belong to Microsoft.</p><a href="../../LICENSE">Content license</a> · <a href="https://github.com/skunkworks-academy/MB-800-Business-Central-Functional-Consultant">Course source</a></div></footer></body></html>

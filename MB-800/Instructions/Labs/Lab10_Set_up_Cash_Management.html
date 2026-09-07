@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en-ZA"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab 10: Set Up Cash Management | Skunkworks Academy</title><meta name="description" content="Set up cash management in Dynamics 365 Business Central">
+<link rel="canonical" href="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab10_Set_up_Cash_Management.html"><meta name="theme-color" content="#0b1220">
+<meta property="og:type" content="website"><meta property="og:title" content="Lab 10: Set Up Cash Management"><meta property="og:description" content="Set up cash management in Dynamics 365 Business Central"><meta property="og:url" content="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab10_Set_up_Cash_Management.html">
+<link rel="stylesheet" href="../../assets/microsoft-hub.css"><link rel="stylesheet" href="../../assets/course.css">
+<script defer src="https://skunkworksacademy.com/assets/academy-navigation.js?v=2026.08.23.1" data-skunkworks-global-nav="v10"></script>
+</head><body><a class="skip-link" href="#main">Skip to content</a>
+<nav class="shell course-nav" aria-label="Course navigation"><a href="https://microsoft.skunkworksacademy.com/#catalog">Microsoft catalog</a><a href="../../index.html">MB-800 overview</a><a href="../../index.html#labs">Lab directory</a></nav>
+<main id="main" data-swa-contrast="preserve"><section class="shell course-section"><p class="eyebrow">MB-800 · 30 minutes</p><h1>Lab 10: Set Up Cash Management</h1><p>Set up cash management in Dynamics 365 Business Central</p><nav class="course-pagination" aria-label="Lab sequence"><a href="Lab09_Set_up_General_Journals.html">← Lab 09: Set Up General Journals</a><a href="Lab11_Set_up_dimensions.html">Lab 11: Set up dimensions →</a></nav><article class="lab-body" aria-label="Lab instructions"><h2>Exercise 10a: Set Up Cash Management</h2>
+<h2>Task 1: Create a bank account</h2>
+<h2>Scenario</h2>
+<p>Contoso has opened a European bank account to process customer payments of their web shop computer hardware sales. These payments will be recorded in euros. They would also like to pay their European vendors through this bank account using the SEPA Credit Transfer format.</p>
+<p>Details of this bank account are:</p>
+<p>IBAN: BE13 3200 0461 4139 – BIC: BBRUBEBB</p>
+<p>You will perform:</p>
+<ol>
+<li>Create a bank account.</li>
+<li>Assign a payment export format.</li>
+</ol>
+<h3>Steps</h3>
+<ol>
+<li>Create a bank account.
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Bank Accounts and then choose the related link.</li>
+<li>In the <strong>Bank Accounts</strong> page, select <strong>+ New</strong>.</li>
+<li>In the new bank accounts card, fill in the following fields:
+<ol>
+<li>On the <strong>General</strong> FastTab:
+<ol>
+<li>In the <strong>No.</strong> field, enter EUROP.</li>
+<li>In the <strong>Name</strong> field, enter European Bank</li>
+<li>In the Credit Transfer <a href="http://Msg.No">Msg.No</a>. Field select +New</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>Add Number series for Payment export files:</p>
+<p>Ithe field No, set CRTRANS, select field Default Nos.- yes.</p>
+<p>In the field Strating No. Sel starting No. To 00000</p>
+<p>Close Select – Serial No.</p>
+<p>Select CRTRANS and click OK.</p>
+<ol start="2">
+<li>
+<ul>
+<li>
+<ol>
+<li>On the <strong>Posting</strong> FastTab, in the <strong>Currency Code</strong> field, select <strong>EUR</strong>.</li>
+</ol>
+</li>
+</ul>
+<ol start="2">
+<li>On the <strong>Transfer</strong> FastTab:
+<ol>
+<li>Select <strong>Show more</strong>.</li>
+<li>In the <strong>SWIFT Code</strong> field, enter BBRUBEBB</li>
+<li>In the <strong>IBAN</strong> field, enter BE13 3200 0461 4139</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>Assign a payment export format.</p>
+<ol>
+<li>On the <strong>Transfer</strong> FastTab, in the <strong>Payment Export Format</strong> field, enter SEPACT.</li>
+</ol>
+</li>
+</ol>
+<h2>Exercise 10b: Set up and assign a Bank Account Posting Group</h2>
+<h2>Scenario</h2>
+<p>All transactions on the European bank account have to be posted on the balance account 10250.</p>
+<p>You need to complete the correct bank posting group setup.</p>
+<p>You will perform:</p>
+<ol>
+<li>Create a bank account posting group.</li>
+<li>Assign the bank account posting group.</li>
+</ol>
+<h3>Steps</h3>
+<ol>
+<li>Create a bank account posting group.
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Bank Account Posting Group and then choose the related link.</li>
+<li>In the <strong>Bank Account Posting Groups</strong> page, select <strong>+ New</strong>.</li>
+<li>In the <strong>Code</strong> field, enter EUROP.</li>
+<li>In the <strong>G/L Account No.</strong> field, enter <strong>10250</strong>.</li>
+</ol>
+</li>
+</ol>
+<p>Note – If you do not find the G/L Account No. – please proceed with creating new.</p>
+<ol>
+<li>Assign the bank account posting group.
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Bank Accounts and then choose the related link.</li>
+<li>In the <strong>Bank Accounts</strong> page, open the bank account card for the <strong>European bank</strong>.</li>
+<li>On the <strong>Posting</strong> FastTab, in the <strong>Bank Acc. Posting Group</strong> field, select the new bank account posting group <strong>EUROP</strong>.</li>
+</ol>
+</li>
+</ol>
+</article><nav class="course-pagination" aria-label="Continue learning"><a href="Lab09_Set_up_General_Journals.html">← Lab 09: Set Up General Journals</a><a href="Lab11_Set_up_dimensions.html">Lab 11: Set up dimensions →</a></nav></section></main>
+<footer class="site-footer"><div class="shell"><strong>Skunkworks Academy · Microsoft learning</strong><p>Lab materials from the Skunkworks Academy MB-800 repository. Microsoft product names and trademarks belong to Microsoft.</p><a href="../../LICENSE">Content license</a> · <a href="https://github.com/skunkworks-academy/MB-800-Business-Central-Functional-Consultant">Course source</a></div></footer></body></html>

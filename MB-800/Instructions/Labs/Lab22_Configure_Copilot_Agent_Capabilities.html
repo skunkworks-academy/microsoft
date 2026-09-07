@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en-ZA"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab 22: Configure Copilot and agent capabilities | Skunkworks Academy</title><meta name="description" content="Configure Copilot and agent capabilities in Dynamics 365 Business Central">
+<link rel="canonical" href="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab22_Configure_Copilot_Agent_Capabilities.html"><meta name="theme-color" content="#0b1220">
+<meta property="og:type" content="website"><meta property="og:title" content="Lab 22: Configure Copilot and agent capabilities"><meta property="og:description" content="Configure Copilot and agent capabilities in Dynamics 365 Business Central"><meta property="og:url" content="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab22_Configure_Copilot_Agent_Capabilities.html">
+<link rel="stylesheet" href="../../assets/microsoft-hub.css"><link rel="stylesheet" href="../../assets/course.css">
+<script defer src="https://skunkworksacademy.com/assets/academy-navigation.js?v=2026.08.23.1" data-skunkworks-global-nav="v10"></script>
+</head><body><a class="skip-link" href="#main">Skip to content</a>
+<nav class="shell course-nav" aria-label="Course navigation"><a href="https://microsoft.skunkworksacademy.com/#catalog">Microsoft catalog</a><a href="../../index.html">MB-800 overview</a><a href="../../index.html#labs">Lab directory</a></nav>
+<main id="main" data-swa-contrast="preserve"><section class="shell course-section"><p class="eyebrow">MB-800 · 30 minutes</p><h1>Lab 22: Configure Copilot and agent capabilities</h1><p>Configure Copilot and agent capabilities in Dynamics 365 Business Central</p><nav class="course-pagination" aria-label="Lab sequence"><a href="Lab21_Suggest_Number_Series_Copilot.html">← Lab 21: Suggest number series with Copilot</a><a href="Lab23_Perform_Finance_Operations.html">Lab 23: Perform finance operations →</a></nav><article class="lab-body" aria-label="Lab instructions"><h2>Exercise 22: Configure Copilot and agent capabilities</h2>
+<h2>Task 1: Activate and deactivate features</h2>
+<h2>Scenario</h2>
+<p>As the Business Central administrator, you need to adjust which Copilot features are available in Contoso environment. Your task is to activate features:</p>
+<ul>
+<li>
+<p>Autofill fields</p>
+</li>
+<li>
+<p>Marketing text suggestions</p>
+</li>
+<li>
+<p>Suggest lines on sales documents with Copilot</p>
+</li>
+<li>
+<p>No. series suggestions</p>
+</li>
+</ul>
+<p>and deactivate the E
+document matching assistance features your organization doesn’t plan to use for now.</p>
+<h3>Steps</h3>
+<p>Select the Search icon in the top-right corner of the page, enter Copilot &amp; agent capabilities, and then choose the related link.</p>
+<p>In the  Copilot &amp; agent capabilities page,
+Select line with E
+document matching assistance.
+Select Deactivate, select the Reason for deactivating – Users are not ready for it yet.</p>
+<p>Check that lines have  the Active status in the Status field for:
+Autofill fields,
+Marketing text suggestions,
+Suggest lines on sales documents with Copilot,
+No. series suggestions.</p>
+<h2>Task 2: Granting access to Copilot features for users.</h2>
+<h2>Scenario</h2>
+<p>Once the features are configured, you’ll move on to assigning access. Every user need Copilot capabilities, so your task is to grant permissions for user to have access to the Autofill fields, Marketing text suggestions, Suggest lines on sales documents with Copilot and No. series suggestions features.
+You will perform:</p>
+<ul>
+<li>
+<p>Create a new Security group.</p>
+</li>
+<li>
+<p>Create a new Permission set.</p>
+</li>
+<li>
+<p>Assign permissions for the Security group.</p>
+</li>
+</ul>
+<h3>Steps</h3>
+<ol>
+<li>Create a new Security group.</li>
+</ol>
+<p>Select the Search icon in the top-right corner of the page, enter Security Groups and then choose the related link.</p>
+<p>Select +New.
+On the New Security group page fill the fields:</p>
+<p>In the Microsoft Intra security group name, select the All users group.
+The field Code is auto populated.
+Select Create.</p>
+<ol start="2">
+<li>
+<p>Create a new Permission Set.</p>
+</li>
+<li>
+<p>Select the Search icon in the top-right corner of the page, enter Permission Sets and then choose the related link</p>
+</li>
+<li>
+<p>Select +New.</p>
+</li>
+<li>
+<p>In the Permission Set field, enter COPILOT ADD</p>
+</li>
+</ol>
+<p>In the Name field, enter Copilot additional permissions.</p>
+<p>Select Permissions.
+On the Permissions section select for new line:</p>
+<p>In the Type field, select Include.
+In the Object Type field, select Page.
+In the Object ID field, enter 5836 (Copilot Marketing Text).
+section select for new line:</p>
+<p>In the Type field, select Include.
+In the Object Type field, select Page.
+In the Object ID field, enter 7275 (Sales Line AI Suggestions).</p>
+<p>section select for new line:</p>
+<p>In the Type field, select Include.
+In the Object Type field, select Page.
+In the Object ID field, enter 7276 (Sales Line AI Suggestions Sub).</p>
+<p>Close the Permission Set page.</p>
+<ol start="6">
+<li>Assign permissions for the Security group.</li>
+</ol>
+<p>Select the Search icon in the top-right corner of the page, enter Security Groups and then choose the related link.</p>
+<p>On the Security group page select the line for All users group</p>
+<p>Select Permissions.</p>
+<p>On the Security group permission sets page</p>
+<p>In the new line select Permission Set field, enter COPILOT SYS FEATURES.
+In the next line select Permission Set field, enter COPILOT ADD.</p>
+<p>Close Security group permission sets page.
+Close Security group page.</p>
+<h2>Task 3: Enable Bing Search for Copilot features.</h2>
+<h2>Scenario</h2>
+<p>Contoso wants to use the Autofill fields tool. To enable Copilot to get information from the web, you must set up the Enable Bing Search.</p>
+<h3>Steps</h3>
+<p>Select the Search icon in the top-right corner of the page, enter Copilot &amp; agent capabilities, and then choose the related link.
+In the Copilot &amp; agent capabilities page,
+Activate Enable Bing Search.</p>
+</article><nav class="course-pagination" aria-label="Continue learning"><a href="Lab21_Suggest_Number_Series_Copilot.html">← Lab 21: Suggest number series with Copilot</a><a href="Lab23_Perform_Finance_Operations.html">Lab 23: Perform finance operations →</a></nav></section></main>
+<footer class="site-footer"><div class="shell"><strong>Skunkworks Academy · Microsoft learning</strong><p>Lab materials from the Skunkworks Academy MB-800 repository. Microsoft product names and trademarks belong to Microsoft.</p><a href="../../LICENSE">Content license</a> · <a href="https://github.com/skunkworks-academy/MB-800-Business-Central-Functional-Consultant">Course source</a></div></footer></body></html>

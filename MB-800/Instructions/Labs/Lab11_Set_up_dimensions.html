@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en-ZA"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab 11: Set up dimensions | Skunkworks Academy</title><meta name="description" content="Set up dimensions in Dynamics 365 Business Central">
+<link rel="canonical" href="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab11_Set_up_dimensions.html"><meta name="theme-color" content="#0b1220">
+<meta property="og:type" content="website"><meta property="og:title" content="Lab 11: Set up dimensions"><meta property="og:description" content="Set up dimensions in Dynamics 365 Business Central"><meta property="og:url" content="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab11_Set_up_dimensions.html">
+<link rel="stylesheet" href="../../assets/microsoft-hub.css"><link rel="stylesheet" href="../../assets/course.css">
+<script defer src="https://skunkworksacademy.com/assets/academy-navigation.js?v=2026.08.23.1" data-skunkworks-global-nav="v10"></script>
+</head><body><a class="skip-link" href="#main">Skip to content</a>
+<nav class="shell course-nav" aria-label="Course navigation"><a href="https://microsoft.skunkworksacademy.com/#catalog">Microsoft catalog</a><a href="../../index.html">MB-800 overview</a><a href="../../index.html#labs">Lab directory</a></nav>
+<main id="main" data-swa-contrast="preserve"><section class="shell course-section"><p class="eyebrow">MB-800 · 45 minutes</p><h1>Lab 11: Set up dimensions</h1><p>Set up dimensions in Dynamics 365 Business Central</p><nav class="course-pagination" aria-label="Lab sequence"><a href="Lab10_Set_up_Cash_Management.html">← Lab 10: Set Up Cash Management</a><a href="Lab12_Prepare_Financial_Reporting.html">Lab 12: Prepare financial reporting →</a></nav><article class="lab-body" aria-label="Lab instructions"><h2>Exercise 11: Set up dimensions</h2>
+<h2>Task 1: Set up a dimension with dimension values</h2>
+<h2>Scenario</h2>
+<p>Contoso has expressed their requirements regarding reporting goals.</p>
+<p>From the general ledger they would like to analyze their sales by sales person and customer group.</p>
+<p>They want to see both the income and the discounts granted for each sales person.</p>
+<p>A dimension for the customer group already exists, but it is up to you to create a dimension for sales people as well.</p>
+<p>You will perform -</p>
+<ol>
+<li>Set up a dimension with dimension values</li>
+</ol>
+<h3>Steps</h3>
+<ol>
+<li>Set up a dimension with dimension values
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Dimensions, and then choose the related link.</li>
+<li>In the <strong>Dimensions</strong> page, select <strong>+ New</strong>.</li>
+<li>In the <strong>Code</strong> field, enter CUSTOMERGROUP.</li>
+<li>Select <strong>Dimension</strong> and then <strong>Dimension Values</strong>.</li>
+<li>For each sales person, enter the initials in the <strong>Code</strong> field and the full name in the <strong>Name</strong> field.
+<ol>
+<li>LARGE - Large Business</li>
+<li>MEDIUM - Medium Business</li>
+<li>SMALL - Small Business</li>
+</ol>
+</li>
+<li>Check that each dimension value line is set the <strong>Dimension Value Type</strong> field to the <strong>Standard</strong> value.</li>
+</ol>
+</li>
+</ol>
+<h2>Task 2:</h2>
+<p>Assign Account Type Default Dimensions</p>
+<h2>Scenario</h2>
+<p>To keep their analytical information as consistent as possible they would like to make sure that Business Central obligates the user to enter dimension information when posting sales transactions.</p>
+<p>Every time a sales transaction is registered the customer’s group should be added and the salesperson’s code should be entered.</p>
+<p>When a new customer is created, they are categorized to a certain group, which will be evaluated on a yearly basis. The customer, however, can be serviced by different salespeople responsible for their customer group.</p>
+<p>You will perform -</p>
+<ol>
+<li>Assign Account Type Default Dimensions for the customer group.</li>
+<li>Assign Account Type Default Dimensions for the sales people.</li>
+</ol>
+<h3>Steps</h3>
+<ol>
+<li>Assign Account Type Default Dimensions for the customer group.
+<ol>
+<li>In the <strong>Dimensions</strong> page, select the <strong>CUSTOMERGROUP</strong> dimension.</li>
+<li>Select <strong>Dimension</strong>, and then select <strong>Account Type Default Dim.</strong>.</li>
+<li>On a new line, open the assist edit button to the right of the <strong>Table ID</strong> field.</li>
+<li>In the window that opens, select the <strong>Customer</strong> table (Table ID 18) and select <strong>OK</strong>.</li>
+<li>In the <strong>Value Posting</strong> field, enter <strong>Code Mandatory</strong>.</li>
+</ol>
+</li>
+<li>Assign Account Type Default Dimensions for the sales people.
+<ol>
+<li>In the <strong>Dimensions</strong> page, select the <strong>SALESPERSON</strong> dimension.</li>
+<li>Select <strong>Dimension</strong>, and then select <strong>Account Type Default Dim.</strong>.</li>
+<li>Open the assist edit button to the right of the <strong>Table ID</strong> field.</li>
+<li>In the window that opens, select the <strong>Salesperson/Purchaser</strong> table (Table ID 13), and select <strong>OK</strong>.</li>
+<li>In the <strong>Value Posting</strong> field, enter <strong>Code Mandatory</strong>.</li>
+</ol>
+</li>
+</ol>
+<h2>Task 3: Set up a dimension combination</h2>
+<h2>Scenario</h2>
+<p>Sales people are divided into sales teams, where each team is responsible for a specific customer group.</p>
+<p>To further enhance the accuracy of their analytical information, you have to make sure only logical dimension combination can be made when posting sales transactions.</p>
+<p>Make sure the following requirements are met:</p>
+<ul>
+<li>The sales team for the small businesses consists of the following people:
+<ul>
+<li>Annette Hill</li>
+<li>Bart Duncan</li>
+</ul>
+</li>
+<li>The sales team for the medium sized customers consists of the following people:
+<ul>
+<li>Debra L. Core</li>
+<li>John Roberts</li>
+</ul>
+</li>
+<li>The sales team for large companies consists of the following people:
+<ul>
+<li>Mary A. Dempsey</li>
+<li>Peter Saddow</li>
+<li>Richard Lum</li>
+</ul>
+</li>
+</ul>
+<p>You will perform -</p>
+<ol>
+<li>Limit a dimension combination.</li>
+<li>Block dimension value combinations.</li>
+</ol>
+<h3>Steps</h3>
+<ol>
+<li>Limit a dimension combination.
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Dimension Combinations, and then choose the related link.</li>
+<li>In the <strong>Dimension Combinations</strong> page, select the <strong>CUSTOMERGROUP</strong> row, and select on the <strong>SALESPERSON</strong> row in the dimension matrix.</li>
+</ol>
+</li>
+</ol>
+<p>In the window that opens, select <strong>Limited</strong>.</p>
+<ol>
+<li>
+<p>Select <strong>OK</strong>.</p>
+</li>
+<li>
+<p>Block dimension value combinations.</p>
+<ol>
+<li>In the <strong>Dimension Combinations</strong> page, select on the <strong>Limited</strong> value of the combination of the <strong>CUSTOMERGROUP</strong> and <strong>SALESPERSON</strong> dimension in the matrix.</li>
+<li>Select <strong>Yes</strong> to view the list of values.</li>
+<li>Select on the combination of the AH and MEDIUM dimension values in the matrix.</li>
+<li>In the window that opens, select <strong>Blocked</strong>.</li>
+<li>Select <strong>OK</strong>.</li>
+<li>Repeat steps 3. 4. and 5., for the following combinations:
+<ol>
+<li>AH – LARG</li>
+<li>BD – MEDIUM</li>
+<li>BD – LARGE</li>
+<li>DC – SMALL</li>
+<li>DC – LARGE</li>
+<li>JR – SMALL</li>
+<li>JR – LARGE</li>
+<li>MD – SMALL</li>
+<li>MD – MEDIUM</li>
+<li>PS – SMALL</li>
+<li>PS – MEDIUM</li>
+<li>RL – SMALL</li>
+<li>RL – MEDIUM</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2>Task 4: Set up global dimensions and shortcut dimensions</h2>
+<h2>Scenario</h2>
+<p>The company wants to easily identify the most important dimension <strong>BUSINESSGROUP</strong> and <strong>DEPARTMENT</strong> within every transaction and document. To support better analysis, the sales manager needs the ability to view both the <strong>CUSTOMERGROUP</strong> and <strong>SALESPERSON</strong> directly in the posted entries as well.</p>
+<p>You will perform:</p>
+<ul>
+<li>Assing Global dimension.
+<ol>
+<li>Assign Shortcut dimensions.Select the Search icon in the top-right corner of the page, enter <strong>General Ledger Setup</strong>, and then choose the related link.</li>
+<li>On the ribbon bar select Change Global Dimension.</li>
+<li>Select Global Dimension 1 Code – BUSINESSGROUP, Global Dimension 2 Code – DEPARTMENT.</li>
+<li>Select Sequential, Start.</li>
+<li>When process is done back to General Ledger Setup page and check that Global Dimension Code 1 field has value BUSINESSGROUP and Global Dimension Code 2 field – DEPARTMENT on in Dimensions section. Click Show more.</li>
+<li>Select Shortcut Dimension 3 as CUSTOMERGROUP and Shortcut Dimension 4 as SALESPERSON.</li>
+</ol>
+</li>
+</ul>
+<h2>Task 5: Set up default dimensions for master data</h2>
+<h2>Scenario</h2>
+<p>The company decided to implement CUSTOMERGROUP dimension. It is necessary to assign dimension values for an existing list of customers.</p>
+<p>You will perform:</p>
+<ul>
+<li>Assign dimension value for multiple customers on the list.</li>
+<li>Assign specific dimension value for one customer card.</li>
+</ul>
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter <strong>Customers</strong> and then choose the related link.</li>
+<li>Click first three lines:</li>
+<li>On the ribbon select Customer, Dimensions – Multiple, Dimensions – Multiple.</li>
+<li>On the page Default Dimensions –Multiple click New and add new line with Dimension Code – CUSTOMERGROUP, Dimension Value Code – SMALL, Value Posting – Code Same Code.</li>
+<li>Click OK.</li>
+<li>Unselect all customers and click on the line with customer 50000 Relecloud.</li>
+<li>On the ribbon bar select Customer, Dimensions-Multiple, Dimensions-Single,</li>
+<li>In new line select Dimension Code – CUSTOMERGROUP, Dimension Value Code – LARGE, Value Posting – Same Code.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Repeat steps 7-8 for 40000 Alpine Ski House customer with Dimension Value Code - MEDIUM.</td>
+</tr>
+<tr>
+<td></td>
+</tr>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+</article><nav class="course-pagination" aria-label="Continue learning"><a href="Lab10_Set_up_Cash_Management.html">← Lab 10: Set Up Cash Management</a><a href="Lab12_Prepare_Financial_Reporting.html">Lab 12: Prepare financial reporting →</a></nav></section></main>
+<footer class="site-footer"><div class="shell"><strong>Skunkworks Academy · Microsoft learning</strong><p>Lab materials from the Skunkworks Academy MB-800 repository. Microsoft product names and trademarks belong to Microsoft.</p><a href="../../LICENSE">Content license</a> · <a href="https://github.com/skunkworks-academy/MB-800-Business-Central-Functional-Consultant">Course source</a></div></footer></body></html>

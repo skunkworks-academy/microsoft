@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en-ZA"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab 19: Process Purchase | Skunkworks Academy</title><meta name="description" content="Create purchase documents in Dynamics 365 Business Central">
+<link rel="canonical" href="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab19_Process_Purchase.html"><meta name="theme-color" content="#0b1220">
+<meta property="og:type" content="website"><meta property="og:title" content="Lab 19: Process Purchase"><meta property="og:description" content="Create purchase documents in Dynamics 365 Business Central"><meta property="og:url" content="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab19_Process_Purchase.html">
+<link rel="stylesheet" href="../../assets/microsoft-hub.css"><link rel="stylesheet" href="../../assets/course.css">
+<script defer src="https://skunkworksacademy.com/assets/academy-navigation.js?v=2026.08.23.1" data-skunkworks-global-nav="v10"></script>
+</head><body><a class="skip-link" href="#main">Skip to content</a>
+<nav class="shell course-nav" aria-label="Course navigation"><a href="https://microsoft.skunkworksacademy.com/#catalog">Microsoft catalog</a><a href="../../index.html">MB-800 overview</a><a href="../../index.html#labs">Lab directory</a></nav>
+<main id="main" data-swa-contrast="preserve"><section class="shell course-section"><p class="eyebrow">MB-800 · 90 minutes</p><h1>Lab 19: Process Purchase</h1><p>Create purchase documents in Dynamics 365 Business Central</p><nav class="course-pagination" aria-label="Lab sequence"><a href="Lab18_Perform_Basic_Tasks.html">← Lab 18: Perform Basic tasks in Business Central</a><a href="Lab20_Process_Sales.html">Lab 20: Process Sales →</a></nav><article class="lab-body" aria-label="Lab instructions"><h2>Exercise 19: Process Purchase</h2>
+<h2>Task 1: Process a purchase from quote to invoice and review the posted documents</h2>
+<h2>Scenario</h2>
+<p>As the purchasing agent you are replenishing the stock for the European warehouse. The computer monitors are currently low on stock and a purchase order with their main vendor Cronus Cardoxy Sales is placed on January 1st, 2026. It was agreed to always invoice in USD instead of their currency (DKK) and a purchase request is sent to the correct order address for the following items to be delivered on January 5th, 2026:</p>
+<ul>
+<li>100 pieces of the 15” flat panel at $ 4,999.89 a box, containing 10 pieces.</li>
+<li>50 pieces of the 17” monitor at $ 5,348.56 a box, containing 10 pieces</li>
+</ul>
+<p>The purchase request is confirmed by the vendor on January 8th, 2026, with order confirmation OC15-479. They mention a delivery delay of a couple of days, expecting to be able to deliver the entire order on January 12th, 2026.</p>
+<p>Eventually the goods are delivered with delivery notes DN01-47 on January 16th, 2026, as follows:</p>
+<ul>
+<li>11 boxes of the 15” flat panel – this is 1 box more than ordered</li>
+<li>4 boxes of the 17” monitor – this is 1 box less than ordered</li>
+</ul>
+<p>The purchase invoice with number 20-0747 is received by mail on January 20th, 2026, where a 5% discount is granted on the 15” monitors as a compensation for the delivery delay. The invoice needs to be paid within 30 days.</p>
+<p>You will perform-</p>
+<ol>
+<li>Change the currency code on the vendor.</li>
+<li>Create a purchase quote.</li>
+<li>Create a purchase order based on a purchase quote.</li>
+<li>Receive items on the purchase order.</li>
+<li>Create a posted purchase invoice from the purchase order.</li>
+<li>Review the posted purchase receipt and invoice.</li>
+</ol>
+<h3>Steps</h3>
+<ol>
+<li>
+<p>Change the currency code on the vendor.</p>
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Vendors, and then choose the related link.</li>
+<li>On the <strong>Vendors</strong> list page, select vendorCronus Cardoxy Sales**(V9002)**.</li>
+<li>Select <strong>Manage</strong> and then select <strong>Edit</strong>.</li>
+<li>On the opened vendor card, go to the <strong>Invoicing</strong> FastTab, and select <strong>Show more</strong>.</li>
+<li>Leave the <strong>Currency Code</strong> field blank.</li>
+</ol>
+</li>
+<li>
+<p>Create a purchase quote</p>
+</li>
+<li>
+<p>Select the Search icon in the top-right corner of the page, enter <strong>Purchase Quotes</strong>, and then choose the related link.</p>
+</li>
+<li>
+<p>In the <strong>Purchase Quotes</strong> list page, select <strong>+ New</strong>.</p>
+</li>
+<li>
+<p>On the <strong>General</strong> FastTab, fill in the following fields:</p>
+<ol>
+<li>In the <strong>Vendor Name</strong> field, enter <strong>Cronus Cardoxy Sales (V9002)</strong>.</li>
+</ol>
+</li>
+<li>
+<p>On the <strong>General</strong> FastTab,select <strong>Show more</strong> and then fill in the following fields:</p>
+<ol>
+<li>In the <strong>Document Date</strong> and <strong>Order Date</strong> fields, enter <strong>1/1/2026</strong>.</li>
+</ol>
+</li>
+</ol>
+<p>In the <strong>Requested Receipt Date</strong> field, enter <strong>1/5/2026</strong>.</p>
+<p>In the <strong>Alternate Vendor Address Code</strong> field, enter <strong>COMP&amp;MON</strong>.On the <strong>Lines</strong> section, enter a new line by filling in the following field:</p>
+<ol start="3">
+<li>
+<ul>
+<li>
+<ol>
+<li>In the <strong>Type</strong> field, enter <strong>Item</strong>.</li>
+</ol>
+</li>
+</ul>
+<ol start="2">
+<li>In the <strong>No.</strong> field, enter <strong>CHW1002</strong> for the <strong>15” flat panels</strong>.</li>
+<li>In the <strong>Location Code</strong> field, the value <strong>EUROP</strong> is automatically filled in.</li>
+<li>In the <strong>Unit of Measure Code</strong> field, the value <strong>BOX</strong> is automatically filled in.</li>
+<li>In the <strong>Quantity</strong> field, enter <strong>10</strong>.</li>
+<li>In the <strong>Direct Unit Cost Excl. Tax/VAT</strong> field, enter <strong>4,999.89</strong>.</li>
+<li>In the <strong>Tax Group Code</strong>, enter <strong>NONTAXABLE</strong>.</li>
+</ol>
+</li>
+<li>
+<p>On the <strong>Lines</strong> section, enter a new line by filling in the following field:</p>
+<ol>
+<li>In the <strong>Type</strong> field, enter <strong>Item</strong>.</li>
+<li>In the <strong>No.</strong> field, enter <strong>CHW1003</strong> for the <strong>17” flat panels</strong>.</li>
+<li>In the <strong>Location Code</strong> field, the value <strong>EUROP</strong> is automatically filled in.</li>
+<li>In the <strong>Unit of Measure Code</strong> field, the value <strong>BOX</strong> is automatically filled in.</li>
+<li>In the <strong>Quantity</strong> field, enter <strong>5</strong>.</li>
+<li>In the <strong>Direct Unit Cost Excl. Tax/VAT</strong> field, enter <strong>5,348.56</strong>.</li>
+<li>In the <strong>Tax Group Code</strong>, enter <strong>NONTAXABLE</strong>.</li>
+</ol>
+</li>
+<li>
+<p>Select <strong>Release</strong>.</p>
+</li>
+<li>
+<p>On the <strong>General</strong> FastTab,update and fill in the following fields:</p>
+<ol>
+<li>In the <strong>Vendor Order No.</strong> field, enter <strong>OC15-479</strong>.</li>
+<li>In the <strong>Document Date</strong> field enter <strong>01/08/26</strong></li>
+</ol>
+</li>
+<li>
+<p>Create a purchase order based on a purchase quote.</p>
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter <strong>Purchase Quotes</strong>, and then choose the related link.</li>
+<li>Open Purchase quote no 1001 created on step 1.</li>
+<li>Run the function <strong>Archive document</strong> saving initial quote, select <strong>Yes</strong>.</li>
+<li>Select the <strong>Make Order</strong> function, select <strong>Yes.</strong> System asks to open a new order, select <strong>Yes</strong>.</li>
+<li>On the <strong>Invoice Details</strong> FastTab, select <strong>Show more</strong> and then fill in the following fields:
+<ol>
+<li>In the <strong>Promised Receipt Date</strong> field, enter <strong>1/12/2026</strong>.</li>
+</ol>
+</li>
+<li>Select <strong>Release</strong>.</li>
+</ol>
+</li>
+<li>
+<p>Receive items on the purchase order.</p>
+<ol>
+<li>On the <strong>General</strong> FastTab, fill in the following fields:
+<ol>
+<li>In the <strong>Posting Date</strong> field, enter <strong>1/16/2026</strong>.</li>
+<li>In the <strong>Vendor Shipment No.</strong> field, enter <strong>DN01-47</strong>.</li>
+</ol>
+</li>
+<li>On the <strong>Lines</strong> section, select the line for item <strong>CHW1002</strong>, and fill in the following fields:
+<ol>
+<li>In the <strong>Over-Receipt Code</strong> field, enter <strong>OVERRCPT10</strong>.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>Add +New, Code <strong>OVERRCPT10, Description – Over-receipt 10%, Over-Receipt</strong></p>
+<ol start="3">
+<li>
+<ul>
+<li>
+<ol>
+<li>In the <strong>Qty. to Receive</strong> field, enter <strong>11</strong>.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p>On the <strong>Lines</strong> section, select the line for item <strong>CHW1003</strong>, and fill in the following fields:</p>
+<ol>
+<li>In the <strong>Qty. to Receive</strong> field, enter <strong>4</strong>.</li>
+</ol>
+</li>
+<li>
+<p>Select the dropdown of <strong>Posting</strong>, and then select <strong>Post</strong>. If an error occurs, ensure the <strong>Posting Date</strong> is within the allowed posting dates. If needed, use the <strong>Search</strong> icon to review the settings in <strong>General Ledger Setup</strong></p>
+</li>
+<li>
+<p>Select the <strong>Receive</strong> option and select <strong>OK</strong>.</p>
+</li>
+<li>
+<p>Create a posted purchase invoice from the purchase order.</p>
+<ol>
+<li>Select the dropdown of <strong>Release</strong>, and then select <strong>Reopen</strong>.</li>
+<li>On the <strong>General</strong> FastTab, fill in the following fields:
+<ol>
+<li>In the <strong>Posting Date</strong> field, enter <strong>1/18/2026</strong>.</li>
+<li>In the <strong>Vendor Invoice No.</strong> field, enter <strong>20-0747</strong>.</li>
+</ol>
+</li>
+<li>On the <strong>Invoice Details</strong> FastTab, in the <strong>Payment Terms Code</strong> field, enter <strong>30 DAYS</strong>.</li>
+<li>On the <strong>Lines</strong> section, select the line for item <strong>CHW1002</strong>, and select on the <strong>Settings</strong> icon in the top-right corner.</li>
+<li>Select <strong>Personalize</strong> to add the <strong>Line Discount%</strong> field.</li>
+<li>Select <strong>More</strong> on the <strong>Personalizing</strong> ribbon.</li>
+<li>Select the <strong>Lines</strong> area and select <strong>+ Field</strong> in the <strong>Personalizing</strong> ribbon.</li>
+<li>An <strong>Add field to page</strong> pane will appear on the right side.</li>
+<li>Select <strong>Line Discount %</strong> from the <strong>Add Field to Page</strong> pane and drag it to the right of <strong>Quantity</strong> column in the <strong>Lines</strong> area.</li>
+<li>fill in the following fields:
+<ol>
+<li>In the <strong>Line Discount%</strong> field, enter <strong>5</strong>.</li>
+</ol>
+</li>
+<li>Select the dropdown next to <strong>Posting</strong>, and then select <strong>Post</strong>.</li>
+<li>Select the <strong>Invoice</strong> option and select <strong>OK</strong>.</li>
+</ol>
+</li>
+<li>
+<p>Review the posted purchase receipt and invoice.</p>
+<ol>
+<li>Select <strong>Order</strong> and select <strong>Receipts</strong>.</li>
+<li>On the <strong>Posted Purchase Receipts</strong> page, select <strong>Find Entries</strong>.</li>
+<li>Select the line for <strong>Item Ledger Entry</strong> and select <strong>Show Related Entries</strong>.</li>
+<li>Close the <strong>Item Ledger Entries</strong> page.</li>
+<li>Close the <strong>Find Entries</strong> page.</li>
+<li>On the <strong>Purchase Order</strong> page, select <strong>Order</strong> and then select <strong>Invoices</strong>.</li>
+<li>On the <strong>Posted Purchase Invoices</strong> page, select <strong>Find Entries</strong>.</li>
+<li>Select the line for <strong>G/L entries</strong> and select <strong>Show Related Entries</strong>.</li>
+<li>Close the <strong>General Ledger Entries</strong> page.</li>
+<li>Close the <strong>Find Entries</strong> page.</li>
+</ol>
+</li>
+</ol>
+<h2>Task 2: Process the return of a purchase from return order to credit memo</h2>
+<h2>Scenario</h2>
+<p>While putting away stock, one of the delivered boxes of the 17” monitors turns out to be damaged. Cronus Cardoxy Sales will refund these items on return, which is done on January 24th, 2026.</p>
+<p>The purchase credit memo, with the same payment conditions as the invoice, and with number 20-CN0747, is received by mail on February 3rd, 2026. The correct amount of $ 4,999.89 a box will be repaid to Contoso.</p>
+<p>You will perform -</p>
+<ol>
+<li>Create a purchase return order</li>
+<li>Ship the items</li>
+<li>Create a posted purchase credit memo from the purchase return order</li>
+</ol>
+<h3>Steps</h3>
+<ol>
+<li>Create a purchase return order.
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Purchase Return Orders, and then choose the related link.</li>
+<li>In the <strong>Purchase Return Orders</strong> list page, select <strong>+ New</strong>.</li>
+<li>On the <strong>General</strong> FastTab, fill in the following fields:
+<ol>
+<li>In the <strong>Vendor Name</strong> field, enter <strong>Cronus Cardoxy Sales (V9002)</strong>.</li>
+<li>In the <strong>Document Date</strong> and <strong>Order Date</strong> fields, enter <strong>1/24/2026</strong>.</li>
+</ol>
+</li>
+<li>On the <strong>Invoice Details</strong> FastTab, in the <strong>Payment Terms Code</strong> field enter <strong>30 DAYS</strong>.</li>
+<li>Select <strong>Prepare</strong>, and then select <strong>Get Posted Document Lines to Reverse</strong>…</li>
+<li>In the opened page, fill in the following options:
+<ol>
+<li>Select the <strong>Show Reversible Lines Only</strong> checkbox</li>
+<li>In the <strong>Document Type Filter</strong> field, enter the <strong>Posted Invoices</strong> option.</li>
+<li>Select the line for item <strong>CHW1003</strong>.</li>
+<li>Select <strong>OK</strong>.</li>
+</ol>
+</li>
+<li>On the <strong>Lines</strong> section on the purchase return order, select the line for <strong>CHW1003</strong> and then change the <strong>Quantity</strong> field to the value <strong>1</strong>.</li>
+<li>Select <strong>Release</strong>.</li>
+</ol>
+</li>
+<li>Ship the items.
+<ol>
+<li>On the <strong>General</strong> FastTab, select <strong>Show more</strong> and then fill in the following fields:
+<ol>
+<li>In the <strong>Posting Date</strong> field, enter <strong>1/31/2026</strong>.</li>
+<li>In the <strong>Vendor Cr. Memo No.</strong> field, enter <strong>20-CN0747</strong>.</li>
+</ol>
+</li>
+<li>Select the dropdown next to <strong>Posting</strong>, and then select <strong>Post</strong>.</li>
+<li>Select the <strong>Ship</strong> option and select <strong>OK</strong>.</li>
+</ol>
+</li>
+<li>Create a posted purchase credit memo from the purchase return order.
+<ol>
+<li>On the <strong>General</strong> FastTab, fill in the following fields:
+<ol>
+<li>In the <strong>Posting Date</strong> field, enter <strong>2/3/2026</strong>.</li>
+<li>In the <strong>Vendor Cr. Memo No.</strong> field, enter <strong>20-CN0747</strong>.</li>
+</ol>
+</li>
+<li>Select the dropdown next to <strong>Posting</strong>, and then select <strong>Post</strong>.</li>
+<li>Select the <strong>Invoice</strong> option and select <strong>OK</strong>.</li>
+<li>Select <strong>No</strong> to open the posted purchase credit memo.</li>
+</ol>
+</li>
+</ol>
+<h2>Task 3: Process a purchase invoice for costs</h2>
+<h2>Scenario</h2>
+<p>The accounting department at Contoso receives a cost invoice from vendor OakvilleWorld, with an invoice date 3/6/2026 and invoice number OW-21-M2458. The invoice needs to be paid within 15 days.</p>
+<p>The invoice is for the monthly health and insurance cost of CAD 1,200.00, which is processed per department.</p>
+<p>The accounting manager has already set up a purchase recurring line for this vendor (see Lab 12 taskk 4).</p>
+<p>You need to process the invoice.</p>
+<p>You will perform</p>
+<ol>
+<li>Process a purchase invoice using recurring purchase lines</li>
+</ol>
+<h3>Steps</h3>
+<ol>
+<li>Process a purchase invoice using recurring purchase lines
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Purchase Invoices, and then choose the related link.</li>
+<li>In the <strong>Purchase Invoices</strong> list page, select <strong>+ New</strong>.</li>
+<li>On the <strong>General</strong> FastTab, fill in the following fields:
+<ol>
+<li>In the <strong>Vendor Name</strong> field, enter OakvilleWorld <strong>(V9007)</strong>.</li>
+<li>In the <strong>Posting Date</strong> field, enter <strong>3/6/2026</strong>.</li>
+<li>In the <strong>Document Date</strong> field, enter 3/6/2026.</li>
+<li>In the <strong>Vendor Invoice No.</strong> field, enter <strong>OW-21-M2458</strong>.</li>
+</ol>
+</li>
+<li>On the <strong>Invoice Details</strong> FastTab, in the <strong>Payment Terms Code</strong> field enter <strong>15 DAYS</strong>.</li>
+<li>On the <strong>Lines</strong> section, the invoice lines for the health insurance per department are automatically filled in.</li>
+<li>Select <strong>Post</strong>.</li>
+<li>Select <strong>Yes</strong> to post.</li>
+<li>Select <strong>No</strong> to open the posted invoice.</li>
+</ol>
+</li>
+</ol>
+</article><nav class="course-pagination" aria-label="Continue learning"><a href="Lab18_Perform_Basic_Tasks.html">← Lab 18: Perform Basic tasks in Business Central</a><a href="Lab20_Process_Sales.html">Lab 20: Process Sales →</a></nav></section></main>
+<footer class="site-footer"><div class="shell"><strong>Skunkworks Academy · Microsoft learning</strong><p>Lab materials from the Skunkworks Academy MB-800 repository. Microsoft product names and trademarks belong to Microsoft.</p><a href="../../LICENSE">Content license</a> · <a href="https://github.com/skunkworks-academy/MB-800-Business-Central-Functional-Consultant">Course source</a></div></footer></body></html>

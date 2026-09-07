@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en-ZA"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab 23: Perform finance operations | Skunkworks Academy</title><meta name="description" content="Create and process journal entries in Dynamics 365 Business Central">
+<link rel="canonical" href="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab23_Perform_Finance_Operations.html"><meta name="theme-color" content="#0b1220">
+<meta property="og:type" content="website"><meta property="og:title" content="Lab 23: Perform finance operations"><meta property="og:description" content="Create and process journal entries in Dynamics 365 Business Central"><meta property="og:url" content="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab23_Perform_Finance_Operations.html">
+<link rel="stylesheet" href="../../assets/microsoft-hub.css"><link rel="stylesheet" href="../../assets/course.css">
+<script defer src="https://skunkworksacademy.com/assets/academy-navigation.js?v=2026.08.23.1" data-skunkworks-global-nav="v10"></script>
+</head><body><a class="skip-link" href="#main">Skip to content</a>
+<nav class="shell course-nav" aria-label="Course navigation"><a href="https://microsoft.skunkworksacademy.com/#catalog">Microsoft catalog</a><a href="../../index.html">MB-800 overview</a><a href="../../index.html#labs">Lab directory</a></nav>
+<main id="main" data-swa-contrast="preserve"><section class="shell course-section"><p class="eyebrow">MB-800 · 60 minutes</p><h1>Lab 23: Perform finance operations</h1><p>Create and process journal entries in Dynamics 365 Business Central</p><nav class="course-pagination" aria-label="Lab sequence"><a href="Lab22_Configure_Copilot_Agent_Capabilities.html">← Lab 22: Configure Copilot and agent capabilities</a><a href="Lab24_Reconcile_Customer_Vendor.html">Lab 24: Reconcile customer and vendor entries →</a></nav><article class="lab-body" aria-label="Lab instructions"><h2>Exercise 23: Perform finance operations.</h2>
+<h2>Task 1: Create and post opening balances.</h2>
+<h2>Scenario</h2>
+<p>You are a functional consultant and are working on opening balances for the Contoso company.</p>
+<p>The accounting manager at Contoso has provided you with a summary of opening balances by general ledger account as of 12/31/2025.</p>
+<table>
+<thead>
+<tr>
+<th>Account no.</th>
+<th>Account name</th>
+<th>Amount, $</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10400</td>
+<td>Opening Customer Entries</td>
+<td>14375.40</td>
+</tr>
+<tr>
+<td>20100</td>
+<td>Opening Vendor Ledger</td>
+<td>-34871.27</td>
+</tr>
+<tr>
+<td>10100</td>
+<td>Bank Account – Operating</td>
+<td>20495.87</td>
+</tr>
+</tbody>
+</table>
+<p>One week later, an accountant provided detailed balances:</p>
+<p>Customer detailed balances:</p>
+<table>
+<thead>
+<tr>
+<th>Account no.</th>
+<th>Account name</th>
+<th>Document Date</th>
+<th>Document No.</th>
+<th>Amount, $</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10000</td>
+<td>Adatum Corporation</td>
+<td>10/01/25</td>
+<td>INV251001</td>
+<td>1000</td>
+</tr>
+<tr>
+<td>10000</td>
+<td>Adatum Corporation</td>
+<td>10/20/25</td>
+<td>INV251002</td>
+<td>3600</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Account no.</th>
+<th>Account name</th>
+<th>Document Date</th>
+<th>Document No.</th>
+<th>Amount, $</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10000</td>
+<td>Fabrikam, Inc.</td>
+<td>10/10/25</td>
+<td>25-034</td>
+<td>-5000</td>
+</tr>
+<tr>
+<td>10000</td>
+<td>Fabrikam, Inc.</td>
+<td>10/20/25</td>
+<td>25-356</td>
+<td>-3600</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Account no.</th>
+<th>Account name</th>
+<th>Document Date</th>
+<th>Document No.</th>
+<th>Amount, $</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CHECKING</td>
+<td>CHECKINGS bank account</td>
+<td>12/31/25</td>
+<td>OPENBAL2</td>
+<td>20495,87</td>
+</tr>
+</tbody>
+</table>
+<p>You will perform:</p>
+<ul>
+<li>
+<p>Record open balances by general ledger accounts.</p>
+</li>
+<li>
+<p>Reallocate open balances to specific accounts.</p>
+</li>
+<li>
+<p>Step 1. Record open balances by general ledger accounts.</p>
+</li>
+</ul>
+<p>Select the Search icon in the top-right corner of the page, enter General Journals and then choose the related link.</p>
+<p>In the General Journal Template page select OPENING.</p>
+<ul>
+<li>
+<p>On the General Journals list page, select the OPENING journal.</p>
+</li>
+<li>
+<p>Open the assist edit button to the right of the Batch Name field.</p>
+</li>
+<li>
+<p>Select the BALANCE journal batch.</p>
+</li>
+<li>
+<p>Select OK.</p>
+</li>
+<li>
+<p>Select the first line and fill in the following details.
+Enter 12/31/25 the Posting Date field</p>
+</li>
+<li>
+<p>Enter OPENBAL2 in the Document No. field</p>
+</li>
+<li>
+<p>Enter 10400 in the Account No. field</p>
+</li>
+<li>
+<p>Enter 14375.40 in the Amount field</p>
+</li>
+<li>
+<p>Select the new line and fill in the following details.
+Enter 12/31/25 the Posting Date field</p>
+</li>
+<li>
+<p>Enter OPENBAL2 in the Document No. field<br>
+Enter 20100 in the Account No. field</p>
+</li>
+<li>
+<p>Enter  -34871.27 in the Amount field</p>
+</li>
+<li>
+<p>Select the new line and fill in the following details.
+Enter 12/31/25 the Posting Date field</p>
+</li>
+<li>
+<p>Enter OPENBAL2 in the Document No. field<br>
+Enter 10100 in the Account No. field
+Enter  20495.87 in the Amount field</p>
+</li>
+</ul>
+<p>Select Post -&gt; Preview Posting</p>
+<p>Check for any errors and correct them</p>
+<ul>
+<li>
+<p>Close the window</p>
+</li>
+<li>
+<p>Select Post</p>
+</li>
+<li>
+<p>Select Yes</p>
+</li>
+<li>
+<p>Select OK</p>
+</li>
+<li>
+<p>Close the General Journals Page.</p>
+</li>
+<li>
+<p>Step 2. Reallocate open balances to specific accounts.</p>
+</li>
+</ul>
+<p>Enter General Journals in the search and select the related link.</p>
+<ul>
+<li>
+<p>On the General Journals list page, select the OPENING journal.</p>
+</li>
+<li>
+<p>Open the assist edit button to the right of the Batch Name field.</p>
+</li>
+<li>
+<p>Select the CUST journal batch.</p>
+</li>
+<li>
+<p>Select OK.</p>
+</li>
+</ul>
+<p>Select the first line and fill in the following details.
+Enter 10/01/25 the Posting Date field
+Select Invoice in the Document type field</p>
+<ul>
+<li>Enter INV251001 in the Document No. field<br>
+Select Customer in the Account type field
+Enter 10000 in the Account No. field for Adatum Corporation
+Enter 1000 in the Amount field</li>
+</ul>
+<p>Select a new line and fill in the following details.
+Enter 10/20/25 the Posting Date field<br>
+Select Invoice in the Document type field</p>
+<ul>
+<li>Enter INV251002 in the Document No. field<br>
+Select Customer in the Account type field
+Enter 10000 in the Account No. field for Adatum Corporation
+Enter 3600 in the Amount field</li>
+</ul>
+<p>Select Home, Post</p>
+<ul>
+<li>
+<p>Select Yes</p>
+</li>
+<li>
+<p>Select OK</p>
+</li>
+<li>
+<p>Open the assist edit button to the right of the Batch Name field.</p>
+</li>
+<li>
+<p>Select the VEND journal batch.</p>
+</li>
+<li>
+<p>Select OK.</p>
+</li>
+<li>
+<p>Using Personalization add field External Document No. General Journals page.</p>
+</li>
+</ul>
+<p>Select the first line and fill in the following details.
+Enter 10/10/25 the Posting Date field
+Select Invoice in the Document type field</p>
+<p>Enter 25-034 in the Document No. field</p>
+<p>Enter 25-034 in the External Document No. field<br>
+Select Vendor in the Account type field
+Enter 10000 in the Account No. field for Fabrikam, Inc.
+Enter -5000 in the Amount field</p>
+<p>Select a new line and fill in the following details.
+Enter 10/10/25 the Posting Date field<br>
+Select Invoice in the Document type field</p>
+<p>Enter 25-356 in the Document No. field</p>
+<p>Enter 25-356 in the External Document No. field<br>
+Select Vendor in the Account type field
+Enter 10000 in the Account No. field for Fabrikam, Inc.
+Enter -3600 in the Amount field</p>
+<ul>
+<li>
+<p>Select Home, Post</p>
+</li>
+<li>
+<p>Select Yes</p>
+</li>
+<li>
+<p>Select OK</p>
+</li>
+<li>
+<p>Open the assist edit button to the right of the Batch Name field.</p>
+</li>
+<li>
+<p>Select the BANK journal batch.</p>
+</li>
+<li>
+<p>Select OK.</p>
+</li>
+</ul>
+<p>Select the first line and fill in the following details.
+Enter 12/31/25 the Posting Date field
+Select the empty option in the Document type field</p>
+<p>Enter OPENBAL2 in the Document No. field<br>
+Select Bank in the Account type field
+Enter CHECKING in the Account No. field
+Enter 20495.87 in the Amount field
+Select 10100 Bank Account – Operating in the Balance Account No. field</p>
+<ul>
+<li>
+<p>Select Home, Post</p>
+</li>
+<li>
+<p>Select Yes</p>
+</li>
+<li>
+<p>Select OK</p>
+</li>
+</ul>
+<h2>Task 2: Reverse posted entries: reverse register, reverse transaction.</h2>
+<h2>Scenario</h2>
+<p>You are working on opening balances for the Contoso company. Some entries posted as open balance transactions must be corrected. You need to cancel the following entries:</p>
+<p>Customer detailed balances:</p>
+<table>
+<thead>
+<tr>
+<th>Account no.</th>
+<th>Account name</th>
+<th>Document Date</th>
+<th>Document No.</th>
+<th>Amount, $</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10000</td>
+<td>Adatum Corporation</td>
+<td>10/20/25</td>
+<td>INV251002</td>
+<td>3600</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Account no.</th>
+<th>Account name</th>
+<th>Document Date</th>
+<th>Document No.</th>
+<th>Amount, $</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10000</td>
+<td>Fabrikam, Inc.</td>
+<td>10/10/25</td>
+<td>25-034</td>
+<td>-5000</td>
+</tr>
+<tr>
+<td>10000</td>
+<td>Fabrikam, Inc.</td>
+<td>10/20/25</td>
+<td>25-356</td>
+<td>-3600</td>
+</tr>
+</tbody>
+</table>
+<p>You will perform:</p>
+<ul>
+<li>
+<p>Reverse a transaction.</p>
+</li>
+<li>
+<p>Reverse register.</p>
+</li>
+</ul>
+<h3>Steps</h3>
+<ol>
+<li>Reverse a transaction.</li>
+</ol>
+<p>Select the Search icon in the top-right corner of the page, enter Find entries and then choose the related link.
+Enter INV251002 in the Document No. field
+Enter 10/20/25 the Posting Date field
+Select Find
+Select G/L Entry line and select Show Related Entries.</p>
+<p>On the General Ledger Entries page select Reverse Transaction
+On the Reverse Transaction Entries page select Reverse
+Select Yes
+Select OK.</p>
+<ol start="2">
+<li>
+<p>Reverse register.</p>
+</li>
+<li>
+<p>Select the Search icon in the top-right corner of the page, enter G/L Register and then choose the related link.
+On the G/L Registers page, sort lines by No. field, Descending.
+Select third line with Journal Batch name – VEND.
+Select Vendor Ledger Entries to check entries in the register.
+Register has entries with Document no: 25-034, 25-356.</p>
+</li>
+<li>
+<p>Close Vendor Ledger Entries page.</p>
+</li>
+<li>
+<p>Select Reverse, Reverse Register.</p>
+</li>
+<li>
+<p>On the Reverse Register Entries page, select Reverse.</p>
+</li>
+<li>
+<p>Select Yes.
+Select OK.</p>
+</li>
+</ol>
+<h2>Task 3: Utilize general ledger allocations</h2>
+<h2>Scenario</h2>
+<p>Contoso allocates shared operating expenses—such as utilities, insurance, and administrative overhead—across multiple departments to ensure accurate cost reporting. As the Financial Accountant, you are responsible for setting up and applying these allocation rules.</p>
+<p>For this task, management has asked you to configure an allocation for Health Insurance expenses. The cost must be distributed across departments using the following proportions:</p>
+<ul>
+<li>
+<p>Administrative Department: 25%</p>
+</li>
+<li>
+<p>Production Department: 25%</p>
+</li>
+<li>
+<p>Sales Department: 50%</p>
+</li>
+</ul>
+<p>After setting up the allocation rule, you must post an incoming invoice to apply it. Contoso has received invoice INV02
+345 from Purchasing Inc. dated 2/1/26 for $1,200 representing the monthly health insurance cost.</p>
+<p>You will perform:</p>
+<ul>
+<li>
+<p>Set up an Allocation account.</p>
+</li>
+<li>
+<p>Create and post a purchase invoice for an allocation account.</p>
+</li>
+</ul>
+<h3>Steps</h3>
+<ol>
+<li>Set up an Allocation account.</li>
+</ol>
+<p>Select the Search icon in the top-right corner of the page, enter Allocation Accounts and then choose the related link.
+Select +New and fill the fields on Allocation Account page:</p>
+<p>Enter HEALTH in the No, field
+Enter Health Insurance in the Name field
+Select the Fixed in the Account type field.</p>
+<p>Select the Split Amount in the Document line split field.</p>
+<p>In the lines sections select for the first line:
+Select the G/L Account in the Destination Account type field
+Enter 73100 in the Destination Account number field
+Enter 25 to the Share field.
+Select Dimensions, Dimension code – DEPARTMENT, Dimension Value – ADM
+Select Close.
+In the new line:
+Select the G/L Account in the Destination Account type field
+Enter 73100 in the Destination Account number field
+Enter 25 to the Share field.
+Select Dimensions, Dimension code – DEPARTMENT, Dimension Value – PROD
+Select Close.</p>
+<pre><code>In the new line:
+Select the G/L Account in the Destination Account type field
+Enter 73100 in the Destination Account number field
+Enter 25 to the Share field.
+Select Dimensions, Dimension code – DEPARTMENT, Dimension Value – PROD
+Select Close.
+Close Allocation Account card.
+</code></pre>
+<ol start="2">
+<li>Create and post a purchase invoice for an allocation account.</li>
+</ol>
+<p>Select the Search icon in the top-right corner of the page, enter Purchase Invoices, and then choose the related link.</p>
+<p>In the Purchase Invoices list page, select + New.</p>
+<p>On the General FastTab, fill in the following fields:</p>
+<p>Enter V9001 In the Vendor No field with Vendor name Purchasing Inc.</p>
+<p>In the Posting Date and Document Date fields, enter 2/1/26.</p>
+<p>In the Vendor Invoice No. field, enter INV02-345</p>
+<p>On the Lines section fill the first line:
+In the Type field, select Allocation Account
+In the No. field, select HEALTH
+Enter 1 in the Quantity field
+Entrer 1200 in the Amount field.</p>
+<ol start="3">
+<li>
+<p>Select Post.</p>
+</li>
+<li>
+<p>Select Yes to post.</p>
+</li>
+<li>
+<p>Select No to open the posted invoice.</p>
+</li>
+</ol>
+</article><nav class="course-pagination" aria-label="Continue learning"><a href="Lab22_Configure_Copilot_Agent_Capabilities.html">← Lab 22: Configure Copilot and agent capabilities</a><a href="Lab24_Reconcile_Customer_Vendor.html">Lab 24: Reconcile customer and vendor entries →</a></nav></section></main>
+<footer class="site-footer"><div class="shell"><strong>Skunkworks Academy · Microsoft learning</strong><p>Lab materials from the Skunkworks Academy MB-800 repository. Microsoft product names and trademarks belong to Microsoft.</p><a href="../../LICENSE">Content license</a> · <a href="https://github.com/skunkworks-academy/MB-800-Business-Central-Functional-Consultant">Course source</a></div></footer></body></html>

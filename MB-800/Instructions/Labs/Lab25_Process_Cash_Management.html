@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en-ZA"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab 25: Process Cash Management and general journal entries | Skunkworks Academy</title><meta name="description" content="Perform a bank reconciliation in Dynamics 365 Business Central">
+<link rel="canonical" href="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab25_Process_Cash_Management.html"><meta name="theme-color" content="#0b1220">
+<meta property="og:type" content="website"><meta property="og:title" content="Lab 25: Process Cash Management and general journal entries"><meta property="og:description" content="Perform a bank reconciliation in Dynamics 365 Business Central"><meta property="og:url" content="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab25_Process_Cash_Management.html">
+<link rel="stylesheet" href="../../assets/microsoft-hub.css"><link rel="stylesheet" href="../../assets/course.css">
+<script defer src="https://skunkworksacademy.com/assets/academy-navigation.js?v=2026.08.23.1" data-skunkworks-global-nav="v10"></script>
+</head><body><a class="skip-link" href="#main">Skip to content</a>
+<nav class="shell course-nav" aria-label="Course navigation"><a href="https://microsoft.skunkworksacademy.com/#catalog">Microsoft catalog</a><a href="../../index.html">MB-800 overview</a><a href="../../index.html#labs">Lab directory</a></nav>
+<main id="main" data-swa-contrast="preserve"><section class="shell course-section"><p class="eyebrow">MB-800 · 60 minutes</p><h1>Lab 25: Process Cash Management and general journal entries</h1><p>Perform a bank reconciliation in Dynamics 365 Business Central</p><nav class="course-pagination" aria-label="Lab sequence"><a href="Lab24_Reconcile_Customer_Vendor.html">← Lab 24: Reconcile customer and vendor entries</a><a href="../../index.html#labs">Return to course overview →</a></nav><article class="lab-body" aria-label="Lab instructions"><h2>Exercise 25: Process Cash Management</h2>
+<h2>Task 1: Create and post journal entries</h2>
+<h2>Scenario</h2>
+<p>As the functional consultant you have prepared a configuration package for the import of the opening balance.</p>
+<p>The excel file contains all journal lines for all balance sheet accounts and is prepared in the OPENING general journal, with the BALANCE journal batch, containing dimension information.</p>
+<p>The accounting manager at Contoso has provided you with the following opening balance to be posted on December 31th, 2025.</p>
+<p>You will perform</p>
+<ol>
+<li>Prepare the journal for the G/L opening balance.</li>
+<li>Update and post the general journal.</li>
+</ol>
+<h3>Steps</h3>
+<ol>
+<li>Prepare the journal for the G/L opening balance.
+<ol>
+<li>First make sure your work date is set to <strong>Today</strong>.</li>
+<li>Select the Search icon in the top-right corner of the page, enter General Journals and then choose the related link.</li>
+<li>On the <strong>General Journal Template List</strong> page, select the <strong>OPENING</strong> journal.</li>
+<li>Open the assist edit(…) button to the right of the <strong>Batch Name</strong> field.
+<ol>
+<li>Select the <strong>BALANCE</strong> journal batch.</li>
+<li>Select <strong>OK</strong>.</li>
+</ol>
+</li>
+<li>Select <strong>Actions</strong>, then select <strong>Opening Balance</strong>, then select <strong>Prepare journal</strong> and then select <strong>G/L Accounts Opening balance</strong>.</li>
+<li>Select <strong>OK</strong>.</li>
+<li>The journal lines are automatically filled in for all balance accounts.</li>
+<li>h</li>
+</ol>
+</li>
+<li>IUpdate and post the general journal.
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter General Journals and then choose the related link .</li>
+<li>Select on <strong>OPENING.</strong></li>
+<li>In Batch Name field select <strong>BALANCE</strong>.</li>
+<li>Set filter to Account No. &lt;&gt;10100 and delete all journal lines. Remove filter.</li>
+<li>Slect the first line and add the information as provided below.
+<ol>
+<li>Enter <strong>C03</strong> in the <strong>Document No.</strong> field</li>
+<li>Enter <strong>10100</strong> in the <strong>Account No.</strong> field.</li>
+<li>Enter <strong>400.00</strong> in the <strong>Amount</strong> field.</li>
+<li>Enter <strong>10200</strong> in the <strong>Bal. Account No.</strong> field</li>
+</ol>
+</li>
+<li>Select the second line and enter the information provided below.
+<ol>
+<li>Enter <strong>C04</strong> in the <strong>Document No.</strong> field</li>
+<li>Enter <strong>10100</strong> in the <strong>Account No.</strong> field.</li>
+<li>Enter <strong>400.00</strong> in the <strong>Amount</strong> field.</li>
+<li>Enter <strong>10200</strong> in the <strong>Bal. Account No.</strong> field</li>
+</ol>
+</li>
+<li>In the search area, enter <strong>General Ledger Setup</strong> and make sure the <strong>Allow Posting From</strong> field, is set to <strong>Today or blank</strong>. Close the page.</li>
+<li>Go back to <strong>General Journal</strong> page and then select <strong>Post</strong>.</li>
+<li>Select <strong>Yes</strong>.</li>
+<li>Select <strong>OK</strong>.</li>
+</ol>
+</li>
+</ol>
+<h2>Task 2: Create and post journal entries</h2>
+<h2>Scenario</h2>
+<p>The accounting manager at Contoso also provided you with the open customer and vendor ledger entries. You create configuration package to import open balances entries.</p>
+<p>You receive the configuration package, that you can import into the correct general journals, review, and post.</p>
+<p>You will perform</p>
+<ol>
+<li>Create and export a configuration package including dimension information.</li>
+<li>Import and apply a predefined package containing historical data (customer and vendor open entries).</li>
+<li>Post the general journal.</li>
+</ol>
+<h3>Steps</h3>
+<ol>
+<li>Create a configuration package including dimension information.
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Configuration Packages and then choose the related link.</li>
+<li>In the <strong>Configuration Packages</strong> page, select <strong>+ New</strong> to create a new configuration package.</li>
+<li>In the <strong>Code</strong> field, enter <strong>OPENING</strong>.</li>
+<li>In the <strong>Package Name</strong> field, enter <strong>Opening Balances</strong>.</li>
+<li>On the <strong>Tables</strong> section of the Config. Package Card, enter a new line as follows.</li>
+<li>Open the assist edit button to the right of the <strong>Table ID</strong> field.</li>
+<li>In the window that opens, select the <strong>Gen. Journal Line</strong> table (ID 81), and select <strong>OK</strong>.</li>
+<li>Then press ENTER or TAB.</li>
+<li>Make sure the general journal line table line is selected.</li>
+<li>Select the <strong>Dimensions as Columns</strong> checkbox.</li>
+<li>Select the <strong>Delete Table Records Before Processing</strong> checkbox.</li>
+<li>Select <strong>Table</strong> and then <strong>Fields</strong>.</li>
+<li>System gets a message: Some fields have two or more related tables. Do you want to check them? Select on <strong>No.</strong></li>
+<li>Select on <strong>Fields</strong> again.</li>
+<li>On the field list page, first select <strong>Clear Included</strong>, to deselect the <strong>Include Field</strong> checkbox for all the fields.</li>
+<li>Then select the <strong>Include Field</strong> checkbox for the following fields:
+<ol>
+<li>Account Type</li>
+<li>Account No.</li>
+<li>Posting Date</li>
+<li>Document Type</li>
+<li>Document No.</li>
+<li>Description</li>
+<li>Currency Code</li>
+<li>Amount</li>
+<li>Amount (LCY)</li>
+<li>Document Date</li>
+<li>External Document No.</li>
+</ol>
+</li>
+<li>The <strong>Validate Field</strong> checkbox is automatically selected.</li>
+<li>Select <strong>Close</strong>.</li>
+</ol>
+</li>
+<li>Import and apply a predefined package containing historical data (customer and vendor open entries).
+<ol>
+<li>Select the search for page icon in the top-right corner of the page, enter <strong>Configuration Packages</strong>, and then choose the related link.</li>
+<li>On the <strong>Configuration Packages</strong> page, select the <strong>OPENING</strong> package and then select <strong>Import Package/Import from Excel</strong>.</li>
+<li>Select on <strong>Select here to browse.</strong></li>
+<li>Select the Excel file <strong>OpenBalance Lab 8.2.xlsx</strong>.</li>
+<li>In the <strong>Config. Package Card</strong> page, select <strong>Package</strong> and then <strong>Apply Package</strong>.</li>
+<li>Select <strong>Yes</strong>.</li>
+<li>Select <strong>OK</strong>.</li>
+</ol>
+</li>
+<li>Post the general journal.
+<ol>
+<li>Select the search for page icon in the top-right corner of the page, enter <strong>General Journals</strong>, and then choose the related link.</li>
+<li>On the <strong>General Journals</strong> list page, select the <strong>OPENING</strong> journal.</li>
+<li>Open the assist edit button to the right of the <strong>Batch Name</strong> field.
+<ol>
+<li>Select the <strong>CUST</strong> journal batch.</li>
+<li>Select <strong>OK</strong>.</li>
+</ol>
+</li>
+<li>Select Post -&gt; Preview Posting</li>
+<li>Check for any errors and correct them</li>
+<li>Close the window</li>
+<li>Select <strong>Post</strong></li>
+<li>Select <strong>Yes</strong></li>
+<li>Select <strong>OK</strong></li>
+<li>Close the General Journals Page.</li>
+<li>Enter <strong>General Journals</strong> in the search and select the related link.</li>
+<li>On the <strong>General Journals</strong> list page, select the <strong>OPENING</strong> journal.</li>
+<li>Open the assist edit button to the right of the <strong>Batch Name</strong> field.
+<ol>
+<li>Select the <strong>VEND</strong> journal batch.</li>
+<li>Select <strong>OK</strong>.</li>
+</ol>
+</li>
+<li>Select Post -&gt; Preview Posting</li>
+<li>Check for any errors and correct them</li>
+<li>Close the window</li>
+<li>Select <strong>Post</strong></li>
+<li>Select <strong>Yes</strong></li>
+<li>Select <strong>OK</strong></li>
+<li>Close the General Journals Page.</li>
+<li>Select <strong>Home</strong>, and then select <strong>Post</strong>.</li>
+<li>Select <strong>Yes</strong>.</li>
+<li>Select <strong>OK</strong>.</li>
+</ol>
+</li>
+</ol>
+<h2>Task 3: Process vendor payments</h2>
+<h2>Scenario</h2>
+<p>At the end of each month all euro payments are transferred from the EUROP bank account to the European vendors, using an electronic SEPA file. Each time a payment is performed a new payment journal batch is created.</p>
+<p>Vendor First Up Consultants has recently changed their bank account and has asked you to make sure the next euro payment will be done on that Belgian account. They also request to be paid for all invoices as a single payment.</p>
+<p>The bank account details: SNS - IBAN: BE67 2900 0461 4187 - SWIFT Code: BBRUBEBB</p>
+<p>The first payment to this vendor V9005 will be performed on January 31st, 2026, using the EUROP payment journal, with a new batch PAY1.</p>
+<p>You will perform</p>
+<ol>
+<li>Create a vendor bank account.</li>
+<li>Suggest vendor payments.</li>
+<li>Process payment journals.</li>
+</ol>
+<h3>Steps</h3>
+<ol>
+<li>Create a vendor bank account.
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Vendors and then choose the related link.</li>
+<li>On the <strong>Vendors</strong> list page, select vendor <strong>Graphic Design Institute.</strong></li>
+<li>On the <strong>Vendor</strong> card, go to the <strong>Payments</strong> Fast Tab.</li>
+<li>In the Payment Method Code field, select BANK.</li>
+<li>In the <strong>Preferred Bank Account Code</strong> field, select on the Look Up Value button and select <strong>+ New</strong>.</li>
+<li>On the opened <strong>Vendor bank account</strong> card, fill in the following fields:
+<ol>
+<li>On the <strong>General</strong> FastTab, fill in the following fields:
+<ol>
+<li>In the <strong>Code</strong> field, enter <strong>SNS</strong>.</li>
+<li>In the <strong>Name</strong> field, enter <strong>Graphic Design Institute</strong>.</li>
+<li>In the <strong>Country/Region Code</strong> field, enter <strong>BE</strong>.</li>
+<li>In the <strong>Currency Code</strong> field, enter <strong>EUR</strong>.</li>
+</ol>
+</li>
+<li>On the <strong>Transfer</strong> FastTab, select <strong>Show more</strong> and then fill in the following fields:
+<ol>
+<li>In the <strong>SWIFT Code</strong> field, enter <strong>BBRUBEBB</strong>.</li>
+<li>In the <strong>IBAN</strong> field, enter <strong>BE67290004614187</strong>.</li>
+<li>Select the <strong>Use for Electronic Payments</strong> checkbox.</li>
+</ol>
+</li>
+<li>Select <strong>OK</strong>.</li>
+</ol>
+</li>
+<li>The new <strong>Vendor bank account</strong> is automatically filled in in the <strong>Preferred Bank Account Code</strong> field on the vendor card.</li>
+</ol>
+</li>
+<li>Suggest vendor payments.
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Payment journals and then choose the related link.</li>
+<li>On the opened <strong>General Journal Batches</strong> page, select <strong>+ New</strong> and fill in the following fields:
+<ol>
+<li>In the <strong>Name</strong> field, enter <strong>PAY1</strong>.</li>
+<li>In the <strong>Description</strong> field, enter <strong>Payment January 2026</strong>.</li>
+<li>In the <strong>Bal. Account Type</strong> field, enter <strong>Bank Account</strong>.</li>
+<li>In the <strong>Bal. Account No.</strong> field, enter <strong>EUROP</strong>. (If you do not find the value, create a new value with <strong>EUROP</strong>)</li>
+<li>In the <strong>No. Series</strong> field, the value <strong>GJNL-PMT</strong> is automatically filled in.</li>
+<li>Select <strong>OK</strong>.</li>
+</ol>
+</li>
+<li>The new batch <strong>PAY1</strong>, is automatically filled in in the <strong>Batch Name</strong> field on the payment journal.</li>
+<li>Select <strong>Prepare</strong>, and then select <strong>Suggest Vendor Payments</strong>.</li>
+<li>On the <strong>Options</strong> FastTab, fill in the following fields:
+<ol>
+<li>In the <strong>Last Payment Date</strong> field, enter <strong>1/31/2026</strong>.</li>
+<li>In the Posting Date field, leave the current date.</li>
+<li>Leave the <strong>Check Other Journal Batches</strong> checkbox selected.</li>
+<li>Select the <strong>Summarize per Vendor</strong> checkbox.</li>
+<li>On the <strong>Filter:Vendor</strong> FastTab, in the <strong>No</strong>. filter, enter 3<strong>0000</strong>.</li>
+<li>Select <strong>OK</strong> to perform the batch job and automatically fill in the lines in the payment journal.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>g. In the second line, fill in the details. Enter30000 in the <strong>Account No.</strong> field. Enter <strong>4000.00</strong> in the <strong>Amount</strong> field</p>
+<p>h. Process payment journals. Select <strong>Bank</strong>, and then select <strong>Export</strong>.</p>
+<ol>
+<li>Select <strong>Home</strong>, and then select <strong>Post</strong>.</li>
+<li>Select <strong>Yes</strong>.</li>
+<li>Select <strong>OK</strong>.</li>
+</ol>
+<h2>Task 4: Process customer payments</h2>
+<h2>Scenario</h2>
+<p>On January 24th, 2026 , Contoso receives payment from customer 30000 Trey Research on their CHECKINGS bank account.</p>
+<p>This payment is for all open invoices from the previous month:</p>
+<ul>
+<li>Opening balance - $ 5,345.16</li>
+<li>Opening balance - $ 5,345.16</li>
+</ul>
+<p>You need to process this payment using the Payment Registration by applying the invoices.</p>
+<p>You will perform</p>
+<ol>
+<li>Review payment registration setup.</li>
+<li>Process payment registrations.</li>
+</ol>
+<p>[Steps</p>
+<ol>
+<li>Review payment registration setup.
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Payment Registration Setup and then choose the related link.</li>
+<li>On the <strong>Payment Registration Setup</strong> page, make sure following fields are entered.
+<ol>
+<li>In the <strong>Journal Template Name</strong> field, enter <strong>CASHRCPT</strong>.</li>
+<li>In the <strong>Journal Batch Name</strong> field, enter <strong>GENERAL</strong>.</li>
+<li>In the <strong>Balancing Account Type</strong> field, enter <strong>Bank Account</strong>.</li>
+<li>In the <strong>Balancing Account</strong> field, enter <strong>CHECKING</strong>.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>[NOTE]if you don’t have CHECKING bank account, you must first create it.</p>
+<p>Choose +New</p>
+<p>In the No. field enter CHECKING.</p>
+<p>In the Name enter CHECKINGS bank account.</p>
+<p>On the Posting section in the Bank Acc. Posting group choose CHECKING.</p>
+<p>Select OK.</p>
+<ul>
+<li>
+<ul>
+<li>
+<ol>
+<li>Select the <strong>Use this Account as Default</strong> checkbox.</li>
+<li>Deselect the <strong>Automatically Fill Date Received</strong> checkbox.</li>
+<li>Select <strong>OK</strong>.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>Process payment registrations.
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter <strong>Register Customer Payments</strong>.</li>
+<li>Select the line for document <strong>Opening balance</strong> for 20000 Trey Research customer
+<ol>
+<li>Select the <strong>Payment Made</strong> field.</li>
+<li>In the <strong>Date Received</strong> field, enter <strong>1/24/2026</strong>.</li>
+<li>The <strong>Amount Received</strong> field is automatically filled in with <strong>5,345.16</strong>.</li>
+</ol>
+</li>
+<li>Select the line for document <strong>Opening balance</strong>.
+<ol>
+<li>Select the <strong>Payment Made</strong> field.</li>
+<li>In the <strong>Date Received</strong> field, enter <strong>1/24/2026</strong>.</li>
+<li>In the <strong>Amount Received</strong> field, enter <strong>5,345.16</strong>.</li>
+</ol>
+</li>
+<li>Select the <strong>Post Payments</strong> dropdown, and then select <strong>Post Payments</strong>.</li>
+<li>Select <strong>Yes</strong> to post all the payments.</li>
+</ol>
+</li>
+</ol>
+</article><nav class="course-pagination" aria-label="Continue learning"><a href="Lab24_Reconcile_Customer_Vendor.html">← Lab 24: Reconcile customer and vendor entries</a><a href="../../index.html#labs">Return to course overview →</a></nav></section></main>
+<footer class="site-footer"><div class="shell"><strong>Skunkworks Academy · Microsoft learning</strong><p>Lab materials from the Skunkworks Academy MB-800 repository. Microsoft product names and trademarks belong to Microsoft.</p><a href="../../LICENSE">Content license</a> · <a href="https://github.com/skunkworks-academy/MB-800-Business-Central-Functional-Consultant">Course source</a></div></footer></body></html>

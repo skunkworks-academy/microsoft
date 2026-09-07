@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en-ZA"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab 04: Migrate master data to a new company | Skunkworks Academy</title><meta name="description" content="Migrate data to Business Central">
+<link rel="canonical" href="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab04_Migrate_Master_data.html"><meta name="theme-color" content="#0b1220">
+<meta property="og:type" content="website"><meta property="og:title" content="Lab 04: Migrate master data to a new company"><meta property="og:description" content="Migrate data to Business Central"><meta property="og:url" content="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab04_Migrate_Master_data.html">
+<link rel="stylesheet" href="../../assets/microsoft-hub.css"><link rel="stylesheet" href="../../assets/course.css">
+<script defer src="https://skunkworksacademy.com/assets/academy-navigation.js?v=2026.08.23.1" data-skunkworks-global-nav="v10"></script>
+</head><body><a class="skip-link" href="#main">Skip to content</a>
+<nav class="shell course-nav" aria-label="Course navigation"><a href="https://microsoft.skunkworksacademy.com/#catalog">Microsoft catalog</a><a href="../../index.html">MB-800 overview</a><a href="../../index.html#labs">Lab directory</a></nav>
+<main id="main" data-swa-contrast="preserve"><section class="shell course-section"><p class="eyebrow">MB-800 · 30 minutes</p><h1>Lab 04: Migrate master data to a new company</h1><p>Migrate data to Business Central</p><nav class="course-pagination" aria-label="Lab sequence"><a href="Lab03_Perform_Actions_with_Copilot.html">← Lab 03: Perform actions with Copilot</a><a href="Lab05_Set_up_and_use_a_purchase_approval_workflow.html">Lab 05: Set up and use a purchase approval workflow →</a></nav><article class="lab-body" aria-label="Lab instructions"><h2>Exercise 4: Migrate master data to a new company</h2>
+<h2>Task 1: Create and export a configuration package</h2>
+<h2>Scenario</h2>
+<p>After completing the basic configuration, you can now start by uploading the company’s business data, such as customers, vendors, items and the chart of accounts.</p>
+<p>In order to prepare the migration of this data, you will configure some configuration packages and provide these excel-files to Contoso’s super users, to complete the information.</p>
+<p>You will start with the vendor list, including contact information. To make sure the users know how to complete the required information, you prepare the following example.</p>
+<p>The following information is returned to you by Contoso’s super user:</p>
+<p>You will perform -</p>
+<ol>
+<li>Create a configuration package.</li>
+<li>Assign tables and select fields.</li>
+<li>Export a configuration package to Excel.</li>
+<li>Prepare data in Excel.</li>
+</ol>
+<p><em><strong>To fix the errors that occur during the lab, look at the end of the lab for fixes.</strong></em></p>
+<h3>Steps</h3>
+<ol>
+<li>Create a configuration package.
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Configuration Packages and then choose the related link.</li>
+<li>In the <strong>Configuration Packages</strong> page, select <strong>+ New</strong> to create a new configuration package.</li>
+<li>In the <strong>Code</strong> field, enter VENDOR.</li>
+<li>In the <strong>Package Name</strong> field, enter Vendor List.</li>
+</ol>
+</li>
+<li>Assign tables and select fields.
+<ol>
+<li>On the <strong>Tables</strong> section of the Config. Package Card, enter a new line as follows.</li>
+<li>Open the assist edit button to the right of the <strong>Table ID</strong> field.</li>
+<li>In the window that opens, select the <strong>Vendor</strong> table and select <strong>OK</strong>.</li>
+<li>Then press ENTER or TAB.</li>
+<li>Make sure the vendor table line is selected, select <strong>Table</strong> and then <strong>Fields</strong>.</li>
+<li>You will be asked to check related tables, select <strong>No</strong>.</li>
+<li>Select <strong>fields</strong> again. On the field list page, first select <strong>Clear Included</strong>, to deselect the <strong>Include Field</strong> checkbox for all the fields.</li>
+<li>Then select the <strong>Include Field</strong> checkbox for the following fields:
+<ol>
+<li>Name</li>
+<li>Address</li>
+<li>City</li>
+<li>Phone No.</li>
+<li>Currency Code</li>
+<li>Language Code</li>
+<li>Country/Region Code</li>
+<li>Post Code</li>
+</ol>
+</li>
+<li>The <strong>Validate Field</strong> checkbox is automatically selected.</li>
+<li>Select <strong>Close</strong>.</li>
+</ol>
+</li>
+<li>Export a configuration package to Excel.
+<ol>
+<li>In the <strong>Config. Package Card</strong> page, select <strong>Export to Excel</strong>.</li>
+<li>Select <strong>Yes</strong> to export the configuration package.</li>
+</ol>
+</li>
+<li>Prepare data in Excel.
+<ol>
+<li>Open the exported excel file from the <strong>Downloads</strong> folder.</li>
+<li>Navigate to the <strong>Vendor Import.xlsx</strong> file (C:\ drive). Copy and paste the information as provided by Contoso.</li>
+<li>Save the Excel file.</li>
+</ol>
+</li>
+</ol>
+<h2>Task 2: Import and apply a configuration package</h2>
+<h2>Scenario</h2>
+<p>When the vendor information is completed, you can now upload the vendor information.</p>
+<p>During this process, you want to make sure the data is validated and when missing, the related tables will be automatically updated with newly provided values.</p>
+<p>You will perform -</p>
+<ol>
+<li>Import a configuration package from excel.</li>
+<li>Apply a configuration package.</li>
+<li>Resolve package errors.</li>
+</ol>
+<h3>Steps</h3>
+<ol>
+<li>Import a configuration package from excel.
+<ol>
+<li>In the <strong>Configuration Packages</strong> page, select the new configuration package for vendors and select <strong>Manage</strong> and then <strong>Edit</strong>.</li>
+<li>In the <strong>Config. Package Card</strong> page, select <strong>Import from Excel</strong>.</li>
+<li>Select on <strong>Select here to browse…</strong> and select the excel file that you updated in previous exercise.</li>
+<li>Select <strong>Open</strong>.</li>
+<li>Select <strong>Import</strong>.</li>
+</ol>
+</li>
+<li>Apply a configuration package.
+<ol>
+<li>In the <strong>Config. Package Card</strong> page, select <strong>Apply Package</strong>.</li>
+<li>Select <strong>Yes</strong> to confirm.</li>
+<li>Select <strong>OK</strong>.</li>
+</ol>
+</li>
+</ol>
+<p><strong>NOTE: When you copy the Vendor records, you may be missing the Currency record for GBP. Fix this by adding the GBP record on the Currencies card.</strong></p>
+<ol>
+<li>Resolve package errors.
+<ol>
+<li>In the <strong>Config. Package Card</strong> page, the vendor table line will show a number of errors.</li>
+<li>Select on the number in the <strong>No. of Package Errors</strong> field.</li>
+<li>In the error page, select the first record line and select <strong>Show Error</strong>.</li>
+<li>Select <strong>Close</strong>.</li>
+<li>Repeat for all the error records.</li>
+<li>Select <strong>OK</strong>.</li>
+<li>In the <strong>Config. Package Card</strong> page, select the vendor table line and select <strong>Table</strong> and then select <strong>Fields</strong>.</li>
+<li>Select the <strong>Create Missing Codes</strong> check box, for the following fields:
+<ol>
+<li>Currency Code</li>
+<li>Post Code</li>
+</ol>
+</li>
+<li>Select <strong>Close</strong>.</li>
+<li>In the <strong>Config. Package Card</strong> page, select <strong>Apply Package</strong>.</li>
+<li>Select <strong>Yes</strong> to confirm.</li>
+<li>Select <strong>OK</strong>.</li>
+</ol>
+</li>
+</ol>
+<h2>Task 3: Import and apply datato an existing company</h2>
+<h2>Scenario</h2>
+<p>For the further ease of the labs during the course, you will migrate the data from the default CRONUS USA company within the database.</p>
+<p>You will perform -</p>
+<ol>
+<li>Import and apply a predefined Excel package.</li>
+</ol>
+<h3>Steps</h3>
+<ol>
+<li>Import and apply a predefined package.
+<ol>
+<li>In the <strong>Configuration Packages</strong> page, select the dropdown next to <strong>Import Package</strong>, and then select <strong>Import from Excel</strong>.</li>
+<li>In the <strong>Import From Excel</strong> dialogue, select <strong>select here to browse</strong>.</li>
+<li>Select the file <strong>MB800_Lab_2.3_EVALUATION.xlsx</strong>, and then select <strong>Open</strong>.</li>
+<li>Select <strong>Import</strong> to confirm.</li>
+<li>Select on <strong>EVALUATION</strong>.</li>
+<li>Select<strong>Package,Apply Package</strong>.</li>
+<li><strong>If you get a message:This configuration package contains dimensions. This can lead to inconsistencies. Do you want to continue? Click Yes.</strong></li>
+</ol>
+</li>
+</ol>
+</article><nav class="course-pagination" aria-label="Continue learning"><a href="Lab03_Perform_Actions_with_Copilot.html">← Lab 03: Perform actions with Copilot</a><a href="Lab05_Set_up_and_use_a_purchase_approval_workflow.html">Lab 05: Set up and use a purchase approval workflow →</a></nav></section></main>
+<footer class="site-footer"><div class="shell"><strong>Skunkworks Academy · Microsoft learning</strong><p>Lab materials from the Skunkworks Academy MB-800 repository. Microsoft product names and trademarks belong to Microsoft.</p><a href="../../LICENSE">Content license</a> · <a href="https://github.com/skunkworks-academy/MB-800-Business-Central-Functional-Consultant">Course source</a></div></footer></body></html>

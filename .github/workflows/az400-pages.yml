@@ -5,12 +5,16 @@ on:
     branches: [main]
     paths:
       - "AZ-400/**"
+      - "MB-800/**"
+      - "scripts/**"
       - "index.html"
       - "404.html"
       - "robots.txt"
       - "CNAME"
       - "assets/**"
       - ".github/workflows/az400-pages.yml"
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -19,7 +23,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: microsoft-pages
+  group: microsoft-pages-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -82,10 +86,16 @@ jobs:
           print(f'Verified Academy canonical v10 shell on {len(pages)} Microsoft page(s).')
           PY
 
+      - name: Validate MB-800 routes and local links
+        run: python3 scripts/validate-course.py AZ-400/web/out/MB-800
+
       - uses: actions/configure-pages@v5
+        if: github.event_name != 'pull_request'
       - uses: actions/upload-pages-artifact@v3
+        if: github.event_name != 'pull_request'
         with:
           path: AZ-400/web/out
       - name: Deploy GitHub Pages
+        if: github.event_name != 'pull_request'
         id: deployment
         uses: actions/deploy-pages@v4

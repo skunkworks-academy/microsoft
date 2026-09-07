@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en-ZA"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab 20: Process Sales | Skunkworks Academy</title><meta name="description" content="Create sales documents in Dynamics 365 Business Central">
+<link rel="canonical" href="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab20_Process_Sales.html"><meta name="theme-color" content="#0b1220">
+<meta property="og:type" content="website"><meta property="og:title" content="Lab 20: Process Sales"><meta property="og:description" content="Create sales documents in Dynamics 365 Business Central"><meta property="og:url" content="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab20_Process_Sales.html">
+<link rel="stylesheet" href="../../assets/microsoft-hub.css"><link rel="stylesheet" href="../../assets/course.css">
+<script defer src="https://skunkworksacademy.com/assets/academy-navigation.js?v=2026.08.23.1" data-skunkworks-global-nav="v10"></script>
+</head><body><a class="skip-link" href="#main">Skip to content</a>
+<nav class="shell course-nav" aria-label="Course navigation"><a href="https://microsoft.skunkworksacademy.com/#catalog">Microsoft catalog</a><a href="../../index.html">MB-800 overview</a><a href="../../index.html#labs">Lab directory</a></nav>
+<main id="main" data-swa-contrast="preserve"><section class="shell course-section"><p class="eyebrow">MB-800 · 90 minutes</p><h1>Lab 20: Process Sales</h1><p>Create sales documents in Dynamics 365 Business Central</p><nav class="course-pagination" aria-label="Lab sequence"><a href="Lab19_Process_Purchase.html">← Lab 19: Process Purchase</a><a href="Lab21_Suggest_Number_Series_Copilot.html">Lab 21: Suggest number series with Copilot →</a></nav><article class="lab-body" aria-label="Lab instructions"><h2>Exercise 20: Process Sales</h2>
+<h2>Task 1: Process a sales from quote to invoice</h2>
+<h2>Scenario</h2>
+<p>Through the European web shop a new company has requested a quote for several monitors.</p>
+<p>Since it is a company, and not a private person, first a Contoso account is created, which is entered in Business Central as a contact card. The company Francematic is located in France, at the following address: 19 Boulevard Commanderie, FR-78370 PLAISIR.</p>
+<p>You need to prepare a customer template to be able to convert EU contacts into EU customers, using the correct posting group information, sales prices and line discount and needs to pay before delivery.</p>
+<p>On February 16th, 2026, a quote is created by Benjamin Chiu for the following items:</p>
+<ul>
+<li>1 box of the 15” flat panels, at the current price of $ 4,800.00 a box with a 6% discount for all medium-sized companies.</li>
+<li>3 pieces of the 17” monitor, at the current price of $ 700.00 a piece with a 6% discount for all medium-sized companies.</li>
+</ul>
+<p>The potential customer now has 10 days to either accept or turn down the proposal.</p>
+<p>On February 22nd, 2026, Francematic accepts the sales quote and the quote is turned into an order.</p>
+<p>The items are shipped to the customer on 2 different dates:</p>
+<ul>
+<li>On February 27th, 2026, the 15” flat panels are delivered.</li>
+<li>On February 28th, 2026, the 17” monitors are delivered.</li>
+</ul>
+<p>On March 1st, 2026, the sales invoice is created and send to the customer.</p>
+<p>You will perform</p>
+<ol>
+<li>Create a contact.</li>
+<li>Create a sales quote for a contact.</li>
+<li>Process the quote into an order.</li>
+<li>Partially ship items from the order.</li>
+<li>Create a posted sales invoice from the sales order.</li>
+</ol>
+<h3>Steps</h3>
+<ol>
+<li>Create a contact.
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Contacts, and then choose the related link.</li>
+<li>In the <strong>Contacts</strong> list page, select <strong>+ New</strong>.</li>
+<li>On the <strong>General</strong> FastTab, fill in the following fields:
+<ol>
+<li>In the <strong>Name</strong> field, enter <strong>Francematic</strong>.</li>
+<li>In the <strong>Type</strong> field, leave the default value <strong>Company</strong>.</li>
+</ol>
+</li>
+<li>On the <strong>Communication</strong> FastTab, fill in the following fields:
+<ol>
+<li>In the <strong>Address</strong> field, enter <strong>19 Boulevard Commanderie</strong>.</li>
+<li>In the <strong>Country/Region Code</strong> field, enter <strong>FR</strong>.</li>
+<li>In the <strong>ZIP Code</strong> field, enter <strong>FR-78370</strong>.</li>
+<li>The <strong>City</strong> field is automatically filled in with the value <strong>PLAISIR</strong>.</li>
+</ol>
+</li>
+<li>On the <strong>Foreign Trade</strong> FastTab, leave the <strong>Currency Code</strong> field blank.</li>
+</ol>
+</li>
+</ol>
+<p>Select the Search icon in the top-right corner of the page, enter Customer Templates, and then choose the related link.</p>
+<p>Edit the CUSTOMER EU COMPANY line and choose Dimensions, select Dimension Code – CUSTOMERGROUP, Dimension Value Code – MEDIUM, Value Posting – Same Code.</p>
+<ol>
+<li>Create a sales quote for a contact.
+<ol>
+<li>On the <strong>Contacts</strong> list page, select the new contact <strong>Francematic</strong>.</li>
+<li>Select <strong>Home</strong> and then select <strong>Create Sales Quote</strong>.</li>
+<li>Select <strong>Yes</strong> for selecting a customer template.</li>
+<li>Select the <strong>CUSTOMER EU COMPANY</strong> template and select <strong>OK</strong>.</li>
+<li>A new sales quote is created.</li>
+<li>In the <strong>General</strong> FastTab, select <strong>Show more</strong> and then fill in the following fields:
+<ol>
+<li>In the <strong>Order Date</strong> and <strong>Document Date</strong> field, enter <strong>2/15/2026</strong>.</li>
+<li>In the <strong>Quote Valid To Date</strong> field, enter <strong>2/25/2026</strong>.</li>
+<li>In the <strong>Salesperson Code</strong> field, enter JR.</li>
+</ol>
+</li>
+<li>On the <strong>Lines</strong> section, enter a new line by filling in the following fields:
+<ol>
+<li>In the <strong>Type</strong> field, enter <strong>Item</strong>.</li>
+<li>In the <strong>No.</strong> field, enter <strong>CHW1002</strong> for the <strong>15” flat panels</strong>.</li>
+<li>In the <strong>Location Code</strong> field, enter <strong>EUROP</strong>.</li>
+<li>In the <strong>Unit of Measure Code</strong> field, enter <strong>BOX</strong>.</li>
+<li>In the <strong>Quantity</strong> field, enter <strong>1</strong>.</li>
+<li>In the <strong>Unit Price Excl. Tax/VAT</strong> field, enter <strong>4,800.00</strong>.</li>
+<li>In the <strong>Line Discount %</strong> field, enter <strong>6</strong>.</li>
+<li>In the <strong>Tax Group Code</strong>, enter <strong>NONTAXABLE</strong>.</li>
+</ol>
+</li>
+<li>On the <strong>Lines</strong> section, enter a new line by filling in the following fields:
+<ol>
+<li>In the <strong>Type</strong> field, enter <strong>Item</strong>.</li>
+<li>In the <strong>No.</strong> field, enter <strong>CHW1003 for the 17” flat panels</strong>.</li>
+<li>In the <strong>Location Code</strong> field, enter <strong>EUROP</strong>.</li>
+<li>In the <strong>Unit of Measure Code</strong> field, leave the default value <strong>PCS</strong>.</li>
+<li>In the <strong>Quantity</strong> field, enter <strong>3</strong>.</li>
+<li>In the <strong>Unit Price Excl. Tax/VAT</strong> field, enter <strong>700.00</strong>.</li>
+<li>In the <strong>Line Discount %</strong> field, enter <strong>6</strong>.</li>
+<li>In the <strong>Tax Group Code</strong>, enter <strong>NONTAXABLE</strong>.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Process the quote into an order.
+<ol>
+<li>On the <strong>Sales Quote</strong> card page, change the <strong>Order Date</strong> field to <strong>2/22/2026</strong>.</li>
+<li>Select <strong>Home</strong> and then select <strong>Make Order</strong>.</li>
+<li>Select <strong>Yes</strong>.</li>
+<li>Select <strong>Yes</strong> to create a customer card for contact <strong>Francematic</strong>.</li>
+</ol>
+</li>
+</ol>
+<p>Select <strong>OK</strong>.</p>
+<ol>
+<li>
+<p>Select <strong>Yes</strong> to open the sales order.</p>
+</li>
+<li>
+<p>Partially ship items from the order.</p>
+<ol>
+<li>On the <strong>Sales Order</strong> card page, on the <strong>General</strong> FastTab, in the <strong>Posting Date</strong> field, enter <strong>2/27/2026</strong>.</li>
+<li>On the <strong>Lines</strong> FastTab, select the line for the <strong>17” monitors</strong>.</li>
+<li>In the <strong>Qty. to Ship</strong> field, remove the value, and leave the field blank.</li>
+<li>Select <strong>Home</strong> and then select <strong>Post</strong>.</li>
+<li>Select the <strong>Ship</strong> option and select <strong>OK</strong>.</li>
+<li>Select <strong>OK</strong>.</li>
+<li>On the <strong>General</strong> FastTab, in the <strong>Posting Date</strong> field, enter <strong>2/28/2026</strong>.</li>
+<li>Select <strong>Home</strong> and then select <strong>Post</strong>.</li>
+<li>Select the <strong>Ship</strong> option and select <strong>OK</strong>.</li>
+<li>Select <strong>OK</strong>.</li>
+</ol>
+</li>
+<li>
+<p>Create a posted sales invoice from the sales order.</p>
+<ol>
+<li>On the <strong>Sales Order</strong> card page, on the <strong>General</strong> FastTab, in the <strong>Posting Date</strong> field, enter <strong>3/1/2026</strong>.</li>
+<li>Select <strong>Home</strong> and then select <strong>Post</strong>.</li>
+<li>Select the <strong>Invoice</strong> option and select <strong>OK</strong>.</li>
+<li>Select <strong>No</strong>.</li>
+</ol>
+</li>
+<li>
+<p>Review the posted sales invoice.</p>
+<ol>
+<li>Select the search for page icon in the top-right corner of the page, enter <strong>Posted Sales Invoices</strong>, and then choose the related link.</li>
+<li>In the <strong>Posted Sales Invoices</strong> list page, select the invoice for customer <strong>Francematic</strong>.</li>
+<li>Select <strong>Actions</strong> and then select <strong>Find entries</strong>.</li>
+<li>Select the line for G/L entries and select <strong>Show Related Entries</strong>.</li>
+<li>Close the <strong>G/L entries</strong> page.</li>
+<li>Close the <strong>Find Entries</strong> page.</li>
+</ol>
+</li>
+</ol>
+<h2>Task 2: Process a sales invoice for multiple orders</h2>
+<h2>Scenario</h2>
+<p>During the month January the web shop sales has been picking up and a lot of items were shipped to private customers.</p>
+<p>First record a couple of these sales orders and shipments for the Generic EU web shop customer as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Order &amp; Delivery Date</th>
+<th>Reference</th>
+<th>Shipment Address</th>
+<th>Qty.</th>
+<th>Item</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1/5/2026</td>
+<td>Private sale DK</td>
+<td>PICK-UP-DK</td>
+<td>2 PCS</td>
+<td>CHW1002</td>
+</tr>
+<tr>
+<td>1/6/2026</td>
+<td>Private sale BE</td>
+<td>PICK-UP-BE</td>
+<td>1 BOX</td>
+<td>CHW1002</td>
+</tr>
+<tr>
+<td>1/9/2026</td>
+<td>Private sale FR</td>
+<td>PICK-UP-FR</td>
+<td>5 PCS</td>
+<td>CHW1003</td>
+</tr>
+</tbody>
+</table>
+<p>At the end of March 2026, 1 combined invoice is created for all private sales. You must now create this sales invoice for the Generic EU web shop customers, containing all shipments of January, including the 5% web shop discount for the month January.</p>
+<p>You will perform</p>
+<ol>
+<li>Create several sales orders and shipments.</li>
+<li>Use the Combine Shipments function to create sales invoices.</li>
+</ol>
+<h3>Steps</h3>
+<ol>
+<li>Create several sales orders and shipments.
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Customers and then choose the related link.</li>
+<li>On the <strong>Customers</strong> list page, select the <strong>Generic EU web shop</strong> customer.</li>
+<li>Select <strong>New Document</strong> and then select <strong>Sales Order</strong>.</li>
+<li>On the opened <strong>Sales Order</strong> card page, on the <strong>General</strong> FastTab, select <strong>Show more</strong> and then fill in the following fields:
+<ol>
+<li>In the <strong>Order Date</strong> field, enter <strong>1/5/2026</strong>.</li>
+<li>In the <strong>Posting Date</strong> field, enter <strong>3/6/2026</strong>.</li>
+<li>In the <strong>Your Reference</strong> field, enter <strong>Private sale DK</strong>.</li>
+</ol>
+</li>
+<li>On the <strong>Shipping and Billing</strong> FastTab,select <strong>Show more</strong> and then fill in the following fields:
+<ol>
+<li>In the <strong>Ship-to</strong> field, select the <strong>Alternate Shipping Address</strong> option.</li>
+<li>On the opened <strong>Ship-to Address</strong> List page, select PICK-UP-DK and select <strong>OK</strong>.</li>
+<li>Select the <strong>Combine Shipments</strong> checkbox.</li>
+</ol>
+</li>
+<li>On the <strong>Lines</strong> section, enter a new line by filling in the following fields:
+<ol>
+<li>In the <strong>Type</strong> field, enter <strong>Item</strong>.</li>
+<li>In the <strong>No.</strong> field, enter <strong>CHW1002</strong>.</li>
+<li>In the <strong>Location Code</strong> field, the value <strong>EUROP</strong> is automatically filled in.</li>
+<li>In the <strong>Unit of Measure Code</strong> field, the value <strong>PCS</strong> is automatically filled in.</li>
+<li>In the <strong>Quantity</strong> field, enter <strong>2</strong>.</li>
+<li>In the <strong>Tax Group Code</strong> field, enter <strong>NONTAXABLE</strong>.</li>
+</ol>
+</li>
+<li>Select <strong>Home</strong> and then select <strong>Post</strong>.</li>
+<li>Select the <strong>Ship</strong> option and select <strong>OK</strong>.</li>
+<li>Select <strong>OK</strong> for the sales order to be placed in a job queue.</li>
+<li>Close the <strong>Sales Order</strong> page.</li>
+<li>On the <strong>Customers</strong> list page, select the <strong>Generic EU web shop</strong> customer.</li>
+<li>Select <strong>New Document</strong> and then select <strong>Sales Order</strong>.</li>
+<li>On the opened <strong>Sales Order</strong> card page, on the <strong>General</strong> FastTab, select <strong>Show more</strong> and then fill in the following fields:
+<ol>
+<li>In the <strong>Order Date</strong> field, enter <strong>1/6/2026</strong>.</li>
+<li>In the <strong>Posting Date</strong> field, enter <strong>3/7/2026</strong>.</li>
+<li>In the <strong>Your Reference</strong> field, enter <strong>Private sale BE</strong>.</li>
+</ol>
+</li>
+<li>On the <strong>Shipping and Billing</strong> FastTab, fill in the following fields:
+<ol>
+<li>In the <strong>Ship-to</strong> field, select the <strong>Alternate Shipping Address</strong> option.</li>
+<li>On the opened <strong>Ship-to Address</strong> List page, select PICK-UP-BE and select <strong>OK</strong>.</li>
+<li>Select the <strong>Combine Shipments</strong> checkbox.</li>
+</ol>
+</li>
+<li>On the <strong>Lines</strong> section, enter a new line by filling in the following fields:
+<ol>
+<li>In the <strong>Type</strong> field, enter <strong>Item</strong>.</li>
+<li>In the <strong>No.</strong> field, enter <strong>CHW1002</strong>.</li>
+<li>In the <strong>Location Code</strong> field, the value <strong>EUROP</strong> is automatically filled in.</li>
+<li>In the <strong>Unit of Measure Code</strong> field, enter <strong>BOX</strong>.</li>
+<li>In the <strong>Quantity</strong> field, enter <strong>1</strong>.</li>
+<li>In the <strong>Tax Group Code</strong>, enter <strong>NONTAXABLE</strong>.</li>
+</ol>
+</li>
+<li>Select <strong>Home</strong> and then select <strong>Post</strong>.</li>
+<li>Select the <strong>Ship</strong> option and select <strong>OK</strong>.</li>
+<li>Select <strong>OK</strong> for the sales order to be placed in a job queue.</li>
+<li>Close the <strong>Sales Order</strong> page.</li>
+<li>On the <strong>Customers</strong> list page, select the <strong>Generic EU web shop</strong> customer.</li>
+<li>Select <strong>New Document</strong> and then select <strong>Sales Order</strong>.</li>
+<li>On the opened <strong>Sales Order</strong> card page, on the <strong>General</strong> FastTab, select <strong>Show more</strong> and then fill in the following fields:
+<ol>
+<li>In the <strong>Order Date</strong> field, enter <strong>1/9/2026</strong>.</li>
+<li>In the <strong>Posting Date</strong> field, enter <strong>3/8/2026</strong>.</li>
+<li>In the <strong>Your Reference</strong> field, enter <strong>Private sale FR</strong>.</li>
+</ol>
+</li>
+<li>On the <strong>Shipping and Billing</strong> FastTab, fill in the following fields:
+<ol>
+<li>In the <strong>Ship-to</strong> field, select the <strong>Alternate Shipping Address</strong> option.</li>
+<li>On the opened <strong>Ship-to Address</strong> List page, select <strong>PICK-UP-FR</strong> and select <strong>OK</strong>.</li>
+<li>Select the <strong>Combine Shipments</strong> checkbox.</li>
+</ol>
+</li>
+<li>On the <strong>Lines</strong> section, enter a new line by filling in the following fields:
+<ol>
+<li>In the <strong>Type</strong> field, enter <strong>Item</strong>.</li>
+<li>In the <strong>No.</strong> field, enter <strong>CHW1003</strong>.</li>
+<li>In the <strong>Location Code</strong> field, the value <strong>EUROP</strong> is automatically filled in.</li>
+<li>In the <strong>Unit of Measure Code</strong> field , the value <strong>PCS</strong> is automatically filled in.</li>
+<li>In the <strong>Quantity</strong> field, enter <strong>5</strong>.</li>
+<li>In the <strong>Tax Group Code</strong> field, enter <strong>NONTAXABLE</strong>.</li>
+</ol>
+</li>
+<li>Select <strong>Home</strong> and then select <strong>Post</strong>.</li>
+<li>Select the <strong>Ship</strong> option and select <strong>OK</strong>.</li>
+<li>Select <strong>OK</strong> for the sales order to be placed in a job queue.</li>
+<li>Close the <strong>Sales Order</strong> page.</li>
+</ol>
+</li>
+<li>Use the Combine Shipments function to create sales invoices.
+<ol>
+<li>Select the search for page icon in the top-right corner of the page, enter <strong>Combine Sales Shipments</strong>, and then choose the related link.</li>
+<li>Open the <strong>Combine Sales Shipments</strong> task.</li>
+<li>In the <strong>Posting Date</strong> and <strong>Document Date</strong> field, enter <strong>3/8/2026</strong>.</li>
+<li>Select the <strong>Calc. Inv. Discount</strong> checkbox.</li>
+<li>Select the <strong>Post Invoices</strong> checkbox.</li>
+<li>In the <strong>Sell-to Customer No.</strong> filter, enter <strong>CWEB0001</strong>.</li>
+<li>Select <strong>OK</strong>.</li>
+<li>Select <strong>OK</strong>.</li>
+</ol>
+</li>
+</ol>
+<h2>Task 3: Correct a posted sales invoice</h2>
+<h2>Scenario</h2>
+<p>The new customer Francematic complaint that only 2 of the 3 17” monitors were delivered.</p>
+<p>You need to make a sales credit memo on March 6th, 2026, to refund 1 piece of this item.</p>
+<p>You will perform</p>
+<ol>
+<li>Correct a posted sales invoice</li>
+</ol>
+<h3>Steps</h3>
+<ol>
+<li>Correct a posted sales invoice
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Posted Sales Invoices and then choose the related link.</li>
+<li>On the <strong>Posted Sales Invoices</strong> list page, select the invoice for customer Francematic.</li>
+<li>Select <strong>Correct</strong> and then select <strong>Create Corrective Credit Memo</strong>.</li>
+<li>On the opened sales credit memo, on the <strong>General</strong> FastTab, select <strong>Show more</strong> and then enter <strong>3/6/2026</strong> in the <strong>Posting Date</strong> field.</li>
+<li>On the <strong>Lines</strong> section, delete the line for the 15” flat panels.</li>
+<li>On the <strong>Lines</strong> section, select the line for the 17” monitors.</li>
+<li>Change the <strong>Quantity</strong> field from <strong>3</strong> to <strong>1</strong>.</li>
+<li>Select <strong>Home</strong> and then select <strong>Post</strong>. If an error occurs, open <strong>General Posting Setup</strong> and add a value to the Sales Credit Memo Account field.</li>
+<li>Select <strong>Yes</strong>.</li>
+<li>Select <strong>No</strong>.</li>
+</ol>
+</li>
+</ol>
+</article><nav class="course-pagination" aria-label="Continue learning"><a href="Lab19_Process_Purchase.html">← Lab 19: Process Purchase</a><a href="Lab21_Suggest_Number_Series_Copilot.html">Lab 21: Suggest number series with Copilot →</a></nav></section></main>
+<footer class="site-footer"><div class="shell"><strong>Skunkworks Academy · Microsoft learning</strong><p>Lab materials from the Skunkworks Academy MB-800 repository. Microsoft product names and trademarks belong to Microsoft.</p><a href="../../LICENSE">Content license</a> · <a href="https://github.com/skunkworks-academy/MB-800-Business-Central-Functional-Consultant">Course source</a></div></footer></body></html>
