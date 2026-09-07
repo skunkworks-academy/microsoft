@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en-ZA"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab 18: Perform Basic tasks in Business Central | Skunkworks Academy</title><meta name="description" content="User interface essentials in Dynamics 365 Business Central">
+<link rel="canonical" href="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab18_Perform_Basic_Tasks.html"><meta name="theme-color" content="#0b1220">
+<meta property="og:type" content="website"><meta property="og:title" content="Lab 18: Perform Basic tasks in Business Central"><meta property="og:description" content="User interface essentials in Dynamics 365 Business Central"><meta property="og:url" content="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab18_Perform_Basic_Tasks.html">
+<link rel="stylesheet" href="../../assets/microsoft-hub.css"><link rel="stylesheet" href="../../assets/course.css">
+<script defer src="https://skunkworksacademy.com/assets/academy-navigation.js?v=2026.08.23.1" data-skunkworks-global-nav="v10"></script>
+</head><body><a class="skip-link" href="#main">Skip to content</a>
+<nav class="shell course-nav" aria-label="Course navigation"><a href="https://microsoft.skunkworksacademy.com/#catalog">Microsoft catalog</a><a href="../../index.html">MB-800 overview</a><a href="../../index.html#labs">Lab directory</a></nav>
+<main id="main" data-swa-contrast="preserve"><section class="shell course-section"><p class="eyebrow">MB-800 · 30 minutes</p><h1>Lab 18: Perform Basic tasks in Business Central</h1><p>User interface essentials in Dynamics 365 Business Central</p><nav class="course-pagination" aria-label="Lab sequence"><a href="Lab17_Configure_Sales.html">← Lab 17: Configure Sales</a><a href="Lab19_Process_Purchase.html">Lab 19: Process Purchase →</a></nav><article class="lab-body" aria-label="Lab instructions"><h2>Exercise 18: Perform Basic tasks in Business Central</h2>
+<h2>Task 1: Customize page in the existing user Profile.</h2>
+<h2>Scenario</h2>
+<p>Contoso has implemented a sales manager for customers. Each customer has one salesperson. The sales director has expressed the following requirements:</p>
+<p>All sales managers will use the same Profile – SALES MANAGER in the system. They need to see the same view of the Customer list with the following fields:</p>
+<ul>
+<li>
+<p>No.</p>
+</li>
+<li>
+<p>Name</p>
+</li>
+<li>
+<p>Location Code</p>
+</li>
+<li>
+<p>Salesperson Code</p>
+</li>
+<li>
+<p>Phone No.</p>
+</li>
+<li>
+<p>Contact</p>
+</li>
+<li>
+<p>Credit Limit(LCY)</p>
+</li>
+<li>
+<p>Balance(LCY)</p>
+</li>
+<li>
+<p>OverDue Balance(LCY)</p>
+</li>
+<li>
+<p>Sales(LCY)</p>
+</li>
+<li>
+<p>Payments(LCY)</p>
+</li>
+</ul>
+<h3>Steps</h3>
+<ol>
+<li>
+<p>Select the Search icon in the top-right corner of the page, enter Profiles(Roles) and then choose the related link.</p>
+</li>
+<li>
+<p>In the Profiles(Roles) page, select line with Profile ID field – SALES MANAGER, select Manage, Edit on the menu.</p>
+</li>
+<li>
+<p>Select Customize page.</p>
+</li>
+<li>
+<p>NOTE: New web page will be opened in the browser in Customize mode, in the left top corner will be the sign Customizing, Sales Manager.</p>
+</li>
+<li>
+<p>Select in the menu More, Customers, Open.</p>
+</li>
+<li>
+<p>Select a line in the Customers section.</p>
+</li>
+<li>
+<p>Select +Field on the menu.</p>
+</li>
+<li>
+<p>Select fields one by one, click on the red triangle near the field name, select the option Hide for the following fields:</p>
+</li>
+<li>
+<p>Responsibility Center</p>
+</li>
+<li>
+<p>Allow multiple posting groups</p>
+</li>
+<li>
+<p>Drag and drop one by one from Add to Field Section to the Customers section the following fields:</p>
+</li>
+<li>
+<p>Salesperson Code</p>
+</li>
+<li>
+<p>Credit Limit(LCY)</p>
+</li>
+</ol>
+<p>Select Done. Message Customization completed successfully. ... will be shown.</p>
+<p>Close the current web page then return to the initial web page with the Sales Manager Profile open.</p>
+<p>Select Enabled and Show in Role Explorer fields.</p>
+<h2>Task 2: Personalize page.</h2>
+<h2>Scenario</h2>
+<p>Sales director wants to add additional fields for his own customer list screen:</p>
+<ul>
+<li>
+<p>Country/Region Code</p>
+</li>
+<li>
+<p>Shipping Agent Code</p>
+</li>
+<li>
+<p>Payment terms Code</p>
+</li>
+</ul>
+<h3>Steps</h3>
+<ol>
+<li>
+<p>Select the Search icon in the top-right corner of the page, enter Customers and then choose the related link.</p>
+</li>
+<li>
+<p>Select Settings icon in the top-right corner of the page and select Personalize.</p>
+</li>
+<li>
+<p>Select +Field and drag and drop one by one from Add to Field Section to the Customers section the following fields:</p>
+</li>
+<li>
+<p>Country/Region Code</p>
+</li>
+<li>
+<p>Shipping Agent Code</p>
+</li>
+<li>
+<p>Payment terms Code</p>
+</li>
+</ol>
+<p>Select Done.</p>
+<h2>Task 3: Configure Data Analysis mode.</h2>
+<h2>Scenario</h2>
+<p>The sales manager wants to see the customer sales by the salesperson on the customer list page.</p>
+<h3>Steps</h3>
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Customers and then choose the related link.</li>
+</ol>
+<p>Select Enter Analysis mode on the menu ribbon.</p>
+<p>Select + New Analysis view.</p>
+<p>Enter Sales by Salespeople to the Name field, select OK.</p>
+<p>Select Pivot mode field in the right section.</p>
+<p>Select the Salesperson field.</p>
+<p>Select the Name field.</p>
+<p>Remove fields in the Values section: Credit Limit (LCY), Balance (LCY), Overdue Balance (LCY).</p>
+</article><nav class="course-pagination" aria-label="Continue learning"><a href="Lab17_Configure_Sales.html">← Lab 17: Configure Sales</a><a href="Lab19_Process_Purchase.html">Lab 19: Process Purchase →</a></nav></section></main>
+<footer class="site-footer"><div class="shell"><strong>Skunkworks Academy · Microsoft learning</strong><p>Lab materials from the Skunkworks Academy MB-800 repository. Microsoft product names and trademarks belong to Microsoft.</p><a href="../../LICENSE">Content license</a> · <a href="https://github.com/skunkworks-academy/MB-800-Business-Central-Functional-Consultant">Course source</a></div></footer></body></html>

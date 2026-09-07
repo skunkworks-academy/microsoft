@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en-ZA"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab 17: Configure Sales | Skunkworks Academy</title><meta name="description" content="Set up purchase prices and discounts in Dynamics 365 Business Central">
+<link rel="canonical" href="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab17_Configure_Sales.html"><meta name="theme-color" content="#0b1220">
+<meta property="og:type" content="website"><meta property="og:title" content="Lab 17: Configure Sales"><meta property="og:description" content="Set up purchase prices and discounts in Dynamics 365 Business Central"><meta property="og:url" content="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab17_Configure_Sales.html">
+<link rel="stylesheet" href="../../assets/microsoft-hub.css"><link rel="stylesheet" href="../../assets/course.css">
+<script defer src="https://skunkworksacademy.com/assets/academy-navigation.js?v=2026.08.23.1" data-skunkworks-global-nav="v10"></script>
+</head><body><a class="skip-link" href="#main">Skip to content</a>
+<nav class="shell course-nav" aria-label="Course navigation"><a href="https://microsoft.skunkworksacademy.com/#catalog">Microsoft catalog</a><a href="../../index.html">MB-800 overview</a><a href="../../index.html#labs">Lab directory</a></nav>
+<main id="main" data-swa-contrast="preserve"><section class="shell course-section"><p class="eyebrow">MB-800 · 60 minutes</p><h1>Lab 17: Configure Sales</h1><p>Set up purchase prices and discounts in Dynamics 365 Business Central</p><nav class="course-pagination" aria-label="Lab sequence"><a href="Lab16_Set_up_Inventory.html">← Lab 16: Set up Inventory</a><a href="Lab18_Perform_Basic_Tasks.html">Lab 18: Perform Basic tasks in Business Central →</a></nav><article class="lab-body" aria-label="Lab instructions"><h2>Exercise 17: Configure Sales</h2>
+<h2>Task 1: Complete the customer card</h2>
+<h2>Scenario</h2>
+<p>As the functional consultant, you are collecting more information about the sales process, and more particularly about the customers who are buying your products and the conditions surrounding delivery.</p>
+<p>To deliver the computer hardware items from the European warehouse to the European customers, Contoso uses DHL as a shipping agent. Web shop customers who are end-users will have the option to choose between home delivery or delivery at a pick-up point.</p>
+<p>The following different pick-up points are set up as shipping addresses on the Generic EU web shop customer (CWEB0001):</p>
+<ul>
+<li>PICK-UP DK: Carl Blochs Gade 7, DK-8000 Arhus C – contact: Hr. Jonathan Mollerup</li>
+<li>PICK-UP BE: Binkkampen 33, BE-1020 BRUSSEL – contact: Dhr. <strong>Caroline Pedersen</strong></li>
+<li>PICK-UP FR: 34 Avenue Parmentier, FR-75000 PARIS – contact: M. Jean E. TRENARY</li>
+</ul>
+<p>Since this is a generic customer, different orders are never combined into one shipment. It is, however, possible that one order needs to be shipped parts because of item availability. This should be under rare circumstances, since Contoso has stated to his customers to guarantee a maximum delivery time within 2 days, which is compliant with DHL’s standard shipping service and time.</p>
+<p>In the domestic areas, sales activities are performed by sales representatives who each have their set of customers. All transactions need to be assigned to a specific salesperson as follows:</p>
+<ul>
+<li>C00010 Spotsmeyer’s Furnishings is a customer from Annette Hill</li>
+<li>C00020 Progressive Home Furnishings is a customer from John Roberts</li>
+<li>C00030 New Concepts Furniture is a customer from Peter Saddow</li>
+</ul>
+<p>Also don’t forget to assign the SALESPERSON dimension to each salesperson.</p>
+<p>You will perform</p>
+<ol>
+<li>Create a shipping address for the customer.</li>
+<li>Specify shipping information.</li>
+<li>Set up and assign a salesperson</li>
+</ol>
+<h3>Steps</h3>
+<ol>
+<li>Create a shipping address for the customer.
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Customers, and then choose the related link.</li>
+<li>On the <strong>Customers</strong> list page, select the <strong>Generic EU web shop (CWEB0001)</strong>.</li>
+<li>To open the customer card, select <strong>Manage</strong> and then select <strong>Edit</strong>.</li>
+<li>In the customer card, select <strong>Customer</strong> and then <strong>Ship-to Addresses</strong>.</li>
+<li>In the opened <strong>Ship-to Address List</strong> page, select <strong>+ New</strong>.</li>
+<li>In the opened ship-to addresses card, fill in the following fields:
+<ol>
+<li>In the <strong>Code</strong> field, enter <strong>PICK-UP DK</strong></li>
+<li>In the <strong>Name</strong> field, the value <strong>Generic EU web shop</strong> is automatically filled in. Replace with <strong>Pick-up point Denmark</strong>.</li>
+<li>In the <strong>Address</strong> field, enter <strong>Carl Blochs Gade 7</strong>.</li>
+<li>In the <strong>City</strong> field, enter <strong>Arhus C</strong></li>
+<li>In the <strong>ZIP Code</strong> field, the value <strong>DK-8000</strong> is automatically filled in.</li>
+<li>In the <strong>Country/Region Code</strong> field, the value <strong>DK</strong> is automatically filled in.</li>
+<li>In the <strong>Contact</strong> field, enter <strong>Hr. Jonathan Mollerup</strong>.</li>
+</ol>
+</li>
+<li>Close the ship-to address card.</li>
+<li>In the customer card, select <strong>Customer</strong> and then <strong>Ship-to Addresses</strong>.</li>
+<li>In the opened <strong>Ship-to Address List</strong> page, select <strong>+ New</strong>.</li>
+<li>In the opened ship-to addresses card, fill in the following fields:
+<ol>
+<li>In the <strong>Code</strong> field, enter <strong>PICK-UP BE</strong></li>
+<li>In the <strong>Name</strong> field, the value <strong>Generic EU web shop</strong> is automatically filled in. Replace with <strong>Pick-up point Belgium</strong>.</li>
+<li>In the <strong>Address</strong> field, enter <strong>Binkkampen 33</strong>.</li>
+<li>In the <strong>City</strong> field, enter <strong>Brussel</strong></li>
+<li>In the <strong>ZIP Code</strong> field, enter <strong>BE-1020</strong>.</li>
+<li>In the <strong>Country/Region Code</strong> field, the value <strong>BE</strong> is automatically filled in.</li>
+<li>In the <strong>Contact</strong> field, enter <strong>Caroline Pedersen</strong>.</li>
+</ol>
+</li>
+<li>Close the ship-to address card.</li>
+<li>In the customer card, select <strong>Customer</strong> and then <strong>Ship-to Addresses</strong>.</li>
+<li>In the opened <strong>Ship-to Address</strong> List page, select <strong>+ New</strong>.</li>
+<li>In the opened ship-to addresses card, fill in the following fields:
+<ol>
+<li>In the <strong>Code</strong> field, enter <strong>PICK-UP FR</strong></li>
+<li>In the <strong>Name</strong> field, the value <strong>Generic EU web shop</strong> is automatically filled in. Replace with <strong>Pick-up point France</strong>.</li>
+<li>In the <strong>Address</strong> field, enter <strong>34 Avenue Parmentier</strong>.</li>
+<li>In the <strong>City</strong> field, enter <strong>Paris</strong></li>
+<li>In the <strong>ZIP Code</strong> field, the value <strong>FR-75000</strong> is automatically filled in.</li>
+<li>In the <strong>Country/Region Code</strong> field, the value <strong>FR</strong> is automatically filled in.</li>
+<li>In the <strong>Contact</strong> field, enter <strong>M. Jean E. TRENARY</strong>.</li>
+</ol>
+</li>
+<li>Close the ship-to address card.</li>
+<li>Close the <strong>Ship-to Address List</strong> page.</li>
+</ol>
+</li>
+<li>Specify shipping information.
+<ol>
+<li>On the customer card for the <strong>Generic EU Web Shop</strong> Customer <strong>(CWEB0001)</strong>, go to the <strong>Shipping</strong> FastTab.</li>
+<li>Leave the <strong>Ship-to Code</strong> field blank.</li>
+<li>In the <strong>Location Code</strong> field, enter <strong>EUROP</strong>.</li>
+<li>Select <strong>Show more</strong>.</li>
+<li>In the <strong>Agent</strong> field, enter <strong>DHL</strong></li>
+<li>In the <strong>Agent Service</strong> field, enter <strong>STANDARD</strong></li>
+<li>In the <strong>Shipping Time</strong> field, the value <strong>2D</strong> is automatically filled in.</li>
+</ol>
+</li>
+<li>Set up and assign a salesperson
+<ol>
+<li>Select the search for page icon in the top-right corner of the page, enter <strong>Sales People/Purchasers</strong>, and then choose the related link.</li>
+<li>On the <strong>Sales People/Purchasers</strong> list page, select <strong>+ New</strong>.</li>
+<li>In the <strong>Code</strong> field, enter <strong>AH</strong> and in the <strong>Name</strong> field enter <strong>Annette Hill</strong>.</li>
+<li>Close the Salesperson/Purchaser card.</li>
+<li>On the <strong>Salespeople/Purchaser</strong> page, make sure that you have selected <strong>Annette Hill</strong>. Select on <strong>Salesperson</strong> and then select <strong>Dimensions-single</strong> from the dropdown.</li>
+<li>On the opened <strong>Default Dimensions</strong> page, select <strong>+ New</strong>.</li>
+<li>On the new line, fill in the following fields:
+<ol>
+<li>In the <strong>Dimension Code</strong> field, enter <strong>SALESPERSON</strong></li>
+<li>In the <strong>Dimension Value Code</strong> field, enter <strong>AH</strong></li>
+<li>In the <strong>Value Posting</strong> field, select the <strong>Same Code</strong> option.</li>
+<li>Close the page.</li>
+</ol>
+</li>
+<li>Repeat steps b. to g. for salespeople <strong>John Roberts</strong> and <strong>Peter Saddow</strong>.</li>
+</ol>
+</li>
+</ol>
+<p><em>(Remark: you also repeat the steps for the other salespeople, but this is not required for further exercises.)</em></p>
+<ol>
+<li>Select the search for page icon in the top-right corner of the page, enter <strong>Customers</strong>, and then choose the related link.</li>
+<li>On the <strong>Customers</strong> list page, select <strong>Trey Research (20000)</strong>.</li>
+<li>To open the customer card, select <strong>Manage</strong> and then select <strong>Edit</strong>.</li>
+<li>On the <strong>General</strong> FastTab, in the <strong>Salesperson Code</strong> field, enter <strong>AH</strong></li>
+<li>Go to the next customer card for customer <strong>Relecloud (50000)</strong>.</li>
+<li>On the <strong>General</strong> FastTab, in the <strong>Salesperson Code</strong> field, enter <strong>JR</strong></li>
+<li>Go to the next customer card for customer <strong>School of Fine Art (30000)</strong>.</li>
+<li>On the <strong>General</strong> FastTab, in the <strong>Salesperson Code</strong> field, enter <strong>PS</strong></li>
+</ol>
+<h2>Task 2: Configure sales pricing and discounts</h2>
+<h2>Scenario</h2>
+<p>The sales manager at Contoso, has determined the following rules regarding their sales of computer hardware:</p>
+<ul>
+<li>All sales prices are set in local currency, thus USD.</li>
+<li>For each item, a general sales price for all EU customers is determined for the base unit of measure. However, when large amounts are ordered, a lower unit price is granted.
+<ul>
+<li>The 15” flat panel is sold at $ 499.95 per piece. However, if the customer orders a box of 10 pieces, the price is lowered to $ 4,800.00 for the entire box.</li>
+<li>The 17” monitor is sold at $ 700.00 a piece, However, if the customer orders a box of 10 pieces, the price is lowered to $ 6,550.00 for the entire box.</li>
+<li>For other customers (both domestic and non-EU) separate sales prices will be determined later.</li>
+</ul>
+</li>
+<li>Depending on the customer group (small, medium, large) and item group (computer, monitor, accessories) a discount percentage is granted to achieve the net sales price.
+<ul>
+<li>The generic web shop customer and all other small businesses receive a standard 3% on all monitors. Medium sized customers receive 6% and large companies receive 10% on the same items.</li>
+</ul>
+</li>
+<li>To boost web shop sales, a discount of 5% is granted on the total amount of the order for sales above $50.00 .</li>
+</ul>
+<p>You must set up this sales price structure as provided by Contoso.</p>
+<p>You will perform</p>
+<ol>
+<li>Set up customer price groups</li>
+<li>Set up customer discount groups</li>
+<li>Assign customer price groups and customer discount groups</li>
+<li>Set up and assign item discount groups</li>
+<li>Configure sales prices</li>
+<li>Configure line discount</li>
+<li>Configure invoice discount</li>
+</ol>
+<h3>Steps</h3>
+<ol>
+<li>Set up customer price groups
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Customers Price Groups and then choose the related link.</li>
+<li>On the <strong>Customers Price Groups</strong> page, select <strong>+ New</strong>.</li>
+<li>On the new line, fill in the following fields:
+<ol>
+<li>In the <strong>Code</strong> field, enter <strong>EU</strong>.</li>
+<li>In the <strong>Description</strong> field, enter <strong>EU customers</strong>.</li>
+<li>Leave the <strong>Allow Line Disc.</strong> and <strong>Allow Invoice Disc.</strong> checkboxes selected.</li>
+</ol>
+</li>
+<li>Repeat steps a. and b. to create also a <strong>DOMESTIC</strong> and <strong>EXPORT</strong> customer price group.</li>
+</ol>
+</li>
+<li>Set up customer discount groups
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Customer Disc. Groups and then choose the related link.</li>
+<li>On the <strong>Customer Disc. Groups</strong> page, select <strong>+ New</strong>.</li>
+<li>On the new line, fill in the following fields:
+<ol>
+<li>In the <strong>Code</strong> field, enter <strong>SMALL</strong>.</li>
+<li>In the <strong>Description</strong> field, enter <strong>Small business</strong>.</li>
+</ol>
+</li>
+<li>Repeat steps a. and b. to create also a <strong>MEDIUM</strong> and <strong>LARGE</strong> customer discount group.</li>
+</ol>
+</li>
+<li>Assign customer price groups and customer discount groups
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Customer and then choose the related link.</li>
+<li>On the <strong>Customers</strong> list page, select the <strong>Generic EU Web Shop</strong> Customer <strong>(CWEB0001)</strong>.</li>
+<li>To open the customer card, select <strong>Manage</strong> and then select <strong>Edit</strong>.</li>
+<li>Go to the <strong>Invoicing</strong> FastTab, select <strong>Show more</strong> and fill in the following fields:
+<ol>
+<li>In the <strong>Customer Price Group</strong> field, enter <strong>EU</strong>.</li>
+<li>In the <strong>Customer Disc. Group</strong> field, enter <strong>SMALL</strong></li>
+<li>Leave the <strong>Allow Line Disc.</strong> checkbox selected.</li>
+</ol>
+</li>
+<li>Repeat the previous steps to assign the <strong>DOMESTIC</strong> customer price group to the customers <strong>20000</strong>, <strong>30000</strong> and <strong>50000</strong>, and the <strong>SMALL</strong> customer discount group to customer <strong>20000</strong>, the <strong>MEDIUM</strong> customer discount group to customer <strong>30000</strong> and the <strong>LARGE</strong> customer discount group to customer <strong>50000</strong>.</li>
+</ol>
+</li>
+<li>Set up and assign item discount groups
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Item Discount Groups and then choose the related link.</li>
+<li>On the <strong>Item Discount Groups</strong> page, select <strong>+ New</strong>.</li>
+<li>On the new line, fill in the following fields:
+<ol>
+<li>In the <strong>Code</strong> field, enter <strong>COMPUTER</strong></li>
+<li>In the <strong>Description</strong> field, enter <strong>Computer</strong></li>
+</ol>
+</li>
+<li>Repeat step b. and c. to create an item discount group for <strong>MONITOR</strong> and <strong>ACCESSORIES</strong></li>
+<li>Select the Search icon in the top-right corner of the page, enter Items and then choose the related link.</li>
+<li>On the <strong>Items</strong> list page, select the <strong>15” Flat panel (CHW1002)</strong></li>
+<li>Go to the <strong>Prices &amp; Sales</strong> FastTab, select <strong>Show more</strong>.</li>
+<li>In the <strong>Item Disc. Group</strong> field, enter <strong>MONITOR</strong>.</li>
+<li>On the <strong>Items</strong> list page, select the <strong>17” M780 (CHW1003)</strong></li>
+<li>Go to the <strong>Prices &amp; Sales</strong> FastTab, in the <strong>Item Disc. Group</strong> field, enter <strong>MONITOR</strong>.</li>
+</ol>
+</li>
+<li>Configure sales prices
+<ol>
+<li>On the <strong>Items</strong> list page, select the <strong>15” flat panel (CHW1002)</strong>.</li>
+<li>To open the item card, select <strong>Manage</strong> and then select <strong>Edit</strong>.</li>
+<li>On the opened item card, select <strong>Prices &amp; Discounts</strong> and then select <strong>Sales Prices</strong>.</li>
+<li>On the <strong>Sales Prices</strong> page, create a new line as follows:
+<ol>
+<li>In the <strong>Sales Type</strong> field enter <strong>Customer Price Group</strong>.</li>
+<li>In the <strong>Sales Code</strong> field, enter <strong>EU</strong>.</li>
+<li>In the <strong>Item No</strong>. field, the value <strong>CHW1002</strong> is automatically filled in.</li>
+<li>In the <strong>Unit of Measure Code</strong> field, the value <strong>PCS</strong> is automatically filled in.</li>
+<li>In the <strong>Unit Price</strong> field, enter <strong>499.95</strong>.</li>
+</ol>
+</li>
+<li>On the <strong>Sales Prices</strong> page, create a new line as follows:
+<ol>
+<li>In the <strong>Sales Type</strong> field enter <strong>Customer Price Group</strong>.</li>
+<li>In the <strong>Sales Code</strong> field, enter <strong>EU</strong>.</li>
+<li>In the <strong>Item No</strong>. field, the value <strong>CHW1002</strong> is automatically filled in.</li>
+<li>In the <strong>Unit of Measure Code</strong> field, the value <strong>PCS</strong> is automatically filled in. Change the value to <strong>BOX</strong>.</li>
+<li>In the <strong>Unit Price</strong> field, enter <strong>4800.00</strong>.</li>
+</ol>
+</li>
+<li>Close the sales prices page.</li>
+<li>Close the item card.</li>
+<li>On the Items list page, select the <strong>17” monitor (CHW1003)</strong>.</li>
+<li>To open the item card, select <strong>Manage</strong> and then select <strong>Edit</strong>.</li>
+<li>On the opened item card, select <strong>Prices &amp; Discounts</strong> and then select <strong>Sales Prices</strong>.</li>
+<li>On the <strong>Sales Prices</strong> page, create a new line as follows:
+<ol>
+<li>In the <strong>Sales Type</strong> field enter <strong>Customer Price Group</strong>.</li>
+<li>In the <strong>Sales Code</strong> field, enter <strong>EU</strong>.</li>
+<li>In the <strong>Item No</strong>. field, the value <strong>CHW1003</strong> is automatically filled in.</li>
+<li>In the <strong>Unit of Measure Code</strong> field, the value <strong>PCS</strong> is automatically filled in.</li>
+<li>In the <strong>Unit Price</strong> field, enter <strong>700.00</strong>.</li>
+</ol>
+</li>
+<li>On the <strong>Sales Prices</strong> page, create a new line as follows:
+<ol>
+<li>In the <strong>Sales Type</strong> field enter <strong>Customer Price Group</strong>.</li>
+<li>In the <strong>Sales Code</strong> field, enter <strong>EU</strong>.</li>
+<li>In the <strong>Item No</strong>. field, the value <strong>CHW1003</strong> is automatically filled in.</li>
+<li>In the <strong>Unit of Measure Code</strong> field, the value <strong>PCS</strong> is automatically filled in. Change the value to <strong>BOX</strong>.</li>
+<li>In the <strong>Unit Price</strong> field, enter <strong>6,550.00</strong>.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Configure line discount
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Item Discount Groups and then choose the related link.</li>
+<li>Select the <strong>Prices &amp; Discounts</strong>and then select <strong>Sales Lines Discounts</strong>.</li>
+<li>Remove the value in the <strong>Code Filter</strong> filter.</li>
+<li>On the <strong>Sales Line Discounts</strong> page, create a new line as follows:
+<ol>
+<li>In the <strong>Sales Type</strong> field enter <strong>Customer Disc. Group</strong>.</li>
+<li>In the <strong>Sales Code</strong> field, enter <strong>SMALL</strong>.</li>
+<li>In the <strong>Type</strong> field, enter <strong>Item Discount Group</strong></li>
+<li>In the <strong>Code</strong> field, enter <strong>MONITOR</strong>.</li>
+<li>In the <strong>Line Discount %</strong> field, enter <strong>3</strong>.</li>
+</ol>
+</li>
+<li>On the <strong>Sales Line Discounts</strong> page, create a new line as follows:
+<ol>
+<li>In the <strong>Sales Type</strong> field enter <strong>Customer Disc. Group</strong>.</li>
+<li>In the <strong>Sales Code</strong> field, enter <strong>MEDIUM</strong>.</li>
+<li>In the <strong>Type</strong> field, enter <strong>Item Discount Group</strong></li>
+<li>In the <strong>Code</strong> field, enter <strong>MONITOR</strong>.</li>
+<li>In the <strong>Line Discount %</strong> field, enter <strong>6</strong>.</li>
+</ol>
+</li>
+<li>On the <strong>Sales Line Discounts</strong> page, create a new line as follows:
+<ol>
+<li>In the <strong>Sales Type</strong> field enter <strong>Customer Disc. Group</strong>.</li>
+<li>In the <strong>Sales Code</strong> field, enter <strong>LARGE</strong>.</li>
+<li>In the <strong>Type</strong> field, enter <strong>Item Discount Group</strong></li>
+<li>In the <strong>Code</strong> field, enter <strong>MONITOR</strong>.</li>
+<li>In the <strong>Line Discount %</strong> field, enter <strong>10</strong>.</li>
+</ol>
+</li>
+<li>Close the <strong>Sales Line Discounts</strong> page.</li>
+</ol>
+</li>
+<li>Configure invoice discount
+<ol>
+<li>Select the Search icon in the top-right corner of the page, Customers and then choose the related link.</li>
+<li>On the <strong>Customers</strong> page, select the <strong>Generic EU Web Shop</strong> Customer <strong>(CWEB0001)</strong></li>
+<li>To open the customer card, select <strong>Manage</strong> and then select <strong>Edit</strong>.</li>
+<li>Select <strong>Related</strong>, then select <strong>Prices and Discounts</strong> and then select <strong>Invoice Discounts</strong>.</li>
+<li>On a new line, fill in the following fields.
+<ol>
+<li>In the <strong>Minimum Amount</strong> field, enter <strong>50.00</strong>.</li>
+<li>In the <strong>Discount %</strong> field, enter <strong>5</strong>.</li>
+</ol>
+</li>
+<li>Close the <strong>Cust. Invoice Discounts</strong> page.</li>
+</ol>
+</li>
+</ol>
+</article><nav class="course-pagination" aria-label="Continue learning"><a href="Lab16_Set_up_Inventory.html">← Lab 16: Set up Inventory</a><a href="Lab18_Perform_Basic_Tasks.html">Lab 18: Perform Basic tasks in Business Central →</a></nav></section></main>
+<footer class="site-footer"><div class="shell"><strong>Skunkworks Academy · Microsoft learning</strong><p>Lab materials from the Skunkworks Academy MB-800 repository. Microsoft product names and trademarks belong to Microsoft.</p><a href="../../LICENSE">Content license</a> · <a href="https://github.com/skunkworks-academy/MB-800-Business-Central-Functional-Consultant">Course source</a></div></footer></body></html>

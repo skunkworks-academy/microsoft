@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en-ZA"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab 09: Set Up General Journals | Skunkworks Academy</title><meta name="description" content="Set up general journal templates in Dynamics 365 Business Central">
+<link rel="canonical" href="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab09_Set_up_General_Journals.html"><meta name="theme-color" content="#0b1220">
+<meta property="og:type" content="website"><meta property="og:title" content="Lab 09: Set Up General Journals"><meta property="og:description" content="Set up general journal templates in Dynamics 365 Business Central"><meta property="og:url" content="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab09_Set_up_General_Journals.html">
+<link rel="stylesheet" href="../../assets/microsoft-hub.css"><link rel="stylesheet" href="../../assets/course.css">
+<script defer src="https://skunkworksacademy.com/assets/academy-navigation.js?v=2026.08.23.1" data-skunkworks-global-nav="v10"></script>
+</head><body><a class="skip-link" href="#main">Skip to content</a>
+<nav class="shell course-nav" aria-label="Course navigation"><a href="https://microsoft.skunkworksacademy.com/#catalog">Microsoft catalog</a><a href="../../index.html">MB-800 overview</a><a href="../../index.html#labs">Lab directory</a></nav>
+<main id="main" data-swa-contrast="preserve"><section class="shell course-section"><p class="eyebrow">MB-800 · 35 minutes</p><h1>Lab 09: Set Up General Journals</h1><p>Set up general journal templates in Dynamics 365 Business Central</p><nav class="course-pagination" aria-label="Lab sequence"><a href="Lab08_Set_up_Accounts_Payable.html">← Lab 08: Set Up Accounts Payable</a><a href="Lab10_Set_up_Cash_Management.html">Lab 10: Set Up Cash Management →</a></nav><article class="lab-body" aria-label="Lab instructions"><h2>Exercise 9: Set Up General Journals</h2>
+<h2>Task 1: Set up General Journals</h2>
+<h2>Scenario</h2>
+<p>Part of the implementation process is the conversion of opening balances. For these specific transactions, a separate general journal OPENING will be created.</p>
+<p>Separate batches are set up for the entry of the opening g/l balance accounts, the open customer ledger entries, the open vendor ledger entries, and the opening bank balance.</p>
+<p>For customers and vendors, the detailed open ledger entries will be entered using the existing document no. given by the previous system. The total amount will be balanced by the regular g/l accounts for accounts receivables (10400) and accounts payable (20100).</p>
+<p>You also want to avoid any tax postings while entering the opening g/l balances.</p>
+<p>You will perform</p>
+<ol>
+<li>Set up a journal for opening entries</li>
+<li>Set up different batches for customer, vendor, balance</li>
+<li>Set up a general journal batch for finance corrections.</li>
+</ol>
+<h3>Steps</h3>
+<ol>
+<li>Set up a journal for opening entries
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter General Journal Templates and then choose the related link.</li>
+<li>In the <strong>General Journal Templates</strong> page, select <strong>+ New</strong>.</li>
+<li>Fill in the following fields:
+<ol>
+<li>In the <strong>Name</strong> field, enter OPENING</li>
+<li>In the <strong>Description</strong> field, enter Conversion Opening Balances.</li>
+<li>In the <strong>Type</strong> field, select the <strong>General</strong> option.</li>
+<li>In the <strong>Bal. Account Type</strong> field, select the <strong>G/L Account</strong> option.</li>
+<li>Deselect the <strong>Force Doc. Balance</strong> check box.</li>
+<li>Deselect the <strong>Copy Tax/VAT Setup to Jnl.</strong> check box.</li>
+<li>Select <strong>Yes</strong>.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Set up different batches for customer, vendor, balance, and bank.
+<ol>
+<li>In the <strong>General Journal Templates</strong> page, make sure the <strong>OPENING</strong> journal is selected.</li>
+<li>Select <strong>Batches</strong>.</li>
+<li>In the opened <strong>General Journal Batches</strong> page, select the first blank row.</li>
+<li>Fill in the following fields:
+<ol>
+<li>In the <strong>Name</strong> field, enter BALANCE.</li>
+<li>In the <strong>Description</strong> field, enter Opening G/L Balance Account.</li>
+</ol>
+</li>
+<li>In the opened <strong>General Journal Batches</strong> page, select <strong>+ New</strong>.</li>
+<li>Fill in the following fields:
+<ol>
+<li>In the <strong>Name</strong> field, enter BANK.</li>
+<li>In the <strong>Description</strong> field, enter Opening Bank Balance.</li>
+</ol>
+</li>
+<li>In the opened <strong>General Journal Batches</strong> page, select <strong>+ New</strong>.</li>
+<li>Fill in the following fields:
+<ol>
+<li>In the <strong>Name</strong> field, enter CUST.</li>
+<li>In the <strong>Description</strong> field, enter Opening Customer Ledger Entries.</li>
+<li>In the <strong>Bal. Account No.</strong> field, enter <strong>10400</strong></li>
+</ol>
+</li>
+<li>In the opened <strong>General Journal Batches</strong> page, select <strong>+ New</strong>.</li>
+<li>Fill in the following fields:
+<ol>
+<li>In the <strong>Name</strong> field, enter VEND.</li>
+<li>In the <strong>Description</strong> field, enter Opening Vendor Ledger Entries.</li>
+<li>In the <strong>Bal. Account No.</strong> field, enter <strong>20100</strong></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Set up a general journal batch for finance corrections.
+<ol>
+<li>In the <strong>General Journal Templates</strong> page, select the GENERAL journal.</li>
+<li>Select <strong>Batches</strong>.</li>
+<li>In the opened <strong>General Journal Batches</strong> page, select the first blank row.</li>
+<li>Fill in the following fields:
+<ol>
+<li>In the <strong>Name</strong> field, enter FINCOR.</li>
+<li>In the <strong>Description</strong> field, enter Finance corrections.</li>
+<li>Deselect the <strong>Copy Tax/VAT Setup to Jnl.</strong> check box.</li>
+<li>Choose field <strong>No,Series</strong>, click <strong>+New</strong> in bottom left corner of page.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>To create new numbers series to use for the batch, on the page <strong>Select – No, Series</strong> fill the line:</p>
+<p><strong>Code</strong> – FINCOR,</p>
+<p><strong>Description</strong> - Finance corrections,</p>
+<p><strong>Select Default Nos.</strong> - Yes,</p>
+<p><strong>Manual Nos</strong>. - Yes.</p>
+<p>Click on the field <strong>Starting No</strong>. and fill out the field <strong>Starting No</strong>. - FC0000.</p>
+<p>Click Close.</p>
+<p>On the page <strong>Select- No,Series</strong> page select line with FINCOR code and click OK.</p>
+</article><nav class="course-pagination" aria-label="Continue learning"><a href="Lab08_Set_up_Accounts_Payable.html">← Lab 08: Set Up Accounts Payable</a><a href="Lab10_Set_up_Cash_Management.html">Lab 10: Set Up Cash Management →</a></nav></section></main>
+<footer class="site-footer"><div class="shell"><strong>Skunkworks Academy · Microsoft learning</strong><p>Lab materials from the Skunkworks Academy MB-800 repository. Microsoft product names and trademarks belong to Microsoft.</p><a href="../../LICENSE">Content license</a> · <a href="https://github.com/skunkworks-academy/MB-800-Business-Central-Functional-Consultant">Course source</a></div></footer></body></html>

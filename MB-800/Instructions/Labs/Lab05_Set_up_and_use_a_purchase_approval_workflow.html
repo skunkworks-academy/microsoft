@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en-ZA"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab 05: Set up and use a purchase approval workflow | Skunkworks Academy</title><meta name="description" content="Create workflows in Dynamics 365 Business Central">
+<link rel="canonical" href="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab05_Set_up_and_use_a_purchase_approval_workflow.html"><meta name="theme-color" content="#0b1220">
+<meta property="og:type" content="website"><meta property="og:title" content="Lab 05: Set up and use a purchase approval workflow"><meta property="og:description" content="Create workflows in Dynamics 365 Business Central"><meta property="og:url" content="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab05_Set_up_and_use_a_purchase_approval_workflow.html">
+<link rel="stylesheet" href="../../assets/microsoft-hub.css"><link rel="stylesheet" href="../../assets/course.css">
+<script defer src="https://skunkworksacademy.com/assets/academy-navigation.js?v=2026.08.23.1" data-skunkworks-global-nav="v10"></script>
+</head><body><a class="skip-link" href="#main">Skip to content</a>
+<nav class="shell course-nav" aria-label="Course navigation"><a href="https://microsoft.skunkworksacademy.com/#catalog">Microsoft catalog</a><a href="../../index.html">MB-800 overview</a><a href="../../index.html#labs">Lab directory</a></nav>
+<main id="main" data-swa-contrast="preserve"><section class="shell course-section"><p class="eyebrow">MB-800 · 30 minutes</p><h1>Lab 05: Set up and use a purchase approval workflow</h1><p>Create workflows in Dynamics 365 Business Central</p><nav class="course-pagination" aria-label="Lab sequence"><a href="Lab04_Migrate_Master_data.html">← Lab 04: Migrate master data to a new company</a><a href="Lab06_Configure_Item_Costing.html">Lab 06: Configure item costing →</a></nav><article class="lab-body" aria-label="Lab instructions"><h2>Hands-on-Lab: Set up and use a purchase approval workflow</h2>
+<p><strong>Learning Objective:</strong></p>
+<ul>
+<li>Learners will be able to set up and use a purchase approval workflow in Dynamics 365 Business Central, including configuring workflows, setting up approval users and limits, and enabling notifications to streamline business processes.</li>
+</ul>
+<p><strong>Business scenario:</strong></p>
+<ul>
+<li>You are working for a mid-sized company that needs to implement a purchase approval workflow in Dynamics 365 Business Central to ensure compliance with organizational policies and improve efficiency in handling purchase-related tasks. As a functional consultant or business user, you have been tasked with setting up the workflow, configuring approval users and limits, and enabling notifications to automate the approval process.</li>
+</ul>
+<h2>Task 1: Set up approval users and define their roles, limits, and substitutes</h2>
+<p><strong>Goal:</strong> Configure approval users, their roles, approval limits, and substitutes using the Approval User Setup page to ensure proper delegation and compliance with organizational policies.</p>
+<ol>
+<li>
+<p>Open the <strong>Approval User Setup</strong> page:</p>
+<ul>
+<li>In the search bar, enter <strong>Approval User Setup</strong>, and select the related link.</li>
+</ul>
+</li>
+<li>
+<p>Add a new approval user:</p>
+<ul>
+<li>On the <strong>Approval User Setup</strong> page, create a new line.</li>
+<li>Fill in the following fields:
+<ul>
+<li><strong>User ID</strong>: Select the user involved in the approval process.</li>
+<li><strong>Approver ID</strong>: Leave it blank.</li>
+<li><strong>Purchase Amount Approval Limit</strong>: Enter the maximum purchase amount the user can approve.</li>
+<li><strong>Substitute</strong>: Assign a substitute approver for cases when the primary approver is unavailable.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Define unlimited approval permissions (if applicable):</p>
+<ul>
+<li>If the user can approve all purchase requests regardless of the amount, select the <strong>Unlimited Purchase Approval</strong> checkbox. Leave the <strong>Purchase Amount Approval Limit</strong> field blank.</li>
+</ul>
+</li>
+<li>
+<p>Test the setup:</p>
+<ul>
+<li>Select the <strong>Approval User Setup Test</strong> action to validate the configuration.</li>
+</ul>
+</li>
+</ol>
+<h3>Check your work: Set up approval users</h3>
+<p>To verify the setup:</p>
+<ol>
+<li>Ensure all required users are listed on the <strong>Approval User Setup</strong> page.</li>
+<li>Confirm that each user has an approver and, if necessary, a substitute assigned.</li>
+<li>Validate that approval limits align with organizational policies.</li>
+</ol>
+<hr>
+<h2>Task 2: Create a purchase approval workflow</h2>
+<p><strong>Goal:</strong> Create a purchase approval workflow manually or from a template, defining events, conditions, and responses to automate the approval process.</p>
+<ol>
+<li>
+<p>Open the <strong>Workflows</strong> page:</p>
+<ul>
+<li>In the search bar, enter <strong>Workflows</strong>, and select the related link.</li>
+</ul>
+</li>
+<li>
+<p>Create a new workflow:</p>
+<ul>
+<li>Select the <strong>New</strong> action to open the <strong>Workflow</strong> page.</li>
+<li>In the <strong>Code</strong> field, enter a unique identifier for the workflow (e.g., <code>PURCH-APPROVAL</code>).</li>
+<li>In the <strong>Description</strong> field, provide a brief description (e.g., &quot;Purchase Approval Workflow&quot;).</li>
+</ul>
+</li>
+<li>
+<p>Define the workflow steps:</p>
+<ul>
+<li>In the <strong>When Event</strong> field, specify the event that triggers the workflow (e.g., &quot;Approval of a purchase document is requested.&quot;).</li>
+<li>In the <strong>On Condition</strong> field, add any conditions that must be met (e.g., &quot;Total Amount &gt; $10,000&quot;).</li>
+<li>In the <strong>Then Response</strong> field, define the response (e.g., &quot;Create an approval request for the record...&quot;).</li>
+</ul>
+</li>
+<li>
+<p>Add additional steps as needed:</p>
+<ul>
+<li>For example, include steps for handling approvals, rejections, or delegations.</li>
+</ul>
+</li>
+<li>
+<p>Enable the workflow:</p>
+<ul>
+<li>Turn on the <strong>Enabled</strong> toggle to activate the workflow.</li>
+</ul>
+</li>
+</ol>
+<h3>Check your work: Create a purchase approval workflow</h3>
+<p>To confirm the workflow is set up correctly:</p>
+<ol>
+<li>Review the workflow steps to ensure they align with the desired approval process.</li>
+<li>Verify that the workflow is enabled and ready to trigger upon the specified event.</li>
+</ol>
+<hr>
+<h2>Task 3: Configure notification settings</h2>
+<p><strong>Goal:</strong> Set up notification settings to ensure relevant users are informed about pending approval requests.</p>
+<ol>
+<li>
+<p>Open the <strong>Workflow Notification Setup</strong> page:</p>
+<ul>
+<li>In the search bar, enter <strong>Workflow Notification Setup</strong>, and select the related link.</li>
+</ul>
+</li>
+<li>
+<p>Configure notification preferences:</p>
+<ul>
+<li>Specify how users receive notifications (e.g., email or in-app).</li>
+<li>Define the notification triggers (e.g., &quot;Approval&quot; or &quot;Overdue&quot;).</li>
+</ul>
+</li>
+<li>
+<p>Test the notification setup:</p>
+<ul>
+<li>Send a test notification to ensure users receive alerts as expected.</li>
+</ul>
+</li>
+</ol>
+<h3>Check your work: Configure notification settings</h3>
+<p>To validate the notification setup:</p>
+<ol>
+<li>Confirm that notifications are sent to the correct users.</li>
+<li>Verify that the notification format and content meet organizational requirements.</li>
+</ol>
+<hr>
+<h2>Task 4: Test the purchase approval workflow</h2>
+<p><strong>Goal:</strong> Test the workflow to ensure it functions as intended and complies with organizational policies.</p>
+<ol>
+<li>
+<p>Create a test purchase order:</p>
+<ul>
+<li>Navigate to the <strong>Purchase Orders</strong> page and create a new purchase order.</li>
+<li>Ensure the order meets the conditions defined in the workflow (e.g., total amount exceeds the approval threshold).</li>
+</ul>
+</li>
+<li>
+<p>Trigger the workflow:</p>
+<ul>
+<li>Submit the purchase order to initiate the approval process.</li>
+</ul>
+</li>
+<li>
+<p>Verify the workflow steps:</p>
+<ul>
+<li>Check that the approval request is sent to the designated approver.</li>
+<li>Confirm that notifications are sent to the appropriate users.</li>
+</ul>
+</li>
+<li>
+<p>Approve or reject the request:</p>
+<ul>
+<li>Log in as the approver and take action on the request (approve or reject).</li>
+</ul>
+</li>
+<li>
+<p>Review the outcome:</p>
+<ul>
+<li>Ensure the workflow behaves as expected based on the approver's action.</li>
+</ul>
+</li>
+</ol>
+<h3>Check your work: Test the purchase approval workflow</h3>
+<p>To confirm the workflow is functioning correctly:</p>
+<ol>
+<li>Verify that the approval request is routed to the correct approver.</li>
+<li>Ensure notifications are sent at each step of the workflow.</li>
+<li>Confirm that the purchase order status updates appropriately based on the approver's action.</li>
+</ol>
+</article><nav class="course-pagination" aria-label="Continue learning"><a href="Lab04_Migrate_Master_data.html">← Lab 04: Migrate master data to a new company</a><a href="Lab06_Configure_Item_Costing.html">Lab 06: Configure item costing →</a></nav></section></main>
+<footer class="site-footer"><div class="shell"><strong>Skunkworks Academy · Microsoft learning</strong><p>Lab materials from the Skunkworks Academy MB-800 repository. Microsoft product names and trademarks belong to Microsoft.</p><a href="../../LICENSE">Content license</a> · <a href="https://github.com/skunkworks-academy/MB-800-Business-Central-Functional-Consultant">Course source</a></div></footer></body></html>

@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en-ZA"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab 14: Configure Purchasing | Skunkworks Academy</title><meta name="description" content="Set up Trade in Microsoft Dynamics 365 Business Central">
+<link rel="canonical" href="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab14_Configure_Purchasing.html"><meta name="theme-color" content="#0b1220">
+<meta property="og:type" content="website"><meta property="og:title" content="Lab 14: Configure Purchasing"><meta property="og:description" content="Set up Trade in Microsoft Dynamics 365 Business Central"><meta property="og:url" content="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab14_Configure_Purchasing.html">
+<link rel="stylesheet" href="../../assets/microsoft-hub.css"><link rel="stylesheet" href="../../assets/course.css">
+<script defer src="https://skunkworksacademy.com/assets/academy-navigation.js?v=2026.08.23.1" data-skunkworks-global-nav="v10"></script>
+</head><body><a class="skip-link" href="#main">Skip to content</a>
+<nav class="shell course-nav" aria-label="Course navigation"><a href="https://microsoft.skunkworksacademy.com/#catalog">Microsoft catalog</a><a href="../../index.html">MB-800 overview</a><a href="../../index.html#labs">Lab directory</a></nav>
+<main id="main" data-swa-contrast="preserve"><section class="shell course-section"><p class="eyebrow">MB-800 · 60 minutes</p><h1>Lab 14: Configure Purchasing</h1><p>Set up Trade in Microsoft Dynamics 365 Business Central</p><nav class="course-pagination" aria-label="Lab sequence"><a href="Lab13_Manage_Accounting_Period.html">← Lab 13: Manage accounting period</a><a href="Lab15_Set_up_Accounts_Receivable.html">Lab 15: Set Up Accounts Receivable →</a></nav><article class="lab-body" aria-label="Lab instructions"><h2>Exercise 14: Configure Purchasing</h2>
+<h2>Task 1: Complete the vendor card</h2>
+<h2>Scenario</h2>
+<p>As the functional consultant, you are collecting more information about the purchase process, and more particularly about the vendors who you are purchasing from and the conditions surrounding ordering and delivering of the purchased items.</p>
+<p>In order to supply the brand-new European warehouse and to deliver the computer hardware items to the European customers, these items are purchased from European wholesalers. Some of these vendors have different sales points throughout the country.</p>
+<p>Vendor Cronus Cardoxy Sales is Contoso’s main supplier for all computer hardware items. They have different locations from where to order:</p>
+<ul>
+<li>Computers and monitors need to be ordered at the following location:</li>
+</ul>
+<p>Nyborgvej 566, DK-5000 ODENSE C – contact: Hr. Allan Vinther-Wahl</p>
+<ul>
+<li>Other computer accessories are sold from another location:</li>
+</ul>
+<p>Havnevej 6, DK-4600 KOGE – contact: Fr. Karen Friske</p>
+<p>Cronus Cardoxy Sales guarantees to deliver all goods within 5 days, according to the ‘cost and freight’ shipment method.</p>
+<p>You will perform -</p>
+<ol>
+<li>Create an order address for the vendor</li>
+<li>Specify receiving information</li>
+</ol>
+<h3>Steps</h3>
+<ol>
+<li>Create an order address for the vendor
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Vendors and then choose the related link.</li>
+<li>On the <strong>Vendors</strong> list page, select vendor <strong>Cronus Cardoxy Sales (V9002)</strong>.</li>
+<li>To open the vendor card, select <strong>Manage</strong> and then select <strong>Edit</strong>.</li>
+<li>In the vendor card, select <strong>Related</strong>, then select <strong>Vendor</strong> and then <strong>Order Addresses</strong>.</li>
+<li>In the opened <strong>Order Address List</strong> page, select <strong>+ New</strong>.</li>
+<li>In the opened order address card, fill in the following fields:
+<ol>
+<li>In the <strong>Code</strong> field, enter <strong>COMP&amp;MON</strong></li>
+<li>In the <strong>Name</strong> field, enter the value <strong>Cronus Cardoxy Sales</strong>.</li>
+<li>In the <strong>Address</strong> field, enter <strong>Nyborgvej 566</strong>.</li>
+<li>In the <strong>City</strong> field, enter <strong>ODENSE C</strong>.</li>
+<li>In the <strong>ZIP Code</strong> field, the value <strong>DK-5000</strong> is automatically filled in.</li>
+<li>In the <strong>Country/Region Code</strong> field, the value <strong>DK</strong> is automatically filled in.</li>
+<li>In the <strong>Contact</strong> field, enter <strong>Hr. Allan Vinther-Wahl</strong>.</li>
+</ol>
+</li>
+<li>Close the order address card.</li>
+<li>In the opened <strong>Order Address List</strong> page, select <strong>+ New</strong>.</li>
+<li>In the opened order address card, fill in the following fields:
+<ol>
+<li>In the <strong>Code</strong> field, enter <strong>ACCESSORIE</strong></li>
+<li>In the <strong>Name</strong> field, the value <strong>Cronus Cardoxy Sales</strong> is automatically filled in.</li>
+<li>In the <strong>Address</strong> field, enter <strong>Havnevej 6</strong>.</li>
+<li>In the <strong>City</strong> field, enter <strong>KOGE</strong>.</li>
+<li>In the <strong>ZIP Code</strong> field, the value <strong>DK-4600</strong> is automatically filled in.</li>
+<li>In the <strong>Country/Region Code</strong> field, the value <strong>DK</strong> is automatically filled in.</li>
+<li>In the <strong>Contact</strong> field, enter <strong>Fr. Karen Friske</strong>.</li>
+</ol>
+</li>
+<li>Close the order address card.</li>
+<li>Close the <strong>Order Address List</strong> page.</li>
+</ol>
+</li>
+<li>Specify receiving information
+<ol>
+<li>On the vendor card for vendor <strong>Cronus Cardoxy Sales</strong>, go to the <strong>Receiving</strong> FastTab.</li>
+<li>In the <strong>Location Code</strong> field, enter <strong>EUROP</strong>.</li>
+<li>In the <strong>Shipment Method Code</strong> field, enter <strong>CFR</strong>.</li>
+<li>In the <strong>Lead Time Calculation</strong> field, enter <strong>5D</strong>.</li>
+</ol>
+</li>
+</ol>
+<h2>Task 2: Complete the item card</h2>
+<h2>Scenario</h2>
+<p>The computer hardware items are not manufactured by Contoso, but purchased through wholesalers, with Cronus Cardoxy Sales considered to be the main supplier.</p>
+<p>Cronus Cardoxy Sales guarantees to deliver all goods within 5 days, however some special items may take a bit longer and have a deviating delivery time. For example, the 17” monitor will take up to 7 days to deliver.</p>
+<p>All items can only be purchased in boxes, containing 10 pieces of the hardware.</p>
+<p>You need to set up the replenishment information on the item card.</p>
+<p><em>Remark: For exercise purposes, only set up the catalog for the monitors.</em></p>
+<p>You will perform</p>
+<ol>
+<li>Specify replenishment information</li>
+</ol>
+<h3>Steps</h3>
+<ol>
+<li>Specify replenishment information
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Items, and then choose the related link.</li>
+<li>On the <strong>Items</strong> list page, select item <strong>15” 1501 FP Flat Panel (CHW1002)</strong></li>
+<li>To open the item card, select <strong>Manage</strong> and then select <strong>Edit</strong>.</li>
+<li>In the item card, go to the <strong>Replenishment</strong> FastTab and fill in the following fields:
+<ol>
+<li>In the <strong>Replenishment System</strong> field, leave the default value <strong>Purchase</strong>.</li>
+<li>In the <strong>Lead Time Calculation</strong> field, enter <strong>5D</strong>.</li>
+<li>In the <strong>Vendor No.</strong> field, enter <strong>V9002</strong>.</li>
+<li>In the <strong>Purch. Unit of Measure</strong> field, the value <strong>PCS</strong> is already filled in. Select on the Look Up Value button and select <strong>+ New</strong>.</li>
+<li>In the opened <strong>Item Units of Measure</strong> page, fill in the following fields:
+<ol>
+<li>In the <strong>Code</strong> field, enter <strong>BOX</strong>.</li>
+<li>In the <strong>Qty. per Unit of Measure</strong> field, enter <strong>10</strong>.</li>
+</ol>
+</li>
+<li>Select <strong>OK</strong> to close the page.</li>
+<li>The new code is automatically filled in the <strong>Purch. Unit of Measure</strong> field on the item card.</li>
+</ol>
+</li>
+<li>Close the item card.</li>
+<li>On the <strong>Items</strong> list page, select item <strong>17” M780 Monitor (CHW1003)</strong></li>
+<li>To open the item card, select <strong>Manage</strong> and then select <strong>Edit</strong>.</li>
+<li>In the item card, go to the <strong>Replenishment</strong> FastTab and fill in the following fields:
+<ol>
+<li>In the <strong>Replenishment System</strong> field, leave the default value <strong>Purchase</strong>.</li>
+<li>In the <strong>Lead Time Calculation</strong> field, enter <strong>7D</strong>.</li>
+<li>In the <strong>Vendor No.</strong> field, enter <strong>V9002</strong>.</li>
+<li>In the <strong>Purch. Unit of Measure</strong> field, the value <strong>PCS</strong> is already filled in. Select on the Look Up Value button and select <strong>+ New</strong>.</li>
+<li>In the opened <strong>Item Units of Measure</strong> page, fill in the following fields:
+<ol>
+<li>In the <strong>Code</strong> field, enter <strong>BOX</strong>.</li>
+<li>In the <strong>Qty. per Unit of Measure</strong> field, enter <strong>10</strong>.</li>
+</ol>
+</li>
+<li>Select <strong>OK</strong> to close the page.</li>
+<li>The new code is automatically filled in the <strong>Purch. Unit of Measure</strong> field on the item card.</li>
+</ol>
+</li>
+<li>Close the item card.</li>
+</ol>
+</li>
+</ol>
+<h2>Task 3: Set up an item vendor catalog</h2>
+<h2>Scenario</h2>
+<p>Although Cronus Cardoxy Sales is considered the main supplier for all computer hardware items, these products can also be purchased with other vendors. For example, when the item is temporarily out of stock.</p>
+<p>When replenishing the item, Contoso will use the requisition worksheet, where the main supplier will be suggested. However, it must be possible to order from other available suppliers as well. Purchase orders will be sent to the vendors, based on the vendors item numbers.</p>
+<p>You will set up an item vendor catalog for all computer hardware items, as follows:</p>
+<ul>
+<li>All items can be purchased with vendor Cronus Cardoxy Sales (V9002).</li>
+<li>All monitors can be purchased with vendor PURE-LOOK (V9005) and can be provided within 2 days:
+<ul>
+<li>PLM-345 = 15” 1501 FP Flat Panel</li>
+<li>PLM-346 = 17” M780 Monitor</li>
+</ul>
+</li>
+<li>All accessories can be purchased with vendor WoodMart Supply Co (V9006) and can be provided within 10 days:
+<ul>
+<li>WMSA-10035 = Advanced Mouse</li>
+<li>WMSA-10036 = Quietkey keyboard</li>
+<li>WMSA-10037 = Speakers</li>
+</ul>
+</li>
+</ul>
+<p><em>Remark: For exercise purposes, only set up the catalog for the monitors.</em></p>
+<p>You will perform</p>
+<ol>
+<li>Set up an item vendor catalog</li>
+</ol>
+<h3>Steps</h3>
+<ol>
+<li>Set up an item vendor catalog
+<ol>
+<li>On the <strong>Items</strong> list page, select item <strong>15” 1501 FP Flat Panel (CHW1002)</strong></li>
+<li>To open the item card, select <strong>Manage</strong> and then select <strong>Edit</strong>.</li>
+<li>In the item card, select <strong>Related</strong>, then select <strong>Purchases</strong> and then <strong>Vendors</strong>.</li>
+<li>On the opened <strong>Item Vendor Catalog</strong> page, select <strong>+ New</strong>.</li>
+<li>On the new line, fill in the following fields:
+<ol>
+<li>In the <strong>Vendor No.</strong> field, enter <strong>V9005</strong>.</li>
+<li>In the <strong>Vendor Item No.</strong> field, enter <strong>PLM-345</strong>.</li>
+<li>In the <strong>Lead Time Calculation</strong> field, enter <strong>2D</strong>.</li>
+</ol>
+</li>
+<li>Close the <strong>Item Vendor Catalog</strong> page.</li>
+<li>Close the item card.</li>
+<li>On the <strong>Items</strong> list page, select item <strong>17” M780 Monitor (CHW1003)</strong></li>
+<li>To open the item card, select <strong>Manage</strong> and then select <strong>Edit</strong>.</li>
+<li>In the item card, select <strong>Related</strong>, then select <strong>Purchases</strong> and then <strong>Vendors</strong>.</li>
+<li>On the opened <strong>Item Vendor Catalog</strong> page, select <strong>+ New</strong>.</li>
+<li>On the new line, fill in the following fields:
+<ol>
+<li>In the <strong>Vendor No.</strong> field, enter <strong>V9005</strong>.</li>
+<li>In the <strong>Vendor Item No.</strong> field, enter <strong>PLM-346</strong>.</li>
+<li>In the <strong>Lead Time Calculation</strong> field, enter <strong>2D</strong>.</li>
+</ol>
+</li>
+<li>Close the <strong>Item Vendor Catalog</strong> page.</li>
+<li>Close the item card.</li>
+</ol>
+</li>
+</ol>
+<h2>Task 4: Configure recurring purchase lines</h2>
+<h2>Scenario</h2>
+<p>Next to the suppliers of trading goods, Contoso also has a numerous amount of other costs. Often on a monthly recurring basis, the same purchase invoices need to be processed.</p>
+<p>To reduce the processing time, you explain the configuration of ‘recurring purchase lines’ and together with the accounting manager, you set up the following example:</p>
+<p>Contoso has to pay health and dental insurance for each employee at the company. They receive a monthly invoice with a fixed amount. These costs need to be processed per department, as follows:</p>
+<ul>
+<li>The total amount of the invoice is CAD 1,200.00, which is processed on the 73100 Health Insurance</li>
+</ul>
+<p>income statement account.</p>
+<ul>
+<li>25% of the cost is for the sales department.</li>
+<li>35% of the cost is for the administration department.</li>
+<li>40% of the cost is for the production department.</li>
+</ul>
+<p>You need to set up the recurring purchase lines for vendor OakvilleWorld (V9007), so that these lines are automatically filled in when creating a new purchase invoice.</p>
+<p>You will perform</p>
+<ol>
+<li>Configure recurring purchase lines</li>
+</ol>
+<h3>Steps</h3>
+<ol>
+<li>Configure recurring purchase lines
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Vendors and then choose the related link.</li>
+<li>On the <strong>Vendors</strong> list page, select vendor <strong>OakvilleWorld (V9007)</strong>.</li>
+<li>Select <strong>Related</strong>, then <strong>Purchases</strong> and then select <strong>Recurring Purchase Lines</strong>.</li>
+<li>On the opened <strong>Recurring Purchase Lines</strong> page, select <strong>+ New</strong>.</li>
+<li>On the new line, fill in the following fields:
+<ol>
+<li>Select on the Look Up Value button in the <strong>Code</strong> field and select <strong>+ New</strong>.</li>
+<li>On the opened <strong>Standard Purchase Code Card</strong> page, fill in the following fields:
+<ol>
+<li>In the <strong>Code</strong> field, enter <strong>INSURANCE</strong></li>
+<li>In the <strong>Description</strong> field, enter <strong>Monthly health insurance</strong></li>
+<li>In the <strong>Currency Code</strong> field, enter <strong>CAD</strong>.</li>
+<li>In the <strong>Lines</strong> section, create a new line, and fill in the following fields:
+<ol>
+<li>In the <strong>Type</strong> field, select the <strong>G/L Account</strong> option.</li>
+<li>In the <strong>No.</strong> field, enter <strong>73100</strong>.In the <strong>Quantity</strong> field, enter <strong>1</strong>.</li>
+<li>Add the Amount Excl. Tax/VAT field:</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>Select on the <strong>Settings</strong> icon in the top-right corner and select <strong>Personalize</strong>.</p>
+<p>Select <strong>More</strong> on the <strong>Personalizing</strong> ribbon.</p>
+<p>Select the <strong>Lines</strong> area and select <strong>+ Field</strong> in the <strong>Personalizing</strong> ribbon.</p>
+<p>An <strong>Add field to page</strong> pane will appear on the right side.</p>
+<p>Select the <strong>Amount Excl. Tax/VAT</strong> field and drag it to the right of <strong>Quantity</strong> column in the <strong>Lines</strong> area</p>
+<p>Select <strong>Done</strong> to close <strong>Personalization</strong>.</p>
+<p>In the <strong>Amount Excl. Tax/VAT</strong> field, enter <strong>300</strong>. (25% of 1,200.00)</p>
+<ol start="2">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ol>
+<li>In the <strong>Department Code</strong> field, enter <strong>SALES</strong>.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>In the <strong>Lines</strong> section, create a new line, and fill in the following fields:
+<ol>
+<li>In the <strong>Type</strong> field, select the <strong>G/L Account</strong> option.</li>
+<li>In the <strong>No.</strong> field, enter <strong>73100</strong>.</li>
+<li>In the <strong>Quantity</strong> field, enter <strong>1</strong>.</li>
+<li>In the Amount excl. Tax/VAT field, enter <strong>420</strong>. (35% of 1,200.00)</li>
+<li>In the <strong>Department Code</strong> field, enter <strong>ADM</strong>.</li>
+</ol>
+</li>
+<li>In the <strong>Lines</strong> section, create a new line, and fill in the following fields:
+<ol>
+<li>In the <strong>Type</strong> field, select the <strong>G/L Account</strong> option.</li>
+<li>In the <strong>No.</strong> field, enter <strong>73100</strong>.</li>
+<li>In the <strong>Quantity</strong> field, enter <strong>1</strong>.</li>
+<li>In the Amount excl. Tax/VAT field, enter <strong>480</strong>. (40% of 1,200.00)</li>
+<li>In the <strong>Department Code</strong> field, enter <strong>PROD</strong>.</li>
+</ol>
+</li>
+<li>Select <strong>OK</strong> to close the <strong>Standard Purchase Code Card</strong> page.</li>
+</ol>
+</li>
+</ul>
+<ol>
+<li>The new code is now automatically filled in in the <strong>Code</strong> field on the <strong>Recurring Purchase Lines</strong> page.</li>
+<li>In the <strong>Insert Rec. Lines on Invoices</strong> field, select the <strong>Automatic</strong> option.</li>
+</ol>
+</li>
+<li>Close the <strong>Recurring Purchase Lines</strong> page</li>
+</ol>
+</article><nav class="course-pagination" aria-label="Continue learning"><a href="Lab13_Manage_Accounting_Period.html">← Lab 13: Manage accounting period</a><a href="Lab15_Set_up_Accounts_Receivable.html">Lab 15: Set Up Accounts Receivable →</a></nav></section></main>
+<footer class="site-footer"><div class="shell"><strong>Skunkworks Academy · Microsoft learning</strong><p>Lab materials from the Skunkworks Academy MB-800 repository. Microsoft product names and trademarks belong to Microsoft.</p><a href="../../LICENSE">Content license</a> · <a href="https://github.com/skunkworks-academy/MB-800-Business-Central-Functional-Consultant">Course source</a></div></footer></body></html>

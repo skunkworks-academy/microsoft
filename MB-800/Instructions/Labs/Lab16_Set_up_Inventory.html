@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en-ZA"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab 16: Set up Inventory | Skunkworks Academy</title><meta name="description" content="Get started with warehouse management in Dynamics 365 Business Central">
+<link rel="canonical" href="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab16_Set_up_Inventory.html"><meta name="theme-color" content="#0b1220">
+<meta property="og:type" content="website"><meta property="og:title" content="Lab 16: Set up Inventory"><meta property="og:description" content="Get started with warehouse management in Dynamics 365 Business Central"><meta property="og:url" content="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab16_Set_up_Inventory.html">
+<link rel="stylesheet" href="../../assets/microsoft-hub.css"><link rel="stylesheet" href="../../assets/course.css">
+<script defer src="https://skunkworksacademy.com/assets/academy-navigation.js?v=2026.08.23.1" data-skunkworks-global-nav="v10"></script>
+</head><body><a class="skip-link" href="#main">Skip to content</a>
+<nav class="shell course-nav" aria-label="Course navigation"><a href="https://microsoft.skunkworksacademy.com/#catalog">Microsoft catalog</a><a href="../../index.html">MB-800 overview</a><a href="../../index.html#labs">Lab directory</a></nav>
+<main id="main" data-swa-contrast="preserve"><section class="shell course-section"><p class="eyebrow">MB-800 · 60 minutes</p><h1>Lab 16: Set up Inventory</h1><p>Get started with warehouse management in Dynamics 365 Business Central</p><nav class="course-pagination" aria-label="Lab sequence"><a href="Lab15_Set_up_Accounts_Receivable.html">← Lab 15: Set Up Accounts Receivable</a><a href="Lab17_Configure_Sales.html">Lab 17: Configure Sales →</a></nav><article class="lab-body" aria-label="Lab instructions"><h2>Exercise 16: Set up Inventory</h2>
+<h2>Task 1: Configure the Inventory Setup</h2>
+<h2>Scenario</h2>
+<p>Concerning the processing of inventory-related transactions and the inventory valuation, Contoso’s account manager has expressed the following requirements:</p>
+<ul>
+<li>The web shop items for computer hardware are numbered separately from other items. They are incremented by 1, starting from the number CHW1000.</li>
+<li>All items should be always tracked across the different warehouses.</li>
+<li>Inventory value should be visible in the g/l balance accounts at each invoice/credit memo posting, while interim values are not registered.</li>
+<li>To improve the inventory value process, negative inventory must be prohibited.</li>
+</ul>
+<p>You will perform</p>
+<ol>
+<li>Set up and assign number series.</li>
+<li>Complete inventory costing setup.</li>
+<li>Make location mandatory and prevent negative inventory.</li>
+</ol>
+<h3>Steps</h3>
+<ol>
+<li>Set up and assign number series.
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Inventory Setup, and then choose the related link.</li>
+<li>In the <strong>Inventory Setup</strong> page, go to the <strong>Numbering</strong> FastTab.</li>
+<li>In the <strong>Item Nos.</strong> field, the value <strong>ITEM</strong> is already filled in. Select on the Look Up Value button and select <strong>+ New</strong>.</li>
+<li>In the opened <strong>No. Series List</strong> page, fill in the following fields:
+<ol>
+<li>In the <strong>Code</strong> field, enter <strong>COMPHW</strong></li>
+<li>In the <strong>Description</strong> field, enter <strong>Computer Hardware</strong>.</li>
+<li>Select the <strong>Default Nos.</strong> check box.</li>
+</ol>
+</li>
+<li>Select on the Lookup again and Select on View Details. Select the ellipses (…) and then select <strong>Lines</strong>.</li>
+<li>In the opened <strong>No. Series Lines</strong> page, select <strong>+ New</strong>.
+<ol>
+<li>Leave the <strong>Starting Date</strong> field blank.</li>
+<li>In the <strong>Starting No.</strong> field, enter <strong>CHW1000</strong>.</li>
+<li>In the <strong>Increment-by No.</strong> field, enter the value <strong>1</strong>.</li>
+</ol>
+</li>
+<li>Close the <strong>No. Series Lines</strong> page.</li>
+<li>In the opened <strong>No. Series List</strong> page, select the number series <strong>ITEM</strong>.</li>
+<li>Select the ellipses (…) and then select <strong>Relationships</strong>.</li>
+<li>In the <strong>No. Series Relationships</strong> page, select <strong>+ New</strong>.</li>
+<li>In the <strong>Series Code</strong> field, enter <strong>COMPHW</strong>.</li>
+<li>Close the <strong>No. Series Relationships</strong> page.</li>
+<li>Close the <strong>No. Series List</strong> page by selecting <strong>OK</strong>.</li>
+<li>The number series <strong>ITEM</strong> remains filled in in the <strong>Item Nos.</strong> field, in the <strong>Inventory Setup</strong> page.</li>
+</ol>
+</li>
+<li>Complete inventory costing setup.
+<ol>
+<li>In the <strong>Inventory Setup</strong> page, go to the <strong>General</strong> FastTab.</li>
+<li>Select <strong>Show more</strong>.</li>
+<li>Select the <strong>Automatic Cost Posting</strong> checkbox.</li>
+<li>Deselect the <strong>Expected Cost Posting to G/L</strong> checkbox.</li>
+<li>In the <strong>Automatic Cost Adjustment</strong> field, leave the <strong>Always</strong> option selected.</li>
+</ol>
+</li>
+<li>Make location mandatory and prevent negative inventory.
+<ol>
+<li>In the <strong>Inventory Setup</strong> page, go to the <strong>General</strong> FastTab.</li>
+<li>Select the <strong>Prevent Negative Inventory</strong> checkbox.</li>
+<li>In the <strong>Location</strong> FastTab, select the <strong>Location Mandatory</strong> checkbox.</li>
+</ol>
+</li>
+</ol>
+<h2>Task 2: Create and configure items</h2>
+<h2>Scenario</h2>
+<p>For the sales of computer hardware items, Contoso has invested in a new warehouse located in Europe. This warehouse contains only computer hardware, and none of the other resale items. No warehouse tasks are required.</p>
+<p>Also, in the chart of accounts the inventory value is registered separately on the balance sheet account 10710, and the income statement account 50150.</p>
+<p>You need to set up a new inventory posting group COMPHW and make sure the general posting setup is configured correctly.</p>
+<p>So far, only a few computer hardware items have been set up. These will be created manually.</p>
+<p>Different item features, such as inch, processor, color, will be registered as additional information on the item cards. More specifically the following computer hardware items are created:</p>
+<p>You need to set up new item categories and configure the correct attributes.</p>
+<p>Then you can manually enter the computer hardware items, using a configuration template.</p>
+<p>You will perform</p>
+<ol>
+<li>Create a location.</li>
+<li>Set up an Inventory Posting Group and complete the Inventory Posting Setup.</li>
+<li>Set up Item Categories and Item Attributes.</li>
+<li>Create and configure a new item.</li>
+</ol>
+<h3>Steps</h3>
+<ol>
+<li>Create a location.
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Locations, and then choose the related link.</li>
+<li>In the <strong>Locations</strong> page, select <strong>+New</strong></li>
+<li>In the <strong>Location Card</strong> page, on the <strong>General</strong> FastTab, fill in the following fields:
+<ol>
+<li>In the <strong>Code</strong> field, enter <strong>EUROP</strong>.</li>
+<li>In the <strong>Name</strong> field, enter <strong>European warehouse</strong>.</li>
+</ol>
+</li>
+<li>On the <strong>Warehouse</strong> FastTab, leave all the checkboxes deselected.</li>
+</ol>
+</li>
+<li>Set up an Inventory Posting Setup.
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Inventory Posting Groups, and then choose the related link.</li>
+<li>In the <strong>Inventory Posting Groups</strong> page, select <strong>+ New</strong>.</li>
+<li>In the <strong>Code</strong> field, enter <strong>COMPHW</strong>.</li>
+<li>In the <strong>Description</strong> field, enter <strong>Computer Hardware</strong></li>
+<li>Select <strong>Setup</strong>.</li>
+<li>In the opened <strong>Inventory Posting Setup</strong> page, select <strong>+ New</strong>.</li>
+<li>In the opened <strong>Inventory Posting Setup Card</strong> page, fill in the following fields:
+<ol>
+<li>In the <strong>Location Code</strong> field, enter <strong>EUROP</strong>.</li>
+<li>The <strong>Invt. Posting Group Code</strong> field is automatically filled in with <strong>COMPHW</strong>.</li>
+<li>In the <strong>Inventory Account</strong> field, enter <strong>10710</strong>.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>Create a new account if you do not find it from the list.</p>
+<ol>
+<li>
+<p>Close the <strong>Inventory Posting Setup Card</strong>.</p>
+</li>
+<li>
+<p>Select the Search icon in the top-right corner of the page, enter General Posting Setup, and then choose the related link.</p>
+</li>
+<li>
+<p>In the <strong>General Posting Setup</strong> page, for each combination where the <strong>Gen. Prod. Posting Group</strong> field contains the value <strong>COMPUTERHW</strong>, make sure the following fields are filled in:</p>
+<ol>
+<li>In the <strong>COGS Account</strong> field, enter <strong>50150</strong>.</li>
+<li>In the <strong>Inventory Adjmt. Account</strong> field, enter <strong>50150</strong>.</li>
+<li>In the <strong>Direct Cost Applied Account</strong> field, enter <strong>50150</strong>.</li>
+<li>In the <strong>Overhead Applied Account</strong> field, enter <strong>50150</strong>.</li>
+</ol>
+</li>
+<li>
+<p>Set up Item Categories and Item Attributes.</p>
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Item Categories, and then choose the related link.</li>
+<li>In the <strong>Item Categories</strong> page, select <strong>+ New</strong>.</li>
+<li>In the opened <strong>Item Category Card</strong> page, fill in the following fields:
+<ol>
+<li>In the <strong>Code</strong> field, enter <strong>COMPHW</strong>.</li>
+<li>In the <strong>Description</strong> field, enter <strong>Computer hardware</strong>.</li>
+<li>In the <strong>Attributes</strong> section, enter a new line, filling in the following fields:
+<ol>
+<li>In the <strong>Attribute</strong> field, select on the Look Up Value button and select <strong>Select from full list</strong>.</li>
+<li>In the opened <strong>Item Attributes</strong> page, select +New the <strong>Color</strong> attribute, the field Type – Option.</li>
+<li>Select on the <strong>Values</strong> of <strong>Color</strong>.
+<ol>
+<li>In the opened <strong>Item Attributes Values</strong> page, select <strong>+ New</strong>.</li>
+<li>In the <strong>Value</strong> field, enter <strong>Grey</strong></li>
+<li>Close the <strong>Item Attributes Value</strong> page.</li>
+</ol>
+</li>
+<li>Select <strong>OK</strong> to close the <strong>Item Attributes</strong> page.</li>
+<li>The new code is automatically filled in in the <strong>Attribute</strong> field on the item category card.</li>
+</ol>
+</li>
+<li>Close the item category card.</li>
+</ol>
+</li>
+<li>In the <strong>Item Categories</strong> page, select <strong>+ New</strong>.</li>
+<li>In the opened <strong>Item Category Card</strong> page, fill in the following fields:
+<ol>
+<li>In the <strong>Code</strong> field, enter <strong>COMPUTER</strong>.</li>
+<li>In the <strong>Description</strong> field, enter <strong>Computer</strong>.</li>
+<li>In the <strong>Parent Category</strong> field, enter <strong>COMPHW</strong>.</li>
+<li>In the <strong>Attributes</strong> section, enter a new line, filling in the following fields:
+<ol>
+<li>In the <strong>Attribute</strong> field, select on the Look Up Value button and select <strong>+ New</strong>.</li>
+<li>In the opened <strong>Item Attributes</strong> page, on the new line, fill in the following fields:
+<ol>
+<li>In the <strong>Name</strong> field, enter <strong>Processor</strong>.</li>
+<li>In the <strong>Type</strong> field, select the <strong>Text</strong> option.</li>
+<li>Make sure the new line is selected.</li>
+<li>Select <strong>OK</strong> to close the page.</li>
+</ol>
+</li>
+<li>The new code is automatically filled in in the <strong>Attribute</strong> field on the item category card.</li>
+</ol>
+</li>
+<li>Close the item category card.</li>
+</ol>
+</li>
+<li>In the <strong>Item Categories</strong> page, select <strong>+ New</strong>.</li>
+<li>In the opened <strong>Item Category Card</strong> page, fill in the following fields:
+<ol>
+<li>In the <strong>Code</strong> field, enter <strong>MONITOR</strong>.</li>
+<li>In the <strong>Description</strong> field, enter <strong>Monitor</strong>.</li>
+<li>In the <strong>Parent Category</strong> field, enter <strong>COMPHW</strong>.</li>
+<li>In the <strong>Attributes</strong> section, enter a new line, filling in the following fields:
+<ol>
+<li>In the <strong>Attribute</strong> field, select on the Look Up Value button and select <strong>+ New</strong>.</li>
+<li>In the opened <strong>Item Attributes</strong> page, on the new line, fill in the following fields:
+<ol>
+<li>In the <strong>Name</strong> field, enter <strong>Inch</strong>.</li>
+<li>In the <strong>Type</strong> field, select the <strong>Decimal</strong> option.</li>
+<li>Make sure the new line is selected.</li>
+<li>Select <strong>OK</strong> to close the page.</li>
+</ol>
+</li>
+<li>The new code is automatically filled in in the <strong>Attribute</strong> field on the item category card.</li>
+</ol>
+</li>
+<li>Close the item category card.</li>
+</ol>
+</li>
+<li>In the <strong>Item Categories</strong> page, select <strong>+ New</strong>.</li>
+<li>In the opened <strong>Item Category Card</strong> page, fill in the following fields:
+<ol>
+<li>In the <strong>Code</strong> field, enter <strong>ACCESSORIES</strong>.</li>
+<li>In the <strong>Description</strong> field, enter <strong>Computer accessories</strong>.</li>
+<li>In the <strong>Parent Category</strong> field, enter <strong>COMPHW</strong>.</li>
+<li>Close the item category card.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>Create an Item template.</p>
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Item Templates, and then choose the related link.</li>
+<li>In the <strong>Item Templates</strong> page, select <strong>+ New</strong>.</li>
+<li>In the <strong>Item Template</strong> page, fill in the following fields:
+<ol>
+<li>In the <strong>Code</strong> field, enter <strong>COMPHW</strong></li>
+<li>In the <strong>Description</strong> field, enter <strong>Computer hardware</strong></li>
+<li>In the <strong>No. Series</strong> field, enter <strong>COMPHW</strong>.</li>
+</ol>
+</li>
+<li>Then go to the <strong>Cost &amp; Posting</strong> FastTab and fill in the following fields
+<ol>
+<li>In the <strong>Gen. Prod. Posting Group</strong> field, enter <strong>COMPUTERHW</strong>.</li>
+<li>In the <strong>Inventory Posting Group</strong> field, enter <strong>COMPHW</strong>.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>Close the item template.</p>
+</li>
+<li>
+<p>Create and configure a new item.</p>
+<ol>
+<li>Select the Search for page icon in the top-right corner of the page, enter Items, and then choose the related link.</li>
+<li>On the <strong>Items</strong> page, select <strong>New</strong> and +New</li>
+<li>Select the template <strong>Computer hardware</strong> and select <strong>OK</strong>.</li>
+<li>A new item card is created with number <strong>CHW1000</strong>.</li>
+<li>On the <strong>Item</strong> FastTab, fill in the following fields:
+<ol>
+<li>In the <strong>Description</strong> field, enter <strong>Computer III 533 MHz</strong>.</li>
+<li>In the <strong>Item Category Code</strong> field, enter <strong>COMPUTER</strong>.</li>
+<li>The <strong>Base Unit of Measure</strong> field is filled in with the default value <strong>PCS</strong>.</li>
+</ol>
+</li>
+<li>On the <strong>Item Attribute</strong> FactBox in the right side, select <strong>Edit</strong>.
+<ol>
+<li>For the attribute <strong>Color</strong>, select +New the value <strong>Black</strong>.</li>
+<li>For the attribute <strong>Processor</strong>, enter the value <strong>533 Mhz</strong>.</li>
+<li>Select <strong>OK</strong> to close the FactBox.</li>
+</ol>
+</li>
+<li>Close the item card.</li>
+<li>On the <strong>Items</strong> page, select <strong>+ New</strong>.</li>
+<li>Select the template <strong>Computer hardware</strong> and select <strong>OK</strong>.</li>
+<li>A new item card is created with number <strong>CHW1001</strong>.</li>
+<li>On the <strong>Item</strong> FastTab, fill in the following fields:
+<ol>
+<li>In the <strong>Description</strong> field enter <strong>Computer III 600 MHz</strong>.</li>
+<li>In the <strong>Item Category Code</strong> field, enter <strong>COMPUTER</strong>.</li>
+<li>The <strong>Base Unit of Measure</strong> field is filled in with the default value <strong>PCS</strong>.</li>
+</ol>
+</li>
+<li>On the <strong>Item Attribute</strong> FactBox, select <strong>Edit</strong>.
+<ol>
+<li>For the attribute <strong>Color</strong>, select the value <strong>Black</strong>.</li>
+<li>For the attribute <strong>Processor</strong>, enter the value <strong>600 Mhz</strong>.</li>
+<li>Select <strong>OK</strong> to close the FactBox.</li>
+</ol>
+</li>
+<li>Close the item card.</li>
+<li>On the <strong>Items</strong> page, select <strong>+ New</strong>.</li>
+<li>Select the template <strong>Computer hardware</strong> and select <strong>OK</strong>.</li>
+<li>A new item card is created with number <strong>CHW1002</strong>.</li>
+<li>On the <strong>Item</strong> FastTab, fill in the following fields:
+<ol>
+<li>In the <strong>Description</strong> field, enter <strong>15” 1501 FP Flat Panel</strong>.</li>
+<li>In the <strong>Item Category Code</strong> field, enter <strong>MONITOR</strong>.</li>
+<li>The <strong>Base Unit of Measure</strong> field is filled in with the default value <strong>PCS</strong>.</li>
+</ol>
+</li>
+<li>On the <strong>Item Attribute</strong> FactBox, select <strong>Edit</strong>.
+<ol>
+<li>For the attribute <strong>Color</strong>, select the value <strong>Black</strong>.</li>
+<li>For the attribute <strong>Inch</strong>, enter the value <strong>15</strong>.</li>
+<li>Select <strong>OK</strong> to close the FactBox.</li>
+</ol>
+</li>
+<li>Close the item card.</li>
+<li>On the <strong>Items</strong> page, select <strong>+ New</strong>.</li>
+<li>Select the template <strong>Computer hardware</strong> and select <strong>OK</strong>.</li>
+<li>A new item card is created with number <strong>CHW1003</strong>.</li>
+<li>On the <strong>Item</strong> FastTab, fill in the following fields:
+<ol>
+<li>In the <strong>Description</strong> field, enter <strong>17” M780 Monitor</strong>.</li>
+<li>In the <strong>Item Category Code</strong> field, enter <strong>MONITOR</strong>.</li>
+<li>The <strong>Base Unit of Measure</strong> field is filled in with the default value <strong>PCS</strong>.</li>
+</ol>
+</li>
+<li>On the <strong>Item Attribute</strong> FactBox, select <strong>Edit</strong>.
+<ol>
+<li>For the attribute <strong>Color</strong>, select the value <strong>Black</strong>.</li>
+<li>For the attribute <strong>Inch</strong>, enter the value <strong>17</strong>.</li>
+<li>Select <strong>OK</strong> to close the FactBox.</li>
+</ol>
+</li>
+<li>Close the item card.</li>
+<li>On the <strong>Items</strong> page, select <strong>+ New</strong>.</li>
+<li>Select the template <strong>Computer hardware</strong> and select <strong>OK</strong>.</li>
+<li>A new item card is created with number <strong>CHW1004</strong>.</li>
+<li>On the <strong>Item</strong> FastTab, fill in the following fields:
+<ol>
+<li>In the <strong>Description</strong> field, enter <strong>Advanced Mouse</strong>.</li>
+<li>In the <strong>Item Category Code</strong> field, enter <strong>ACCESSORIES</strong>.</li>
+<li>The <strong>Base Unit of Measure</strong> field is filled in with the default value <strong>PCS</strong>.</li>
+</ol>
+</li>
+<li>On the <strong>Item Attribute</strong> FactBox, select <strong>Edit</strong>.
+<ol>
+<li>For the attribute <strong>Color</strong>, select the value <strong>Grey</strong>.</li>
+<li>Select <strong>OK</strong> to close the FactBox.</li>
+</ol>
+</li>
+<li>Close the item card.</li>
+<li>On the <strong>Items</strong> page, select <strong>+ New</strong>.</li>
+<li>Select the template <strong>Computer hardware</strong> and select <strong>OK</strong>.</li>
+<li>A new item card is created with number <strong>CHW1005</strong>.</li>
+<li>On the <strong>Item</strong> FastTab, fill in the following fields:
+<ol>
+<li>In the <strong>Description</strong> field, enter <strong>Quietkey keyboard</strong>.</li>
+<li>In the <strong>Item Category Code</strong> field, enter <strong>ACCESSORIES</strong>.</li>
+<li>The <strong>Base Unit of Measure</strong> field is filled in with the default value <strong>PCS</strong>.</li>
+</ol>
+</li>
+<li>On the <strong>Item Attribute</strong> FactBox, select <strong>Edit</strong>.
+<ol>
+<li>For the attribute <strong>Color</strong>, select the value <strong>Grey</strong>.</li>
+<li>Select <strong>OK</strong> to close the FactBox.</li>
+</ol>
+</li>
+<li>Close the item card.</li>
+<li>On the <strong>Items</strong> page, select <strong>+ New</strong>.</li>
+<li>Select the template <strong>Computer hardware</strong> and select <strong>OK</strong>.</li>
+<li>A new item card is created with number <strong>CHW1006</strong>.</li>
+<li>On the <strong>Item</strong> FastTab, fill in the following fields:
+<ol>
+<li>In the <strong>Description</strong> field, enter <strong>Speakers</strong>.</li>
+<li>In the <strong>Item Category Code</strong> field, enter <strong>ACCESSORIES</strong>.</li>
+<li>The <strong>Base Unit of Measure</strong> field is filled in with the default value <strong>PCS</strong>. Change the value to <strong>BOX</strong>.</li>
+</ol>
+</li>
+<li>On the <strong>Item Attribute</strong> FactBox, select <strong>Edit</strong>.
+<ol>
+<li>For the attribute <strong>Color</strong>, select +New thethe value <strong>White</strong>.</li>
+<li>Select <strong>OK</strong> to close the FactBox.</li>
+</ol>
+</li>
+<li>Close the item card.</li>
+</ol>
+</li>
+</ol>
+</article><nav class="course-pagination" aria-label="Continue learning"><a href="Lab15_Set_up_Accounts_Receivable.html">← Lab 15: Set Up Accounts Receivable</a><a href="Lab17_Configure_Sales.html">Lab 17: Configure Sales →</a></nav></section></main>
+<footer class="site-footer"><div class="shell"><strong>Skunkworks Academy · Microsoft learning</strong><p>Lab materials from the Skunkworks Academy MB-800 repository. Microsoft product names and trademarks belong to Microsoft.</p><a href="../../LICENSE">Content license</a> · <a href="https://github.com/skunkworks-academy/MB-800-Business-Central-Functional-Consultant">Course source</a></div></footer></body></html>

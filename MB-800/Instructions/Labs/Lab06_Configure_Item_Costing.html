@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="en-ZA"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab 06: Configure item costing | Skunkworks Academy</title><meta name="description" content="Set up general ledger configuration options in Dynamics 365 Business Central">
+<link rel="canonical" href="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab06_Configure_Item_Costing.html"><meta name="theme-color" content="#0b1220">
+<meta property="og:type" content="website"><meta property="og:title" content="Lab 06: Configure item costing"><meta property="og:description" content="Set up general ledger configuration options in Dynamics 365 Business Central"><meta property="og:url" content="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab06_Configure_Item_Costing.html">
+<link rel="stylesheet" href="../../assets/microsoft-hub.css"><link rel="stylesheet" href="../../assets/course.css">
+<script defer src="https://skunkworksacademy.com/assets/academy-navigation.js?v=2026.08.23.1" data-skunkworks-global-nav="v10"></script>
+</head><body><a class="skip-link" href="#main">Skip to content</a>
+<nav class="shell course-nav" aria-label="Course navigation"><a href="https://microsoft.skunkworksacademy.com/#catalog">Microsoft catalog</a><a href="../../index.html">MB-800 overview</a><a href="../../index.html#labs">Lab directory</a></nav>
+<main id="main" data-swa-contrast="preserve"><section class="shell course-section"><p class="eyebrow">MB-800 · 90 minutes</p><h1>Lab 06: Configure item costing</h1><p>Set up general ledger configuration options in Dynamics 365 Business Central</p><nav class="course-pagination" aria-label="Lab sequence"><a href="Lab05_Set_up_and_use_a_purchase_approval_workflow.html">← Lab 05: Set up and use a purchase approval workflow</a><a href="Lab07_Configure_Chart_of_Accts.html">Lab 07: Configure Chart of Accounts and Posting Groups →</a></nav><article class="lab-body" aria-label="Lab instructions"><h2>Exercise: Configure item costing</h2>
+<h2>Task 1. Apply the Average costing method.</h2>
+<h2>Scenario</h2>
+<p>The company is a retail business that has historically valued its inventory using the Average Cost method, with the average calculated over the month. As the accountant, your task is to record several retail purchase and sales transactions for December 2025, all posted to the EUROPE location.</p>
+<p>Purchase documents:</p>
+<table>
+<thead>
+<tr>
+<th>Document Date</th>
+<th>Vendor Name</th>
+<th>Vendor Document number</th>
+<th>Item</th>
+<th>Quantity, Pieces</th>
+<th>Price $</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>12/1/2025</td>
+<td>Wide World Importers</td>
+<td>WW25/367</td>
+<td>Computer III 533 MHz</td>
+<td>2</td>
+<td>800</td>
+</tr>
+<tr>
+<td>12/10/2025</td>
+<td>Wide World Importers</td>
+<td>WW25/368</td>
+<td>Computer III 533 MHz</td>
+<td>1</td>
+<td>1000</td>
+</tr>
+</tbody>
+</table>
+<p>Sales documents:</p>
+<table>
+<thead>
+<tr>
+<th>Document Date</th>
+<th>Customer Name</th>
+<th>Customer Order No.</th>
+<th>Item</th>
+<th>Quantity, Pieces</th>
+<th>Price $</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>12/16/2025</td>
+<td>Trey Research</td>
+<td>25-0111</td>
+<td>Computer III 533 MHz</td>
+<td>1</td>
+<td>1800</td>
+</tr>
+<tr>
+<td>12/25/2025</td>
+<td>Trey Research</td>
+<td>25-0201</td>
+<td>Computer III 533 MHz</td>
+<td>1</td>
+<td>1800</td>
+</tr>
+<tr>
+<td>12/26/2026</td>
+<td>Trey Research</td>
+<td>25-0202</td>
+<td>Computer III 533 MHz</td>
+<td>1</td>
+<td>1800</td>
+</tr>
+</tbody>
+</table>
+<p>After registering the documents, you need to check that the item has an average cost and check its transactions.</p>
+<p>You will perform:</p>
+<ul>
+<li>
+<p>Set up the Average costing method for inventory.</p>
+</li>
+<li>
+<p>Configure costing method for new item card.</p>
+</li>
+<li>
+<p>Register item purchases.</p>
+</li>
+<li>
+<p>Register item sales.</p>
+</li>
+<li>
+<p>Analise cost and posted entries related to items.</p>
+</li>
+</ul>
+<h3>Steps</h3>
+<ol>
+<li>
+<p>Set up the Average costing method for inventory.
+Select the Search icon in the top-right corner of the page, enter Inventory Setup, and then choose the related link.
+In the Inventory Setup page, go to the General FastTab, select More.</p>
+</li>
+<li>
+<p>In the Default Costing Method field, select Average option.</p>
+</li>
+<li>
+<p>In the Average Cost period field, select Month option.</p>
+</li>
+<li>
+<p>Configure costing method for new item card.</p>
+<p>a. Select the Search for page icon in the top-right corner of the page, enter Items, and then choose the related link.</p>
+<p>b. On the Items page, select item Computer III 533 MHz CHW1000.</p>
+<p>c. In the Item card page, go to Cost&amp;Posting FastTab.</p>
+<p>d. In the Costing method field, select Average option.</p>
+<p>e. Close the item card.</p>
+</li>
+<li>
+<p>Register item purchases.</p>
+<p>a. Select the Search for page icon in the top-right corner of the page, enter Purchase Orders , and then choose the related link.</p>
+<p>b. Select +New and select in the Vendor No. field vendor 40000 Wide World Importers.</p>
+<p>c. On the General FastTab, select Show more and then fill in the following fields:</p>
+<ol>
+<li>In the Document Date, Posting Date fields, enter 12/1/2025.</li>
+<li>In the Vendor Address field, enter 123 Main Street.</li>
+<li>In the Vendor Invoice No. field, enter WW25/367.</li>
+</ol>
+</li>
+<li>
+<p>On the Lines section, enter a new line by filling in the following field:</p>
+<ol>
+<li>In the Type field, enter Item.</li>
+<li>In the No. field, enter CHW1000 for the  Computer III 533 MHz.</li>
+<li>In the Location Code field, select the value EUROP.</li>
+<li>In the Unit of Measure Code field, the value PCS is automatically filled in.</li>
+<li>In the Quantity field, enter 2.</li>
+<li>In the Direct Unit Cost Excl. Tax/VAT field, enter 800.</li>
+<li>In the Posting field, select Post.</li>
+<li>Select Receive and Invoice, select OK.</li>
+<li>Select No to open the posted purchase invoice.</li>
+</ol>
+</li>
+<li>
+<p>Repeat step actions to enter and post the purchase document WW25/368 on 12/10/2025.</p>
+</li>
+<li>
+<p>Register item sales.</p>
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Sales Orders and then choose the related link.</li>
+<li>On the Sales Orders list page, select +New.</li>
+<li>On the opened Sales Order card page, on the General FastTab, select Show more and then fill in the following fields:
+<ol>
+<li>In the Customer No. field, enter 20000 Trey Research</li>
+<li>In the Document Date, Posting Date fields, enter 12/16/2025.</li>
+<li>In the External Document No. field, enter 25-0111.</li>
+</ol>
+</li>
+<li>On the Lines section, enter a new line by filling in the following fields:
+<ol>
+<li>In the Type field, enter Item.</li>
+<li>In the No. field, enter CHW1000 Computer III 533 MHz.</li>
+<li>In the Location Code field, select the value EUROP.</li>
+<li>In the Unit of Measure Code field, the value PCS is automatically filled in.</li>
+<li>In the Quantity field, enter 1.</li>
+<li>In the Unit Price Excl.Tax/VAT enter 1800.</li>
+<li>In the Tax Group Code field, enter NONTAXABLE.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>Select Home and then select Post.</p>
+</li>
+<li>
+<p>Select the Ship and Invoice option and select OK.</p>
+</li>
+<li>
+<p>Select No to open the posted sales invoice.</p>
+</li>
+<li>
+<p>Repeat step actions to enter and post the sales documents 25-0201 on 12/25/2025, 25-0202 on 12/26/2026.</p>
+</li>
+<li>
+<p>Analyze item cost on item card.</p>
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Items and then choose the related link.</li>
+<li>On the opened Items list page, select Item No. CHW1000, select Manage, View.</li>
+<li>In the Item card page, go to Cost&amp;Posting FastTab.</li>
+<li>Check the Unit cost field has value 866.66 and the Last Direct Cost field has value of the last purchase 1000.</li>
+</ol>
+</li>
+<li>
+<p>Analyze Item Ledger Entries.</p>
+<ol>
+<li>Select on the menu Related, History, Entries, Item Ledger Entries.</li>
+<li>Sort by the Posting date field.</li>
+<li>Ensure that all sales entries show the same average Cost Amount (Actual). The average cost should equal: Sum of Purchase Cost Amount (Actual) ÷ Sum of Purchase Quantity</li>
+</ol>
+</li>
+</ol>
+<p>NOTE: Amount may differ by 0.01 because of rounding.</p>
+<table>
+<thead>
+<tr>
+<th>Posting Date</th>
+<th>Entry Type</th>
+<th>Document Type</th>
+<th>Item No.</th>
+<th>Quantity</th>
+<th>Sales Amount (Actual)</th>
+<th>Cost Amount (Actual)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>12/01/2025</td>
+<td>Purchase</td>
+<td>Purchase Receipt</td>
+<td>CHW1000</td>
+<td>2</td>
+<td>0.00</td>
+<td>1,600.00</td>
+</tr>
+<tr>
+<td>12/10/2025</td>
+<td>Purchase</td>
+<td>Purchase Receipt</td>
+<td>CHW1000</td>
+<td>1</td>
+<td>0.00</td>
+<td>1,000.00</td>
+</tr>
+<tr>
+<td>12/16/2025</td>
+<td>Sale</td>
+<td>Sales Shipment</td>
+<td>CHW1000</td>
+<td>-1</td>
+<td>1,800.00</td>
+<td>-866.67</td>
+</tr>
+<tr>
+<td>12/25/2025</td>
+<td>Sale</td>
+<td>Sales Shipment</td>
+<td>CHW1000</td>
+<td>-1</td>
+<td>1,800.00</td>
+<td>-866.67</td>
+</tr>
+<tr>
+<td>12/26/2025</td>
+<td>Sale</td>
+<td>Sales Shipment</td>
+<td>CHW1000</td>
+<td>-1</td>
+<td>1,800.00</td>
+<td>-866.66</td>
+</tr>
+</tbody>
+</table>
+<ol start="15">
+<li>
+<p>Related Value entries and G/L entries.</p>
+</li>
+<li>
+<p>In the Item ledger entries list, select the last sales entries from 12/16/25.</p>
+</li>
+<li>
+<p>Select on the menu of Entry, Value Entries.</p>
+</li>
+<li>
+<p>Verify that the Value entry shows:</p>
+<ol>
+<li>Sales Amount (Actual): 1800</li>
+<li>Cost Amount (Actual): 866.67</li>
+<li>This cost amount should match the average cost for the period for this item.</li>
+</ol>
+</li>
+<li>
+<p>Select Find Entries, G/L Entry to view the related general ledger postings linked to the value entry.</p>
+</li>
+<li>
+<p>Close General Ledger entries page.</p>
+</li>
+<li>
+<p>Close Find entries page.</p>
+</li>
+<li>
+<p>Close Value Entries page.</p>
+</li>
+<li>
+<p>Applied item entries.</p>
+<ol>
+<li>In the Item ledger entries list, select in the menu Application Worksheet.</li>
+<li>On the Application Worksheet page, select the Item filter field CHW1000.</li>
+<li>Select the line with sales entry from 12/16/25, the first sales for this item.</li>
+<li>Select Applied Entries.</li>
+<li>Make sure that you see the purchase entry from 12/1/25. This is the first purchase entry for this item.</li>
+<li>Close View Applied Entries page.</li>
+</ol>
+</li>
+<li>
+<p>Close Application Worksheet page.</p>
+</li>
+</ol>
+<h2>Task 2: Change to FIFO costing method.</h2>
+<h2>Scenario</h2>
+<p>The company is entering a new fiscal year and management has decided to move from the Average Cost method to the FIFO (First
+In, First
+Out) costing method. As the accountant, your responsibility is to ensure the transition is handled correctly and that new transactions follow FIFO rules.</p>
+<p>You begin by reviewing the inventory quantities at the EUROPE location to confirm what stock remains from the previous year. Once verified, you proceed to repost inventory using the FIFO costing method, ensuring that all new cost layers created in the new fiscal year follow FIFO valuation. After the costing method is updated, you record several retail purchase and sales transactions for January 2026, all posted to the EUROPE location.</p>
+<table>
+<thead>
+<tr>
+<th>Document Date</th>
+<th>Vendor Name</th>
+<th>Vendor Document number</th>
+<th>Item</th>
+<th>Quantity, Pieces</th>
+<th>Price $</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1/1/2026</td>
+<td>Wide World Importers</td>
+<td>WW26/001</td>
+<td>Computer III 533 MHz</td>
+<td>2</td>
+<td>800</td>
+</tr>
+<tr>
+<td>1/10/2026</td>
+<td>Wide World Importers</td>
+<td>WW26/002</td>
+<td>Computer III 533 MHz</td>
+<td>1</td>
+<td>1000</td>
+</tr>
+</tbody>
+</table>
+<p>Sales documents:</p>
+<table>
+<thead>
+<tr>
+<th>Document Date</th>
+<th>Customer Name</th>
+<th>Customer Order No.</th>
+<th>Item</th>
+<th>Quantity, Pieces</th>
+<th>Price $</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1/16/2026</td>
+<td>Trey Research</td>
+<td>26-0111</td>
+<td>Computer III 533 MHz</td>
+<td>1</td>
+<td>1800</td>
+</tr>
+<tr>
+<td>1/25/2026</td>
+<td>Trey Research</td>
+<td>26-0201</td>
+<td>Computer III 533 MHz</td>
+<td>1</td>
+<td>1800</td>
+</tr>
+<tr>
+<td>1/26/2026</td>
+<td>Trey Research</td>
+<td>26-0202</td>
+<td>Computer III 533 MHz</td>
+<td>1</td>
+<td>1800</td>
+</tr>
+</tbody>
+</table>
+<p>After registering the documents, you need to check that the item has an average cost and check its transactions.</p>
+<p>You will perform:</p>
+<ul>
+<li>
+<p>Set up the FIFO costing method for inventory.</p>
+</li>
+<li>
+<p>Copy an item and assign FiFO costing method.</p>
+</li>
+<li>
+<p>Register item purchases.</p>
+</li>
+<li>
+<p>Register item sales.</p>
+</li>
+<li>
+<p>Analise cost and posted entries related to items.</p>
+</li>
+</ul>
+<h3>Steps</h3>
+<ol>
+<li>
+<p>Set up the FIFO costing method for inventory.</p>
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Inventory Setup, and then choose the related link.</li>
+<li>In the Inventory Setup page, go to the General FastTab, select More.</li>
+<li>In the Default Costing Method field, select FIFO option.</li>
+</ol>
+</li>
+<li>
+<p>Copy an item and assign FiFO costing method.</p>
+<ol>
+<li>Select the Search for page icon in the top-right corner of the page, enter Items, and then choose the related link.</li>
+<li>On the Items page, select item Computer III 533 MHz CHW1000, Edit.</li>
+<li>Select the menu for Home, Copy Item.</li>
+<li>On the Copy Item page</li>
+<li>In the Source Item No. field, the value  CHW1000 is automatically filled in.</li>
+<li>In the Target No. Series field, select the value COMPHW.</li>
+<li>In the Number of copies field, leave value 1.</li>
+<li>Select the Copy all information and Show Created items fields.</li>
+<li>Select OK.</li>
+</ol>
+</li>
+<li>
+<p>On the item CHW1006 Computer III 533 MHz card page, on the Cost&amp;Posting  FastTab</p>
+<ol>
+<li>In the Costing method field, select the value FIFO.</li>
+<li>In the Unit Cost and Last Direct Cost select the value 0.</li>
+<li>Close the item card.</li>
+</ol>
+</li>
+<li>
+<p>Register item purchases.</p>
+<ol>
+<li>Select the Search for page icon in the top-right corner of the page, enter Purchase Orders, and then choose the related link.</li>
+<li>Select +New and select in the Vendor No. field vendor 40000 Wide World Importers.</li>
+<li>On the General FastTab, select Show more and then fill in the following fields:
+<ol>
+<li>In the Document Date, Posting Date fields, enter 1/1/2026.</li>
+<li>In the Vendor Invoice No. field, enter WW26/001.</li>
+</ol>
+</li>
+<li>On the Lines section, enter a new line by filling in the following fields:
+<ol>
+<li>In the Type field, enter Item.</li>
+<li>In the No. field, enter CHW1006 for the  Computer III 533 MHz.</li>
+<li>In the Location Code field, select the value EUROP.</li>
+<li>In the Unit of Measure Code field, the value PCS is automatically filled in.</li>
+<li>In the Quantity field, enter 2.</li>
+<li>In the Direct Unit Cost Excl. Tax/VAT field, enter 800.</li>
+</ol>
+</li>
+<li>Select the dropdown of Posting, and then select Post.</li>
+<li>Select Receive and Invoice, select OK.</li>
+<li>Select No to open the posted purchase invoice.</li>
+<li>Repeat step actions to enter and post the purchase document WW26/002 on 1/10/2026.</li>
+</ol>
+</li>
+<li>
+<p>Register item sales.</p>
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Sales Orders and then choose the related link.</li>
+<li>On the Sales Orders list page, select +New.</li>
+<li>On the opened Sales Order card page, on the General FastTab, select Show more and then fill in the following fields:
+4. In the Customer No. field, enter 20000 Trey Research
+5. In the Document Date, Posting Date fields, enter 1/16/2026.
+6. In the External Document No. field, enter 26-0111.</li>
+<li>On the Lines section, enter a new line by filling in the following fields:
+<ol>
+<li>In the Type field, enter Item.</li>
+<li>In the No. field, enter CHW1006 Computer III 533 MHz.</li>
+<li>In the Location Code field, select the value EUROP.</li>
+<li>In the Unit of Measure Code field, the value PCS is automatically filled in.</li>
+<li>In the Quantity field, enter 1.</li>
+<li>In the Unit Price Excl.Tax/VAT enter 1800.</li>
+<li>In the Tax Group Code field, enter NONTAXABLE.</li>
+</ol>
+</li>
+<li>Select Home and then select Post.</li>
+<li>Select the Ship and Invoice option and select OK.</li>
+<li>Select No to open the posted sales invoice.</li>
+<li>Repeat step actions to enter and post the sales document 26-0201 on 1/25/2026, 26-0202 on 1/26/2026</li>
+</ol>
+</li>
+<li>
+<p>Analyze posted entries related to items.</p>
+<ol>
+<li>Analyze item cost on item card.
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Items and then choose the related link.</li>
+<li>On the opened Items list page, select Item No. CHW1003, select Manage, View.</li>
+<li>In the Item card page, go to Cost&amp;Posting FastTab.</li>
+<li>Check the Unit cost field has value 1000 and the Last Direct Cost field has value of the last purchase 1000.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>Analyze Item Ledger Entries.</p>
+<ol>
+<li>Select on the menu Related, History, Entries, Item Ledger Entries.</li>
+<li>Sort by the Posting date field.</li>
+<li>Ensure that the sales entries show different Cost Amount (Actual) values.</li>
+</ol>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Posting Date</th>
+<th>Entry Type</th>
+<th>Document Type</th>
+<th>Item No.</th>
+<th>Quantity</th>
+<th>Sales Amount (Actual)</th>
+<th>Cost Amount (Actual)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01/01/2026</td>
+<td>Purchase</td>
+<td>Purchase Receipt</td>
+<td>CHW1006</td>
+<td>2</td>
+<td>0.00</td>
+<td>1,600.00</td>
+</tr>
+<tr>
+<td>10/01/2026</td>
+<td>Purchase</td>
+<td>Purchase Receipt</td>
+<td>CHW1006</td>
+<td>1</td>
+<td>0.00</td>
+<td>1,000.00</td>
+</tr>
+<tr>
+<td>16/01/2026</td>
+<td>Sale</td>
+<td>Sales Shipment</td>
+<td>CHW1006</td>
+<td>-1</td>
+<td>1,800.00</td>
+<td>-800.00</td>
+</tr>
+<tr>
+<td>25/01/2026</td>
+<td>Sale</td>
+<td>Sales Shipment</td>
+<td>CHW1006</td>
+<td>-1</td>
+<td>1,800.00</td>
+<td>-800.00</td>
+</tr>
+<tr>
+<td>26/01/2026</td>
+<td>Sale</td>
+<td>Sales Shipment</td>
+<td>CHW1006</td>
+<td>-1</td>
+<td>1,800.00</td>
+<td>-1,000.00</td>
+</tr>
+</tbody>
+</table>
+<ol start="8">
+<li>
+<p>Related Value entries and G/L entries.</p>
+<ol>
+<li>In the Item ledger entries list, select the last sales entry dated 1/16/26.</li>
+<li>From the menu, select Entry, Value Entries.</li>
+<li>Verify that the Value entry shows:
+<ol>
+<li>Sales Amount (Actual) 1800</li>
+<li>Cost Amount (Actual) 800, this amount should match the unit cost from the first purchase.</li>
+</ol>
+</li>
+<li>Select Find Entries, G/L Entry to view the related general ledger postings.</li>
+</ol>
+</li>
+<li>
+<p>Close General Ledger entries page.</p>
+</li>
+<li>
+<p>Close Find entries page.</p>
+</li>
+<li>
+<p>Close Value Entries page.</p>
+</li>
+<li>
+<p>Applied item entries.</p>
+<ol>
+<li>In the Item ledger entries list, select the sales entry dated 1/16/26.</li>
+<li>On the menu, select Entry, Applied entries.</li>
+<li>Confirm that the applied entries include the purchase entry dated 1/1/26, which represents the first purchase for this item.
+Close Applied Item entries page.</li>
+</ol>
+</li>
+</ol>
+</article><nav class="course-pagination" aria-label="Continue learning"><a href="Lab05_Set_up_and_use_a_purchase_approval_workflow.html">← Lab 05: Set up and use a purchase approval workflow</a><a href="Lab07_Configure_Chart_of_Accts.html">Lab 07: Configure Chart of Accounts and Posting Groups →</a></nav></section></main>
+<footer class="site-footer"><div class="shell"><strong>Skunkworks Academy · Microsoft learning</strong><p>Lab materials from the Skunkworks Academy MB-800 repository. Microsoft product names and trademarks belong to Microsoft.</p><a href="../../LICENSE">Content license</a> · <a href="https://github.com/skunkworks-academy/MB-800-Business-Central-Functional-Consultant">Course source</a></div></footer></body></html>

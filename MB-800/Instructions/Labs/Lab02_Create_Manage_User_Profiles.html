@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en-ZA"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab 02: Create and manage user profiles | Skunkworks Academy</title><meta name="description" content="Manage users and implement security in Dynamics 365 Business Central">
+<link rel="canonical" href="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab02_Create_Manage_User_Profiles.html"><meta name="theme-color" content="#0b1220">
+<meta property="og:type" content="website"><meta property="og:title" content="Lab 02: Create and manage user profiles"><meta property="og:description" content="Manage users and implement security in Dynamics 365 Business Central"><meta property="og:url" content="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab02_Create_Manage_User_Profiles.html">
+<link rel="stylesheet" href="../../assets/microsoft-hub.css"><link rel="stylesheet" href="../../assets/course.css">
+<script defer src="https://skunkworksacademy.com/assets/academy-navigation.js?v=2026.08.23.1" data-skunkworks-global-nav="v10"></script>
+</head><body><a class="skip-link" href="#main">Skip to content</a>
+<nav class="shell course-nav" aria-label="Course navigation"><a href="https://microsoft.skunkworksacademy.com/#catalog">Microsoft catalog</a><a href="../../index.html">MB-800 overview</a><a href="../../index.html#labs">Lab directory</a></nav>
+<main id="main" data-swa-contrast="preserve"><section class="shell course-section"><p class="eyebrow">MB-800 · 30 minutes</p><h1>Lab 02: Create and manage user profiles</h1><p>Manage users and implement security in Dynamics 365 Business Central</p><nav class="course-pagination" aria-label="Lab sequence"><a href="Lab01_Create_company.html">← Lab 01: Create and configure a new company</a><a href="Lab03_Perform_Actions_with_Copilot.html">Lab 03: Perform actions with Copilot →</a></nav><article class="lab-body" aria-label="Lab instructions"><h2>Exercise: Create and manage user profiles</h2>
+<h2>Task 1: Make a copy of the profile without customization.</h2>
+<h2>Scenario</h2>
+<p>You are acting as the System Administrator responsible for configuring a new profile for Sales Managers in Business Central. The profile must be created by copying the standard SALES MANAGER profile and kept free of unnecessary customizations, ensuring it aligns with the organization’s requirements while maintaining consistency with the base role.</p>
+<p>You will perform:</p>
+<ul>
+<li>
+<p>Make a copy of the profile.</p>
+</li>
+<li>
+<p>Clear customization.</p>
+</li>
+</ul>
+<h3>Steps</h3>
+<ol>
+<li>Make a copy of the profile.</li>
+</ol>
+<p>Select the Search icon in the top-right corner of the page, enter Profiles(Roles) and then choose the related link.</p>
+<p>In the Profiles(Roles) page, select line with Profile ID field – SALES MANAGER, select Copy Profile on the menu.</p>
+<p>Enter SALES CONTOSO to the Profile ID field.</p>
+<p>Enter Sales Manager Contoso to the Display Name field.</p>
+<p>Select OK.</p>
+<ol start="2">
+<li>Clear customization.</li>
+</ol>
+<p>In the Profiles(Roles) page, select line with Profile ID field – SALES CONTOSO, select Edit.</p>
+<p>Select Clear Customized pages on the Profile(Role) page.</p>
+<p>Select Yes.</p>
+<p>Select OK.</p>
+<h2>Task 2: Set up a profile</h2>
+<h2>Scenario</h2>
+<p>The new profile must include a tailored Role Center and provide access to essential pages such as Customers, Sales Orders, and Reports. Sales Managers must not be allowed to add fields to any pages, ensuring controlled personalization and consistent data entry. Sections related to User Tasks and Job Queue Tasks are not required and should be removed, while the My Job Queue section must remain visible to support operational monitoring.</p>
+<p>You will perform:</p>
+<ul>
+<li>
+<p>Customize profile hide and show sections.</p>
+</li>
+<li>
+<p>Lock editing profile</p>
+</li>
+</ul>
+<h3>Steps</h3>
+<ol>
+<li>
+<p>Customize profile hide and show sections.</p>
+</li>
+<li>
+<p>Select the Search icon in the top-right corner of the page, enter Profiles(Roles) and then choose the related link.</p>
+</li>
+<li>
+<p>In the Profiles(Roles) page, select line with Profile ID field – SALES CONTOSO, select Manage, Edit on the menu.</p>
+</li>
+</ol>
+<p>NOTE: New web page will be opened in the browser in Customize mode, in the left top corner will be the sign Customizing, Sales Manager Contoso.</p>
+<ol start="4">
+<li>
+<p>Select the My Job Queue section, click on the red triangle at the top of the section, and select Show.</p>
+</li>
+<li>
+<p>Scroll down to the end of the page.</p>
+</li>
+<li>
+<p>Select the User Tasks section, click on the red triangle at the top of the section, and select Hide.</p>
+</li>
+<li>
+<p>Select the Job Queue tasks section, click on the red triangle at the top of the section, and select Hide.</p>
+</li>
+<li>
+<p>Select Done. Message Customization completed successfully. ... will be shown.</p>
+</li>
+<li>
+<p>Close the current web page then return to the initial web page.</p>
+</li>
+<li>
+<p>Lock editing profile</p>
+</li>
+</ol>
+<p>In the Profiles(Roles) page, select line with Profile ID field – SALES CONTOSO, select Manage, Edit on the menu.</p>
+<p>Select Disable Personalization.</p>
+<h2>Task 3: Assign a profile to the user.</h2>
+<h2>Scenario</h2>
+<p>You will assign a new configured profile to a designated user so that the Sales Manager experience reflects the intended layout, permissions, and navigation structure.</p>
+<h3>Steps</h3>
+<ol>
+<li>
+<p>Select the Search icon in the top-right corner of the page, enter User Settings and then choose the related link.</p>
+</li>
+<li>
+<p>In the User Settings page, select line with your user, select Manage, Edit on the menu.</p>
+</li>
+<li>
+<p>Select in the Role field – Sales Manager Contoso.</p>
+</li>
+</ol>
+</article><nav class="course-pagination" aria-label="Continue learning"><a href="Lab01_Create_company.html">← Lab 01: Create and configure a new company</a><a href="Lab03_Perform_Actions_with_Copilot.html">Lab 03: Perform actions with Copilot →</a></nav></section></main>
+<footer class="site-footer"><div class="shell"><strong>Skunkworks Academy · Microsoft learning</strong><p>Lab materials from the Skunkworks Academy MB-800 repository. Microsoft product names and trademarks belong to Microsoft.</p><a href="../../LICENSE">Content license</a> · <a href="https://github.com/skunkworks-academy/MB-800-Business-Central-Functional-Consultant">Course source</a></div></footer></body></html>

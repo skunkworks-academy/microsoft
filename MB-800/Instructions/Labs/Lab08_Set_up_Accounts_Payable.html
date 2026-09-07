@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en-ZA"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab 08: Set Up Accounts Payable | Skunkworks Academy</title><meta name="description" content="Set up posting groups in Dynamics 365 Business Central">
+<link rel="canonical" href="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab08_Set_up_Accounts_Payable.html"><meta name="theme-color" content="#0b1220">
+<meta property="og:type" content="website"><meta property="og:title" content="Lab 08: Set Up Accounts Payable"><meta property="og:description" content="Set up posting groups in Dynamics 365 Business Central"><meta property="og:url" content="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab08_Set_up_Accounts_Payable.html">
+<link rel="stylesheet" href="../../assets/microsoft-hub.css"><link rel="stylesheet" href="../../assets/course.css">
+<script defer src="https://skunkworksacademy.com/assets/academy-navigation.js?v=2026.08.23.1" data-skunkworks-global-nav="v10"></script>
+</head><body><a class="skip-link" href="#main">Skip to content</a>
+<nav class="shell course-nav" aria-label="Course navigation"><a href="https://microsoft.skunkworksacademy.com/#catalog">Microsoft catalog</a><a href="../../index.html">MB-800 overview</a><a href="../../index.html#labs">Lab directory</a></nav>
+<main id="main" data-swa-contrast="preserve"><section class="shell course-section"><p class="eyebrow">MB-800 · 30 minutes</p><h1>Lab 08: Set Up Accounts Payable</h1><p>Set up posting groups in Dynamics 365 Business Central</p><nav class="course-pagination" aria-label="Lab sequence"><a href="Lab07_Configure_Chart_of_Accts.html">← Lab 07: Configure Chart of Accounts and Posting Groups</a><a href="Lab09_Set_up_General_Journals.html">Lab 09: Set Up General Journals →</a></nav><article class="lab-body" aria-label="Lab instructions"><h2>Exercise: Set Up Accounts Payable</h2>
+<h2>Task 1: Configure the Purchases &amp; Payables Setup</h2>
+<h2>Scenario</h2>
+<p>Concerning the processing of purchase invoices and credit memos, Contoso’s accounting manager has expressed the following requirements:</p>
+<ul>
+<li>Posted purchase invoices and credit memos are not numbered separately, but they follow the same numbering. This number will include the year and will start from 1 each year as follows:</li>
+</ul>
+<p>The first purchase document, as of January 1st, 2025, will be posted with the number P25/0001. The next year will be P26/0001 and so on.</p>
+<p>This numbering should be respected in a chronological order and cannot be entered manually.</p>
+<ul>
+<li>A separate G/L account 20200 is setup to record any discounts that were given by the vendors.</li>
+</ul>
+<p>You will perform</p>
+<ol>
+<li>Set up and assign number series.</li>
+<li>Complete discount posting setup.</li>
+</ol>
+<h3>Steps</h3>
+<ol>
+<li>Set up and assign number series.
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Purchases &amp; Payables Setup and then choose the related link.</li>
+<li>In the <strong>Purchases &amp; Payables Setup</strong> page, go to the <strong>Number Series</strong> FastTab.</li>
+<li>In the <strong>Posted Invoice Nos.</strong> field, select on the Look Up Value button and select <strong>+ New.</strong></li>
+<li>In the opened <strong>No. Series List</strong> page, fill in the following fields:
+<ol>
+<li>In the <strong>Code</strong> field, enter <strong>PINCN+</strong></li>
+<li>In the <strong>Description</strong> field, enter <strong>Posted Purchase Invoices and Credit memos</strong>.</li>
+<li>Select the <strong>Default Nos.</strong> check box.</li>
+<li>Select the <strong>Date Order</strong> check box.</li>
+</ol>
+</li>
+<li>Select the ellipses (…), then select <strong>Lines</strong>.</li>
+<li>In the opened <strong>No. Series Lines</strong> page, select <strong>+ New</strong>.
+<ol>
+<li>In the <strong>Starting Date</strong> field, enter <strong>1/1/2025</strong>.</li>
+<li>In the <strong>Starting No.</strong> field, enter <strong>P25/0001</strong>.</li>
+<li>In the <strong>Increment-by No.</strong> field, leave the value <strong>1</strong>.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>In the opened <strong>No. Series Lines</strong> page, select <strong>+ New</strong>.</p>
+<p>In the <strong>Starting Date</strong> field, enter <strong>1/1/2026</strong>.</p>
+<p>In the <strong>Starting No.</strong> field, enter <strong>P26/0001</strong>.</p>
+<p>In the <strong>Increment-by No.</strong> field, leave the value <strong>1</strong>.</p>
+<ol>
+<li>
+<p>Close the <strong>No. Series Lines</strong> page.</p>
+</li>
+<li>
+<p>Close the <strong>No. Series List</strong> page, by selecting <strong>OK</strong>.</p>
+</li>
+<li>
+<p>The new number series PINCN+ is now automatically filled in in the <strong>Posted Invoice Nos.</strong> field, in the <strong>Purchases &amp; Payables Setup</strong> page.</p>
+</li>
+<li>
+<p>In the <strong>Posted Credit Memo Nos</strong>. field, enter <strong>PINCN+</strong>.</p>
+</li>
+<li>
+<p>Complete discount posting setup.</p>
+<ol>
+<li>In the <strong>Purchases &amp; Payables Setup</strong> page, go to the <strong>General</strong> FastTab.</li>
+<li>In the <strong>Discount Posting</strong> field, select the <strong>All Discounts</strong> option.</li>
+<li>Select the Search icon in the top-right corner of the page, enter General Posting Setup, and then choose the related link.</li>
+<li>In the <strong>General Posting Setup</strong> page, for each possible combination of <strong>Gen. Bus. Posting Group</strong> and <strong>Gen. Prod. Posting Group</strong>, make sure the following fields are filled in:
+<ol>
+<li>In the <strong>Purch. Line Disc. Account</strong> field, the value <strong>20200</strong> must be filled in.</li>
+<li>In the <strong>Purch. Inv. Disc. Account</strong> field, the value <strong>20200</strong> must be filled in.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>Note – If you do not find the value – Please proceed with creating a new.</p>
+<h2>Task 2: Create a payment journal template and batch</h2>
+<h2>Scenario</h2>
+<p>The accounting manager at Contoso would now like to use the European bank account to make payment files.</p>
+<p>You must set up a separate payment journal for this purpose.</p>
+<p>You will perform</p>
+<ol>
+<li>Create a general journal template.</li>
+<li>Create a general journal template batch.</li>
+</ol>
+<h3>Steps</h3>
+<ol>
+<li>Create a general journal template.
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter General Journal Templates, and then choose the related link.</li>
+<li>In the <strong>General Journal Templates</strong> page, select <strong>+ New</strong>.</li>
+<li>Fill in the following fields:
+<ol>
+<li>In the <strong>Name</strong> field, enter <strong>EUROP</strong>.</li>
+<li>In the <strong>Description</strong> field, enter <strong>Payments EUROP</strong>.</li>
+<li>In the <strong>Type</strong> field, select the <strong>Payments</strong> option.</li>
+<li>In the <strong>Bal. Account Type</strong> field, select the <strong>Bank Account</strong> option.</li>
+<li>In the <strong>No. Series</strong> field, enter <strong>GJNL-PMT</strong>.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Create a general journal template batch.
+<ol>
+<li>In the <strong>General Journal Templates</strong> page, make sure the <strong>EUROP</strong> journal is selected.</li>
+<li>Select <strong>Batches</strong>.</li>
+<li>In the opened <strong>General Journal Batches</strong> page, select <strong>+ New.</strong></li>
+<li>Fill in the following fields:
+<ol>
+<li>In the <strong>Name</strong> field, enter <strong>EUROP</strong>.</li>
+<li>In the <strong>Description</strong> field, enter <strong>Payments EUROP</strong></li>
+<li>Select the <strong>Allow Payment Export</strong> check box.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2>Task 3: Create and configure vendors</h2>
+<h2>Scenario</h2>
+<p>Based on the chart of accounts, you will set up the different vendor posting groups. With their fast-growing business abroad, they want to keep track of their accounts payables in the US (domestic) and in other EU countries (foreign) separately. A third group will be set up to register transactions with EU third-party alliances (intercompany) they have set up to expand their business even further.</p>
+<p>The DOMESTIC vendor posting group is already set up. The other vendor posting groups will be based on this group, but with different balance accounts (20150 for foreign vendors and 20175 for intercompany vendors).</p>
+<p>During the implementation process most of the master data for vendors was already imported. These vendors will now have to be configured correctly by adding the correct posting groups. First create templates based on the different posting groups. Then apply these templates to the existing vendors.</p>
+<p>You will perform</p>
+<ol>
+<li>Set up a Vendor Posting Group.</li>
+<li>Create Vendor Templates.</li>
+<li>Configure vendors.</li>
+</ol>
+<h3>Steps</h3>
+<ol>
+<li>Set up a Vendor Posting Group.
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Vendor Posting Groups, and then choose the related link.</li>
+<li>In the <strong>Vendor Posting Groups</strong> page, select <strong>FOREIGN</strong>.</li>
+<li>In the <strong>Vendor Posting Group Card</strong> page, fill in the following fields:
+<ol>
+<li>In the <strong>Payables Account</strong> field, fill in <strong>20150</strong>.</li>
+<li>Close the page.</li>
+</ol>
+</li>
+<li>In the <strong>Vendor Posting Groups</strong> page, select <strong>+ New</strong>.</li>
+<li>In the <strong>Vendor Posting Group Card</strong> page, fill in the following fields:
+<ol>
+<li>In the <strong>Code</strong> field, fill in <strong>INTERCOMPANY</strong>.</li>
+<li>In the <strong>Description</strong> field, fill in <strong>Intercompany vendors</strong>.</li>
+<li>In the <strong>Payables Account</strong> field, fill in <strong>20175</strong>.Close the page.</li>
+</ol>
+</li>
+<li>From the <strong>Vendor Posting Groups</strong> page, copy the other g/l accounts from the <strong>DOMESTIC</strong> vendor posting group to the <strong>FOREIGN</strong> and <strong>INTERCOMPANY</strong> vendor posting groups. Copy the following fields:
+<ol>
+<li>Payment Disc. Debit Acc.</li>
+<li>Payment Disc. Credit Acc.</li>
+<li>Invoice Rouding Account</li>
+<li>Debit Curr. Appln. Rndg. Acc.</li>
+<li>Credit Curr. Appln. Rndg. Acc.</li>
+<li>Debit Rounding Account</li>
+<li>Credit Rounding Account</li>
+<li>Payment Tolerance Debit Acc.</li>
+<li>Payment Tolerance Credit Acc.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Create Vendor Templates.
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Vendor Templates and then choose the related link.</li>
+<li>In the <strong>Vendor Templates</strong> page, select <strong>+ New</strong>.</li>
+<li>In the opened <strong>Vendor Template</strong> page, fill in the following fields:
+<ol>
+<li>In the <strong>Code</strong> field, enter <strong>DOMESTIC</strong></li>
+<li>In the <strong>Description</strong> field, enter <strong>Domestic vendors</strong></li>
+<li>Then go to the <strong>Invoicing</strong> FastTab and fill in the following fields:</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>In the <strong>Gen. Bus. Posting Group</strong> field, enter <strong>DOMESTIC</strong>.</li>
+<li>In the <strong>Vendor Posting Group</strong> field, enter <strong>DOMESTIC</strong>.
+<ol>
+<li>Close the vendor template.</li>
+<li>In the <strong>Vendor Templates</strong> page, select <strong>+ New</strong>.</li>
+<li>In the opened vendor template:</li>
+</ol>
+</li>
+<li>Go to the <strong>General</strong> FastTab and fill in the following fields:
+<ol>
+<li>In the <strong>Code</strong> field, enter <strong>EU</strong></li>
+<li>In the <strong>Description</strong> field, enter <strong>EU vendors</strong></li>
+</ol>
+</li>
+<li>Then go to the <strong>Invoicing</strong> FastTab and fill in the following fields:
+<ol>
+<li>In the <strong>Gen. Bus. Posting Group</strong> field, enter <strong>EU</strong>.</li>
+<li>In the <strong>Vendor Posting Group</strong> field, enter <strong>FOREIGN</strong>.</li>
+</ol>
+</li>
+<li>Close the vendor template.
+<ol>
+<li>In the <strong>Vendor Templates</strong> page, select <strong>+ New</strong>.</li>
+<li>In the opened vendor template:</li>
+<li>Go to the <strong>General</strong> FastTab and fill in the following fields:
+<ol>
+<li>In the <strong>Code</strong> field, enter <strong>INTERCOMP</strong></li>
+<li>In the <strong>Description</strong> field, enter <strong>Intercompany vendors</strong></li>
+</ol>
+</li>
+<li>Then go to the <strong>Invoicing</strong> FastTab and fill in the following fields:
+<ol>
+<li>In the <strong>Gen. Bus. Posting Group</strong> field, enter <strong>EU</strong>.</li>
+<li>In the <strong>Vendor Posting Group</strong> field, enter <strong>INTERCOMPANY</strong>.</li>
+</ol>
+</li>
+<li>Close the vendor template.</li>
+<li>In the <strong>Vendor Templates</strong> page, select <strong>+ New</strong>.</li>
+<li>In the opened vendor template:</li>
+</ol>
+</li>
+<li>Go to the <strong>General</strong> FastTab and fill in the following fields:
+<ol>
+<li>In the <strong>Code</strong> field, enter <strong>EXPORT</strong></li>
+<li>In the <strong>Description</strong> field, enter <strong>Export vendors</strong></li>
+</ol>
+</li>
+<li>Then go to the <strong>Invoicing</strong> FastTab and fill in the following fields:
+<ol>
+<li>In the <strong>Gen. Bus. Posting Group</strong> field, enter <strong>EXPORT</strong>.</li>
+<li>In the <strong>Vendor Posting Group</strong> field, enter <strong>FOREIGN</strong>.</li>
+</ol>
+</li>
+<li>Close the <strong>Vendor Template</strong>.</li>
+<li>Configure vendors.</li>
+<li>Select the Search icon in the top-right corner of the page, enter Vendors, and then choose the related link.</li>
+<li>In the <strong>Vendors</strong> page, multi-select imported <strong>Domestic</strong> vendors <strong>V9001</strong>, <strong>V9003</strong> and <strong>V9007</strong>.</li>
+</ol>
+<p>If any of these vendors are missing, create them using the same vendor numbers before continuing. Do this for all the vendors mentioned in the next steps as well.</p>
+<ol>
+<li>Select <strong>Apply Template</strong>.</li>
+<li>In the <strong>Vendor Templates</strong> list, select <strong>Domestic vendors</strong>, and select <strong>OK.</strong></li>
+<li>Select <strong>Yes</strong>.</li>
+<li>In the <strong>Vendors</strong> list page, multi-select imported <strong>EU</strong> vendors <strong>V9002</strong>, <strong>V9005</strong> and <strong>V9006</strong>.</li>
+<li>Select <strong>Apply Template</strong>.</li>
+<li>In the <strong>Vendor Templates</strong> list, select <strong>EU vendors</strong>, and select <strong>OK.</strong></li>
+<li>Select <strong>Yes</strong>.</li>
+<li>In the <strong>Vendors</strong> list page, multi-select imported <strong>Export</strong> vendors <strong>V9004</strong> and <strong>V9008</strong>.</li>
+<li>Select <strong>Apply Template</strong>.</li>
+<li>In the <strong>Vendor Templates</strong> list, select <strong>Export vendors</strong>, and select <strong>OK.</strong></li>
+<li>Select <strong>Yes</strong>.</li>
+</ol>
+</article><nav class="course-pagination" aria-label="Continue learning"><a href="Lab07_Configure_Chart_of_Accts.html">← Lab 07: Configure Chart of Accounts and Posting Groups</a><a href="Lab09_Set_up_General_Journals.html">Lab 09: Set Up General Journals →</a></nav></section></main>
+<footer class="site-footer"><div class="shell"><strong>Skunkworks Academy · Microsoft learning</strong><p>Lab materials from the Skunkworks Academy MB-800 repository. Microsoft product names and trademarks belong to Microsoft.</p><a href="../../LICENSE">Content license</a> · <a href="https://github.com/skunkworks-academy/MB-800-Business-Central-Functional-Consultant">Course source</a></div></footer></body></html>

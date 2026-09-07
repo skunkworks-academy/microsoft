@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en-ZA"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab 07: Configure Chart of Accounts and Posting Groups | Skunkworks Academy</title><meta name="description" content="Set up the chart of accounts in Dynamics 365 Business Central">
+<link rel="canonical" href="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab07_Configure_Chart_of_Accts.html"><meta name="theme-color" content="#0b1220">
+<meta property="og:type" content="website"><meta property="og:title" content="Lab 07: Configure Chart of Accounts and Posting Groups"><meta property="og:description" content="Set up the chart of accounts in Dynamics 365 Business Central"><meta property="og:url" content="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab07_Configure_Chart_of_Accts.html">
+<link rel="stylesheet" href="../../assets/microsoft-hub.css"><link rel="stylesheet" href="../../assets/course.css">
+<script defer src="https://skunkworksacademy.com/assets/academy-navigation.js?v=2026.08.23.1" data-skunkworks-global-nav="v10"></script>
+</head><body><a class="skip-link" href="#main">Skip to content</a>
+<nav class="shell course-nav" aria-label="Course navigation"><a href="https://microsoft.skunkworksacademy.com/#catalog">Microsoft catalog</a><a href="../../index.html">MB-800 overview</a><a href="../../index.html#labs">Lab directory</a></nav>
+<main id="main" data-swa-contrast="preserve"><section class="shell course-section"><p class="eyebrow">MB-800 · 30 minutes</p><h1>Lab 07: Configure Chart of Accounts and Posting Groups</h1><p>Set up the chart of accounts in Dynamics 365 Business Central</p><nav class="course-pagination" aria-label="Lab sequence"><a href="Lab06_Configure_Item_Costing.html">← Lab 06: Configure item costing</a><a href="Lab08_Set_up_Accounts_Payable.html">Lab 08: Set Up Accounts Payable →</a></nav><article class="lab-body" aria-label="Lab instructions"><h2>Exercise 7: Configure Chart of Accounts and Posting Groups</h2>
+<h2>Task 1: Configure the Chart of Accounts</h2>
+<h2>Scenario</h2>
+<p>During the implementation process, Contoso’s superusers are systematically informed and trained in different areas of the system during work sessions. After following the work sessions about the chart of accounts, posting groups and dimensions, the accounting manager has reviewed Contoso’s chart of accounts and has added some G/L accounts. The further setup of posting groups is done in collaboration with you, the functional consultant.</p>
+<p>Some accounts were added to distinguish very easily between purchases and sales made within their own country, and for each product type, without having to set up even more dimensions. These accounts will be posted to through the setup of posting groups.</p>
+<p>Also the expenses are more detailed, where we can see a clear separation between staff-related expenses and other expenses. All staff-related expenses are posted to the G/L accounts 60700 until 61100, where it is obligated to indicate a specific department each time an expense is made.</p>
+<p>Your first job is to make sure the G/L accounts are created correctly and that the necessary dimensions are connected.</p>
+<p>You will perform</p>
+<ol>
+<li>Create a G/L Account card.</li>
+<li>Assign default dimensions to multiple G/L Accounts.</li>
+</ol>
+<h3>Steps</h3>
+<ol>
+<li>Create a G/L Account card.
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Chart of Accounts and then choose the related link.</li>
+</ol>
+</li>
+</ol>
+<p><strong>NOTE: If accounts 10100 and 10200 already exist, go to instructions for 10250 and continue from there.</strong></p>
+<p>In the <strong>Chart of Accounts</strong> page, select <strong>+ New</strong>.</p>
+<ol>
+<li>In the new general ledger account card, fill in the following fields:
+<ol>
+<li>In the <strong>No.</strong> field, enter 10100</li>
+<li>In the <strong>Name</strong> field, enter Bank Account - Operating.</li>
+<li>In the <strong>Income/Balance</strong> field, select the value <strong>Balance Sheet</strong>.</li>
+<li>In the <strong>Account Category</strong> field, select the value <strong>Assets</strong></li>
+<li>In the <strong>Account Subcategory</strong> field, select the value <strong>Current Assets</strong>.</li>
+<li>In the Debit/Credit Balance field, select the value <strong>Debit</strong>.</li>
+<li>Close the <strong>G/L Account Card</strong> page.</li>
+</ol>
+</li>
+</ol>
+<p>In the <strong>Chart of Accounts</strong> page, select <strong>+ New</strong>.</p>
+<ol>
+<li>
+<p>In the new general ledger account card, fill in the following fields:</p>
+<ol>
+<li>In the <strong>No.</strong> field, enter 10200</li>
+<li>In the <strong>Name</strong> field, enter Bank Account - Savings.</li>
+<li>In the <strong>Income/Balance</strong> field, select the value <strong>Balance Sheet</strong>.</li>
+<li>In the <strong>Account Category</strong> field, select the value <strong>Assets</strong></li>
+<li>In the <strong>Account Subcategory</strong> field, select the value <strong>Current Assets</strong>.</li>
+<li>In the Debit/Credit Balance field, select the value <strong>Debit</strong>.</li>
+<li>Close the <strong>G/L Account Card</strong> page.</li>
+</ol>
+</li>
+<li>
+<p>In the <strong>Chart of Accounts</strong> page, select <strong>+ New</strong>.</p>
+</li>
+<li>
+<p>In the new general ledger account card, fill in the following fields:</p>
+<ol>
+<li>In the <strong>No.</strong> field, enter 10250</li>
+<li>In the <strong>Name</strong> field, enter European Bank.</li>
+<li>In the <strong>Income/Balance</strong> field, select the value <strong>Balance Sheet</strong>.</li>
+<li>In the <strong>Account Category</strong> field, select the value <strong>Assets</strong></li>
+<li>In the <strong>Account Subcategory</strong> field, select the value <strong>Cash</strong>.</li>
+<li>Deselect the option <strong>Direct Posting</strong>.</li>
+<li>Close the <strong>G/L Account Card</strong> page.</li>
+</ol>
+</li>
+<li>
+<p>In the <strong>Chart of Accounts</strong> page, select <strong>+ New</strong>.</p>
+</li>
+<li>
+<p>In the new general ledger account card, fill in the following fields:</p>
+<ol>
+<li>In the <strong>No.</strong> field, enter 10400</li>
+<li>In the <strong>Name</strong> field, enter Opening Customer Entries.</li>
+<li>In the <strong>Income/Balance</strong> field, select the value <strong>Balance Sheet</strong>.</li>
+<li>In the <strong>Account Category</strong> field, select the value <strong>Assets</strong></li>
+<li>In the <strong>Account Subcategory</strong> field, select the value <strong>Accounts Receivables</strong>.</li>
+<li>Close the <strong>G/L Account Card</strong> page.</li>
+</ol>
+</li>
+<li>
+<p>In the new general ledger account card, fill in the following fields:</p>
+<ol>
+<li>In the <strong>No.</strong> field, enter 10450</li>
+<li>In the <strong>Name</strong> field, enter Accounts Receivables – Foreign.</li>
+<li>In the <strong>Income/Balance</strong> field, select the value <strong>Balance Sheet</strong>.</li>
+<li>In the <strong>Account Category</strong> field, select the value <strong>Assets</strong></li>
+<li>In the <strong>Account Subcategory</strong> field, select the value <strong>Accounts Receivables</strong>.</li>
+<li>Deselect the option <strong>Direct Posting</strong>.</li>
+<li>Close the <strong>G/L Account Card</strong> page.</li>
+</ol>
+</li>
+<li>
+<p>Repeat above steps for account <strong>10475</strong>.</p>
+</li>
+<li>
+<p>In the <strong>Chart of Accounts</strong> page, select <strong>+ New</strong>.</p>
+</li>
+<li>
+<p>In the new general ledger account card, fill in the following fields:</p>
+<ol>
+<li>In the <strong>No.</strong> field, enter 10710</li>
+<li>In the <strong>Name</strong> field, enter Inventory – Computer Hardware.</li>
+<li>In the <strong>Income/Balance</strong> field, select the value <strong>Balance Sheet</strong>.</li>
+<li>In the <strong>Account Category</strong> field, select the value <strong>Assets</strong></li>
+<li>In the <strong>Account Subcategory</strong> field, select the value <strong>Inventory</strong>.</li>
+<li>Deselect the option <strong>Direct Posting</strong>.</li>
+<li>Close the <strong>G/L Account Card</strong> page.</li>
+</ol>
+</li>
+<li>
+<p>In the <strong>Chart of Accounts</strong> page, select <strong>+ New</strong>.</p>
+</li>
+<li>
+<p>In the new general ledger account card, fill in the following fields:</p>
+<ol>
+<li>In the <strong>No.</strong> field, enter 20100</li>
+<li>In the <strong>Name</strong> field, enter Opening Vendor Ledger.</li>
+<li>In the <strong>Income/Balance</strong> field, select the value <strong>Balance Sheet</strong>.</li>
+<li>In the <strong>Account Category</strong> field, select the value <strong>Liabilities</strong></li>
+<li>In the <strong>Account Subcategory</strong> field, select the value <strong>Current Liabilities</strong>.</li>
+<li>Close the <strong>G/L Account Card</strong> page.</li>
+</ol>
+</li>
+<li>
+<p>In the <strong>Chart of Accounts</strong> page, select <strong>+ New</strong>.</p>
+</li>
+<li>
+<p>In the new general ledger account card, fill in the following fields:</p>
+<ol>
+<li>In the <strong>No.</strong> field, enter 20150</li>
+<li>In the <strong>Name</strong> field, enter Accounts Payable – Foreign.</li>
+<li>In the <strong>Income/Balance</strong> field, select the value <strong>Balance Sheet</strong>.</li>
+<li>In the <strong>Account Category</strong> field, select the value <strong>Liabilities</strong></li>
+<li>In the <strong>Account Subcategory</strong> field, select the value <strong>Current Liabilities</strong>.</li>
+<li>Deselect the option <strong>Direct Posting</strong>.</li>
+<li>Close the <strong>G/L Account Card</strong> page.</li>
+</ol>
+</li>
+<li>
+<p>Repeat above steps for the account <strong>20175 Intercompany vendors</strong>.</p>
+</li>
+<li>
+<p>In the <strong>Chart of Accounts</strong> page, select <strong>+ New</strong>.</p>
+</li>
+<li>
+<p>In the new general ledger account card, fill in the following fields:</p>
+<ol>
+<li>In the <strong>No.</strong> field, enter 40230</li>
+<li>In the <strong>Name</strong> field, enter Product Sales – Computer hardware.</li>
+<li>In the <strong>Income/Balance</strong> field, select the value <strong>Income Statement</strong>.</li>
+<li>In the <strong>Account Category</strong> field, select the value <strong>Income</strong></li>
+<li>In the <strong>Account Subcategory</strong> field, select the value <strong>Income, Product Sales</strong>.</li>
+<li>Deselect the option <strong>Direct Posting</strong>.</li>
+<li>Close the <strong>G/L Account Card</strong> page.</li>
+</ol>
+</li>
+<li>
+<p>In the <strong>Chart of Accounts</strong> page, select <strong>+ New</strong>.</p>
+</li>
+<li>
+<p>In the new general ledger account card, fill in the following fields:</p>
+<ol>
+<li>In the <strong>No.</strong> field, enter 50150</li>
+<li>In the <strong>Name</strong> field, enter Materials - Computer Hardware.</li>
+<li>In the <strong>Income/Balance</strong> field, select the value <strong>Income Statement</strong>.</li>
+<li>In the <strong>Account Category</strong> field, select the value <strong>Cost of Goods Sold</strong></li>
+<li>In the <strong>Account Subcategory</strong> field, select the value <strong>Materials</strong>.</li>
+<li>Deselect the option <strong>Direct Posting</strong>.</li>
+<li>Close the <strong>G/L Account Card</strong> page.</li>
+</ol>
+</li>
+<li>
+<p>In the <strong>Chart of Accounts</strong> page, select <strong>+ New</strong>.</p>
+</li>
+<li>
+<p>In the new general ledger account card, fill in the following fields:</p>
+<ol>
+<li>In the <strong>No.</strong> field, enter 61450</li>
+<li>In the <strong>Name</strong> field, enter Travel Expenses.</li>
+<li>In the <strong>Income/Balance</strong> field, select the value <strong>Income Statement</strong>.</li>
+<li>In the <strong>Account Category</strong> field, select the value <strong>Expense</strong></li>
+<li>In the <strong>Account Subcategory</strong> field, select the value <strong>Travel Expense</strong>.</li>
+<li>Close the <strong>G/L Account Card</strong> page.</li>
+</ol>
+</li>
+<li>
+<p>In the <strong>Chart of Accounts</strong> page, select <strong>+ New</strong>.</p>
+</li>
+<li>
+<p>In the new general ledger account card, fill in the following fields:</p>
+<ol>
+<li>In the <strong>No.</strong> field, enter 61850</li>
+<li>In the <strong>Name</strong> field, enter VAT.</li>
+<li>In the <strong>Income/Balance</strong> field, select the value <strong>Income Statement</strong>.</li>
+<li>In the <strong>Account Category</strong> field, select the value <strong>Expense</strong></li>
+<li>In the <strong>Account Subcategory</strong> field, select the value <strong>Tax Expense</strong>.</li>
+<li>Deselect the option <strong>Direct Posting</strong>.</li>
+<li>Close the <strong>G/L Account Card</strong> page.</li>
+</ol>
+</li>
+<li>
+<p>In the <strong>Chart of Accounts</strong> page, select <strong>Home</strong> and then select <strong>Indent Chart of Accounts</strong>.</p>
+</li>
+<li>
+<p>Select <strong>Yes</strong>.</p>
+</li>
+<li>
+<p>Assign default dimensions to multiple G/L Accounts.</p>
+<ol>
+<li>In the <strong>Chart of Accounts</strong> page, select general ledger accounts 60110 until 61100 <em>(Select 60110, hold the Shift Key and click 61100).</em></li>
+<li>Select <strong>Account</strong>, then <strong>Dimensions-Multiple</strong>, and then select <strong>Dimensions – Multiple</strong>.</li>
+<li>In the <strong>Default Dimensions-Multiple</strong> page, select <strong>+ New</strong>.</li>
+<li>In the <strong>Dimensions Code</strong> field, enter <strong>DEPARTMENT</strong>.</li>
+<li>In the <strong>Value Posting</strong> field, enter the value <strong>Code Mandatory</strong>.</li>
+<li>Select <strong>OK</strong>.</li>
+</ol>
+</li>
+</ol>
+<h2>Task 2: Set up posting groups</h2>
+<h2>Scenario</h2>
+<p>Contoso recently decided to start selling computer hardware through their European web shop. To keep track of these new line of product, they will record these sales on a separate income statement account 40210, apart from the other retail activities. They will have to comply to European legislation and calculate 15% VAT on all their web shop sales. This VAT amount will be posted to the general ledger account 61850. <em>(Remark: this is just for exercise purposes and not based on actual legislation.)</em></p>
+<p>The products are mainly purchased with export vendors, no VAT needs to be paid in these countries. Purchase with EU vendors is however also possible.</p>
+<p>The necessary general ledger accounts were already created in the previous exercise. It is now up to you to complete the General Posting Setup and the VAT Posting Setup.</p>
+<p>You will perform</p>
+<ol>
+<li>Create a VAT Product Posting Group.</li>
+<li>Create a VAT Business Posting Group.</li>
+<li>Complete the Tax/VATPosting Setup</li>
+<li>Create a Product Posting Group.</li>
+<li>Create a Business Posting Group.</li>
+<li>Complete the General Posting Setup.</li>
+</ol>
+<p>[!NOTE] Ensure Task 1 is completed and that the required general ledger accounts exist before continuing.</p>
+<h3>Steps</h3>
+<ol>
+<li>Create a VAT Product Posting Group.
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter VAT Product Posting Groups and then choose the related link.</li>
+<li>In the <strong>VAT Product Posting Groups</strong> page, select the first blank row.</li>
+<li>In the <strong>Code</strong> field, enter <strong>GOOD</strong>.</li>
+<li>In the <strong>Description</strong> field, enter <strong>Goods .</strong></li>
+</ol>
+</li>
+<li>Create a VAT Business Posting Group.
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter VAT Business Posting Groups and then choose the related <a href="http://link.In">link.In</a> the <strong>VAT Business Posting Groups</strong> page, select <strong>+ New</strong>.</li>
+<li>In the <strong>Code</strong> field, enter <strong>EU</strong>.</li>
+<li>In the <strong>Description</strong> field, enter <strong>EU</strong>.</li>
+</ol>
+</li>
+<li>Complete the Tax/VAT Posting Setup.
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Tax/VAT Posting Setup and then choose the related link.</li>
+<li>In the <strong>Tax /VAT Posting Setup</strong> page, select <strong>+ New</strong>.</li>
+<li>In the new tax posting setup card, fill in the following fields:
+<ol>
+<li>In the <strong>VAT Bus. Posting Group</strong> field, enter <strong>EU</strong>. Select <strong>Yes</strong>.</li>
+<li>In the <strong>VAT Prod. Posting Group</strong> field, enter <strong>GOOD</strong>. Select <strong>Yes</strong>.</li>
+<li>In the <strong>VAT Calculation Type</strong> field, enter <strong>Normal Tax/VAT</strong>.</li>
+<li>In the <strong>Description</strong> field, enter <strong>Web Shop Sales</strong>.</li>
+<li>In the <strong>Tax%/VAT%</strong> field, enter <strong>15</strong>.</li>
+<li>In the <strong>Tax/VAT Identifier</strong> field, enter <strong>G15</strong>.</li>
+<li>In the <strong>Sales Tax/VAT Account</strong> field, enter <strong>61850</strong>.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Create a Product Posting Group.
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter General Product Posting Groups and then choose the related link.</li>
+<li>In the <strong>General Product Posting Groups</strong> page, select <strong>+ New</strong>.</li>
+<li>In the <strong>Code</strong> field, enter <strong>COMPUTERHW</strong>.</li>
+<li>In the <strong>Description</strong> field, enter <strong>Computer Hardware</strong>.</li>
+<li>In the <strong>Def. VAT Prod. Posting Group</strong> field, enter <strong>GOOD</strong>.</li>
+</ol>
+</li>
+<li>Create a General Business Posting Group
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter Gen. Business Posting Groups and then choose the related link.</li>
+<li>In the <strong>Gen. Business Posting Groups</strong> page, select <strong>EU</strong>.</li>
+<li>In the <strong>Def. VAT Bus. Posting Group</strong> field, fill in <strong>EU</strong>.</li>
+<li>Select <strong>Yes</strong>.</li>
+</ol>
+</li>
+<li>Complete the General Posting Setup.
+<ol>
+<li>Select the Search icon in the top-right corner of the page, enter General Posting Setup and then choose the related link.</li>
+<li>In the <strong>General Posting Setup</strong> page, select <strong>+ New</strong>.</li>
+<li>In the new general posting setup card, in the <strong>General</strong> FastTab, fill in the following fields:
+<ol>
+<li>In the <strong>Gen. Bus. Posting Group</strong> field, fill in <strong>EU</strong>.</li>
+<li>In the <strong>Gen. Prod. Posting Group</strong> field, fill in <strong>COMPUTERHW</strong>.</li>
+</ol>
+</li>
+<li>Select <strong>Copy</strong>.</li>
+<li>In the page that opens, fill in the following fields:
+<ol>
+<li>In the <strong>Gen. Bus. Posting Group</strong> field, fill in <strong>DOMESTIC</strong>.</li>
+<li>In the <strong>Gen. Prod. Posting Group</strong> field, fill in <strong>RETAIL</strong>.</li>
+<li>In the <strong>Copy</strong> field, select the <strong>All fields</strong> option.</li>
+<li>Leave all the checkboxes selected.</li>
+<li>Select <strong>OK</strong>.</li>
+<li>Select <strong>Yes</strong>.</li>
+</ol>
+</li>
+<li>In the new general posting setup card, in the <strong>Sales</strong> FastTab, change the following fields:
+<ol>
+<li>In the <strong>Sales Account</strong> field, update the value to 40210</li>
+<li>In the <strong>Sales Credit Memo Account</strong> field, update the value to 40210</li>
+</ol>
+</li>
+<li>In the new general posting setup card, in the <strong>Purchases</strong> FastTab, change the following fields:
+<ol>
+<li>In the <strong>Purch. Account</strong> field, update the value to 50150.</li>
+<li>In the <strong>Purch. Credit Memo Account</strong> field, update the value to 50150.</li>
+</ol>
+</li>
+<li>In the <strong>General Posting Setup</strong> page, select <strong>+ New</strong>.</li>
+<li>In the new general posting setup card, in the <strong>General</strong> FastTab, fill in the following fields:
+<ol>
+<li>In the <strong>Gen. Bus. Posting Group</strong> field, fill in <strong>EXPORT</strong>.</li>
+<li>In the <strong>Gen. Prod. Posting Group</strong> field, fill in <strong>COMPUTERHW</strong>.</li>
+</ol>
+</li>
+<li>Select <strong>Copy</strong>.</li>
+<li>In the page that opens, fill in the following fields:
+<ol>
+<li>In the <strong>Gen. Bus. Posting Group</strong> field, fill in <strong>EU</strong>.</li>
+<li>In the <strong>Gen. Prod. Posting Group</strong> field, fill in <strong>COMPUTERHW</strong>.</li>
+<li>In the <strong>Copy</strong> field, select the <strong>All fields</strong> option.</li>
+<li>Leave all the checkboxes selected.</li>
+<li>Select <strong>OK</strong>.</li>
+<li>Select <strong>Yes</strong>.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</article><nav class="course-pagination" aria-label="Continue learning"><a href="Lab06_Configure_Item_Costing.html">← Lab 06: Configure item costing</a><a href="Lab08_Set_up_Accounts_Payable.html">Lab 08: Set Up Accounts Payable →</a></nav></section></main>
+<footer class="site-footer"><div class="shell"><strong>Skunkworks Academy · Microsoft learning</strong><p>Lab materials from the Skunkworks Academy MB-800 repository. Microsoft product names and trademarks belong to Microsoft.</p><a href="../../LICENSE">Content license</a> · <a href="https://github.com/skunkworks-academy/MB-800-Business-Central-Functional-Consultant">Course source</a></div></footer></body></html>

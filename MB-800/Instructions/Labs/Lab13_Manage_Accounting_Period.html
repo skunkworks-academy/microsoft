@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en-ZA"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab 13: Manage accounting period | Skunkworks Academy</title><meta name="description" content="Close a fiscal year in Dynamics 365 Business Central">
+<link rel="canonical" href="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab13_Manage_Accounting_Period.html"><meta name="theme-color" content="#0b1220">
+<meta property="og:type" content="website"><meta property="og:title" content="Lab 13: Manage accounting period"><meta property="og:description" content="Close a fiscal year in Dynamics 365 Business Central"><meta property="og:url" content="https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab13_Manage_Accounting_Period.html">
+<link rel="stylesheet" href="../../assets/microsoft-hub.css"><link rel="stylesheet" href="../../assets/course.css">
+<script defer src="https://skunkworksacademy.com/assets/academy-navigation.js?v=2026.08.23.1" data-skunkworks-global-nav="v10"></script>
+</head><body><a class="skip-link" href="#main">Skip to content</a>
+<nav class="shell course-nav" aria-label="Course navigation"><a href="https://microsoft.skunkworksacademy.com/#catalog">Microsoft catalog</a><a href="../../index.html">MB-800 overview</a><a href="../../index.html#labs">Lab directory</a></nav>
+<main id="main" data-swa-contrast="preserve"><section class="shell course-section"><p class="eyebrow">MB-800 · 30 minutes</p><h1>Lab 13: Manage accounting period</h1><p>Close a fiscal year in Dynamics 365 Business Central</p><nav class="course-pagination" aria-label="Lab sequence"><a href="Lab12_Prepare_Financial_Reporting.html">← Lab 12: Prepare financial reporting</a><a href="Lab14_Configure_Purchasing.html">Lab 14: Configure Purchasing →</a></nav><article class="lab-body" aria-label="Lab instructions"><h2>Exercise 13: Manage accounting period.</h2>
+<h2>Task 1: Close posting period for the user.</h2>
+<h2>Scenario</h2>
+<p>Your task is to manage the accounting periods in Business Central by closing the posting period 2025 for selected users. You will restrict posting dates for a specific user to avoid posting entries in the closed period.</p>
+<p>Select the Search icon in the top-right corner of the page, enter User Setup and then choose the related link.</p>
+<p>In the User Setup page, in the new line select User ID.
+In the Allow Posting from field enter 1/1/26.</p>
+<p>Close User Setup.</p>
+<h2>Task 2: Close posting period for everyone.</h2>
+<h2>Scenario</h2>
+<p>As part of the year
+end process, you must ensure that no users can post new transactions into the period 2025 that has just closed. After reviewing the company’s accounting calendar, management has confirmed that all entries for the month are complete. To protect the integrity of financial data, your task is to close the posting period for all users so that no further postings can be made in that timeframe.</p>
+<p>Select the Search icon in the top-right corner of the page, enter General Ledger Setup and then choose the related link.
+On the General FastTab</p>
+<p>In the Allow Posting from field, enter 1/1/26.</p>
+<p>Close General Ledger Setup.</p>
+<h2>Task 3: Close fiscal year.</h2>
+<h2>Scenario</h2>
+<p>As the company completes its year
+end activities, all financial transactions for the fiscal year have been reviewed, adjusted, and finalized. Management has confirmed that no additional postings should be made to the closing 2025 year. Your task is to close the fiscal year in Business Central to lock the period and prevent further changes. You will complete the year
+end closing process so the system can begin the new fiscal year with accurate, protected financial data.</p>
+<p>You will perform:</p>
+<ul>
+<li>
+<p>Close Accounting period.</p>
+</li>
+<li>
+<p>Prepare and post Income Statement closing entries.</p>
+</li>
+</ul>
+<h3>Steps</h3>
+<ol>
+<li>
+<p>Close Accounting period.</p>
+</li>
+<li>
+<p>Select the Search icon in the top-right corner of the page, enter Accounting periods, and then choose the related link.</p>
+</li>
+<li>
+<p>On the Accounting Periods page, select the line for 1/1/2025.</p>
+</li>
+<li>
+<p>On the menu, select Close Year.</p>
+</li>
+<li>
+<p>Prepare and post Income Statement closing entries.</p>
+</li>
+<li>
+<p>Select the Search icon in the top-right corner of the page, enter Close Income Statement, and then choose the related link.
+On the Close Income Statement page</p>
+</li>
+<li>
+<p>In the Fiscal Year Ending Date field 12/31/25 is automatically populated.
+In the Gen. Journal Template field, select GENERAL.
+In the  Gen. Journal Batch, select +New and add new line with Name –CLOSE, Description – Close year.
+Select OK.</p>
+</li>
+<li>
+<p>In the Document No. field, enter CL2025.
+In the Retained Earnings Acc. field, enter 30310 Results for the Financial year account.
+In the Post to Retained Earnings Acc., select - Balance.
+In the Posting Description field, enter Close Income Statement 2025.
+In the Dimensions field, select DEPARTMENT and BUSINESSGROUP, select Close.</p>
+</li>
+<li>
+<p>Select OK.
+Select OK.</p>
+</li>
+</ol>
+<p>Select the Search icon in the top-right corner of the page, enter User Setup and then choose the related link.</p>
+<p>In the User Setup page, in the new line select User ID.
+In the Allow Posting from field, remove value.</p>
+<p>Close User Setup.</p>
+<p>Select the Search icon in the top-right corner of the page, enter General Ledger Setup and then choose the related link.
+On the General FastTab</p>
+<p>In the Allow Posting from field, remove value.</p>
+<p>Close General Ledger Setup.</p>
+<ol start="10">
+<li>
+<p>Select the Search icon in the top-right corner of the page, enter General Journals, and then choose the related link.
+On the General Journal Template list page, select GENERAL.</p>
+</li>
+<li>
+<p>On the Batch Name field, select CLOSE value.
+On the menu select Home, Post, Post.</p>
+</li>
+</ol>
+</article><nav class="course-pagination" aria-label="Continue learning"><a href="Lab12_Prepare_Financial_Reporting.html">← Lab 12: Prepare financial reporting</a><a href="Lab14_Configure_Purchasing.html">Lab 14: Configure Purchasing →</a></nav></section></main>
+<footer class="site-footer"><div class="shell"><strong>Skunkworks Academy · Microsoft learning</strong><p>Lab materials from the Skunkworks Academy MB-800 repository. Microsoft product names and trademarks belong to Microsoft.</p><a href="../../LICENSE">Content license</a> · <a href="https://github.com/skunkworks-academy/MB-800-Business-Central-Functional-Consultant">Course source</a></div></footer></body></html>
