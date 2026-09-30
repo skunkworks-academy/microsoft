@@ -31,3 +31,69 @@ button{cursor:pointer}
 @media (max-width:1080px){.hero-grid{grid-template-columns:1fr;min-height:auto;gap:38px}.hero-panel{max-width:720px}.partner-strip{grid-template-columns:1fr 1fr}.partner-strip .text-link{grid-column:1/-1}.offering-grid{grid-template-columns:repeat(2,1fr)}.catalog-toolbar{grid-template-columns:2fr 1fr 1fr}.catalog-toolbar label:nth-last-child(-n+2){grid-column:auto}.catalog-grid{grid-template-columns:repeat(2,1fr)}.integration-grid,.delivery-grid{grid-template-columns:1fr}.integration-grid>div:first-child{position:static}.section-head{align-items:start;flex-direction:column}.catalog-source{justify-content:flex-start}.footer-grid{grid-template-columns:1.2fr 1fr 1fr}}
 @media (max-width:760px){.shell{width:min(calc(100% - 28px),var(--max))}.nav-shell{height:64px}.nav-links{display:none}.nav-shell>.button{margin-left:auto}.hero-grid{padding-block:56px}.hero h1{font-size:clamp(2.8rem,15vw,4.5rem)}.trust-row{grid-template-columns:repeat(2,1fr)}.section{padding:68px 0}.partner-strip{grid-template-columns:1fr}.offering-grid{grid-template-columns:1fr}.catalog-toolbar{grid-template-columns:1fr}.catalog-grid{grid-template-columns:1fr}.catalog-meta{align-items:flex-start}.catalog-source{width:100%}.catalog-source .button{width:100%}.footer-grid{grid-template-columns:1fr}.footer-bottom{flex-direction:column}.footer-bottom span:last-child{text-align:left}.hero-actions .button{width:100%}.delivery-copy h2,.integration-grid h2,.section-head h2,.partner-strip h2{font-size:clamp(2.1rem,11vw,3.3rem)}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* Keep light learning surfaces legible when the shared Academy shell changes theme.
+   Explicit text colours prevent pale dark-theme rules from leaking into white cards. */
+main#main .offering-card,
+main#main .catalog-card,
+main#main .delivery-list article {
+  background:#fff;
+  color:#0f172a !important;
+}
+main#main .offering-card h3,
+main#main .catalog-card h3,
+main#main .delivery-list strong {
+  color:#0f172a !important;
+}
+main#main .offering-card p,
+main#main .catalog-card p,
+main#main .delivery-list p {
+  color:#475569 !important;
+}
+main#main .offering-card > span:last-child,
+main#main .catalog-card a {
+  color:#005a9e !important;
+}
+main#main .catalog-card .catalog-type { color:#075f9d !important; }
+main#main .catalog-card .catalog-duration { color:#475569 !important; }
+main#main .catalog-card .tag { color:#334155 !important; }
+main#main .catalog-section,
+main#main .catalog-section .section-head h2 {
+  background:#fff;
+  color:#0f172a !important;
+}
+main#main .catalog-section .section-head > p,
+main#main .catalog-meta,
+main#main .catalog-note { color:#475569 !important; }
+main#main .catalog-toolbar { background:#eef3f8; color:#0f172a !important; }
+main#main .catalog-toolbar label > span { color:#475569 !important; }
+main#main .catalog-toolbar input,
+main#main .catalog-toolbar select { background:#fff; color:#0f172a !important; }
+main#main .catalog-toolbar input::placeholder { color:#64748b; opacity:1; }
+main#main .section-dark,
+main#main .section-dark .section-head h2,
+main#main .section-dark .reference-card strong { color:#fff !important; }
+main#main .section-dark .section-head > p,
+main#main .section-dark .reference-card p { color:#cbd5e1 !important; }
+main#main .section-dark .reference-card { color:#fff !important; }
+main#main .hero,
+main#main .hero h1,
+main#main .hero-panel,
+main#main .hero-panel strong { color:#fff !important; }
+main#main .hero .hero-lede,
+main#main .hero-panel p,
+main#main .hero-panel li { color:#cbd5e1 !important; }
+main#main .hero .button-primary { color:#fff !important; }
+main#main .hero .button-secondary { color:#0f172a !important; }
+main#main .delivery-grid .delivery-copy { color:#0f172a; }
+main#main .delivery-grid .delivery-copy h2 { color:#0f172a !important; }
+main#main #offerings { background:#eef3f8; color:#0f172a !important; }
+main#main #partner,
+main#main #delivery { background:#f5f7fb; color:#0f172a !important; }
+main#main #partner h2,
+main#main #offerings h2,
+main#main #delivery h2 { color:#0f172a !important; }
+main#main #partner > .shell > p,
+main#main #offerings .section-head > p,
+main#main #delivery .delivery-copy > p:not(.eyebrow) { color:#475569 !important; }
+main#main section[id] { scroll-margin-top:88px; }

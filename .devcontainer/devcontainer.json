@@ -1,0 +1,10 @@
+{
+  "name": "Skunkworks Academy Microsoft hub",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-20-bookworm",
+  "postCreateCommand": "cd AZ-400/web && npm ci",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-vscode.vscode-typescript-next"]
+    }
+  }
+}
