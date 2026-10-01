@@ -94,6 +94,10 @@ jobs:
 
       - uses: actions/configure-pages@v5
         if: github.event_name != 'pull_request'
+      - name: Install and verify Academy search favicons
+        uses: skunkworks-academy/www/.github/actions/search-favicons@070f621875577a66ae43cdffa7e9d20c65efdc71
+        with:
+          artifact-path: "AZ-400/web/out"
       - uses: actions/upload-pages-artifact@v3
         if: github.event_name != 'pull_request'
         with:
