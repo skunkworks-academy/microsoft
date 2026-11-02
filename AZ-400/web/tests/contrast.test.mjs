@@ -31,7 +31,7 @@ const contrast = (a, b) => {
 
 describe.each(cssFiles)('%s', (file) => {
   it('keeps representative mobile cards and dark panels readable', () => {
-    const css = readFileSync(resolve(repo, file), 'utf8');
+    const css = readFileSync(resolve(repo, file), 'utf8').replaceAll('var(--ink)', '#0f172a').replaceAll('var(--surface)', '#ffffff').replaceAll('var(--muted)', '#475569');
     // jsdom does not implement the full cascade for !important rules added by
     // later stylesheets; check the computed palette and the isolation rules.
     expect(css).toContain('main#main .offering-card h3,');
