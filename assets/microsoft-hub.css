@@ -32,44 +32,43 @@ button{cursor:pointer}
 @media (max-width:760px){.shell{width:min(calc(100% - 28px),var(--max))}.nav-shell{height:64px}.nav-links{display:none}.nav-shell>.button{margin-left:auto}.hero-grid{padding-block:56px}.hero h1{font-size:clamp(2.8rem,15vw,4.5rem)}.trust-row{grid-template-columns:repeat(2,1fr)}.section{padding:68px 0}.partner-strip{grid-template-columns:1fr}.offering-grid{grid-template-columns:1fr}.catalog-toolbar{grid-template-columns:1fr}.catalog-grid{grid-template-columns:1fr}.catalog-meta{align-items:flex-start}.catalog-source{width:100%}.catalog-source .button{width:100%}.footer-grid{grid-template-columns:1fr}.footer-bottom{flex-direction:column}.footer-bottom span:last-child{text-align:left}.hero-actions .button{width:100%}.delivery-copy h2,.integration-grid h2,.section-head h2,.partner-strip h2{font-size:clamp(2.1rem,11vw,3.3rem)}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 
-/* Keep light learning surfaces legible when the shared Academy shell changes theme.
-   Explicit text colours prevent pale dark-theme rules from leaking into white cards. */
+/* Pair foregrounds and surfaces under the shared Academy data-theme contract. */
 main#main .offering-card,
 main#main .catalog-card,
 main#main .delivery-list article {
-  background:#fff;
-  color:#0f172a !important;
+  background:var(--surface);
+  color:var(--ink) !important;
 }
 main#main .offering-card h3,
 main#main .catalog-card h3,
 main#main .delivery-list strong {
-  color:#0f172a !important;
+  color:var(--ink) !important;
 }
 main#main .offering-card p,
 main#main .catalog-card p,
 main#main .delivery-list p {
-  color:#475569 !important;
+  color:var(--muted) !important;
 }
 main#main .offering-card > span:last-child,
 main#main .catalog-card a {
-  color:#005a9e !important;
+  color:var(--blue) !important;
 }
 main#main .catalog-card .catalog-type { color:#075f9d !important; }
-main#main .catalog-card .catalog-duration { color:#475569 !important; }
+main#main .catalog-card .catalog-duration { color:var(--muted) !important; }
 main#main .catalog-card .tag { color:#334155 !important; }
 main#main .catalog-section,
 main#main .catalog-section .section-head h2 {
-  background:#fff;
-  color:#0f172a !important;
+  background:var(--surface);
+  color:var(--ink) !important;
 }
 main#main .catalog-section .section-head > p,
 main#main .catalog-meta,
-main#main .catalog-note { color:#475569 !important; }
-main#main .catalog-toolbar { background:#eef3f8; color:#0f172a !important; }
-main#main .catalog-toolbar label > span { color:#475569 !important; }
+main#main .catalog-note { color:var(--muted) !important; }
+main#main .catalog-toolbar { background:var(--surface-2); color:var(--ink) !important; }
+main#main .catalog-toolbar label > span { color:var(--muted) !important; }
 main#main .catalog-toolbar input,
-main#main .catalog-toolbar select { background:#fff; color:#0f172a !important; }
-main#main .catalog-toolbar input::placeholder { color:#64748b; opacity:1; }
+main#main .catalog-toolbar select { background:var(--surface); color:var(--ink) !important; }
+main#main .catalog-toolbar input::placeholder { color:var(--muted); opacity:1; }
 main#main .section-dark,
 main#main .section-dark .section-head h2,
 main#main .section-dark .reference-card strong { color:#fff !important; }
@@ -84,16 +83,44 @@ main#main .hero .hero-lede,
 main#main .hero-panel p,
 main#main .hero-panel li { color:#cbd5e1 !important; }
 main#main .hero .button-primary { color:#fff !important; }
-main#main .hero .button-secondary { color:#0f172a !important; }
-main#main .delivery-grid .delivery-copy { color:#0f172a; }
-main#main .delivery-grid .delivery-copy h2 { color:#0f172a !important; }
-main#main #offerings { background:#eef3f8; color:#0f172a !important; }
+main#main .hero .button-secondary { color:var(--ink) !important; }
+main#main .delivery-grid .delivery-copy { color:var(--ink); }
+main#main .delivery-grid .delivery-copy h2 { color:var(--ink) !important; }
+main#main #offerings { background:var(--surface-2); color:var(--ink) !important; }
 main#main #partner,
-main#main #delivery { background:#f5f7fb; color:#0f172a !important; }
+main#main #delivery { background:var(--bg); color:var(--ink) !important; }
 main#main #partner h2,
 main#main #offerings h2,
-main#main #delivery h2 { color:#0f172a !important; }
+main#main #delivery h2 { color:var(--ink) !important; }
 main#main #partner > .shell > p,
 main#main #offerings .section-head > p,
-main#main #delivery .delivery-copy > p:not(.eyebrow) { color:#475569 !important; }
+main#main #delivery .delivery-copy > p:not(.eyebrow) { color:var(--muted) !important; }
 main#main section[id] { scroll-margin-top:88px; }
+
+:root { color-scheme:light; --muted:#475569; --blue:#005a9e; --blue-2:#0067b8; --control-border:#718096; }
+:root[data-theme="dark"] {
+  color-scheme:dark;
+  --bg:#0b1220; --surface:#152238; --surface-2:#1c2d45;
+  --ink:#f1f5f9; --muted:#cbd5e1; --line:#53657f;
+  --blue:#8bd3ff; --blue-2:#0067b8; --control-border:#8da2be;
+}
+main#main .hero { background-color:#08111f; }
+main#main .section-dark { background-color:#08111f; }
+main#main .button-primary { background:#0067b8; color:#fff !important; }
+main#main .button-primary:hover { background:#005a9e; color:#fff !important; }
+main#main .button-secondary { background:var(--surface); color:var(--ink) !important; border-color:var(--control-border); }
+main#main .button-secondary:hover { background:var(--surface-2); color:var(--ink) !important; }
+main#main .eyebrow, main#main .text-link, main#main .link-button { color:var(--blue) !important; }
+main#main .hero .eyebrow, main#main .section-dark .eyebrow { color:#8bd3ff !important; }
+main#main .catalog-toolbar input, main#main .catalog-toolbar select { border-color:var(--control-border); }
+main#main .search-field svg { stroke:var(--muted); }
+main#main .empty-state { background:var(--surface-2); color:var(--muted); }
+main#main .delivery-list article>span { color:#005a9e; }
+main#main :is(a,button,input,select):focus-visible {
+  outline:3px solid var(--blue); outline-offset:4px;
+  box-shadow:0 0 0 2px var(--bg);
+}
+main#main :is(.hero,.section-dark) :is(a,button):focus-visible { outline-color:#8bd3ff; }
+main#main .button { white-space:normal; text-align:center; height:auto; padding-block:11px; }
+main#main .button[hidden] { display:none; }
+main#main .button:disabled { opacity:1; background:var(--surface-2); color:var(--muted) !important; cursor:wait; }
