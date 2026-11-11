@@ -124,3 +124,38 @@ main#main :is(.hero,.section-dark) :is(a,button):focus-visible { outline-color:#
 main#main .button { white-space:normal; text-align:center; height:auto; padding-block:11px; }
 main#main .button[hidden] { display:none; }
 main#main .button:disabled { opacity:1; background:var(--surface-2); color:var(--muted) !important; cursor:wait; }
+
+/* Academy editorial recommendation: paired semantic colors in both themes. */
+main#main .admin-recommended {
+  border:2px solid var(--blue);
+  background:var(--surface);
+  color:var(--ink) !important;
+}
+main#main .admin-recommended .catalog-card-top {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:0.7rem;
+}
+main#main .admin-recommended .admin-recommended-badge {
+  display:inline-block;
+  border-radius:999px;
+  background:#094b78;
+  color:#fff !important;
+  font-size:0.77rem;
+  font-weight:800;
+  letter-spacing:0.02em;
+  padding:0.35em 0.8em;
+}
+:root[data-theme="dark"] main#main .admin-recommended .admin-recommended-badge {
+  background:#b4e4ff;
+  color:#08111f !important;
+}
+main#main .admin-recommended .recommendation-audience,
+main#main .admin-recommended .recommendation-audience strong {
+  color:var(--ink) !important;
+}
+main#main .admin-recommended a:focus-visible {
+  outline:3px solid var(--blue);
+  outline-offset:4px;
+}
