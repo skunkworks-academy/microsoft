@@ -159,3 +159,11 @@ main#main .admin-recommended a:focus-visible {
   outline:3px solid var(--blue);
   outline-offset:4px;
 }
+
+/* Review follow-up: expose the complete recommendation at mobile widths and high zoom. */
+main#main .catalog-card.admin-recommended p {
+  display:block;
+  -webkit-line-clamp:unset;
+  -webkit-box-orient:initial;
+  overflow:visible;
+}
