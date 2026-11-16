@@ -5,7 +5,7 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const dir=path.join(root,'courses/mb-800-exam-preparation');
 const modules=JSON.parse(fs.readFileSync(path.join(dir,'content/modules.json'),'utf8'));
 const questions=JSON.parse(fs.readFileSync(path.join(dir,'content/questions.json'),'utf8'));
-const VERSION='2026.11.16.1', BASE='https://www.skunkworksacademy.com/courses/mb-800-exam-preparation/';
+const VERSION='2026.11.16.2', BASE='https://www.skunkworksacademy.com/courses/mb-800-exam-preparation/';
 const esc=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const link=(href,label)=>`<a href="${esc(href)}">${esc(label)}</a>`;
 const list=values=>`<ul>${values.map(s=>`<li>${esc(s)}</li>`).join('')}</ul>`;

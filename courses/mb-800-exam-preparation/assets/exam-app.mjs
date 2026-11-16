@@ -7,13 +7,33 @@ function para(text,cls){return el('p',text,cls?{class:cls}:{});}
 function actions(...nodes){const n=el('div',undefined,{class:'bc-actions'});n.append(...nodes);return n;}
 let bank,attempt=null,pendingAttempt=null,history=[],timer=null,storageOK=true,closing=false;
 function read(key){try{return JSON.parse(localStorage.getItem(key)||'null');}catch{storageOK=false;return null;}}
-function save(){try{if(attempt)localStorage.setItem(CURRENT,JSON.stringify(attempt));else localStorage.removeItem(CURRENT);localStorage.setItem(HISTORY,JSON.stringify(history.slice(0,10)));}catch{storageOK=false;}setStorageNotice();}
+function mergeHistory(value,completed=null){
+  const reports=new Map();
+  for(const candidate of [...(Array.isArray(value)?value:[]),...(completed?[completed]:[])]){
+    const report=restoreAttempt(candidate,bank);if(!report?.submittedAt)continue;
+    const existing=reports.get(report.id);
+    if(!existing||report.submittedAt>existing.submittedAt)reports.set(report.id,report);
+  }
+  return [...reports.values()].sort((a,b)=>b.submittedAt-a.submittedAt||a.id.localeCompare(b.id)).slice(0,10);
+}
+function save({completed=null,clearHistory=false}={}){
+  // Never write a stale in-memory history during answer/navigation saves.
+  // Only a newly completed report is merged into the latest durable history.
+  history=clearHistory?[]:mergeHistory(read(HISTORY),completed);
+  try{
+    if(attempt)localStorage.setItem(CURRENT,JSON.stringify(attempt));else localStorage.removeItem(CURRENT);
+    if(clearHistory)localStorage.removeItem(HISTORY);
+    else if(completed)localStorage.setItem(HISTORY,JSON.stringify(history));
+  }catch{storageOK=false;}
+  setStorageNotice();
+}
 function setStorageNotice(){const n=document.getElementById('storage-notice');if(n)n.textContent=storageOK?'Saved only in this browser. Use Clear practice data on a shared device.':'Browser storage is unavailable or full. Keep this page open and export your results before leaving.';}
 function heading(text){const n=el('h2',text,{tabindex:'-1'});return n;}
 function focusHeading(){const h=root.querySelector('h2');h?.focus({preventScroll:true});h?.scrollIntoView({block:'start',behavior:'instant'});}
 function shell(title){root.replaceChildren();const h=heading(title);root.append(h);return root;}
 function intro(){
   if(attempt&&!attempt.submittedAt&&isExpired(attempt)){finish(true);return;}
+  history=mergeHistory(read(HISTORY));
   clearInterval(timer);shell('Choose your practice session');
   root.append(para('These original Academy questions support learning. The public practice bank and answer explanations are inspectable; this is a formative exercise, without proctoring or an official certification score.'));
   root.append(para('Each question is worth one point. Multiple-answer and sequence items require the complete correct response. There is no partial credit and no negative marking.'));
@@ -25,7 +45,7 @@ function intro(){
   if(attempt&&!attempt.submittedAt){const clock=para('','bc-timer');clock.id='exam-timer';clock.setAttribute('role','timer');clock.setAttribute('aria-label','Current attempt time remaining');root.append(clock,actions(button('Resume current attempt',()=>{renderQuestion();tick();}),button('Discard current attempt',()=>confirmDiscard(),true)));timer=setInterval(tick,1000);tick();}
   root.append(para('The mock uses 11 setup, 16 financials, 6 sales/purchasing setup and 17 operations questions. Microsoft does not publish its live question pool or exact exam length in questions; 50 is this Academy simulation’s design choice.'));
   if(history.length){const section=el('section',undefined,{class:'bc-section'});section.append(el('h3','Your completed attempts on this device'));const list=el('ul');for(const item of history){const score=grade(bank,item);const li=el('li');li.append(button(`${new Date(item.submittedAt).toLocaleString()} · ${score.percent}% · ${item.mode==='exam'?'Timed mock':'Untimed practice'}`,()=>{if(attempt&&!attempt.submittedAt)pendingAttempt=attempt;attempt=item;renderResults();},true));list.append(li);}section.append(list);root.append(section);}
-  root.append(actions(button('Clear practice data',()=>{const box=confirmBox('Clear attempts and result history from this browser?',()=>{attempt=null;history=[];save();intro();},()=>intro());root.append(box);box.querySelector('button')?.focus();},true)));
+  root.append(actions(button('Clear practice data',()=>{const box=confirmBox('Clear attempts and result history from this browser?',()=>{attempt=null;pendingAttempt=null;save({clearHistory:true});intro();},()=>intro());root.append(box);box.querySelector('button')?.focus();},true)));
   root.append(para('', 'bc-storage'));root.lastChild.id='storage-notice';setStorageNotice();
 }
 function confirmBox(message,yes,no){const box=el('section',undefined,{class:'bc-dialog',role:'region','aria-label':'Confirm action'});box.append(para(message),actions(button('Confirm',yes),button('Cancel',no,true)));return box;}
@@ -80,7 +100,7 @@ function review(){if(expired())return;shell('Review your attempt');const total=a
   const list=el('ol');attempt.questionIds.forEach((id,i)=>{const item=el('li');const state=(attempt.answers[id]?.length?'Answered':'Unanswered')+(attempt.flagged.includes(id)?' · Flagged':'');item.append(button(`Question ${i+1} · ${state}`,()=>navigate(i),true));list.append(item);});
   root.append(actions(button('Submit and see results',()=>{if(expired())return;const box=confirmBox(`Submit ${total} questions with ${total-answered} unanswered? Your answers will be locked.`,()=>finish(false),review);root.prepend(box);box.querySelector('button').focus();}),button('Return to question',renderQuestion,true)),list);focusHeading();
 }
-function finish(timeout){if(!attempt||attempt.submittedAt||closing)return;closing=true;attempt.submittedAt=Date.now();attempt.timedOut=Boolean(timeout);history=[attempt,...history.filter(x=>x.id!==attempt.id)].slice(0,10);save();clearInterval(timer);renderResults();closing=false;focusHeading();}
+function finish(timeout){if(!attempt||attempt.submittedAt||closing)return;closing=true;attempt.submittedAt=Date.now();attempt.timedOut=Boolean(timeout);save({completed:attempt});clearInterval(timer);renderResults();closing=false;focusHeading();}
 function exportReport(){const report={courseId:'MB-800-PREP',bankVersion:VERSION,notice:'Academy formative practice. Raw percentage, not a Microsoft scaled score. Public original question bank. No certification award.',attempt,result:grade(bank,attempt)};const blob=new Blob([JSON.stringify(report,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob),a=el('a',undefined,{href:url,download:`MB-800-practice-${attempt.id}.json`});document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 function renderResults(){
   clearInterval(timer);const result=grade(bank,attempt);shell('Your practice results');root.append(para(`${result.percent}%`,'bc-result-score'),para(`${result.correct} correct of ${result.total}. ${result.unanswered} unanswered. ${attempt.timedOut?'Time expired and the attempt was submitted automatically.':'Submitted '+new Date(attempt.submittedAt).toLocaleString()+'.'}`));
@@ -96,9 +116,18 @@ function renderResults(){
   filter.addEventListener('change',draw);draw();root.append(para('','bc-storage'));root.lastChild.id='storage-notice';setStorageNotice();
 }
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&attempt&&!attempt.submittedAt)tick();});
-window.addEventListener('storage',event=>{if(event.key===CURRENT&&attempt&&!attempt.submittedAt){clearInterval(timer);root.replaceChildren(heading('This attempt changed in another tab'),para('Reload to continue with the latest saved attempt. Use one active tab for practice.'),button('Reload saved attempt',()=>location.reload()));attempt=null;}});
+window.addEventListener('storage',event=>{
+  if(!bank)return;
+  if(event.key===HISTORY||event.key===null){
+    // Read the current value rather than a possibly superseded event payload.
+    // An external clear replaces memory too, so old reports cannot resurrect.
+    history=mergeHistory(read(HISTORY));
+    if(root.querySelector('h2')?.textContent==='Choose your practice session')intro();
+  }
+  if((event.key===CURRENT||event.key===null)&&attempt&&!attempt.submittedAt){clearInterval(timer);root.replaceChildren(heading('This attempt changed in another tab'),para('Reload to continue with the latest saved attempt. Use one active tab for practice.'),button('Reload saved attempt',()=>location.reload()));attempt=null;pendingAttempt=null;}
+});
 try{
   const response=await fetch(new URL('./questions.json',import.meta.url),{cache:'no-cache'});if(!response.ok)throw new Error('Question bank could not be loaded');bank=validateBank(await response.json());
-  attempt=restoreAttempt(read(CURRENT),bank);const savedHistory=read(HISTORY);history=Array.isArray(savedHistory)?savedHistory.map(x=>restoreAttempt(x,bank)).filter(x=>x?.submittedAt).slice(0,10):[];
+  attempt=restoreAttempt(read(CURRENT),bank);history=mergeHistory(read(HISTORY));
   if(attempt?.submittedAt)renderResults();else if(attempt){renderQuestion();tick();}else intro();
 }catch(error){root.replaceChildren(heading('Practice could not load'),para('Reload this page to try again. Your saved browser data has not been deleted.'),para(error.message),el('a','Return to the study guide',{href:'../'}));}

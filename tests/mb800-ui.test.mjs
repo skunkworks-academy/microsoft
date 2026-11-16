@@ -66,3 +66,47 @@ test('leaving stale completed results preserves a newer attempt from another tab
   const newer=createAttempt(bank,'exam',22);newer.index=4;localStorage.setItem('swa.mb800.attempt.v1',JSON.stringify(newer));
   click('Choose another session');assert.equal(JSON.parse(localStorage.getItem('swa.mb800.attempt.v1')).id,newer.id);click('Resume current attempt');assert.match(root().textContent,/Question 5 of 50/);
 });
+test('starting a session from stale results preserves another tab’s completed report',async()=>{
+  const now=Date.now(),old=createAttempt(bank,'practice',31,now-20000);old.submittedAt=now-15000;
+  await load({'swa.mb800.attempt.v1':JSON.stringify(old),'swa.mb800.history.v1':JSON.stringify([old])});
+  const newer=createAttempt(bank,'practice',32,now-10000);newer.submittedAt=now-5000;
+  // Simulate tab B completing while tab A still displays its older results.
+  // Deliberately omit the event: save must read durable state independently.
+  localStorage.setItem('swa.mb800.attempt.v1',JSON.stringify(newer));
+  localStorage.setItem('swa.mb800.history.v1',JSON.stringify([newer,old]));
+  click('Choose another session');click('Start untimed practice');
+  assert.deepEqual(JSON.parse(localStorage.getItem('swa.mb800.history.v1')).map(x=>x.id),[newer.id,old.id]);
+  click('Practice centre');assert.equal([...root().querySelectorAll('button')].filter(b=>b.textContent.includes('Untimed practice')&&b.textContent.includes('0%')).length,2);
+});
+test('completion merges latest valid reports by ID and timestamp and retains the newest ten',async()=>{
+  const now=Date.now(),active=createAttempt(bank,'practice',40,now-1000);
+  await load({'swa.mb800.attempt.v1':JSON.stringify(active)});
+  const reports=Array.from({length:12},(_,i)=>{const report=createAttempt(bank,'practice',100+i,now-30000+i*1000);report.submittedAt=now-20000+i*1000;return report;});
+  const duplicate=structuredClone(reports[11]);duplicate.submittedAt+=500;
+  localStorage.setItem('swa.mb800.history.v1',JSON.stringify([{bad:true},...reports,duplicate]));
+  click('Review and submit');click('Submit and see results');click('Confirm');
+  const saved=JSON.parse(localStorage.getItem('swa.mb800.history.v1'));
+  assert.equal(saved.length,10);assert.equal(new Set(saved.map(x=>x.id)).size,10);assert.equal(saved[0].id,active.id);
+  assert.equal(saved.find(x=>x.id===duplicate.id).submittedAt,duplicate.submittedAt);
+  assert(saved.every((item,i)=>i===0||saved[i-1].submittedAt>=item.submittedAt));
+  assert(!saved.some(x=>x.id===reports[0].id));
+});
+test('history storage events refresh the practice list and an external clear stays empty',async()=>{
+  const now=Date.now(),old=createAttempt(bank,'practice',51,now-20000);old.submittedAt=now-15000;
+  await load({'swa.mb800.history.v1':JSON.stringify([old])});
+  assert.match(root().textContent,/Your completed attempts on this device/);
+  localStorage.removeItem('swa.mb800.history.v1');
+  window.dispatchEvent(new window.StorageEvent('storage',{key:'swa.mb800.history.v1',newValue:null}));
+  assert(!root().textContent.includes('Your completed attempts on this device'));
+  click('Start untimed practice');assert.equal(localStorage.getItem('swa.mb800.history.v1'),null);
+});
+test('explicit clear removes history and ordinary saves do not resurrect old reports',async()=>{
+  const now=Date.now(),old=createAttempt(bank,'practice',61,now-20000);old.submittedAt=now-15000;
+  await load({'swa.mb800.history.v1':JSON.stringify([old])});
+  click('Clear practice data');click('Confirm');
+  assert.equal(localStorage.getItem('swa.mb800.history.v1'),null);assert.equal(localStorage.getItem('swa.mb800.attempt.v1'),null);
+  assert(!root().textContent.includes('Your completed attempts on this device'));
+  click('Start untimed practice');click('Next question');click('Practice centre');
+  assert.equal(localStorage.getItem('swa.mb800.history.v1'),null);
+  assert(!root().textContent.includes('Your completed attempts on this device'));
+});
