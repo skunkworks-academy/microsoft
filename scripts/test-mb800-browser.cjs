@@ -15,10 +15,21 @@ const evidence=path.resolve(__dirname,'../test-results/mb800');fs.mkdirSync(evid
   try{
     for(const width of [390,768,1440])for(const theme of ['light','dark']){
       const context=await browser.newContext({viewport:{width,height:1000},colorScheme:theme});
+      // The shared UI uses same-origin images for localhost previews. Serve the
+      // same approved canonical image bytes the production Microsoft host uses.
+      await context.route(base+'/images/**',async routeRequest=>{
+        const url=new URL(routeRequest.request().url());
+        const approved=['/images/favicon-black.png','/images/logo-white.svg','/images/favicon-search.png','/images/favicon-search-dark.png','/images/apple-touch-icon.png'];
+        if(approved.includes(url.pathname)){
+          const response=await routeRequest.fetch({url:'https://www.skunkworksacademy.com'+url.pathname+url.search});
+          await routeRequest.fulfill({response});
+        }else await routeRequest.continue();
+      });
       await context.addInitScript(mode=>localStorage.setItem('swa-theme',mode),theme);page=await context.newPage();
       for(const slug of ['',...modules.map(m=>m.slug+'/'),'study-plan/','mock-exam/']){
         const errors=[];page.on('pageerror',e=>errors.push(e.message));const response=await page.goto(base+route+slug);
         assert(response.ok(),slug+' HTTP');await page.locator('.swa-global-nav').waitFor();await page.locator('.swa-global-footer').waitFor();
+        await page.waitForFunction(()=>[...document.querySelectorAll('.swa-global-nav img')].filter(img=>img.getClientRects().length).every(img=>img.complete&&img.naturalWidth>0),{},{timeout:15000});
         assert.equal(await page.locator('.swa-global-nav').count(),1);assert.equal(await page.locator('.swa-global-footer').count(),1);
         assert.equal(await page.locator('h1').count(),1);assert.equal(await page.locator('main').count(),1);
         assert(await page.locator('a[href*="course-registration/?course=MB-800-PREP"]').count()>0);
