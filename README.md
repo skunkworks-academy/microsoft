@@ -35,3 +35,9 @@ Merging into `main` publishes using the existing Pages workflow. Changes to
 `MB-800/**` trigger it, as do hub assets and the build script. The Jekyll
 configuration and other course sources remain available; this workflow's
 published output continues to be determined by the static build script.
+# MB-800 exam preparation
+
+The [MB-800-PREP learning guide source](courses/mb-800-exam-preparation/README.md)
+adds eight study modules, a 100-minute original mock exam and detailed student
+answer review. See its [release evidence](courses/mb-800-exam-preparation/RELEASE.md)
+for validation and publication status.
