@@ -1,0 +1,4155 @@
+[
+  {
+    "id": "BC-001",
+    "domain": "setup",
+    "objective": "Create and configure a company",
+    "type": "single",
+    "stem": "A distributor needs a new company with standard setup data but no demonstration customers or transactions. Which creation option best meets that requirement?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Copy the demonstration company without reviewing its contents"
+      },
+      {
+        "id": "b",
+        "text": "Create New – No Data"
+      },
+      {
+        "id": "c",
+        "text": "Evaluation – Sample Data"
+      },
+      {
+        "id": "d",
+        "text": "Production – Setup Data Only"
+      }
+    ],
+    "correct": [
+      "d"
+    ],
+    "rationale": "Use the production setup template, then import the company’s own master data. The required starting point contains setup without the sample business records.",
+    "distractors": {
+      "a": "An unreviewed copy can retain demonstration data.",
+      "b": "No Data omits the setup that the requirement explicitly requests.",
+      "c": "Evaluation includes sample business data.",
+      "d": "This provides setup without demonstration business records."
+    },
+    "module": "module-01-foundations",
+    "source": {
+      "title": "Create new companies",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/about-new-company"
+    }
+  },
+  {
+    "id": "BC-002",
+    "domain": "setup",
+    "objective": "Create a configuration worksheet",
+    "type": "single",
+    "stem": "A consultant wants to group setup tables into Finance and Trade before building reusable configuration packages. Which feature organizes the tables into areas and groups?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Report Layout Selection"
+      },
+      {
+        "id": "b",
+        "text": "Configuration worksheet"
+      },
+      {
+        "id": "c",
+        "text": "A recurring general journal template"
+      },
+      {
+        "id": "d",
+        "text": "A saved customer list view"
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "rationale": "The configuration worksheet organizes implementation tables. Selected worksheet lines can then form a configuration package.",
+    "distractors": {
+      "a": "Layout selection controls report presentation.",
+      "b": "Areas, groups and tables provide the required implementation hierarchy.",
+      "c": "A journal template structures transactions rather than configuration-table work.",
+      "d": "A saved view selects records rather than organizing implementation tables."
+    },
+    "module": "module-02-implementation",
+    "source": {
+      "title": "Set up company configuration packages",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/admin-how-to-prepare-a-configuration-package"
+    }
+  },
+  {
+    "id": "BC-003",
+    "domain": "setup",
+    "objective": "Create and use a configuration package",
+    "type": "order",
+    "stem": "A prepared configuration package has been exported to Excel. Put the following remaining migration steps in a safe dependency order. Assume the package includes the needed fields and relationships.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Correct the workbook values without changing its structure."
+      },
+      {
+        "id": "b",
+        "text": "Apply the validated package data to create or update records."
+      },
+      {
+        "id": "c",
+        "text": "Import the edited workbook into the package."
+      },
+      {
+        "id": "d",
+        "text": "Validate the imported package data and resolve its errors."
+      }
+    ],
+    "correct": [
+      "a",
+      "c",
+      "d",
+      "b"
+    ],
+    "rationale": "Edit the exported workbook, import it, validate and resolve errors, then apply. An Excel import into a package is not the same as applying the package to business tables.",
+    "distractors": {
+      "a": "Start by preparing the data in the workbook.",
+      "b": "Applying is the last step after validation.",
+      "c": "Import follows workbook preparation.",
+      "d": "Validation precedes applying the package."
+    },
+    "module": "module-02-implementation",
+    "source": {
+      "title": "Import company configuration data",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/across-import-data-configuration-packages"
+    }
+  },
+  {
+    "id": "BC-004",
+    "domain": "setup",
+    "objective": "Create journal opening balances",
+    "type": "single",
+    "stem": "A finance team has approved opening receivables of 80,000 and a matching control-account balance. It proposes importing rows directly into Customer Ledger Entry through a configuration package. What should the consultant recommend?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Import posted customer entries directly and separately post the same total to the G/L."
+      },
+      {
+        "id": "b",
+        "text": "Import only the customer Balance field."
+      },
+      {
+        "id": "c",
+        "text": "Load opening balances through a suitable journal and reconcile the resulting ledgers."
+      },
+      {
+        "id": "d",
+        "text": "Post the entire amount only to the receivables G/L account without customer entries."
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "rationale": "Posted ledger tables are not migration targets for configuration packages. Use supported posting routines for opening transactions so subledger and G/L evidence can be reconciled.",
+    "distractors": {
+      "a": "Separate direct imports still bypass the supported subledger posting process.",
+      "b": "A balance field does not create an auditable opening transaction.",
+      "c": "Journal posting creates supported ledger entries that can be reconciled.",
+      "d": "A G/L-only balance would leave customer open entries missing."
+    },
+    "module": "module-02-implementation",
+    "source": {
+      "title": "Set up company configuration packages",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/admin-how-to-prepare-a-configuration-package"
+    }
+  },
+  {
+    "id": "BC-005",
+    "domain": "setup",
+    "objective": "Migrate data to and within Business Central",
+    "type": "single",
+    "stem": "Customer migration fails validation because the imported Customer Posting Group codes do not exist in the target company. Which action addresses the cause?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Disable all validation so that nonexistent group codes are accepted."
+      },
+      {
+        "id": "b",
+        "text": "Replace every missing code with a random existing posting group."
+      },
+      {
+        "id": "c",
+        "text": "Map Customer Posting Group values into the Customer Price Group field instead."
+      },
+      {
+        "id": "d",
+        "text": "Create or migrate the required posting groups, then validate the customer package again."
+      }
+    ],
+    "correct": [
+      "d"
+    ],
+    "rationale": "Referenced setup must exist before dependent records can validate. Correct the missing prerequisite rather than suppressing the validation error.",
+    "distractors": {
+      "a": "Suppressing validation leaves unresolved setup dependencies.",
+      "b": "A code that exists can still create the wrong financial mapping.",
+      "c": "Price groups control pricing and cannot replace a posting-group reference.",
+      "d": "Referenced posting groups must exist before dependent customers validate."
+    },
+    "module": "module-02-implementation",
+    "source": {
+      "title": "Migrate business data",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/across-import-data-configuration-packages"
+    }
+  },
+  {
+    "id": "BC-006",
+    "domain": "setup",
+    "objective": "Set up a new user",
+    "type": "single",
+    "stem": "A new employee has been created in Microsoft 365 and assigned an appropriate Business Central online license. The employee is not yet listed on the Business Central Users page. What should an administrator do next?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Create a Profile (Role) with the employee’s email as its ID."
+      },
+      {
+        "id": "b",
+        "text": "Assign a permission set to the employee’s nonexistent Business Central user record without updating user information."
+      },
+      {
+        "id": "c",
+        "text": "Use the action to update users from Microsoft 365, then assign appropriate Business Central access."
+      },
+      {
+        "id": "d",
+        "text": "Create a customer contact and assign it a salesperson code."
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "rationale": "Synchronize user information from Microsoft 365 into Business Central, then configure the employee’s required permissions. A license and application authorization are separate considerations.",
+    "distractors": {
+      "a": "Profiles define workspaces and do not synchronize identities.",
+      "b": "The application user must exist before its assignments can be managed.",
+      "c": "Updating users brings the licensed identity into the application.",
+      "d": "A customer contact is not an application user identity."
+    },
+    "module": "module-01-foundations",
+    "source": {
+      "title": "Create users according to licenses",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/ui-how-users-permissions"
+    }
+  },
+  {
+    "id": "BC-007",
+    "domain": "setup",
+    "objective": "Create and assign user profiles",
+    "type": "single",
+    "stem": "A purchaser is assigned the Purchasing Agent profile but still cannot post a purchase invoice. What is the best explanation?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Profiles always grant SUPER."
+      },
+      {
+        "id": "b",
+        "text": "Changing the Role Center automatically overrides all security filters."
+      },
+      {
+        "id": "c",
+        "text": "The profile sets the workspace; effective permissions and license entitlements still control posting access."
+      },
+      {
+        "id": "d",
+        "text": "Only the company name controls posting permissions."
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "rationale": "Profiles shape navigation and page experience. Permission sets authorize application operations. Check the user’s effective permissions rather than treating a Role Center as a security grant.",
+    "distractors": {
+      "a": "A profile does not grant SUPER.",
+      "b": "A Role Center cannot remove data security.",
+      "c": "Workspace and authorization are distinct.",
+      "d": "Company names are not authorization rules."
+    },
+    "module": "module-01-foundations",
+    "source": {
+      "title": "Manage user profiles",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/admin-users-profiles-roles"
+    }
+  },
+  {
+    "id": "BC-008",
+    "domain": "setup",
+    "objective": "Assign user permissions by using security groups and permission sets",
+    "type": "multiple",
+    "stem": "The sales team uses a Microsoft Entra security group. Members need the same sales permission set, restricted to company EAST. Which TWO actions are appropriate? Select two.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Assign the Sales Order Processor profile instead of the required permission set."
+      },
+      {
+        "id": "b",
+        "text": "Link the Entra group on the Business Central Security Groups page."
+      },
+      {
+        "id": "c",
+        "text": "Leave Company blank to restrict the assignment to EAST."
+      },
+      {
+        "id": "d",
+        "text": "Assign the sales permission set to that group with Company set to EAST."
+      }
+    ],
+    "correct": [
+      "b",
+      "d"
+    ],
+    "rationale": "Link the identity group and assign company-scoped permission sets. A blank company scope would apply the assignment across companies.",
+    "distractors": {
+      "a": "A profile shapes the workspace and is not a substitute for authorization.",
+      "b": "The group link connects membership with application permissions.",
+      "c": "Blank company scope applies across companies.",
+      "d": "An explicit company scope limits this permission assignment."
+    },
+    "module": "module-01-foundations",
+    "source": {
+      "title": "Control access using security groups",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/ui-security-groups"
+    }
+  },
+  {
+    "id": "BC-009",
+    "domain": "setup",
+    "objective": "Apply security filters",
+    "type": "single",
+    "stem": "A collections clerk may read only customers with Salesperson Code NORTH. The restriction must remain effective when the clerk removes normal page filters. Which control meets the requirement?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A normal page filter automatically inserted when the clerk opens the list"
+      },
+      {
+        "id": "b",
+        "text": "A personalized hidden Salesperson Code field"
+      },
+      {
+        "id": "c",
+        "text": "A security filter on the relevant table-data permissions"
+      },
+      {
+        "id": "d",
+        "text": "A saved list view named NORTH"
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "rationale": "Use record-level security rather than a display filter. Review all effective permission assignments so a broader access path does not defeat the intended restriction.",
+    "distractors": {
+      "a": "A viewing filter can be removed and is not a security boundary.",
+      "b": "Hiding a field does not enforce record security.",
+      "c": "A table-data security filter restricts authorized records.",
+      "d": "A normal saved view can be changed by the user."
+    },
+    "module": "module-01-foundations",
+    "source": {
+      "title": "Using security filters",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/security/security-filters"
+    }
+  },
+  {
+    "id": "BC-010",
+    "domain": "setup",
+    "objective": "Create permissions and permission sets",
+    "type": "single",
+    "stem": "A user still modifies customer records after an administrator removes Modify from one assigned permission set. Another assigned set still grants that permission. What should the administrator investigate first?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Only the removed permission-set line, without checking other assignments"
+      },
+      {
+        "id": "b",
+        "text": "The union of the user’s effective permission assignments"
+      },
+      {
+        "id": "c",
+        "text": "Only the user’s selected Profile (Role)"
+      },
+      {
+        "id": "d",
+        "text": "The customer’s credit-limit setting"
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "rationale": "Check effective permissions across assignments. Removing a grant from one set does not remove the same grant supplied by another set.",
+    "distractors": {
+      "a": "Another assigned set can still supply the permission.",
+      "b": "Effective permissions expose the remaining authorization path.",
+      "c": "The selected workspace does not explain all authorization grants.",
+      "d": "Credit limits do not determine who may modify customer records."
+    },
+    "module": "module-01-foundations",
+    "source": {
+      "title": "Assign permissions to users and groups",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/ui-define-granular-permissions"
+    }
+  },
+  {
+    "id": "BC-011",
+    "domain": "setup",
+    "objective": "Configure and use security auditing",
+    "type": "single",
+    "stem": "During an investigation, an administrator needs evidence of a change to a user’s permission assignment. Which built-in evidence should be examined first?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Approval entries for purchase orders"
+      },
+      {
+        "id": "b",
+        "text": "Security-related change log entries for access-control and permission tables"
+      },
+      {
+        "id": "c",
+        "text": "Only the G/L register generated by financial journals"
+      },
+      {
+        "id": "d",
+        "text": "Only the Job Queue Log Entries for scheduled reports"
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "rationale": "Business Central records changes to designated security system tables. Filter the relevant change-log evidence by user, table and time.",
+    "distractors": {
+      "a": "Purchase approvals do not record all permission administration changes.",
+      "b": "Security table changes provide relevant audit evidence.",
+      "c": "Financial registers are not an audit of user permission changes.",
+      "d": "Job logs explain background-job execution rather than permission assignments."
+    },
+    "module": "module-01-foundations",
+    "source": {
+      "title": "Security auditing",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/security/security-auditing"
+    }
+  },
+  {
+    "id": "BC-012",
+    "domain": "setup",
+    "objective": "Set up and use job queues",
+    "type": "multiple",
+    "stem": "An overnight report job shows Error after a bank service outage. Which TWO actions provide a reasonable recovery and reduce repeated manual restarts? Select two.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Configure suitable maximum attempts and rerun delay for transient failures."
+      },
+      {
+        "id": "b",
+        "text": "Delete its logs and repeatedly restart it without checking the failed dependency."
+      },
+      {
+        "id": "c",
+        "text": "Inspect the error and restart the entry when the dependency is available."
+      },
+      {
+        "id": "d",
+        "text": "Change the recurrence schedule while leaving the entry in Error status."
+      }
+    ],
+    "correct": [
+      "a",
+      "c"
+    ],
+    "rationale": "Diagnose the failure, restore the dependency and restart the job. Bounded attempts and delay can handle transient outages without treating every failure as permanent.",
+    "distractors": {
+      "a": "Bounded retries can handle a transient external-service outage.",
+      "b": "Removing evidence and blindly retrying does not diagnose the failure.",
+      "c": "Recovery should address the dependency and job state.",
+      "d": "A recurrence schedule alone does not reset a failed job to a runnable state."
+    },
+    "module": "module-02-implementation",
+    "source": {
+      "title": "Schedule jobs to run automatically",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/admin-job-queues-schedule-tasks"
+    }
+  },
+  {
+    "id": "BC-013",
+    "domain": "setup",
+    "objective": "Set up reports and configure report layouts",
+    "type": "single",
+    "stem": "Company EAST needs a different default invoice appearance from company WEST while keeping the same report dataset. What should the consultant configure?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Assign a document layout only to one customer while assuming it changes every customer."
+      },
+      {
+        "id": "b",
+        "text": "Change the report ID selected for sales invoices but leave its layout unchanged."
+      },
+      {
+        "id": "c",
+        "text": "Select the default layout for the report in the relevant company."
+      },
+      {
+        "id": "d",
+        "text": "Change only the report’s request-page layout choice for one run."
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "rationale": "Report layout selection is company-specific. The layout controls presentation of the report’s available data.",
+    "distractors": {
+      "a": "One customer-specific assignment does not establish the requested company default.",
+      "b": "Changing the report object is unnecessary when its existing dataset is suitable.",
+      "c": "Company-specific default layout selection meets the presentation need.",
+      "d": "A temporary run-time choice does not set the company default."
+    },
+    "module": "module-02-implementation",
+    "source": {
+      "title": "Set the layout used by a report",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/ui-set-report-layout"
+    }
+  },
+  {
+    "id": "BC-014",
+    "domain": "setup",
+    "objective": "Set up number series",
+    "type": "single",
+    "stem": "A customer card must normally receive an automatic number, but approved legacy numbers must also be enterable manually. Which number-series configuration supports both requirements?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Use a related number series but disable manual numbering on all available series."
+      },
+      {
+        "id": "b",
+        "text": "Enable Default Nos. and Manual Nos. on the assigned series."
+      },
+      {
+        "id": "c",
+        "text": "Enable Default Nos. but disable Manual Nos. on the series."
+      },
+      {
+        "id": "d",
+        "text": "Enable Manual Nos. only and remove automatic default numbering."
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "rationale": "Default numbering and permitted manual numbering are separate series settings. Enable both when both behaviors are required.",
+    "distractors": {
+      "a": "An alternative automatic series does not itself permit manual numbers.",
+      "b": "Both automatic assignment and approved manual entry are supported.",
+      "c": "That prevents the required legacy-number entry.",
+      "d": "That does not meet the automatic default requirement."
+    },
+    "module": "module-02-implementation",
+    "source": {
+      "title": "Create number series",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/ui-create-number-series"
+    }
+  },
+  {
+    "id": "BC-015",
+    "domain": "setup",
+    "objective": "Enable Copilot and agent capabilities",
+    "type": "multiple",
+    "stem": "An available Copilot capability is inactive for the organization. Some features in this environment also require approved cross-geography processing. Which TWO configuration checks should the administrator make? Select two.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Review feature activation on Copilot & agent capabilities."
+      },
+      {
+        "id": "b",
+        "text": "Review applicable data-movement governance and required user permissions."
+      },
+      {
+        "id": "c",
+        "text": "Assume the selected Role Center authorizes every available AI capability."
+      },
+      {
+        "id": "d",
+        "text": "Treat hiding a Copilot action through personalization as organization-wide feature deactivation."
+      }
+    ],
+    "correct": [
+      "a",
+      "b"
+    ],
+    "rationale": "Capability activation, applicable data-governance settings and feature permissions must align. Availability alone does not authorize every user or processing geography.",
+    "distractors": {
+      "a": "An inactive capability must be activated before use.",
+      "b": "Governance and access requirements apply where relevant.",
+      "c": "Role Centers are not blanket AI permission grants.",
+      "d": "Personalization affects a workspace and is not an organization-wide capability switch."
+    },
+    "module": "module-02-implementation",
+    "source": {
+      "title": "Configure Copilot and agent capabilities",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/enable-ai"
+    }
+  },
+  {
+    "id": "BC-016",
+    "domain": "setup",
+    "objective": "Enable Copilot and agent capabilities",
+    "type": "single",
+    "stem": "A consultant uses Copilot to suggest number series for a new company. The proposal includes prefixes that conflict with the customer’s numbering policy. What is the best next action?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Review and revise the proposed setup against business requirements before using it."
+      },
+      {
+        "id": "b",
+        "text": "Accept the complete proposal without checking prefixes or setup assignments."
+      },
+      {
+        "id": "c",
+        "text": "Skip previewing the proposed changes because suggestions cannot affect setup pages."
+      },
+      {
+        "id": "d",
+        "text": "Treat Copilot’s proposed prefixes as an approved replacement for the customer’s numbering policy."
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "rationale": "Assisted suggestions still require implementation review. Validate the proposed series and business controls before adopting the setup.",
+    "distractors": {
+      "a": "Reviewing the proposed setup is the appropriate implementation control.",
+      "b": "Suggestions require review rather than automatic acceptance.",
+      "c": "Accepted proposals can update number series and related setup assignments.",
+      "d": "A suggestion does not supersede the approved business policy."
+    },
+    "module": "module-02-implementation",
+    "source": {
+      "title": "Suggest number series with Copilot",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/suggest-number-series-copilot"
+    }
+  },
+  {
+    "id": "BC-017",
+    "domain": "setup",
+    "objective": "Set up global dimensions and shortcut dimensions",
+    "type": "single",
+    "stem": "A company wants DEPARTMENT and PROJECT to be its two global dimensions and six additional frequently entered dimensions on document lines. Which statement is correct?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Dimensions must be represented by separate G/L accounts."
+      },
+      {
+        "id": "b",
+        "text": "Two global dimensions plus six further shortcut dimensions fit the eight shortcut-dimension positions."
+      },
+      {
+        "id": "c",
+        "text": "It needs ten global dimensions."
+      },
+      {
+        "id": "d",
+        "text": "Global dimensions are in addition to eight independent shortcut dimensions."
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "rationale": "The two global dimensions occupy the first two shortcut positions. Six further shortcut positions remain available.",
+    "distractors": {
+      "a": "Dimensions avoid unnecessary chart-of-account duplication.",
+      "b": "The requested design uses eight shortcut positions in total.",
+      "c": "Business Central supports two global dimensions.",
+      "d": "The first two shortcut positions are the global dimensions."
+    },
+    "module": "module-02-implementation",
+    "source": {
+      "title": "Work with dimensions",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-dimensions"
+    }
+  },
+  {
+    "id": "BC-018",
+    "domain": "setup",
+    "objective": "Set up default dimensions for master data",
+    "type": "single",
+    "stem": "Every entry for a consulting expense account must carry a PROJECT value, but the value must be selected per transaction. Which default-dimension setup meets that requirement?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Value Posting = Same Code, with Dimension Value Code fixed to INTERNAL"
+      },
+      {
+        "id": "b",
+        "text": "Hide the dimension field by personalization"
+      },
+      {
+        "id": "c",
+        "text": "Value Posting = Code Mandatory, with Dimension Value Code blank"
+      },
+      {
+        "id": "d",
+        "text": "Value Posting blank and no dimension code"
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "rationale": "Code Mandatory requires a value while allowing the transaction to supply it. Leaving the default value blank avoids imposing one project on every transaction.",
+    "distractors": {
+      "a": "Same Code would force the specified project.",
+      "b": "Hiding a field is not a posting rule.",
+      "c": "A value is required without prescribing a specific project.",
+      "d": "No requirement would be enforced."
+    },
+    "module": "module-02-implementation",
+    "source": {
+      "title": "Work with dimensions",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-dimensions"
+    }
+  },
+  {
+    "id": "BC-019",
+    "domain": "setup",
+    "objective": "Set up blocking combinations of dimensions and dimension values",
+    "type": "single",
+    "stem": "DEPARTMENT and PROJECT can normally coexist, but DEPARTMENT = ADMIN must never be paired with PROJECT = CUSTOMER. Which configuration is most targeted?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Delete all PROJECT dimension values."
+      },
+      {
+        "id": "b",
+        "text": "Set the dimension combination to Limited and block only the ADMIN–CUSTOMER value pairing."
+      },
+      {
+        "id": "c",
+        "text": "Block the entire DEPARTMENT–PROJECT dimension combination."
+      },
+      {
+        "id": "d",
+        "text": "Create a new legal company for every project."
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "rationale": "A limited combination lets the dimensions coexist while disallowing selected value pairs. Blocking the whole pair would reject valid combinations too.",
+    "distractors": {
+      "a": "Deleting all values prevents valid project analysis.",
+      "b": "The limited matrix supports a specific prohibited value pair.",
+      "c": "That would reject every DEPARTMENT–PROJECT pairing.",
+      "d": "Separate companies do not implement the requested posting validation."
+    },
+    "module": "module-02-implementation",
+    "source": {
+      "title": "Work with dimensions",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-dimensions"
+    }
+  },
+  {
+    "id": "BC-020",
+    "domain": "setup",
+    "objective": "Set up default dimension priorities",
+    "type": "single",
+    "stem": "A customer and an item propose different values for the same dimension on sales lines. The consultant must make the preferred source consistent for the sales source code. What should be configured?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The customer’s payment terms"
+      },
+      {
+        "id": "b",
+        "text": "Default Dimension Priorities for that source code"
+      },
+      {
+        "id": "c",
+        "text": "Only the global dimension positions in General Ledger Setup"
+      },
+      {
+        "id": "d",
+        "text": "Only the Dimension Combinations blocking matrix"
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "rationale": "Default Dimension Priorities resolve competing sources. Test document entry order and header-to-line behavior when validating the resulting values.",
+    "distractors": {
+      "a": "Payment terms calculate dates and discounts, not dimension precedence.",
+      "b": "Priorities define the preferred table source for the transaction source code.",
+      "c": "Global positions improve entry and filtering but do not rank default sources.",
+      "d": "Combinations prevent invalid pairings rather than rank competing sources."
+    },
+    "module": "module-02-implementation",
+    "source": {
+      "title": "Work with dimensions",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-dimensions"
+    }
+  },
+  {
+    "id": "BC-021",
+    "domain": "setup",
+    "objective": "Manage approvals by using workflows",
+    "type": "order",
+    "stem": "A new purchase approval process must follow the implementation plan: complete approval-participant setup before creating the workflow. Put these stages in order. Users already exist, and the workflow template supports the requested event.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Copy the appropriate purchase approval workflow template."
+      },
+      {
+        "id": "b",
+        "text": "Configure the requester, approver, limits and notification preferences."
+      },
+      {
+        "id": "c",
+        "text": "Configure the copied workflow’s event conditions and response options."
+      },
+      {
+        "id": "d",
+        "text": "Enable the configured workflow and test a real request using separate requester and approver accounts."
+      }
+    ],
+    "correct": [
+      "b",
+      "a",
+      "c",
+      "d"
+    ],
+    "rationale": "The stated implementation plan begins with participant setup. Copy the supported template before configuring its rules, then enable and test the configured process. Participant setup and template creation are not universally ordered product dependencies; the first step is explicit in this scenario.",
+    "distractors": {
+      "a": "Copy a supported template before modifying its workflow rules.",
+      "b": "This scenario explicitly requires participant and approval-right setup first.",
+      "c": "Apply business rules to the copied workflow before activation.",
+      "d": "Activation and end-to-end testing follow configuration."
+    },
+    "module": "module-02-implementation",
+    "source": {
+      "title": "Set up and use a purchase approval workflow",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/walkthrough-setting-up-and-using-a-purchase-approval-workflow"
+    }
+  },
+  {
+    "id": "BC-022",
+    "domain": "setup",
+    "objective": "Set up a notification system",
+    "type": "single",
+    "stem": "An approver sees pending requests in Business Central but wants email notifications on a defined schedule. Which setup should the consultant review?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Only the requester’s purchase amount approval limit"
+      },
+      {
+        "id": "b",
+        "text": "Approval User Setup and the approver’s Notification Setup, together with working email configuration"
+      },
+      {
+        "id": "c",
+        "text": "Only the approver’s selected Role Center"
+      },
+      {
+        "id": "d",
+        "text": "Only the workflow’s event conditions, without notification delivery setup"
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "rationale": "Approval rights and notification delivery are related but separate settings. Verify the approver’s notification method and timing and that email delivery is configured.",
+    "distractors": {
+      "a": "An amount limit controls approval authority rather than email delivery.",
+      "b": "These settings control recipients, delivery method and timing.",
+      "c": "A Role Center does not define the email notification schedule.",
+      "d": "A matching event does not by itself configure notification transport and schedule."
+    },
+    "module": "module-02-implementation",
+    "source": {
+      "title": "Set up workflow notifications",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/across-setting-up-workflow-notifications"
+    }
+  },
+  {
+    "id": "BC-023",
+    "domain": "financials",
+    "objective": "Configure accounting periods",
+    "type": "single",
+    "stem": "Inanda wants twelve monthly accounting periods for the fiscal year beginning 1 July 2026. Which setup meets that requirement?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Create a year starting 1 January 2026 and change only the report caption to July."
+      },
+      {
+        "id": "b",
+        "text": "Set Allow Posting From to 1 July and assume that this creates the accounting periods."
+      },
+      {
+        "id": "c",
+        "text": "Create a year starting 1 July 2026 with 12 periods and a period length of 1M."
+      },
+      {
+        "id": "d",
+        "text": "Create one period of length 12D beginning 1 July 2026."
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "rationale": "The fiscal calendar needs a July start and twelve monthly periods. Posting-date permissions are separate controls.",
+    "distractors": {
+      "a": "Changing a caption does not change period start dates.",
+      "b": "Posting limits do not create a fiscal calendar.",
+      "c": "This creates the requested monthly fiscal structure.",
+      "d": "12D represents twelve days, not twelve months."
+    },
+    "module": "module-03-financial-setup",
+    "source": {
+      "title": "Work with accounting periods and fiscal years",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-accounting-periods-and-fiscal-years"
+    },
+    "caseStudy": {
+      "id": "inanda-finance",
+      "title": "Inanda Field Services: finance design",
+      "scenario": "Inanda Field Services is preparing a new Business Central company. Its fiscal year begins on 1 July. Local currency is ZAR. Standard customers receive 30-day terms with a 2% discount for payment within 10 days. A twelve-month maintenance invoice is issued in advance. The finance team needs separate statutory and tax asset depreciation, auditable customer balances, and repeatable monthly reporting. Each question provides any additional assumptions it needs."
+    }
+  },
+  {
+    "id": "BC-024",
+    "domain": "financials",
+    "objective": "Configure general ledger setup",
+    "type": "single",
+    "stem": "Inanda has closed its previous fiscal year, but an accountant can still post an adjustment dated in that year. The controller wants to restrict ordinary users to the current month while permitting one authorised accountant to post earlier adjustments. What should you configure?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A different customer posting group for the accountant."
+      },
+      {
+        "id": "b",
+        "text": "The Date Locked field on Accounting Periods for every ordinary user."
+      },
+      {
+        "id": "c",
+        "text": "A report date filter covering only the current month."
+      },
+      {
+        "id": "d",
+        "text": "Fixed Allow Posting From/To dates in General Ledger Setup and a deliberate exception in the accountant’s User Setup."
+      }
+    ],
+    "correct": [
+      "d"
+    ],
+    "rationale": "Closing a year does not itself prohibit posting. Company posting limits and controlled user-specific exceptions address this requirement.",
+    "distractors": {
+      "a": "Customer posting groups select receivables accounts, not user posting rights.",
+      "b": "Date Locked protects the period structure rather than user posting dates.",
+      "c": "A report filter changes the view, not posting validation.",
+      "d": "The company boundary and authorised user override enforce the required separation."
+    },
+    "module": "module-03-financial-setup",
+    "source": {
+      "title": "Specify posting periods",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-how-specify-posting-periods"
+    },
+    "caseStudy": {
+      "id": "inanda-finance",
+      "title": "Inanda Field Services: finance design",
+      "scenario": "Inanda Field Services is preparing a new Business Central company. Its fiscal year begins on 1 July. Local currency is ZAR. Standard customers receive 30-day terms with a 2% discount for payment within 10 days. A twelve-month maintenance invoice is issued in advance. The finance team needs separate statutory and tax asset depreciation, auditable customer balances, and repeatable monthly reporting. Each question provides any additional assumptions it needs."
+    }
+  },
+  {
+    "id": "BC-025",
+    "domain": "financials",
+    "objective": "Set up payment terms",
+    "type": "single",
+    "stem": "Inanda creates an invoice with a document date of 4 August and a posting date of 8 August. The payment terms use a due-date formula of 30D and a discount-date formula of 10D, with 2% discount. Ignoring tax and rounding, which result should you expect for a ZAR 10,000 invoice?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Due immediately because payment terms require the posting and document dates to match."
+      },
+      {
+        "id": "b",
+        "text": "Due 7 September; discount deadline 18 August; eligible discount ZAR 200."
+      },
+      {
+        "id": "c",
+        "text": "Due 3 September; discount deadline 14 August; eligible discount ZAR 200."
+      },
+      {
+        "id": "d",
+        "text": "Due 3 September; discount deadline 14 August; eligible discount ZAR 2,000."
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "rationale": "Payment terms calculate these dates from the document date. Thirty days after 4 August is 3 September; ten days after is 14 August. Two percent of 10,000 is 200.",
+    "distractors": {
+      "a": "Different document and posting dates do not invalidate payment terms.",
+      "b": "This incorrectly uses the posting date as the date-formula basis.",
+      "c": "Both date calculations and the percentage match the stated terms.",
+      "d": "This treats 2% as 20%."
+    },
+    "module": "module-03-financial-setup",
+    "source": {
+      "title": "Set up payment terms",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-payment-terms"
+    },
+    "caseStudy": {
+      "id": "inanda-finance",
+      "title": "Inanda Field Services: finance design",
+      "scenario": "Inanda Field Services is preparing a new Business Central company. Its fiscal year begins on 1 July. Local currency is ZAR. Standard customers receive 30-day terms with a 2% discount for payment within 10 days. A twelve-month maintenance invoice is issued in advance. The finance team needs separate statutory and tax asset depreciation, auditable customer balances, and repeatable monthly reporting. Each question provides any additional assumptions it needs."
+    }
+  },
+  {
+    "id": "BC-026",
+    "domain": "financials",
+    "objective": "Set up payment methods",
+    "type": "single",
+    "stem": "Inanda agrees that a customer will pay by bank transfer and must pay within 30 days. You need defaults for new invoices. Which configuration separates the two requirements correctly?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Set Payment Method Code to the bank-transfer method and Payment Terms Code to the 30-day terms."
+      },
+      {
+        "id": "b",
+        "text": "Enter the customer’s bank account number in the Due Date field."
+      },
+      {
+        "id": "c",
+        "text": "Create a customer posting group called BANK30 and rely on its name."
+      },
+      {
+        "id": "d",
+        "text": "Set Payment Terms Code to the bank-transfer method and leave Payment Method Code blank."
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "rationale": "The method describes the means of payment, while the terms control due dates and discounts. Their codes belong in separate master-data fields.",
+    "distractors": {
+      "a": "This records both independent defaults in their appropriate fields.",
+      "b": "An account identifier cannot replace a due date.",
+      "c": "Posting group names do not define terms or methods.",
+      "d": "A payment method is not a due-date formula."
+    },
+    "module": "module-03-financial-setup",
+    "source": {
+      "title": "Set up payment methods",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-payment-methods"
+    },
+    "caseStudy": {
+      "id": "inanda-finance",
+      "title": "Inanda Field Services: finance design",
+      "scenario": "Inanda Field Services is preparing a new Business Central company. Its fiscal year begins on 1 July. Local currency is ZAR. Standard customers receive 30-day terms with a 2% discount for payment within 10 days. A twelve-month maintenance invoice is issued in advance. The finance team needs separate statutory and tax asset depreciation, auditable customer balances, and repeatable monthly reporting. Each question provides any additional assumptions it needs."
+    }
+  },
+  {
+    "id": "BC-027",
+    "domain": "financials",
+    "objective": "Set up deferrals",
+    "type": "single",
+    "stem": "Inanda invoices ZAR 120,000, excluding tax, for twelve equal monthly service periods. The accountant wants exactly ZAR 10,000 recognised in each period, without variation for the number of days in a month. Which deferral calculation method should the template use?",
+    "options": [
+      {
+        "id": "a",
+        "text": "User-Defined, leaving all schedule amounts blank."
+      },
+      {
+        "id": "b",
+        "text": "Equal per Period, with 12 periods and a reviewed start date."
+      },
+      {
+        "id": "c",
+        "text": "Days per Period, because every month contains an identical number of days."
+      },
+      {
+        "id": "d",
+        "text": "A payment term of 12M, with no deferral template."
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "rationale": "Equal per Period divides the amount evenly across the specified periods. The recognition schedule also needs the correct start date and deferral account.",
+    "distractors": {
+      "a": "User-defined schedules require entered amounts; blanks do not establish the allocation.",
+      "b": "This produces twelve equal allocations of the stated amount.",
+      "c": "Calendar months differ in length, so this does not express the equal-amount requirement.",
+      "d": "Payment terms control settlement timing rather than revenue recognition."
+    },
+    "module": "module-03-financial-setup",
+    "source": {
+      "title": "Defer revenues and expenses",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-how-defer-revenue-expenses"
+    },
+    "caseStudy": {
+      "id": "inanda-finance",
+      "title": "Inanda Field Services: finance design",
+      "scenario": "Inanda Field Services is preparing a new Business Central company. Its fiscal year begins on 1 July. Local currency is ZAR. Standard customers receive 30-day terms with a 2% discount for payment within 10 days. A twelve-month maintenance invoice is issued in advance. The finance team needs separate statutory and tax asset depreciation, auditable customer balances, and repeatable monthly reporting. Each question provides any additional assumptions it needs."
+    }
+  },
+  {
+    "id": "BC-028",
+    "domain": "financials",
+    "objective": "Configure currencies including exchange rates",
+    "type": "multiple",
+    "stem": "Inanda will invoice a customer in EUR while retaining ZAR as local currency. Which TWO setup actions are appropriate? Select two.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Replace the company’s local currency with EUR for each invoice."
+      },
+      {
+        "id": "b",
+        "text": "Create and configure EUR in Currencies, including relevant accounts and exchange rates."
+      },
+      {
+        "id": "c",
+        "text": "Set EUR as the default Currency Code on the customer card."
+      },
+      {
+        "id": "d",
+        "text": "Create ZAR again as a foreign currency and assign it to every local customer."
+      }
+    ],
+    "correct": [
+      "b",
+      "c"
+    ],
+    "rationale": "The foreign currency and its rates must exist, and a customer default reduces repeated entry. Local currency remains the company’s accounting basis.",
+    "distractors": {
+      "a": "Local currency is not switched for individual customer invoices.",
+      "b": "A foreign-currency code needs its supporting setup.",
+      "c": "This provides the default transaction currency for this customer.",
+      "d": "Duplicating local currency as a foreign currency creates avoidable ambiguity."
+    },
+    "module": "module-03-financial-setup",
+    "source": {
+      "title": "Set up currencies",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-set-up-currencies"
+    },
+    "caseStudy": {
+      "id": "inanda-finance",
+      "title": "Inanda Field Services: finance design",
+      "scenario": "Inanda Field Services is preparing a new Business Central company. Its fiscal year begins on 1 July. Local currency is ZAR. Standard customers receive 30-day terms with a 2% discount for payment within 10 days. A twelve-month maintenance invoice is issued in advance. The finance team needs separate statutory and tax asset depreciation, auditable customer balances, and repeatable monthly reporting. Each question provides any additional assumptions it needs."
+    }
+  },
+  {
+    "id": "BC-029",
+    "domain": "financials",
+    "objective": "Set up general ledger accounts",
+    "type": "single",
+    "stem": "An accountant has created account 6100 as a Heading, then tries to select it for a direct expense journal line. The account should hold individual expense entries. Which change addresses the design error?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Set Account Type to Total and include account 6100 in its Totaling filter."
+      },
+      {
+        "id": "b",
+        "text": "Use an account whose Account Type is Posting for the expense entries."
+      },
+      {
+        "id": "c",
+        "text": "Enable Direct Posting while retaining Account Type Heading."
+      },
+      {
+        "id": "d",
+        "text": "Set Account Type to Begin-Total and assign the Expenses account category."
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "rationale": "Heading and total-type accounts organise the chart. Transaction accounts must be posting accounts, with other posting controls configured appropriately.",
+    "distractors": {
+      "a": "A Total account aggregates other accounts; it does not receive individual expense postings.",
+      "b": "A Posting account is the relevant chart structure for individual ledger entries.",
+      "c": "Direct Posting does not convert a Heading into a Posting account.",
+      "d": "A Begin-Total account structures an account range; its category does not make it a transaction account."
+    },
+    "module": "module-03-financial-setup",
+    "source": {
+      "title": "The general ledger and the chart of accounts",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-general-ledger"
+    }
+  },
+  {
+    "id": "BC-030",
+    "domain": "financials",
+    "objective": "Create account categories and subcategories",
+    "type": "multiple",
+    "stem": "A new expense G/L account is missing from category-based financial statements. Which TWO checks are most relevant before changing the report calculation? Select two.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Confirm the category-based report definitions reflect the intended category structure."
+      },
+      {
+        "id": "b",
+        "text": "Confirm the G/L account is assigned to the intended account category/subcategory."
+      },
+      {
+        "id": "c",
+        "text": "Recreate every posted transaction in a new company."
+      },
+      {
+        "id": "d",
+        "text": "Change the customer’s Shipment Method Code."
+      }
+    ],
+    "correct": [
+      "a",
+      "b"
+    ],
+    "rationale": "Category-driven statements depend on account categorisation and the definitions built from that structure. Diagnose those mappings before introducing unrelated changes.",
+    "distractors": {
+      "a": "The definitions must represent the expected category layout.",
+      "b": "An uncategorised or miscategorised account can be excluded from the intended report grouping.",
+      "c": "Recreating transactions is unnecessary and disrupts the audit trail.",
+      "d": "Shipment methods do not define financial statement groupings."
+    },
+    "module": "module-03-financial-setup",
+    "source": {
+      "title": "Report selection for built-in finance reports",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-financial-reporting-report-selection"
+    }
+  },
+  {
+    "id": "BC-031",
+    "domain": "financials",
+    "objective": "Prepare financial reporting with financial data and account categories",
+    "type": "single",
+    "stem": "The controller wants one report with revenue, cost of sales and gross profit as rows, and current-month actual, prior-year actual and budget as columns. Which design is appropriate?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A financial report combining a row definition for the account groupings/formula and a column definition for the comparison measures."
+      },
+      {
+        "id": "b",
+        "text": "Three customer posting groups named CURRENT, PRIOR and BUDGET."
+      },
+      {
+        "id": "c",
+        "text": "A bank reconciliation with each revenue account as a statement line."
+      },
+      {
+        "id": "d",
+        "text": "A number series containing the names of the requested columns."
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "rationale": "Financial reporting separates the row calculations from the time/value comparisons in columns. This supports a repeatable statement without changing transaction posting.",
+    "distractors": {
+      "a": "Rows and columns each express the relevant part of the reporting requirement.",
+      "b": "Customer posting groups select receivables control accounts rather than report measures.",
+      "c": "Reconciliation matches bank activity, not profit measures.",
+      "d": "Number series identify records and documents."
+    },
+    "module": "module-04-financial-control",
+    "source": {
+      "title": "Build financial reports using financial data and account categories",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/bi-how-work-account-schedule"
+    }
+  },
+  {
+    "id": "BC-032",
+    "domain": "financials",
+    "objective": "Set up general ledger allocations",
+    "type": "single",
+    "stem": "An ordinary general journal must distribute a ZAR 18,000 administration cost as 60% to one destination G/L account and 40% to another. The split is stable each month. Which setup is the most direct fit?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A variable allocation based on changing statistical balances, with no source balances defined."
+      },
+      {
+        "id": "b",
+        "text": "One customer posting group for each percentage."
+      },
+      {
+        "id": "c",
+        "text": "Two payment terms with due-date formulas of 60D and 40D."
+      },
+      {
+        "id": "d",
+        "text": "A fixed allocation account with the two destinations and 60/40 shares; test the distribution before posting."
+      }
+    ],
+    "correct": [
+      "d"
+    ],
+    "rationale": "A fixed allocation expresses a stable split. For this test amount the destinations receive ZAR 10,800 and ZAR 7,200 before any applicable tax handling.",
+    "distractors": {
+      "a": "A variable allocation needs an appropriate changing basis and is unnecessary here.",
+      "b": "Customer posting groups do not distribute this expense.",
+      "c": "Due-date formulas do not allocate costs.",
+      "d": "The setup matches the fixed distribution and provides a preposting test."
+    },
+    "module": "module-04-financial-control",
+    "source": {
+      "title": "Allocate revenue and costs to multiple general ledger accounts",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-allocate-revenue-costs"
+    }
+  },
+  {
+    "id": "BC-033",
+    "domain": "financials",
+    "objective": "Create general posting groups",
+    "type": "multiple",
+    "stem": "A wholesaler wants product revenue for domestic customers and export customers to post to different revenue accounts, while using the same item. Which TWO statements correctly describe the setup? Select two.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Assign appropriate General Business Posting Groups to the customer records."
+      },
+      {
+        "id": "b",
+        "text": "Use only the item’s Inventory Posting Group to distinguish domestic and export customers."
+      },
+      {
+        "id": "c",
+        "text": "Create a different accounting period for export sales."
+      },
+      {
+        "id": "d",
+        "text": "Configure the relevant business/product combinations in General Posting Setup with their revenue accounts."
+      }
+    ],
+    "correct": [
+      "a",
+      "d"
+    ],
+    "rationale": "The business classification identifies the trading party, and the product classification identifies what is sold. Their configured combination determines the revenue account.",
+    "distractors": {
+      "a": "The customer business classification expresses the domestic/export distinction.",
+      "b": "Inventory posting groups govern inventory valuation accounts rather than customer-based revenue selection.",
+      "c": "Time periods do not encode the customer market.",
+      "d": "The matrix supplies the G/L account for each relevant combination."
+    },
+    "module": "module-03-financial-setup",
+    "source": {
+      "title": "Set up posting groups in Business Central",
+      "url": "https://learn.microsoft.com/en-us/training/modules/posting-groups-dynamics-365-business-central/"
+    }
+  },
+  {
+    "id": "BC-034",
+    "domain": "financials",
+    "objective": "Create specific posting groups",
+    "type": "single",
+    "stem": "A sales invoice posts to the correct revenue account but to the wrong receivables control account. Which setup should you inspect first?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The Sales Account in General Posting Setup for the business/product combination."
+      },
+      {
+        "id": "b",
+        "text": "The Inventory Account in Inventory Posting Setup for the item and location."
+      },
+      {
+        "id": "c",
+        "text": "The Invoice Rounding Account on the customer posting group."
+      },
+      {
+        "id": "d",
+        "text": "The customer posting group used by the invoice and its Receivables Account mapping."
+      }
+    ],
+    "correct": [
+      "d"
+    ],
+    "rationale": "Revenue and receivables use different posting mappings. The customer posting group links the customer subledger to its receivables control account.",
+    "distractors": {
+      "a": "This mapping selects sales revenue, which the scenario says is already correct.",
+      "b": "This mapping affects inventory value, not the customer receivables control account.",
+      "c": "The rounding account handles invoice-rounding differences; it does not replace the Receivables Account mapping.",
+      "d": "This is the mapping responsible for the receivables side of the posting."
+    },
+    "module": "module-03-financial-setup",
+    "source": {
+      "title": "Set up posting groups",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-posting-groups"
+    }
+  },
+  {
+    "id": "BC-035",
+    "domain": "financials",
+    "objective": "Configure inventory posting setup",
+    "type": "single",
+    "stem": "Item STOCK-A has Inventory Posting Group RESALE. Its inventory value should post to a separate balance-sheet account at location CAPE compared with location JOBURG. Which setup provides that distinction?",
+    "options": [
+      {
+        "id": "a",
+        "text": "General Posting Setup for the general business and general product posting group combination."
+      },
+      {
+        "id": "b",
+        "text": "Default receipt and shipment bins on the two location cards."
+      },
+      {
+        "id": "c",
+        "text": "The Inventory Posting Group code on the item, without configuring location-specific Inventory Posting Setup."
+      },
+      {
+        "id": "d",
+        "text": "Inventory Posting Setup for the relevant location and inventory posting group combinations."
+      }
+    ],
+    "correct": [
+      "d"
+    ],
+    "rationale": "Inventory Posting Setup links the location/inventory posting group combination to the inventory G/L accounts. It is separate from sales revenue mapping.",
+    "distractors": {
+      "a": "General Posting Setup controls combinations such as revenue and cost-of-sales mappings; the location-based inventory balance-sheet mapping is elsewhere.",
+      "b": "Bins control physical stock handling within a location, not the inventory G/L account selection.",
+      "c": "The item supplies its group code, but the account distinction still requires the location/group mapping.",
+      "d": "This matrix contains the required location-based account mapping."
+    },
+    "module": "module-03-financial-setup",
+    "source": {
+      "title": "Set up and assign inventory posting groups",
+      "url": "https://learn.microsoft.com/en-us/training/modules/posting-groups-dynamics-365-business-central/"
+    }
+  },
+  {
+    "id": "BC-036",
+    "domain": "financials",
+    "objective": "Allow multiple posting groups",
+    "type": "multiple",
+    "stem": "A customer normally uses one receivables posting group but may use an approved alternative on selected documents. Which THREE configuration actions are required? Select three.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Delete the customer’s default posting group."
+      },
+      {
+        "id": "b",
+        "text": "Replace all general product posting groups with bank account posting groups."
+      },
+      {
+        "id": "c",
+        "text": "Enable Allow Multiple Posting Groups in Sales & Receivables Setup."
+      },
+      {
+        "id": "d",
+        "text": "Define the permitted alternatives using Alternative Groups for the customer posting group."
+      },
+      {
+        "id": "e",
+        "text": "Enable Allow Multiple Posting Groups on the relevant customer card."
+      }
+    ],
+    "correct": [
+      "c",
+      "d",
+      "e"
+    ],
+    "rationale": "Alternative posting groups are explicitly enabled at application setup and customer level, with allowed substitutes configured. Retain controlled defaults.",
+    "distractors": {
+      "a": "The default remains useful and is not deleted to enable alternatives.",
+      "b": "Product and bank posting groups have unrelated roles.",
+      "c": "The application setting enables the capability for customer posting groups.",
+      "d": "This limits substitution to the intended alternatives.",
+      "e": "The customer also needs permission to use the capability."
+    },
+    "module": "module-03-financial-setup",
+    "source": {
+      "title": "Allow alternative posting groups on documents",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-posting-groups"
+    }
+  },
+  {
+    "id": "BC-037",
+    "domain": "financials",
+    "objective": "Set up bank accounts",
+    "type": "single",
+    "stem": "A consultant creates a bank account card and its linked G/L account. The accountant wants all operational bank movements to have bank ledger entries so that reconciliation remains possible. Which control best supports this design?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Set the linked G/L account type to Heading."
+      },
+      {
+        "id": "b",
+        "text": "Set the bank account Currency Code to the customer number."
+      },
+      {
+        "id": "c",
+        "text": "Avoid creating a bank card and post every bank transaction directly to its G/L account."
+      },
+      {
+        "id": "d",
+        "text": "Link the card through a Bank Account Posting Group and normally disable Direct Posting on the linked G/L account."
+      }
+    ],
+    "correct": [
+      "d"
+    ],
+    "rationale": "Posting via the bank account preserves both the bank subledger and its control account. Direct G/L-only postings can cause reconciliation differences.",
+    "distractors": {
+      "a": "A heading cannot serve as the posting control account.",
+      "b": "A customer identifier is not a currency code.",
+      "c": "G/L-only movements do not create the required bank ledger entries.",
+      "d": "This connects the ledgers and discourages bypassing the bank subledger."
+    },
+    "module": "module-03-financial-setup",
+    "source": {
+      "title": "Set up bank accounts",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/bank-how-setup-bank-accounts"
+    }
+  },
+  {
+    "id": "BC-038",
+    "domain": "financials",
+    "objective": "Create journal templates and batches",
+    "type": "single",
+    "stem": "Two accountants must maintain separate unposted journal lines while sharing the same general-journal type and default structure. Which setup should you choose?",
+    "options": [
+      {
+        "id": "a",
+        "text": "One shared batch, with a different document-number prefix for each accountant."
+      },
+      {
+        "id": "b",
+        "text": "One shared batch, with a different Reason Code on each accountant’s lines."
+      },
+      {
+        "id": "c",
+        "text": "One shared batch, with each accountant assigned a different default balancing account."
+      },
+      {
+        "id": "d",
+        "text": "Two named batches under the same journal template."
+      }
+    ],
+    "correct": [
+      "d"
+    ],
+    "rationale": "Templates define the journal category and common structure. Batches provide separate working sets of journal lines within that template. This is working-set separation, not a claim that a batch alone restricts another user’s access.",
+    "distractors": {
+      "a": "Number prefixes identify documents but do not create separate journal working sets.",
+      "b": "Reason codes describe postings; the unposted lines would still occupy one batch.",
+      "c": "Balancing-account defaults do not partition the batch’s unposted lines.",
+      "d": "Separate batches provide distinct working sets under the shared template. They are not a substitute for permissions if user-level security isolation is also required."
+    },
+    "module": "module-03-financial-setup",
+    "source": {
+      "title": "Set up general journal templates and batches",
+      "url": "https://learn.microsoft.com/en-us/training/modules/general-journal-templates-dynamics-365-business-central/"
+    }
+  },
+  {
+    "id": "BC-039",
+    "domain": "financials",
+    "objective": "Create journal templates including number series",
+    "type": "single",
+    "stem": "An accounts team wants a payment-journal batch to propose document numbers from a dedicated sequence when new journal lines are entered. It is not requesting a separate renumbering sequence at posting. Where should the consultant configure the entry-time default?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Use the Sales Invoice Nos. series in Sales & Receivables Setup."
+      },
+      {
+        "id": "b",
+        "text": "Set only the batch’s Posting No. Series, leaving its No. Series blank."
+      },
+      {
+        "id": "c",
+        "text": "Assign the dedicated series to No. Series in the payment-journal batch setup."
+      },
+      {
+        "id": "d",
+        "text": "Assign a dedicated Source Code to the journal template."
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "rationale": "Use the journal batch’s No. Series for the document-number proposal during entry. Posting No. Series is a separate control for numbering at posting. Sales numbering and source codes serve different purposes.",
+    "distractors": {
+      "a": "Sales-document numbering does not establish the payment-journal batch’s proposed document numbers.",
+      "b": "Posting No. Series controls numbering at posting; it does not replace the batch’s entry-time No. Series default.",
+      "c": "The batch’s No. Series provides proposed document numbers for its journal lines.",
+      "d": "A source code identifies the posting origin for the audit trail; it is not a document-number sequence."
+    },
+    "module": "module-03-financial-setup",
+    "source": {
+      "title": "Work with general journals",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/ui-work-general-journals"
+    }
+  },
+  {
+    "id": "BC-040",
+    "domain": "financials",
+    "objective": "Create templates for recurring journals",
+    "type": "single",
+    "stem": "A monthly recurring journal has two lines: a fixed ZAR 5,000 charge and an amount that must be entered anew each month. The accountant wants the first amount retained and the second cleared after posting. Which recurring methods fit?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Fixed for ZAR 5,000 and Variable for the changing amount."
+      },
+      {
+        "id": "b",
+        "text": "Variable for both lines because both recur monthly."
+      },
+      {
+        "id": "c",
+        "text": "Balance for both lines regardless of the source accounts."
+      },
+      {
+        "id": "d",
+        "text": "Fixed for both lines and assume both amounts are cleared."
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "rationale": "The recurring method determines how line amounts behave after posting. Fixed retains the amount; Variable clears it for the next entry.",
+    "distractors": {
+      "a": "The two methods match the different reuse requirements.",
+      "b": "Variable would clear the fixed amount as well.",
+      "c": "Balance methods use account balances and do not describe this fixed-versus-reentered requirement.",
+      "d": "Fixed does not clear the amount after posting."
+    },
+    "module": "module-04-financial-control",
+    "source": {
+      "title": "Work with recurring journals",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/ui-work-general-journals"
+    }
+  },
+  {
+    "id": "BC-041",
+    "domain": "financials",
+    "objective": "Create vendor accounts and set up payment journals",
+    "type": "multiple",
+    "stem": "A supplier will be paid using a supported payment-file export. Which THREE records/settings should the consultant validate as part of setup? Select three.",
+    "options": [
+      {
+        "id": "a",
+        "text": "The supplier’s recipient bank account and the relevant payment details."
+      },
+      {
+        "id": "b",
+        "text": "Allow Payment Export on the payment-journal batch."
+      },
+      {
+        "id": "c",
+        "text": "A sales blanket order for the supplier."
+      },
+      {
+        "id": "d",
+        "text": "A financial-report category named EXPORT."
+      },
+      {
+        "id": "e",
+        "text": "The company bank account’s supported payment export format."
+      }
+    ],
+    "correct": [
+      "a",
+      "b",
+      "e"
+    ],
+    "rationale": "Payment-file preparation depends on recipient data, the bank-format configuration and an enabled payment batch. The bank still requires its own submission/authorisation process.",
+    "distractors": {
+      "a": "The file needs valid recipient account details.",
+      "b": "The batch must permit payment export.",
+      "c": "A sales blanket order does not configure vendor banking.",
+      "d": "A report category does not configure file export.",
+      "e": "The format must match a supported requirement of the paying bank."
+    },
+    "module": "module-03-financial-setup",
+    "source": {
+      "title": "Set up banking and bank connections",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/bank-setup-banking"
+    }
+  },
+  {
+    "id": "BC-042",
+    "domain": "financials",
+    "objective": "Assess the relationship between vendors and ledger entries",
+    "type": "single",
+    "stem": "A vendor invoice is ZAR 8,000. A payment of ZAR 3,000 has been posted and applied. The accountant needs to explain why the invoice’s remaining amount is now ZAR 5,000 without altering the original invoice. Which evidence chain is most useful?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A manually edited original invoice amount of ZAR 5,000."
+      },
+      {
+        "id": "b",
+        "text": "Only the latest purchase quote, because quotes change remaining amounts."
+      },
+      {
+        "id": "c",
+        "text": "Only the vendor’s name and address."
+      },
+      {
+        "id": "d",
+        "text": "The vendor’s invoice/payment ledger entries, their detailed application entries, and the corresponding G/L control-account entries."
+      }
+    ],
+    "correct": [
+      "d"
+    ],
+    "rationale": "The original invoice remains part of the audit trail. Payment and application detail explain the remaining balance, while the G/L entries support control-account reconciliation.",
+    "distractors": {
+      "a": "Changing the original posted amount would destroy the explanation rather than provide it.",
+      "b": "An unposted quote does not settle an invoice.",
+      "c": "Master-data contact details cannot explain settlement movements.",
+      "d": "These linked records explain the transaction, settlement and accounting effects."
+    },
+    "module": "module-04-financial-control",
+    "source": {
+      "title": "Detailed Vendor Ledger Entries",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-powerbi-detailed-vendor-ledger-entries"
+    }
+  },
+  {
+    "id": "BC-043",
+    "domain": "financials",
+    "objective": "Set up payment registration",
+    "type": "single",
+    "stem": "A receivables team wants a list of open sales documents where it can mark Payment Made, enter received amounts and dates, and register receipts. It will enter this information manually rather than prepare individual cash receipt journal lines. Which capability most directly provides that workspace?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Payment Registration, with the appropriate setup for registering customer payments."
+      },
+      {
+        "id": "b",
+        "text": "A cash receipt journal with manually entered customer lines and Applies-to Doc. No."
+      },
+      {
+        "id": "c",
+        "text": "Bank Account Reconciliation to match bank statement lines to existing bank ledger entries."
+      },
+      {
+        "id": "d",
+        "text": "A payment journal using Suggest Vendor Payments."
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "rationale": "Payment Registration provides a focused receivables payment-registration experience. Demonstrate it against open customer documents using the intended setup.",
+    "distractors": {
+      "a": "Payment Registration is the focused list-based workspace described in the requirement.",
+      "b": "A cash receipt journal can post receipts, but does not provide the requested Payment Made checklist over open sales documents.",
+      "c": "Bank reconciliation matches statement information against bank ledger entries; it is not the requested open-sales-document registration checklist.",
+      "d": "Suggest Vendor Payments prepares supplier payments, rather than this customer-receipt workflow."
+    },
+    "module": "module-04-financial-control",
+    "source": {
+      "title": "Configure financials: set up payment registration",
+      "url": "https://learn.microsoft.com/en-us/training/paths/configure-financials-business-central/"
+    }
+  },
+  {
+    "id": "BC-044",
+    "domain": "financials",
+    "objective": "Create customer accounts and related records",
+    "type": "single",
+    "stem": "A newly created customer must default to 14-day settlement and EUR invoicing. Which master-data values should be set?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Payment Method Code for a bank transfer and Currency Code EUR, with no Payment Terms Code."
+      },
+      {
+        "id": "b",
+        "text": "Payment Terms Code for the 14-day terms and Currency Code EUR on the customer."
+      },
+      {
+        "id": "c",
+        "text": "Payment Terms Code for 14-day terms and EUR as the company’s additional reporting currency, leaving the customer Currency Code blank."
+      },
+      {
+        "id": "d",
+        "text": "Payment Terms Code for 14-day terms and EUR exchange-rate records, leaving the customer Currency Code blank."
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "rationale": "Customer defaults capture settlement terms and transaction currency. The company’s local currency remains company-wide.",
+    "distractors": {
+      "a": "The method specifies how the customer pays; it does not establish the 14-day due-date calculation.",
+      "b": "These fields provide the two requested defaults.",
+      "c": "Additional reporting currency is a company reporting control, not a default invoice currency for this customer.",
+      "d": "Exchange rates support EUR conversion, but do not by themselves select EUR on the customer’s documents."
+    },
+    "module": "module-03-financial-setup",
+    "source": {
+      "title": "Set up currencies and exchange rates",
+      "url": "https://learn.microsoft.com/en-us/training/modules/currencies-exchange-rates-dynamics-365-business-central/"
+    }
+  },
+  {
+    "id": "BC-045",
+    "domain": "financials",
+    "objective": "Configure depreciation books",
+    "type": "multiple",
+    "stem": "One machine needs a financial-reporting depreciation schedule and a different tax schedule. Only the financial-reporting book should integrate its relevant postings with the G/L. Which TWO design decisions are appropriate? Select two.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Configure the G/L Integration settings deliberately for each book."
+      },
+      {
+        "id": "b",
+        "text": "Assume every depreciation book must always post to the G/L."
+      },
+      {
+        "id": "c",
+        "text": "Use separate depreciation books for the two purposes and assign the required books to the asset."
+      },
+      {
+        "id": "d",
+        "text": "Create the tax schedule by renaming the machine after every calculation."
+      }
+    ],
+    "correct": [
+      "a",
+      "c"
+    ],
+    "rationale": "Depreciation books let the same asset support different valuation purposes. Their integration settings determine which asset activities affect the G/L.",
+    "distractors": {
+      "a": "Integration is a book-level design decision and should not be assumed identical.",
+      "b": "A nonintegrated book can serve another depreciation purpose.",
+      "c": "Separate books support distinct accounting purposes for one asset.",
+      "d": "Asset names do not define depreciation schedules."
+    },
+    "module": "module-04-financial-control",
+    "source": {
+      "title": "Set up general fixed assets information",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/fa-how-setup-general"
+    }
+  },
+  {
+    "id": "BC-046",
+    "domain": "financials",
+    "objective": "Configure fixed asset classes and subclasses",
+    "type": "single",
+    "stem": "A company wants to classify assets first as TANGIBLE or INTANGIBLE, then separate tangible assets into VEHICLES and MACHINERY for analysis. Which setup is the closest fit?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Fixed asset classes with appropriate fixed asset subclasses."
+      },
+      {
+        "id": "b",
+        "text": "A new user permission set for each machine."
+      },
+      {
+        "id": "c",
+        "text": "One currency code for each asset family."
+      },
+      {
+        "id": "d",
+        "text": "Customer shipment methods named VEHICLES and MACHINERY."
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "rationale": "Classes and subclasses provide fixed-asset classification. They should be designed alongside depreciation and posting requirements, without confusing classification with those controls.",
+    "distractors": {
+      "a": "The two classification levels express the intended asset grouping.",
+      "b": "Permissions govern access, not asset categories.",
+      "c": "Currency codes identify monetary units.",
+      "d": "Shipment methods do not classify fixed assets."
+    },
+    "module": "module-04-financial-control",
+    "source": {
+      "title": "Set up fixed assets",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/fa-setup"
+    }
+  },
+  {
+    "id": "BC-047",
+    "domain": "financials",
+    "objective": "Create main assets and components",
+    "type": "single",
+    "stem": "A production line consists of a frame and replaceable motor that need separate fixed-asset records but should also be analysed as one main asset. What should you do?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Use only an item variant and delete all fixed-asset records."
+      },
+      {
+        "id": "b",
+        "text": "Create one G/L Heading account and assume it automatically creates components."
+      },
+      {
+        "id": "c",
+        "text": "Enter every component as text in one customer’s address."
+      },
+      {
+        "id": "d",
+        "text": "Create the main asset and component assets as individual fixed assets, then assign components on the main asset’s component list."
+      }
+    ],
+    "correct": [
+      "d"
+    ],
+    "rationale": "The main-asset/component relationship groups individual fixed-asset records. It does not replace their individual setup.",
+    "distractors": {
+      "a": "Item variants do not create fixed-asset component relationships.",
+      "b": "A chart heading does not create asset records or links.",
+      "c": "A customer address has no asset-structure function.",
+      "d": "This preserves separate asset records and establishes the reporting relationship."
+    },
+    "module": "module-04-financial-control",
+    "source": {
+      "title": "Set up main assets and asset components",
+      "url": "https://learn.microsoft.com/en-us/training/modules/set-up-main-assets-components/"
+    }
+  },
+  {
+    "id": "BC-048",
+    "domain": "financials",
+    "objective": "Differentiate depreciation methods",
+    "type": "single",
+    "stem": "An asset costs ZAR 120,000 and has an expected salvage value of ZAR 20,000 after five complete years. Assuming no later changes and equal full-year straight-line depreciation, what annual amount should the setup imply?",
+    "options": [
+      {
+        "id": "a",
+        "text": "ZAR 24,000."
+      },
+      {
+        "id": "b",
+        "text": "ZAR 28,000."
+      },
+      {
+        "id": "c",
+        "text": "ZAR 20,000."
+      },
+      {
+        "id": "d",
+        "text": "ZAR 100,000 every year."
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "rationale": "The depreciable basis is 120,000 minus 20,000, or 100,000. Spreading that evenly over five full years gives 20,000 per year.",
+    "distractors": {
+      "a": "This ignores the salvage value.",
+      "b": "This adds the salvage value to cost before dividing.",
+      "c": "This allocates the depreciable basis evenly over five years.",
+      "d": "This repeats the entire depreciable basis each year."
+    },
+    "module": "module-04-financial-control",
+    "source": {
+      "title": "Depreciation methods for fixed assets",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/fa-depreciation-methods"
+    }
+  },
+  {
+    "id": "BC-049",
+    "domain": "financials",
+    "objective": "Differentiate depreciation methods",
+    "type": "single",
+    "stem": "A controller wants accelerated depreciation calculated using a declining balance rather than the same annual amount throughout the asset’s life. Which family of methods should you evaluate?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A financial-report column labelled DEPRECIATION."
+      },
+      {
+        "id": "b",
+        "text": "Equal per Period deferral calculation."
+      },
+      {
+        "id": "c",
+        "text": "Declining-Balance methods, with the chosen method’s rate and calculation rules reviewed."
+      },
+      {
+        "id": "d",
+        "text": "A customer payment-discount percentage."
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "rationale": "Declining-balance depreciation applies the configured rules to a reducing basis. It is an asset valuation method rather than a report label or settlement discount.",
+    "distractors": {
+      "a": "A report label does not configure an asset’s calculation.",
+      "b": "Deferral schedules allocate document revenue or expense and are not fixed-asset depreciation methods.",
+      "c": "This is the relevant depreciation method family.",
+      "d": "Payment discounts affect invoice settlement."
+    },
+    "module": "module-04-financial-control",
+    "source": {
+      "title": "Depreciation methods for fixed assets",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/fa-depreciation-methods"
+    }
+  },
+  {
+    "id": "BC-050",
+    "domain": "financials",
+    "objective": "Configure fixed asset general ledger integration",
+    "type": "single",
+    "stem": "The DEPR book has G/L Integration enabled for depreciation. Which journal should be used for an integrated depreciation transaction?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A sales quote."
+      },
+      {
+        "id": "b",
+        "text": "A nonintegrated Fixed Asset Journal, assuming it automatically creates identical G/L entries."
+      },
+      {
+        "id": "c",
+        "text": "An Inventory Reclassification Journal."
+      },
+      {
+        "id": "d",
+        "text": "Fixed Asset G/L Journal."
+      }
+    ],
+    "correct": [
+      "d"
+    ],
+    "rationale": "When an asset activity is integrated with the general ledger, its transactions use the Fixed Asset G/L Journal. A nonintegrated journal is not an interchangeable route.",
+    "distractors": {
+      "a": "A quote does not record depreciation.",
+      "b": "The nonintegrated route does not satisfy the stated G/L integration requirement.",
+      "c": "Inventory reclassification does not post asset depreciation.",
+      "d": "This is the journal for the integrated fixed-asset activity."
+    },
+    "module": "module-04-financial-control",
+    "source": {
+      "title": "Set up fixed assets",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/fa-setup"
+    }
+  },
+  {
+    "id": "BC-051",
+    "domain": "financials",
+    "objective": "Set up posting groups",
+    "type": "order",
+    "stem": "A sandbox has no receivables G/L account or customer posting group. Place the following dependency steps in order so that a test customer invoice can use the new control account.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Create a fresh test invoice for that customer and preview the posting."
+      },
+      {
+        "id": "b",
+        "text": "Create the receivables G/L posting account."
+      },
+      {
+        "id": "c",
+        "text": "Assign the customer posting group to the test customer."
+      },
+      {
+        "id": "d",
+        "text": "Create a customer posting group and map its Receivables Account to that account."
+      }
+    ],
+    "correct": [
+      "b",
+      "d",
+      "c",
+      "a"
+    ],
+    "rationale": "The posting account must exist before it can be selected in the group, and the customer needs the group before a new invoice inherits it. Preview validates the resulting mapping.",
+    "distractors": {
+      "a": "Finally test the inherited setup on a new document.",
+      "b": "First establish the G/L destination.",
+      "c": "Next give the test customer the configured group.",
+      "d": "Then map the group to the existing destination."
+    },
+    "module": "module-03-financial-setup",
+    "source": {
+      "title": "Set up financial processes",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-setup-finance"
+    }
+  },
+  {
+    "id": "BC-052",
+    "domain": "financials",
+    "objective": "Set up deferrals",
+    "type": "order",
+    "stem": "A consultant is creating a new deferral setup from scratch. Order these dependent steps for a sandbox validation. Assume all other posting setup already exists.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Apply the template to a test document line and review its deferral schedule."
+      },
+      {
+        "id": "b",
+        "text": "Create the deferral template and select that account and the intended calculation rules."
+      },
+      {
+        "id": "c",
+        "text": "Preview the document posting and compare the period amounts with the requirement."
+      },
+      {
+        "id": "d",
+        "text": "Create the required balance-sheet deferral G/L account."
+      }
+    ],
+    "correct": [
+      "d",
+      "b",
+      "a",
+      "c"
+    ],
+    "rationale": "The template refers to an existing account. A document line uses that template to form a schedule, and preview then checks its accounting effect before posting.",
+    "distractors": {
+      "a": "A test line then provides the amount and date context.",
+      "b": "The template supplies the account and schedule defaults.",
+      "c": "Preview is the final validation of the configured accounting effect.",
+      "d": "The referenced account must exist first."
+    },
+    "module": "module-03-financial-setup",
+    "source": {
+      "title": "Set up and validate a deferral template",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-how-defer-revenue-expenses"
+    }
+  },
+  {
+    "id": "BC-053",
+    "domain": "financials",
+    "objective": "Set up general ledger allocations",
+    "type": "multiple",
+    "stem": "A consultant is designing two distributions: a stable 70/30 overhead split and a staff-cost split driven by changing departmental headcounts. Which TWO statements are correct? Select two.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Both requirements are solved by changing payment discount dates."
+      },
+      {
+        "id": "b",
+        "text": "A variable allocation account can use an appropriate statistical-account basis for the changing headcounts."
+      },
+      {
+        "id": "c",
+        "text": "A fixed allocation automatically reads a changing headcount even when no basis is configured."
+      },
+      {
+        "id": "d",
+        "text": "A fixed allocation account fits the stable 70/30 split."
+      }
+    ],
+    "correct": [
+      "b",
+      "d"
+    ],
+    "rationale": "The allocation type should match whether the basis is deliberately fixed or varies with a measured source. Validate destination accounts and the resulting percentages.",
+    "distractors": {
+      "a": "Settlement discounts do not allocate departmental costs.",
+      "b": "A configured statistical basis can drive the changing distribution.",
+      "c": "A fixed rule does not infer an external or changing driver.",
+      "d": "The stable rule is directly expressed as a fixed distribution."
+    },
+    "module": "module-04-financial-control",
+    "source": {
+      "title": "Use general ledger allocations in Business Central",
+      "url": "https://learn.microsoft.com/en-us/training/modules/general-ledger-allocations/"
+    }
+  },
+  {
+    "id": "BC-054",
+    "domain": "financials",
+    "objective": "Configure currencies including exchange rates",
+    "type": "single",
+    "stem": "A foreign-currency setup has exchange rates but no realised gain/loss G/L account mappings. The consultant is asked whether the rate table alone is sufficient for production. What is the best answer?",
+    "options": [
+      {
+        "id": "a",
+        "text": "No. Put the realised gain/loss accounts only in General Posting Setup for the foreign customer’s business/product combination."
+      },
+      {
+        "id": "b",
+        "text": "No. Configure and validate the relevant currency posting accounts as well as exchange-rate data."
+      },
+      {
+        "id": "c",
+        "text": "Yes. Configuring only unrealised gain/loss accounts covers both open-entry adjustments and every settlement difference."
+      },
+      {
+        "id": "d",
+        "text": "Yes. Payment-tolerance accounts automatically replace missing currency gain/loss mappings."
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "rationale": "A rate converts amounts, but accounting differences also need configured G/L destinations. A test transaction should validate the setup before production use.",
+    "distractors": {
+      "a": "General Posting Setup does not replace the currency’s realised gain/loss account configuration.",
+      "b": "Rates and posting-account configuration are complementary requirements.",
+      "c": "Unrealised adjustment accounts do not replace the realised accounts required for applicable settlement differences.",
+      "d": "Payment tolerances handle permitted settlement differences under their own rules; they do not substitute for currency gain/loss account setup."
+    },
+    "module": "module-03-financial-setup",
+    "source": {
+      "title": "Set up currencies",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-set-up-currencies"
+    }
+  },
+  {
+    "id": "BC-055",
+    "domain": "financials",
+    "objective": "Create templates for recurring journals",
+    "type": "single",
+    "stem": "An accountant wants to split a recurring rent journal using percentage allocation keys. They see Allocation Account in the Account Type list and assume it is supported in recurring journals. Which guidance is correct?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Replace the recurring journal with a customer statement report."
+      },
+      {
+        "id": "b",
+        "text": "Use Allocation Account because every visible option is supported in every journal."
+      },
+      {
+        "id": "c",
+        "text": "Change the document date until the option begins working."
+      },
+      {
+        "id": "d",
+        "text": "Use the recurring journal’s Allocations action and allocation keys; allocation accounts are not supported in recurring journals."
+      }
+    ],
+    "correct": [
+      "d"
+    ],
+    "rationale": "Recurring-journal allocations use their own allocation keys. The visible account-type option does not make allocation accounts supported in that journal.",
+    "distractors": {
+      "a": "A customer statement reports balances and does not replace a recurring cost journal.",
+      "b": "A visible option alone is not proof of support in that context.",
+      "c": "The journal feature limitation is not a date-validation problem.",
+      "d": "This uses the supported recurring-journal allocation mechanism."
+    },
+    "module": "module-04-financial-control",
+    "source": {
+      "title": "Allocate recurring costs and income",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/year-allocate-costs-income"
+    }
+  },
+  {
+    "id": "BC-056",
+    "domain": "trade",
+    "objective": "Differentiate between costing methods",
+    "type": "single",
+    "stem": "A dealer sells individually identified high-value machines. The cost of each serial-numbered unit must follow that exact unit through the sale. Which costing method best matches the requirement?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Average"
+      },
+      {
+        "id": "b",
+        "text": "Specific"
+      },
+      {
+        "id": "c",
+        "text": "LIFO chosen solely because the unit has a serial number"
+      },
+      {
+        "id": "d",
+        "text": "Standard"
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "rationale": "Specific costing matches the identifiable unit’s receipt cost to its outbound transaction. Item tracking and costing configuration must support that requirement.",
+    "distractors": {
+      "a": "Average pools costs rather than identifying one receipt cost.",
+      "b": "Specific uses the received cost of the particular unit.",
+      "c": "Serial identification alone does not make LIFO the required cost flow.",
+      "d": "Standard uses a maintained standard with variances."
+    },
+    "module": "module-05-trade-configuration",
+    "source": {
+      "title": "Setup best practices: Costing method",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/setup-best-practices-costing-method"
+    }
+  },
+  {
+    "id": "BC-057",
+    "domain": "trade",
+    "objective": "Differentiate between costing methods",
+    "type": "single",
+    "stem": "A manufacturer wants inventory valued at a maintained planned unit cost and wants purchase-cost differences recorded as variances. Which method should the consultant evaluate?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Standard"
+      },
+      {
+        "id": "b",
+        "text": "FIFO"
+      },
+      {
+        "id": "c",
+        "text": "Specific"
+      },
+      {
+        "id": "d",
+        "text": "Average"
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "rationale": "Standard costing uses the maintained standard rather than adopting each receipt’s actual cost as inventory value. Variance handling is part of the design.",
+    "distractors": {
+      "a": "A maintained standard and variances match the requirement.",
+      "b": "FIFO follows receipt cost flow.",
+      "c": "Specific follows the exact unit’s cost.",
+      "d": "Average calculates pooled actual cost."
+    },
+    "module": "module-05-trade-configuration",
+    "source": {
+      "title": "Design details: Costing methods",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/design-details-costing-methods"
+    }
+  },
+  {
+    "id": "BC-058",
+    "domain": "trade",
+    "objective": "Configure stockkeeping units",
+    "type": "single",
+    "stem": "The same item needs different reorder points and vendors at the EAST and WEST locations. Both locations must retain the same item number. Which setup is appropriate?",
+    "options": [
+      {
+        "id": "a",
+        "text": "An item variant used only as a substitute for location-specific replenishment data"
+      },
+      {
+        "id": "b",
+        "text": "A single item card reorder point applied unchanged to both locations"
+      },
+      {
+        "id": "c",
+        "text": "Vendor item references for each location, using the references instead of location-specific replenishment parameters."
+      },
+      {
+        "id": "d",
+        "text": "Stockkeeping units for the item-location combinations"
+      }
+    ],
+    "correct": [
+      "d"
+    ],
+    "rationale": "Stockkeeping units supplement the item with location- and optionally variant-specific planning data. They avoid duplicating the item solely for replenishment differences.",
+    "distractors": {
+      "a": "A variant alone does not supply the required location-specific planning identity.",
+      "b": "One shared parameter cannot represent different location policies.",
+      "c": "Vendor item references identify an item for a trading partner; they do not establish the location-specific reorder point and replenishment policy.",
+      "d": "SKUs provide location-specific replenishment settings."
+    },
+    "module": "module-05-trade-configuration",
+    "source": {
+      "title": "Set up stockkeeping units",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/inventory-how-to-set-up-stockkeeping-units"
+    }
+  },
+  {
+    "id": "BC-059",
+    "domain": "trade",
+    "objective": "Configure core item settings including units of measure",
+    "type": "single",
+    "stem": "An item’s base unit is PCS. Its BOX unit is configured as 12 PCS. A purchase order receives 5 BOX. What base quantity should be recorded before any returns?",
+    "options": [
+      {
+        "id": "a",
+        "text": "60 PCS"
+      },
+      {
+        "id": "b",
+        "text": "12 PCS"
+      },
+      {
+        "id": "c",
+        "text": "17 PCS"
+      },
+      {
+        "id": "d",
+        "text": "5 PCS"
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "rationale": "Convert using Quantity × Qty. per Unit of Measure: 5 × 12 = 60 base pieces.",
+    "distractors": {
+      "a": "Five boxes contain sixty base pieces.",
+      "b": "That is one box only.",
+      "c": "Adding quantities is not the conversion rule.",
+      "d": "That ignores the box conversion."
+    },
+    "module": "module-05-trade-configuration",
+    "source": {
+      "title": "Set up item units of measure",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/inventory-how-setup-units-of-measure"
+    }
+  },
+  {
+    "id": "BC-060",
+    "domain": "trade",
+    "objective": "Configure core item settings including categories attributes and variants",
+    "type": "multiple",
+    "stem": "A retailer must retain one item number for a chair model sold in RED and BLUE. It wants inventory availability by color and a searchable material characteristic such as WOOD. Which TWO setups fit? Select two.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Use a Color item attribute to create separate reservable stock balances for RED and BLUE."
+      },
+      {
+        "id": "b",
+        "text": "Use RED and BLUE as item units of measure, both equal to 1 PCS, to distinguish color availability."
+      },
+      {
+        "id": "c",
+        "text": "Use an item attribute for material."
+      },
+      {
+        "id": "d",
+        "text": "Use item variants for RED and BLUE."
+      }
+    ],
+    "correct": [
+      "c",
+      "d"
+    ],
+    "rationale": "Variants distinguish stock identities such as color under one item. Attributes describe searchable product characteristics.",
+    "distractors": {
+      "a": "An attribute describes the item; it does not create separate variant-level quantity or reservation identities.",
+      "b": "Units of measure express quantity conversions. They are not an alternative stock identity for color variants.",
+      "c": "Material is a descriptive item characteristic.",
+      "d": "Variants support availability by the item’s color version."
+    },
+    "module": "module-05-trade-configuration",
+    "source": {
+      "title": "Manage product variants",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/inventory-item-variants"
+    }
+  },
+  {
+    "id": "BC-061",
+    "domain": "trade",
+    "objective": "Configure core customer settings including shipping addresses",
+    "type": "single",
+    "stem": "One customer orders for three delivery sites but receives all invoices at the same billing address. What should be set up to choose the appropriate delivery address on each order?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Change the customer’s primary address before every order and keep no alternate addresses."
+      },
+      {
+        "id": "b",
+        "text": "Use a different bill-to customer for every delivery site solely to select the delivery address."
+      },
+      {
+        "id": "c",
+        "text": "Set up ship-to addresses for the customer."
+      },
+      {
+        "id": "d",
+        "text": "Use customer bank account codes as delivery-address identifiers."
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "rationale": "Customer ship-to addresses allow several delivery destinations without duplicating the bill-to customer.",
+    "distractors": {
+      "a": "Changing master data repeatedly loses reusable delivery choices and affects defaults.",
+      "b": "Duplicating billing identities is unnecessary for alternate delivery sites.",
+      "c": "Ship-to codes select reusable customer delivery locations.",
+      "d": "Bank account codes identify payment accounts rather than shipping destinations."
+    },
+    "module": "module-05-trade-configuration",
+    "source": {
+      "title": "Use alternative customer registrations and ship-to addresses",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-how-use-multiple-vat-registrations"
+    }
+  },
+  {
+    "id": "BC-062",
+    "domain": "trade",
+    "objective": "Configure core vendor settings including order addresses and lead time",
+    "type": "multiple",
+    "stem": "A supplier accepts purchase orders at a branch address different from its primary address. Its normal delivery time is 10 days. Which TWO settings should the consultant evaluate? Select two.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Lead Time Calculation at the appropriate vendor or item/SKU planning level"
+      },
+      {
+        "id": "b",
+        "text": "Vendor order addresses"
+      },
+      {
+        "id": "c",
+        "text": "A remit-to address used as the sole control for ordering and delivery timing"
+      },
+      {
+        "id": "d",
+        "text": "Payment Terms Code used to calculate the stock’s planned receipt date"
+      }
+    ],
+    "correct": [
+      "a",
+      "b"
+    ],
+    "rationale": "Use order addresses for alternate ordering destinations and lead-time setup for expected supply timing. More specific planning settings should be checked when diagnosing dates.",
+    "distractors": {
+      "a": "Lead-time setup drives supply dates at the relevant planning level.",
+      "b": "Order addresses support the supplier’s alternate ordering branch.",
+      "c": "Remit-to addresses concern where payment is sent and do not define supply lead time.",
+      "d": "Payment terms control settlement dates, not expected item receipt."
+    },
+    "module": "module-05-trade-configuration",
+    "source": {
+      "title": "Register new vendors and vendor defaults",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/purchasing-how-register-new-vendors"
+    },
+    "additionalSources": [
+      {
+        "title": "Calculate dates for purchases",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/purchasing-date-calculation-for-purchases"
+      }
+    ]
+  },
+  {
+    "id": "BC-063",
+    "domain": "trade",
+    "objective": "Manage vendor purchase prices",
+    "type": "single",
+    "stem": "An active vendor price agreement offers 90 per PCS from 1–30 September for a minimum of 100 PCS. An order dated 12 September for 80 PCS receives the normal price. What explains the result?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Every active price applies regardless of quantity."
+      },
+      {
+        "id": "b",
+        "text": "An agreement can only be used on sales orders."
+      },
+      {
+        "id": "c",
+        "text": "The September date automatically overrides the minimum quantity."
+      },
+      {
+        "id": "d",
+        "text": "The minimum quantity condition is not met."
+      }
+    ],
+    "correct": [
+      "d"
+    ],
+    "rationale": "All applicable agreement conditions matter. The date is valid, but 80 is below the stated 100-unit threshold.",
+    "distractors": {
+      "a": "Active status does not remove line conditions.",
+      "b": "Vendor purchase prices apply to purchases.",
+      "c": "A valid date does not remove the quantity condition.",
+      "d": "The order does not qualify for the volume price."
+    },
+    "module": "module-05-trade-configuration",
+    "source": {
+      "title": "Record special purchase prices and discounts",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/purchasing-how-record-purchase-price-discount-payment-agreements"
+    }
+  },
+  {
+    "id": "BC-064",
+    "domain": "trade",
+    "objective": "Manage sales line and invoice discounts",
+    "type": "single",
+    "stem": "A sales document has an eligible amount of 10,000 before discounts and tax. A 10% line discount applies, followed by a 5% invoice discount on the remaining eligible amount. Assume no rounding differences or charges. What is the amount after both discounts?",
+    "options": [
+      {
+        "id": "a",
+        "text": "9,000"
+      },
+      {
+        "id": "b",
+        "text": "9,500"
+      },
+      {
+        "id": "c",
+        "text": "8,550"
+      },
+      {
+        "id": "d",
+        "text": "8,500"
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "rationale": "After the line discount, 10,000 × 0.90 = 9,000. The invoice discount is 9,000 × 0.05 = 450. The final amount is 8,550.",
+    "distractors": {
+      "a": "This ignores the invoice discount.",
+      "b": "This ignores the line discount.",
+      "c": "Sequential discounts give 10,000 × 0.90 × 0.95.",
+      "d": "Adding percentages incorrectly assumes both discounts use the original base."
+    },
+    "module": "module-05-trade-configuration",
+    "source": {
+      "title": "Record special sales prices and discounts",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/sales-how-record-sales-price-discount-payment-agreements"
+    }
+  },
+  {
+    "id": "BC-065",
+    "domain": "trade",
+    "objective": "Manage purchase line and invoice discounts",
+    "type": "single",
+    "stem": "A vendor offers a document-total discount once eligible purchases exceed 20,000. The consultant must configure a percentage based on the qualifying invoice total rather than an item quantity. Which setup is appropriate?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Vendor invoice discount terms linked by the vendor’s Invoice Disc. Code"
+      },
+      {
+        "id": "b",
+        "text": "An item-specific purchase line discount with a minimum quantity only"
+      },
+      {
+        "id": "c",
+        "text": "The customer payment discount tolerance"
+      },
+      {
+        "id": "d",
+        "text": "A warehouse bin ranking"
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "rationale": "Vendor invoice discounts apply to an eligible document total. Item-level line discounts solve a different pricing requirement.",
+    "distractors": {
+      "a": "Invoice discount terms provide the amount threshold and percentage.",
+      "b": "Quantity-based line discounts do not implement this document-total threshold.",
+      "c": "Customer payment tolerance concerns incoming payments.",
+      "d": "Bin ranking controls warehouse placement decisions."
+    },
+    "module": "module-05-trade-configuration",
+    "source": {
+      "title": "Record special purchase prices and discounts",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/purchasing-how-record-purchase-price-discount-payment-agreements"
+    }
+  },
+  {
+    "id": "BC-066",
+    "domain": "trade",
+    "objective": "Assess relationships between items item ledger entries value entries and G/L entries",
+    "type": "single",
+    "stem": "A consultant must explain why a later item-charge invoice can change inventory value without adding more units. Which explanation is correct?",
+    "options": [
+      {
+        "id": "a",
+        "text": "G/L entries are the only records containing inventory quantities."
+      },
+      {
+        "id": "b",
+        "text": "An item charge creates an additional physical receipt for its cost amount."
+      },
+      {
+        "id": "c",
+        "text": "Item ledger entries record quantity movements; value entries record cost amounts associated with those movements."
+      },
+      {
+        "id": "d",
+        "text": "Every value entry must add at least one unit of inventory."
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "rationale": "Quantity and value are related but distinct evidence. A cost adjustment or item charge can create additional value entries for existing item ledger entries.",
+    "distractors": {
+      "a": "Quantity movements are recorded in item ledger entries.",
+      "b": "A charge distributes cost rather than receiving physical units.",
+      "c": "This distinguishes quantity from valuation.",
+      "d": "Cost changes need not change quantity."
+    },
+    "module": "module-05-trade-configuration",
+    "source": {
+      "title": "Design details: Inventory posting",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/design-details-inventory-posting"
+    }
+  },
+  {
+    "id": "BC-067",
+    "domain": "trade",
+    "objective": "Configure inventory setup",
+    "type": "multiple",
+    "stem": "A company requires every item transaction to identify a location. It also wants to stop postings that would make item inventory negative, subject to the applicable item policy. Which TWO controls should be evaluated? Select two.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Only setting a reorder point greater than zero on an item"
+      },
+      {
+        "id": "b",
+        "text": "Prevent Negative Inventory at the relevant inventory/item level"
+      },
+      {
+        "id": "c",
+        "text": "Only assigning a default Location Code to a customer"
+      },
+      {
+        "id": "d",
+        "text": "Location Mandatory in Inventory Setup"
+      }
+    ],
+    "correct": [
+      "b",
+      "d"
+    ],
+    "rationale": "Location requirements and negative-inventory prevention are separate inventory controls. Test both with representative item postings before release.",
+    "distractors": {
+      "a": "Planning replenishment is not the same as blocking negative-stock postings.",
+      "b": "Negative-inventory policy controls permitted stock balances.",
+      "c": "A suggested default does not require every transaction to retain a location.",
+      "d": "The mandatory-location control enforces a location where applicable."
+    },
+    "module": "module-05-trade-configuration",
+    "source": {
+      "title": "Inventory Setup table and inventory policy fields",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/application/base-application/table/microsoft.inventory.setup.inventory-setup"
+    }
+  },
+  {
+    "id": "BC-068",
+    "domain": "operations",
+    "objective": "Differentiate designing, customizing, and personalizing pages",
+    "type": "single",
+    "stem": "A purchasing clerk wants to move a field and hide an unused column for their own workspace. Other users must retain their current layout. Which approach meets this requirement?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Personalize the page as the clerk."
+      },
+      {
+        "id": "b",
+        "text": "Deploy a new AL page extension to all companies."
+      },
+      {
+        "id": "c",
+        "text": "Customize the shared profile for every purchasing user."
+      },
+      {
+        "id": "d",
+        "text": "Change the clerk’s permission sets."
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "rationale": "Personalization changes an individual user’s workspace. Profile customization changes the baseline for users of that profile, and a developed extension has wider scope.",
+    "distractors": {
+      "a": "Correct: this is an individual presentation change.",
+      "b": "An extension is unnecessary for supported personal layout changes.",
+      "c": "This affects the shared role experience rather than only one user.",
+      "d": "Permissions govern access, not the requested column layout."
+    },
+    "module": "module-07-inventory-operations",
+    "source": {
+      "title": "Personalize your workspace",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/ui-personalization-user"
+    }
+  },
+  {
+    "id": "BC-069",
+    "domain": "operations",
+    "objective": "Apply and save filters",
+    "type": "multiple",
+    "stem": "An analyst needs a reusable list of open customer entries with a remaining amount greater than zero. Which TWO actions provide the required view without changing the underlying ledger?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Apply filters for Open = Yes and Remaining Amount > 0."
+      },
+      {
+        "id": "b",
+        "text": "Filter only by Document Type = Invoice and assume this excludes paid entries."
+      },
+      {
+        "id": "c",
+        "text": "Save a sort order by due date without applying either filter."
+      },
+      {
+        "id": "d",
+        "text": "Save the filtered list as a named view."
+      }
+    ],
+    "correct": [
+      "a",
+      "d"
+    ],
+    "rationale": "Filters select records for display. Saving a view makes the selection reusable. Neither operation changes posted financial entries.",
+    "distractors": {
+      "a": "Correct: the filter expresses both requested conditions.",
+      "b": "Paid invoices remain invoice-type entries, so this does not implement the required open-balance view.",
+      "c": "Sorting changes record order, not which open entries and amounts are included.",
+      "d": "Correct: a saved view avoids re-entering the same filters."
+    },
+    "module": "module-07-inventory-operations",
+    "source": {
+      "title": "Sorting, searching, and filtering",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/ui-enter-criteria-filters"
+    }
+  },
+  {
+    "id": "BC-070",
+    "domain": "operations",
+    "objective": "Find documents and related entries",
+    "type": "single",
+    "stem": "A customer disputes invoice INV-410. The consultant needs the customer ledger, general ledger, and item entries generated by that posted document. What is the most direct investigation?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Create a new sales invoice with the same number."
+      },
+      {
+        "id": "b",
+        "text": "Review only the customer card balance without drilling into posted entries."
+      },
+      {
+        "id": "c",
+        "text": "Use Find Entries from the posted invoice or search by its document number."
+      },
+      {
+        "id": "d",
+        "text": "Change the customer’s posting group and repost the original invoice."
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "rationale": "Find Entries connects a posted document to its accounting and inventory evidence. The investigation should follow existing entries without changing setup or producing another posting.",
+    "distractors": {
+      "a": "Creating another invoice risks a duplicate transaction.",
+      "b": "A summary customer balance does not identify all ledger and item entries from this invoice.",
+      "c": "Correct: it follows the posted document’s related records.",
+      "d": "Changing master data does not explain the original posted entries."
+    },
+    "module": "module-07-inventory-operations",
+    "source": {
+      "title": "Find entries and documents",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/ui-find-entries"
+    }
+  },
+  {
+    "id": "BC-071",
+    "domain": "operations",
+    "objective": "Inspect pages",
+    "type": "multiple",
+    "stem": "Support must identify the table behind a custom list and which installed extension changes that page. Which TWO statements are accurate?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The page inspection pane shows the complete AL trigger source for every extension affecting the page."
+      },
+      {
+        "id": "b",
+        "text": "Full inspection details depend on the user’s permissions."
+      },
+      {
+        "id": "c",
+        "text": "Page inspection can show the source table and extensions affecting the page."
+      },
+      {
+        "id": "d",
+        "text": "The user must first enter profile-customization mode before inspecting the source table or page extensions."
+      }
+    ],
+    "correct": [
+      "b",
+      "c"
+    ],
+    "rationale": "Page inspection supplies diagnostic metadata such as source-table and extension details. Full information remains subject to permission controls. It neither requires profile customization nor exposes every extension’s full AL trigger source.",
+    "distractors": {
+      "a": "Page inspection identifies objects, fields and extensions; it is not a viewer for the complete AL source of their triggers.",
+      "b": "Correct: basic and full inspection information differ with access.",
+      "c": "Correct: these details help support identify the implementation behind the screen.",
+      "d": "Page inspection is a diagnostic action on the page; profile-customization mode is not a prerequisite."
+    },
+    "module": "module-07-inventory-operations",
+    "source": {
+      "title": "Inspect pages in Business Central",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/across-inspect-page"
+    }
+  },
+  {
+    "id": "BC-072",
+    "domain": "operations",
+    "objective": "Perform data updates by using Edit in Excel",
+    "type": "single",
+    "stem": "A clerk exports the customer list with Open in Excel, changes phone numbers, and expects Business Central to update. No records change. Which action should the consultant recommend for a supported editable list?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Use Open in Excel again and save the changed workbook under the exported filename."
+      },
+      {
+        "id": "b",
+        "text": "Rename the exported worksheet to Customers and save it locally."
+      },
+      {
+        "id": "c",
+        "text": "Import the workbook as an incoming document attachment."
+      },
+      {
+        "id": "d",
+        "text": "Use Edit in Excel with the Business Central add-in, then publish the validated changes."
+      }
+    ],
+    "correct": [
+      "d"
+    ],
+    "rationale": "Open in Excel is an export. Edit in Excel uses the add-in to publish supported changes back to Business Central, where permissions and validation still apply.",
+    "distractors": {
+      "a": "An export remains a local workbook; the filename does not turn it into a publishing connection.",
+      "b": "Saving a local export does not submit changes to the service.",
+      "c": "An incoming attachment is evidence for a document, not an edit-and-publish update to customer records.",
+      "d": "Correct: this is the intended update workflow."
+    },
+    "module": "module-07-inventory-operations",
+    "source": {
+      "title": "Work with Business Central data in Excel",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/across-work-with-excel"
+    }
+  },
+  {
+    "id": "BC-073",
+    "domain": "operations",
+    "objective": "Configure and use data analysis mode",
+    "type": "single",
+    "stem": "A sales manager wants to group list data by salesperson, sum sales amounts, and save an analysis tab without altering transactions. Which capability should they use?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Data analysis mode on a supported list or query."
+      },
+      {
+        "id": "b",
+        "text": "An Excel export that is saved locally and assumed to create an analysis tab in Business Central."
+      },
+      {
+        "id": "c",
+        "text": "A recurring journal that posts a total for each salesperson."
+      },
+      {
+        "id": "d",
+        "text": "A saved list filter with salesperson sort order only."
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "rationale": "Analysis mode supports grouping, aggregation, and reusable analysis tabs over available data. It is an analytical view, not an accounting posting.",
+    "distractors": {
+      "a": "Correct: grouping and sums are analysis mode tasks.",
+      "b": "A local workbook does not create a reusable in-app analysis tab.",
+      "c": "Posting totals would alter the ledger rather than analyze existing data.",
+      "d": "A saved filter and sort can limit and order records, but does not provide the requested grouped sums."
+    },
+    "module": "module-07-inventory-operations",
+    "source": {
+      "title": "Analyze list data using data analysis mode",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/analysis-mode"
+    }
+  },
+  {
+    "id": "BC-074",
+    "domain": "operations",
+    "objective": "Receive more items than ordered",
+    "type": "multiple",
+    "stem": "Kalahari ordered 100 pumps and receives 104. Its approved over-receipt policy permits 5%. Which TWO actions are appropriate?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Assume the over-receipt feature automatically negotiates a discount and settles the extra cost."
+      },
+      {
+        "id": "b",
+        "text": "Use an over-receipt code with sufficient tolerance assigned to the relevant item or vendor."
+      },
+      {
+        "id": "c",
+        "text": "Receive only 100 and silently discard the other four units from the records."
+      },
+      {
+        "id": "d",
+        "text": "Record the actual received quantity and resolve the vendor’s financial terms separately."
+      }
+    ],
+    "correct": [
+      "b",
+      "d"
+    ],
+    "rationale": "Four extra units are within a 5% tolerance for 100 ordered units. Over-receipt controls permit the physical quantity, but financial treatment still requires agreement and correct invoicing.",
+    "distractors": {
+      "a": "The feature does not automatically settle financial terms.",
+      "b": "Correct: the assigned tolerance governs the permitted excess.",
+      "c": "The records would not represent the goods actually retained.",
+      "d": "Correct: physical receipt and commercial agreement are separate controls."
+    },
+    "module": "module-06-sales-purchasing",
+    "source": {
+      "title": "Record purchases with purchase invoices",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/purchasing-how-record-purchases"
+    },
+    "caseStudy": {
+      "id": "case-kalahari-supply",
+      "title": "Kalahari Supply: purchasing controls",
+      "scenario": "Kalahari Supply buys industrial pumps. The company uses standard purchase orders with direct receipts, without advanced warehouse documents. Its local currency is ZAR. Additional reporting currency is not enabled. Finance reviews each invoice before posting. Each question is independent; assume only the facts stated in that question."
+    }
+  },
+  {
+    "id": "BC-075",
+    "domain": "operations",
+    "objective": "Reverse a receipt",
+    "type": "single",
+    "stem": "Kalahari accidentally posts receipt of 10 pumps that never arrived. The receipt has not been invoiced and no later processing prevents undo. What should the consultant use?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Post a purchase credit memo against goods that have never been invoiced."
+      },
+      {
+        "id": "b",
+        "text": "Undo Receipt on the eligible posted purchase receipt line."
+      },
+      {
+        "id": "c",
+        "text": "Delete the posted receipt directly."
+      },
+      {
+        "id": "d",
+        "text": "Use Cancel on a posted purchase invoice."
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "rationale": "An eligible uninvoiced receipt can be undone through the posted document, preserving a corrective audit trail and updating the related order quantities.",
+    "distractors": {
+      "a": "This is a receipt-only quantity error; the supported undo action matches the stated lifecycle.",
+      "b": "Correct: Undo Receipt is designed for this eligible quantity correction.",
+      "c": "Posted receipts are corrected through supported actions, not direct deletion.",
+      "d": "The scenario has no purchase invoice to cancel."
+    },
+    "module": "module-06-sales-purchasing",
+    "source": {
+      "title": "Reverse journal postings and undo receipts/shipments",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-how-reverse-journal-posting"
+    },
+    "caseStudy": {
+      "id": "case-kalahari-supply",
+      "title": "Kalahari Supply: purchasing controls",
+      "scenario": "Kalahari Supply buys industrial pumps. The company uses standard purchase orders with direct receipts, without advanced warehouse documents. Its local currency is ZAR. Additional reporting currency is not enabled. Finance reviews each invoice before posting. Each question is independent; assume only the facts stated in that question."
+    }
+  },
+  {
+    "id": "BC-076",
+    "domain": "operations",
+    "objective": "Manage blanket purchase orders",
+    "type": "single",
+    "stem": "Kalahari agrees to buy 600 filters over six months, with 100 due each month. It needs to track the agreement and create actual orders for releases. Which document fits best?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A recurring purchase-line template used as the sole record of the 600-unit commitment."
+      },
+      {
+        "id": "b",
+        "text": "A blanket purchase order, from which release quantities become purchase orders."
+      },
+      {
+        "id": "c",
+        "text": "A posted purchase invoice for all 600 before any delivery or invoice is received."
+      },
+      {
+        "id": "d",
+        "text": "A single purchase quote that is posted directly as six receipts."
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "rationale": "A blanket purchase order records a longer-term purchase commitment and supports creating purchase orders for actual releases. It does not itself mean all goods have been received or invoiced.",
+    "distractors": {
+      "a": "A reusable line pattern does not track releases against a blanket commitment.",
+      "b": "Correct: it separates the agreement from its individual orders.",
+      "c": "This would prematurely post transactions not supported by the scenario.",
+      "d": "A quote is an offer-stage document and is not itself posted as receipts."
+    },
+    "module": "module-06-sales-purchasing",
+    "source": {
+      "title": "Blanket Purchase Orders",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/application/base-application/page/microsoft.purchases.document.blanket-purchase-orders"
+    },
+    "caseStudy": {
+      "id": "case-kalahari-supply",
+      "title": "Kalahari Supply: purchasing controls",
+      "scenario": "Kalahari Supply buys industrial pumps. The company uses standard purchase orders with direct receipts, without advanced warehouse documents. Its local currency is ZAR. Additional reporting currency is not enabled. Finance reviews each invoice before posting. Each question is independent; assume only the facts stated in that question."
+    }
+  },
+  {
+    "id": "BC-077",
+    "domain": "operations",
+    "objective": "Configure recurring purchase lines",
+    "type": "multiple",
+    "stem": "Kalahari receives a monthly invoice with the same three cleaning-service lines, but rates may change. Which TWO features of recurring purchase lines suit this need?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Treat the template as an automatically posted payment instruction."
+      },
+      {
+        "id": "b",
+        "text": "Review prices and discounts on each actual purchase document after inserting the lines."
+      },
+      {
+        "id": "c",
+        "text": "Store permanently fixed purchase prices inside recurring purchase lines instead of pricing on documents."
+      },
+      {
+        "id": "d",
+        "text": "Assign a standard set of recurring lines to the vendor for reuse."
+      }
+    ],
+    "correct": [
+      "b",
+      "d"
+    ],
+    "rationale": "Recurring purchase lines reduce repeated data entry. They are reusable line patterns; pricing is evaluated on the purchase document, and inserting lines does not post or pay it.",
+    "distractors": {
+      "a": "Reusing lines does not authorize or post a payment.",
+      "b": "Correct: actual documents calculate pricing and remain subject to review.",
+      "c": "The standard recurring-line feature does not define prices in the template.",
+      "d": "Correct: reusable lines can be associated with the vendor."
+    },
+    "module": "module-06-sales-purchasing",
+    "source": {
+      "title": "Create recurring purchase lines",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/purchasing-how-work-recurring-purchase-lines"
+    },
+    "caseStudy": {
+      "id": "case-kalahari-supply",
+      "title": "Kalahari Supply: purchasing controls",
+      "scenario": "Kalahari Supply buys industrial pumps. The company uses standard purchase orders with direct receipts, without advanced warehouse documents. Its local currency is ZAR. Additional reporting currency is not enabled. Finance reviews each invoice before posting. Each question is independent; assume only the facts stated in that question."
+    }
+  },
+  {
+    "id": "BC-078",
+    "domain": "operations",
+    "objective": "Use deferrals with purchasing documents",
+    "type": "single",
+    "stem": "Kalahari receives a ZAR 12,000 invoice for 12 months of insurance. Ignore tax and rounding. Finance wants equal expense recognition beginning in the coverage month. Which approach supports this?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Change the invoice payment due date to 12 months later to spread the expense."
+      },
+      {
+        "id": "b",
+        "text": "Enter a 12% line discount so the expense becomes monthly."
+      },
+      {
+        "id": "c",
+        "text": "Apply an appropriate deferral template and review a schedule of ZAR 1,000 per month before posting."
+      },
+      {
+        "id": "d",
+        "text": "Post the entire amount as the first month’s expense and hide it from later reports."
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "rationale": "A deferral schedule separates recognition from the invoice and payment timing. Equal allocation of 12,000 over 12 months is 1,000 per month, subject to the configured schedule.",
+    "distractors": {
+      "a": "A due date controls payment timing, not expense allocation.",
+      "b": "A discount changes the amount rather than its recognition schedule.",
+      "c": "Correct: the schedule expresses the required recognition periods and amounts.",
+      "d": "This would not spread recognition across coverage months."
+    },
+    "module": "module-06-sales-purchasing",
+    "source": {
+      "title": "Defer revenues and expenses",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-how-defer-revenue-expenses"
+    },
+    "caseStudy": {
+      "id": "case-kalahari-supply",
+      "title": "Kalahari Supply: purchasing controls",
+      "scenario": "Kalahari Supply buys industrial pumps. The company uses standard purchase orders with direct receipts, without advanced warehouse documents. Its local currency is ZAR. Additional reporting currency is not enabled. Finance reviews each invoice before posting. Each question is independent; assume only the facts stated in that question."
+    }
+  },
+  {
+    "id": "BC-079",
+    "domain": "operations",
+    "objective": "Receive and invoice purchase orders",
+    "type": "order",
+    "stem": "Kalahari has approved a new purchase of eight pumps. No warehouse documents are required. Put these milestone actions in the correct order for receiving first and invoicing later, beginning with creation of the purchase order. Each action is used once.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Post the purchase order as Receive for the delivered quantity."
+      },
+      {
+        "id": "b",
+        "text": "Enter the vendor invoice number and verify the quantity to invoice against the receipt."
+      },
+      {
+        "id": "c",
+        "text": "Post the purchase order as Invoice after matching the vendor invoice."
+      },
+      {
+        "id": "d",
+        "text": "Create and review the purchase order for the vendor and eight pumps."
+      }
+    ],
+    "correct": [
+      "d",
+      "a",
+      "b",
+      "c"
+    ],
+    "rationale": "The order establishes the purchase. Receipt records delivered stock. Invoice review then supports the financial posting without receiving the same stock twice.",
+    "distractors": {
+      "a": "This follows the reviewed order and precedes invoice matching.",
+      "b": "This occurs after receipt and before the invoice posting.",
+      "c": "This is the final financial posting in the stated workflow.",
+      "d": "This is the starting milestone for the purchase."
+    },
+    "module": "module-06-sales-purchasing",
+    "source": {
+      "title": "Record purchases with purchase invoices",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/purchasing-how-record-purchases"
+    },
+    "caseStudy": {
+      "id": "case-kalahari-supply",
+      "title": "Kalahari Supply: purchasing controls",
+      "scenario": "Kalahari Supply buys industrial pumps. The company uses standard purchase orders with direct receipts, without advanced warehouse documents. Its local currency is ZAR. Additional reporting currency is not enabled. Finance reviews each invoice before posting. Each question is independent; assume only the facts stated in that question."
+    }
+  },
+  {
+    "id": "BC-080",
+    "domain": "operations",
+    "objective": "Ship items for a sales order",
+    "type": "single",
+    "stem": "Atlantic accepts an order for 30 switches. Only 18 are available today, and the customer permits partial delivery. Which action records today’s physical delivery while leaving the rest outstanding?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Use a direct sales invoice for 30 and assume 12 remain unshipped."
+      },
+      {
+        "id": "b",
+        "text": "Use a sales order, set Qty. to Ship to 18, and post Ship."
+      },
+      {
+        "id": "c",
+        "text": "Change Quantity to 18 so the original commitment to supply 30 disappears."
+      },
+      {
+        "id": "d",
+        "text": "Post Ship and Invoice for all 30 to reserve the remaining 12 for later."
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "rationale": "A sales order supports partial shipments. Posting the quantity actually delivered preserves the remaining commitment for later fulfillment.",
+    "distractors": {
+      "a": "A direct sales invoice does not provide the required partial-shipment order workflow.",
+      "b": "Correct: 18 ship now and the remaining order quantity stays outstanding.",
+      "c": "Reducing the ordered quantity misstates the customer’s total requirement.",
+      "d": "Posting all 30 as shipped would misstate the quantity actually delivered; reservation is a separate function."
+    },
+    "module": "module-06-sales-purchasing",
+    "source": {
+      "title": "Invoice sales",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/sales-how-invoice-sales"
+    },
+    "caseStudy": {
+      "id": "case-atlantic-cabling",
+      "title": "Atlantic Cabling: sales and billing",
+      "scenario": "Atlantic Cabling sells network equipment from a standard Business Central location using direct shipments. It reviews documents before posting and bills some customers monthly. No additional reporting currency is enabled. Each question is independent; do not carry decisions or amounts from another question."
+    }
+  },
+  {
+    "id": "BC-081",
+    "domain": "operations",
+    "objective": "Convert a sales quote into a sales order or invoice",
+    "type": "single",
+    "stem": "Atlantic’s customer accepts a quote, but delivery will happen in two stages next month. Which next action best preserves the agreed lines and supports staged fulfillment?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Convert the quote to a posted invoice without checking delivery requirements."
+      },
+      {
+        "id": "b",
+        "text": "Convert the accepted quote to a sales order and review it before release."
+      },
+      {
+        "id": "c",
+        "text": "Release the quote and assume this creates a shipment-ready order automatically."
+      },
+      {
+        "id": "d",
+        "text": "Keep the accepted quote unchanged and post its lines directly as two shipments."
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "rationale": "Converting a quote to a sales order carries the commercial agreement into a document suited to shipment scheduling and partial delivery. The document still needs review and processing.",
+    "distractors": {
+      "a": "Immediate invoicing is not the requested staged-delivery workflow.",
+      "b": "Correct: the sales order supports the stated fulfillment need.",
+      "c": "Release is a document status transition; it does not convert the quote into the required sales order.",
+      "d": "The accepted quote should be converted to a document that supports shipment processing."
+    },
+    "module": "module-06-sales-purchasing",
+    "source": {
+      "title": "Make sales quotes",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/sales-how-make-offers"
+    },
+    "caseStudy": {
+      "id": "case-atlantic-cabling",
+      "title": "Atlantic Cabling: sales and billing",
+      "scenario": "Atlantic Cabling sells network equipment from a standard Business Central location using direct shipments. It reviews documents before posting and bills some customers monthly. No additional reporting currency is enabled. Each question is independent; do not carry decisions or amounts from another question."
+    }
+  },
+  {
+    "id": "BC-082",
+    "domain": "operations",
+    "objective": "Combine sales shipments into a single sales invoice",
+    "type": "order",
+    "stem": "Atlantic has two posted, uninvoiced shipments for the same bill-to customer and compatible invoicing details. Finance wants one invoice. Order the following actions; each action is used once.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Post the reviewed sales invoice."
+      },
+      {
+        "id": "b",
+        "text": "Review the collected shipment lines, quantities, and totals."
+      },
+      {
+        "id": "c",
+        "text": "Create the sales invoice for the correct customer."
+      },
+      {
+        "id": "d",
+        "text": "Use Get Shipment Lines to select the eligible uninvoiced shipment lines."
+      }
+    ],
+    "correct": [
+      "c",
+      "d",
+      "b",
+      "a"
+    ],
+    "rationale": "The invoice header establishes the customer context. Retrieving existing shipment lines links billing to delivered quantities, then review precedes posting.",
+    "distractors": {
+      "a": "Posting is last, after eligibility and amounts have been reviewed.",
+      "b": "Review follows retrieval and precedes financial posting.",
+      "c": "Start by establishing the invoice and customer.",
+      "d": "Retrieve eligible posted shipment lines after creating the invoice."
+    },
+    "module": "module-06-sales-purchasing",
+    "source": {
+      "title": "Combine shipments on a single invoice",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/sales-how-to-combine-shipments-on-a-single-invoice"
+    },
+    "caseStudy": {
+      "id": "case-atlantic-cabling",
+      "title": "Atlantic Cabling: sales and billing",
+      "scenario": "Atlantic Cabling sells network equipment from a standard Business Central location using direct shipments. It reviews documents before posting and bills some customers monthly. No additional reporting currency is enabled. Each question is independent; do not carry decisions or amounts from another question."
+    }
+  },
+  {
+    "id": "BC-083",
+    "domain": "operations",
+    "objective": "Correct a posted sales invoice",
+    "type": "single",
+    "stem": "Atlantic has a paid posted sales invoice with an incorrect selling price. The goods will remain with the customer. Which supported correction approach should the consultant evaluate?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Use Undo Shipment to alter a fully invoiced, paid sale."
+      },
+      {
+        "id": "b",
+        "text": "Delete the customer ledger entry and retain the original invoice."
+      },
+      {
+        "id": "c",
+        "text": "Edit the posted invoice’s unit price directly."
+      },
+      {
+        "id": "d",
+        "text": "Create a sales credit memo for the required financial correction, then invoice correctly as needed."
+      }
+    ],
+    "correct": [
+      "d"
+    ],
+    "rationale": "Paid invoices require a credit-memo correction process rather than direct editing or simple unpaid-invoice cancellation. The selected correction must reflect the agreed financial adjustment and preserve the audit trail.",
+    "distractors": {
+      "a": "Undo Shipment is not the correction for this fully invoiced and paid price error.",
+      "b": "Deleting ledger history would break financial integrity.",
+      "c": "Posted financial values cannot be overwritten on the invoice.",
+      "d": "Correct: a credit memo provides a supported financial correction."
+    },
+    "module": "module-06-sales-purchasing",
+    "source": {
+      "title": "Process sales returns or cancellations",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/sales-how-process-sales-returns-cancellations"
+    },
+    "caseStudy": {
+      "id": "case-atlantic-cabling",
+      "title": "Atlantic Cabling: sales and billing",
+      "scenario": "Atlantic Cabling sells network equipment from a standard Business Central location using direct shipments. It reviews documents before posting and bills some customers monthly. No additional reporting currency is enabled. Each question is independent; do not carry decisions or amounts from another question."
+    }
+  },
+  {
+    "id": "BC-084",
+    "domain": "operations",
+    "objective": "Release and reopen documents",
+    "type": "single",
+    "stem": "Atlantic’s unposted sales order is Released, and a permitted line change is required. No shipment or invoice has been posted. What should the clerk do before editing?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Post a credit memo before reopening the unposted order."
+      },
+      {
+        "id": "b",
+        "text": "Change the status directly in the posted sales invoice list."
+      },
+      {
+        "id": "c",
+        "text": "Reopen the document, make and review the change, then release it again as required by the process."
+      },
+      {
+        "id": "d",
+        "text": "Use Cancel Approval Request as though the released order were still pending approval."
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "rationale": "Reopen returns an eligible released document to an editable state. The revised document should follow applicable review and approval controls before further processing.",
+    "distractors": {
+      "a": "There is no posted sale to credit.",
+      "b": "No posted invoice exists in this scenario.",
+      "c": "Correct: this preserves the normal document lifecycle.",
+      "d": "This scenario is a released unposted document, so Reopen is the relevant lifecycle action."
+    },
+    "module": "module-06-sales-purchasing",
+    "source": {
+      "title": "Release and reopen documents",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/ui-document-status"
+    },
+    "caseStudy": {
+      "id": "case-atlantic-cabling",
+      "title": "Atlantic Cabling: sales and billing",
+      "scenario": "Atlantic Cabling sells network equipment from a standard Business Central location using direct shipments. It reviews documents before posting and bills some customers monthly. No additional reporting currency is enabled. Each question is independent; do not carry decisions or amounts from another question."
+    }
+  },
+  {
+    "id": "BC-085",
+    "domain": "operations",
+    "objective": "Process prepayment invoices for sales",
+    "type": "single",
+    "stem": "Atlantic requires a 30% deposit on a ZAR 50,000 sales order before shipment. Ignore tax and discounts. What is the correct use of prepayments?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Post both the full order invoice and the deposit as unrelated revenue without deduction."
+      },
+      {
+        "id": "b",
+        "text": "Enter an ordinary ZAR 15,000 sales invoice unrelated to the order’s prepayment process."
+      },
+      {
+        "id": "c",
+        "text": "Set payment terms to 30 days and assume they create a 30% deposit invoice."
+      },
+      {
+        "id": "d",
+        "text": "Post the ZAR 15,000 prepayment invoice, record and apply the deposit, and let final invoicing deduct the prepayment."
+      }
+    ],
+    "correct": [
+      "d"
+    ],
+    "rationale": "A prepayment invoice bills the deposit separately and connects it to the order. Thirty percent of 50,000 is 15,000; final billing accounts for the amount already invoiced as a prepayment.",
+    "distractors": {
+      "a": "Failing to deduct prepayments would overbill the customer.",
+      "b": "An unrelated ordinary invoice lacks the intended linked prepayment handling and final deduction.",
+      "c": "Payment terms control due dates and discounts; 30 days is not a 30% prepayment.",
+      "d": "Correct: the linked prepayment avoids billing the same amount twice."
+    },
+    "module": "module-06-sales-purchasing",
+    "source": {
+      "title": "Create prepayment invoices",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-how-to-create-prepayment-invoices"
+    },
+    "caseStudy": {
+      "id": "case-atlantic-cabling",
+      "title": "Atlantic Cabling: sales and billing",
+      "scenario": "Atlantic Cabling sells network equipment from a standard Business Central location using direct shipments. It reviews documents before posting and bills some customers monthly. No additional reporting currency is enabled. Each question is independent; do not carry decisions or amounts from another question."
+    }
+  },
+  {
+    "id": "BC-086",
+    "domain": "operations",
+    "objective": "Apply ledger entries and undo applied entries",
+    "type": "order",
+    "stem": "A ZAR 4,000 receipt was applied to the wrong open invoice for the same customer. The bank receipt amount is correct. The correction procedure requires inspection of the current application, followed by verification of the intended replacement before any application is changed. Order these milestones without recording another receipt. Each action is used once.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Before changing any application, verify the intended invoice and payment against the application details just inspected."
+      },
+      {
+        "id": "b",
+        "text": "Apply the existing payment entry to the correct invoice and verify remaining amounts."
+      },
+      {
+        "id": "c",
+        "text": "Use Unapply Entries to reverse the incorrect application."
+      },
+      {
+        "id": "d",
+        "text": "Open the affected customer ledger entries and inspect the existing application."
+      }
+    ],
+    "correct": [
+      "d",
+      "a",
+      "c",
+      "b"
+    ],
+    "rationale": "Unapplication reverses the link between existing entries rather than creating new cash. The original receipt can then be applied to the intended invoice.",
+    "distractors": {
+      "a": "Validate the intended correction before changing ledger applications.",
+      "b": "This is the final step after the incorrect application is undone.",
+      "c": "Unapply after confirming the error, before applying correctly.",
+      "d": "Start by identifying the affected posted entries and application."
+    },
+    "module": "module-08-cash-and-close",
+    "source": {
+      "title": "Reconcile customer payments manually",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/receivables-how-apply-sales-transactions-manually"
+    }
+  },
+  {
+    "id": "BC-087",
+    "domain": "operations",
+    "objective": "Perform bank account reconciliation",
+    "type": "multiple",
+    "stem": "A bank statement includes a ZAR 95 service fee absent from Business Central. The other transactions match. Which TWO actions are appropriate before completing reconciliation?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Post the fee directly to the bank’s G/L control account without a bank account ledger entry."
+      },
+      {
+        "id": "b",
+        "text": "Match the new bank ledger entry to the statement fee and review the reconciliation balances."
+      },
+      {
+        "id": "c",
+        "text": "Force-match the fee to an unrelated customer receipt of ZAR 95."
+      },
+      {
+        "id": "d",
+        "text": "Create and post the missing bank-fee entry using the bank account and correct expense account."
+      }
+    ],
+    "correct": [
+      "b",
+      "d"
+    ],
+    "rationale": "A statement-only fee requires a real accounting entry. Matching that entry provides evidence for the statement line and allows a meaningful balance check.",
+    "distractors": {
+      "a": "A bank reconciliation needs the transaction in the bank account ledger; direct control-account posting creates a mismatch.",
+      "b": "Correct: the posted fee should be linked and balances checked.",
+      "c": "An unrelated receipt does not represent the same bank transaction.",
+      "d": "Correct: this records the transaction missing from the books."
+    },
+    "module": "module-08-cash-and-close",
+    "source": {
+      "title": "Reconcile bank accounts",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/bank-how-reconcile-bank-accounts-separately"
+    }
+  },
+  {
+    "id": "BC-088",
+    "domain": "operations",
+    "objective": "Process recurring transactions and use general ledger allocations",
+    "type": "single",
+    "stem": "Each month a ZAR 20,000 rent charge must be allocated 60% to Training and 40% to Consulting. Which approach supports repeatable controlled postings?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Use a recurring journal with allocations of ZAR 8,000 to Training and ZAR 12,000 to Consulting."
+      },
+      {
+        "id": "b",
+        "text": "Use a recurring journal but allocate the full ZAR 20,000 to each department."
+      },
+      {
+        "id": "c",
+        "text": "Create two unrelated invoices for ZAR 20,000 each."
+      },
+      {
+        "id": "d",
+        "text": "Use a recurring journal with reviewed allocations of ZAR 12,000 and ZAR 8,000."
+      }
+    ],
+    "correct": [
+      "d"
+    ],
+    "rationale": "Recurring journals support repeated transactions and allocations. The two allocated amounts must total the original charge: 12,000 plus 8,000 equals 20,000.",
+    "distractors": {
+      "a": "Those amounts reverse the required 60% Training and 40% Consulting proportions.",
+      "b": "The allocation would total ZAR 40,000 and duplicate the charge.",
+      "c": "This duplicates the rent expense.",
+      "d": "Correct: the allocation follows the required proportions and reconciles to the total."
+    },
+    "module": "module-08-cash-and-close",
+    "source": {
+      "title": "Work with general journals",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/ui-work-general-journals"
+    }
+  },
+  {
+    "id": "BC-089",
+    "domain": "operations",
+    "objective": "Adjust currency exchange rates",
+    "type": "single",
+    "stem": "An open USD customer invoice has a local-currency value based on last month’s exchange rate. Finance needs month-end foreign-currency adjustment while preserving the original USD amount. Which process should it use?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Change only the exchange rate on new sales orders and assume posted open entries are remeasured."
+      },
+      {
+        "id": "b",
+        "text": "Update the relevant currency rates and run the exchange-rate adjustment process with reviewed dates and scope."
+      },
+      {
+        "id": "c",
+        "text": "Overwrite the posted invoice’s USD amount to equal its ZAR balance."
+      },
+      {
+        "id": "d",
+        "text": "Apply a fictitious customer payment for the exchange difference."
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "rationale": "Exchange-rate adjustment remeasures applicable foreign-currency ledger balances using the configured rates. It does not require a fabricated payment or changing the transaction currency amount.",
+    "distractors": {
+      "a": "Updating a new document does not itself adjust existing posted foreign-currency balances.",
+      "b": "Correct: this is the supported adjustment process for the open customer balance.",
+      "c": "Changing the original amount would misstate the customer’s obligation.",
+      "d": "An exchange difference is not cash received."
+    },
+    "module": "module-08-cash-and-close",
+    "source": {
+      "title": "Update currency exchange rates",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-how-update-currencies"
+    }
+  },
+  {
+    "id": "BC-090",
+    "domain": "operations",
+    "objective": "Correct posted dimensions using the Dimension Correction Tool",
+    "type": "multiple",
+    "stem": "A finance analyst discovers the wrong DEPARTMENT dimension on posted G/L entries. Which TWO considerations apply to a dimension correction?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The tool rewrites invoice amounts and bank statement balances."
+      },
+      {
+        "id": "b",
+        "text": "Select the intended G/L entries, specify the changes, and validate before running the correction."
+      },
+      {
+        "id": "c",
+        "text": "Every user can run it without a permission assignment."
+      },
+      {
+        "id": "d",
+        "text": "The correction changes G/L dimensions and does not automatically change dimensions in the related subledgers."
+      }
+    ],
+    "correct": [
+      "b",
+      "d"
+    ],
+    "rationale": "Dimension corrections target G/L reporting attributes under permission and validation controls. Their scope must be understood because related subledger dimensions are not changed by this tool.",
+    "distractors": {
+      "a": "Dimension correction does not change the monetary transaction.",
+      "b": "Correct: selection and validation reduce the risk of changing unintended entries.",
+      "c": "Running corrections requires the relevant permission.",
+      "d": "Correct: G/L-only scope matters for reconciliation and reporting."
+    },
+    "module": "module-08-cash-and-close",
+    "source": {
+      "title": "Troubleshoot and correct dimensions",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-troubleshooting-correcting-dimensions"
+    }
+  },
+  {
+    "id": "BC-091",
+    "domain": "operations",
+    "objective": "Revalue general ledger account balances",
+    "type": "single",
+    "stem": "A company tracks a foreign-currency loan directly on a G/L account using source-currency tracking. Customer, vendor, and bank ledgers do not manage this balance. What is an appropriate month-end approach?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Configure eligible source-currency revaluation and review the generated journal adjustments before posting."
+      },
+      {
+        "id": "b",
+        "text": "Revalue the same balance in both a subledger adjustment and G/L account revaluation to ensure double coverage."
+      },
+      {
+        "id": "c",
+        "text": "Assume customer and vendor exchange-rate adjustment alone revalues every directly maintained G/L loan balance."
+      },
+      {
+        "id": "d",
+        "text": "Run customer payment application to change the loan currency."
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "rationale": "G/L account revaluation addresses eligible foreign-currency balances maintained directly on G/L accounts. Generated adjustments should be reviewed, and the same balance must not be adjusted twice through overlapping processes.",
+    "distractors": {
+      "a": "Correct: it matches the stated directly maintained G/L balance.",
+      "b": "Duplicate revaluation would distort the balance.",
+      "c": "The stated source-currency G/L balance needs the eligible G/L account revaluation process rather than an assumption of subledger coverage.",
+      "d": "Customer application does not manage this loan account."
+    },
+    "module": "module-08-cash-and-close",
+    "source": {
+      "title": "Revalue general ledger account balances",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-revalue-account-balances"
+    }
+  },
+  {
+    "id": "BC-092",
+    "domain": "operations",
+    "objective": "Reverse posted journals",
+    "type": "single",
+    "stem": "A permitted general journal transaction was posted to the wrong expense account. It has not been reversed before, its posting date is allowed, and no additional reporting currency is enabled. Which action preserves an auditable correction?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Use Undo Receipt from a posted purchase receipt to reverse the G/L journal transaction."
+      },
+      {
+        "id": "b",
+        "text": "Use Unapply Entries on a customer payment, even though no customer application is involved."
+      },
+      {
+        "id": "c",
+        "text": "Use Reverse Transaction for the eligible journal posting, then post the correct transaction."
+      },
+      {
+        "id": "d",
+        "text": "Use the Correct action on a posted sales invoice, even though this posting originated in a general journal."
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "rationale": "Eligible journal-origin entries can be reversed with opposite-signed entries. A new correct posting then records the intended transaction without overwriting history.",
+    "distractors": {
+      "a": "Undo Receipt corrects an eligible posted receipt quantity; it does not reverse this journal-origin transaction.",
+      "b": "Unapply Entries changes ledger applications. It does not reverse the unrelated expense journal described here.",
+      "c": "Correct: reversal and corrected posting preserve the audit trail.",
+      "d": "Invoice correction is a document-specific process and does not operate on this general-journal-origin posting."
+    },
+    "module": "module-08-cash-and-close",
+    "source": {
+      "title": "Reverse journal postings and undo receipts/shipments",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-how-reverse-journal-posting"
+    }
+  },
+  {
+    "id": "BC-093",
+    "domain": "operations",
+    "objective": "Process payments by using payment journals",
+    "type": "multiple",
+    "stem": "Accounts payable prepares a supplier payment run using Suggest Vendor Payments. Which TWO checks are necessary before posting and exporting the payment file?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Verify selected vendors, due invoices, payment amounts, and applications."
+      },
+      {
+        "id": "b",
+        "text": "Assume every suggested line is authorized because the system generated it."
+      },
+      {
+        "id": "c",
+        "text": "Delete disputed invoices from the ledger to keep them out of the run."
+      },
+      {
+        "id": "d",
+        "text": "Check the bank account, payment method, and recipient bank information used for the run."
+      }
+    ],
+    "correct": [
+      "a",
+      "d"
+    ],
+    "rationale": "Suggested payments accelerate preparation, but the organization must still review what will be paid, how it is applied, and where funds will be sent.",
+    "distractors": {
+      "a": "Correct: these determine the obligations settled by the run.",
+      "b": "A suggestion is not business authorization or an accuracy guarantee.",
+      "c": "Disputed invoices should be handled through supported hold and review controls, not deletion.",
+      "d": "Correct: these determine the source and destination of the payment."
+    },
+    "module": "module-08-cash-and-close",
+    "source": {
+      "title": "Suggest vendor payments",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/payables-how-suggest-vendor-payments"
+    }
+  },
+  {
+    "id": "BC-094",
+    "domain": "operations",
+    "objective": "Process fixed asset acquisitions",
+    "type": "single",
+    "stem": "Finance buys a training server that must be tracked as a fixed asset with acquisition cost integrated into the G/L. Which posting choice captures the asset rather than only an expense?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Use the configured fixed asset on the purchase invoice line with the appropriate depreciation book and acquisition posting settings."
+      },
+      {
+        "id": "b",
+        "text": "Enter the acquisition cost as a maintenance transaction on the new asset."
+      },
+      {
+        "id": "c",
+        "text": "Post only to an ordinary office-expense G/L account and expect an asset card to appear automatically."
+      },
+      {
+        "id": "d",
+        "text": "Record the acquisition only in a non-G/L-integrated depreciation book and expect the G/L to update."
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "rationale": "An acquisition should identify the intended fixed asset and use its configured acquisition/depreciation-book integration. An expense-only posting does not establish the required asset acquisition.",
+    "distractors": {
+      "a": "Correct: the invoice can record the acquisition against the configured asset.",
+      "b": "Maintenance and acquisition are different fixed-asset posting types.",
+      "c": "An ordinary expense posting does not automatically create the required asset accounting.",
+      "d": "A nonintegrated book does not produce the required G/L acquisition posting."
+    },
+    "module": "module-08-cash-and-close",
+    "source": {
+      "title": "Acquire fixed assets",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/fa-how-acquire"
+    }
+  },
+  {
+    "id": "BC-095",
+    "domain": "operations",
+    "objective": "Process fixed asset depreciation",
+    "type": "order",
+    "stem": "A fixed asset and its G/L-integrated depreciation book are correctly configured. Finance will first generate proposed depreciation journal lines for review, rather than post automatically. Order these month-end milestones; each action is used once.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Review the proposed depreciation journal lines and dates."
+      },
+      {
+        "id": "b",
+        "text": "Post the approved depreciation journal."
+      },
+      {
+        "id": "c",
+        "text": "Run Calculate Depreciation for the intended assets and period."
+      },
+      {
+        "id": "d",
+        "text": "Review the resulting fixed asset and G/L entries."
+      }
+    ],
+    "correct": [
+      "c",
+      "a",
+      "b",
+      "d"
+    ],
+    "rationale": "Calculation proposes entries, review checks their scope and amounts, posting creates accounting evidence, and the final ledger review confirms the result.",
+    "distractors": {
+      "a": "Review the calculated proposal before posting it.",
+      "b": "Post only after reviewing the proposal.",
+      "c": "Begin by calculating for the selected period and assets.",
+      "d": "Verify posted effects after the journal has been posted."
+    },
+    "module": "module-08-cash-and-close",
+    "source": {
+      "title": "Depreciate or amortize fixed assets",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/fa-how-depreciate-amortize"
+    }
+  },
+  {
+    "id": "BC-096",
+    "domain": "operations",
+    "objective": "Process fixed asset disposals",
+    "type": "single",
+    "stem": "A machine has a carrying amount of ZAR 40,000 and is sold for ZAR 35,000. Ignore tax and selling costs. Which outcome should a correctly configured disposal record?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Only a customer payment, with no asset disposal entries."
+      },
+      {
+        "id": "b",
+        "text": "Disposal of the asset and a ZAR 5,000 loss."
+      },
+      {
+        "id": "c",
+        "text": "A ZAR 35,000 gain while retaining the full asset carrying amount."
+      },
+      {
+        "id": "d",
+        "text": "A ZAR 5,000 gain because proceeds are less than carrying amount."
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "rationale": "Proceeds of 35,000 less carrying amount of 40,000 produce a loss of 5,000. The disposal must also remove the asset’s carrying amount through the configured fixed-asset posting process.",
+    "distractors": {
+      "a": "A receipt alone would leave the sold asset in the asset records.",
+      "b": "Correct: the difference is a loss and the asset is disposed.",
+      "c": "The proceeds are not all gain and the disposed carrying amount cannot remain.",
+      "d": "Lower proceeds create a loss, not a gain."
+    },
+    "module": "module-08-cash-and-close",
+    "source": {
+      "title": "Dispose of or retire fixed assets",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/fa-how-dispose-retire"
+    }
+  },
+  {
+    "id": "BC-097",
+    "domain": "operations",
+    "objective": "Transfer items between locations",
+    "type": "single",
+    "stem": "Ten routers must move from Johannesburg to Windhoek through an in-transit location. The company needs a distinct dispatch and arrival record. Which process fits?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Post the transfer receipt before the goods leave the source and treat both locations as stocked."
+      },
+      {
+        "id": "b",
+        "text": "Use an immediate item reclassification between source and destination without in-transit tracking."
+      },
+      {
+        "id": "c",
+        "text": "Post a sales invoice to the destination location as if it were an external customer."
+      },
+      {
+        "id": "d",
+        "text": "Use a transfer order, post its shipment, then post receipt at the destination when goods arrive."
+      }
+    ],
+    "correct": [
+      "d"
+    ],
+    "rationale": "A transfer order with an in-transit location separates stock leaving the source from stock arriving at the destination. It represents an internal movement rather than an external sale.",
+    "distractors": {
+      "a": "Posting receipt before arrival would misstate the physical position.",
+      "b": "Immediate reclassification does not provide the distinct dispatch and arrival records required here.",
+      "c": "An external sale misrepresents this internal stock movement.",
+      "d": "Correct: the shipment and receipt give the required movement evidence."
+    },
+    "module": "module-07-inventory-operations",
+    "source": {
+      "title": "Transfer inventory between locations",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/inventory-how-transfer-between-locations"
+    }
+  },
+  {
+    "id": "BC-098",
+    "domain": "operations",
+    "objective": "Adjust item cost",
+    "type": "multiple",
+    "stem": "A vendor invoice increases the actual cost of previously received goods, some of which have already been sold. Which TWO statements guide the consultant’s cost review?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A cost adjustment is the same as posting the vendor’s cash payment."
+      },
+      {
+        "id": "b",
+        "text": "Posting inventory cost to the G/L must also follow the company’s configured automatic or batch process."
+      },
+      {
+        "id": "c",
+        "text": "Revaluation of only the remaining stock always replaces the need to forward late purchase cost to sold units."
+      },
+      {
+        "id": "d",
+        "text": "Adjust Cost - Item Entries can forward cost changes to related outbound entries."
+      }
+    ],
+    "correct": [
+      "b",
+      "d"
+    ],
+    "rationale": "Cost adjustment propagates valuation changes through item applications. G/L inventory-cost posting is a related control, while quantity and value are distinct.",
+    "distractors": {
+      "a": "Inventory valuation and settlement of the vendor balance are distinct processes.",
+      "b": "Correct: reviewed inventory valuation must be reflected in G/L through the configured process.",
+      "c": "Revaluing remaining inventory does not replace cost adjustment through related outbound applications.",
+      "d": "Correct: downstream cost of goods sold may need adjustment after late actual cost arrives."
+    },
+    "module": "module-07-inventory-operations",
+    "source": {
+      "title": "Design details: cost adjustment",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/design-details-cost-adjustment"
+    }
+  },
+  {
+    "id": "BC-099",
+    "domain": "operations",
+    "objective": "Count inventory",
+    "type": "single",
+    "stem": "A standard location’s calculated stock is 50 units. A controlled physical count finds 47. There are no intervening movements, advanced warehouse journals, or tracking complications. What should the clerk do?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Run a cost adjustment while leaving the physical quantity field at 50."
+      },
+      {
+        "id": "b",
+        "text": "Enter 47 as physical inventory in the appropriate physical inventory journal and review the proposed negative adjustment of three before posting."
+      },
+      {
+        "id": "c",
+        "text": "Enter a positive adjustment of three units to reconcile the count."
+      },
+      {
+        "id": "d",
+        "text": "Enter 50 as the physical count so no discrepancy appears."
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "rationale": "The physical count should record observed units. Comparing 47 with the calculated 50 produces a negative quantity adjustment of three, which should be investigated and approved.",
+    "distractors": {
+      "a": "Cost adjustment corrects valuation; it does not record the observed physical count of 47.",
+      "b": "Correct: the journal reconciles the record to the verified count.",
+      "c": "The counted stock is lower, so the quantity correction is negative, not positive.",
+      "d": "This conceals rather than resolves the discrepancy."
+    },
+    "module": "module-07-inventory-operations",
+    "source": {
+      "title": "Count inventory using documents or journals",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/inventory-how-count-adjust-reclassify"
+    }
+  },
+  {
+    "id": "BC-100",
+    "domain": "operations",
+    "objective": "Reclassify inventory",
+    "type": "single",
+    "stem": "A stock clerk finds that five units are recorded with the wrong item variant. The quantity and total ownership are unchanged. An authorized correction is needed, with no purchase or sale. Which journal should be evaluated?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A change to the item’s sales price list for the new variant."
+      },
+      {
+        "id": "b",
+        "text": "An item journal negative adjustment with no corresponding authorized variant reclassification."
+      },
+      {
+        "id": "c",
+        "text": "A new default variant on the item card, without a posted inventory correction."
+      },
+      {
+        "id": "d",
+        "text": "An item reclassification journal with the appropriate existing and new variant information."
+      }
+    ],
+    "correct": [
+      "d"
+    ],
+    "rationale": "Item reclassification supports changes to inventory attributes such as variant or location while preserving a controlled inventory movement trail. The correction is not a new commercial transaction.",
+    "distractors": {
+      "a": "Pricing setup does not change the variant recorded for existing stock.",
+      "b": "Removing stock alone would not preserve the quantity and classify it into the correct variant.",
+      "c": "A default master-data change does not reclassify the existing stock entries.",
+      "d": "Correct: it targets an inventory classification correction."
+    },
+    "module": "module-07-inventory-operations",
+    "source": {
+      "title": "Reclassify inventory",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/inventory-how-count-adjust-reclassify"
+    }
+  }
+]

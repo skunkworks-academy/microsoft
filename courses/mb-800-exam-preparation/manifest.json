@@ -1,0 +1,51 @@
+{
+  "version": "2026.11.16.1",
+  "courses": [
+    {
+      "courseId": "MB-800-PREP",
+      "title": "MB-800 Business Central Certification Exam Preparation",
+      "path": "/courses/mb-800-exam-preparation/",
+      "category": "Microsoft",
+      "durationHours": 30,
+      "level": "Intermediate",
+      "contentAccess": "public",
+      "registrationPath": "/course-registration/?course=MB-800-PREP",
+      "assessmentStatus": "Public formative practice; local results, no credential award",
+      "evidenceOfCapability": "Sandbox configuration workbook, end-to-end transaction trace and weighted practice review",
+      "modules": [
+        {
+          "path": "/courses/mb-800-exam-preparation/module-01-foundations/",
+          "title": "Company foundations, migration and security"
+        },
+        {
+          "path": "/courses/mb-800-exam-preparation/module-02-implementation/",
+          "title": "Dimensions, workflows and core implementation controls"
+        },
+        {
+          "path": "/courses/mb-800-exam-preparation/module-03-financial-setup/",
+          "title": "General ledger, posting architecture and recognition"
+        },
+        {
+          "path": "/courses/mb-800-exam-preparation/module-04-financial-control/",
+          "title": "Journals, receivables, payables and fixed-asset controls"
+        },
+        {
+          "path": "/courses/mb-800-exam-preparation/module-05-trade-configuration/",
+          "title": "Inventory, trading master data, prices and discounts"
+        },
+        {
+          "path": "/courses/mb-800-exam-preparation/module-06-sales-purchasing/",
+          "title": "Purchasing, sales and document corrections"
+        },
+        {
+          "path": "/courses/mb-800-exam-preparation/module-07-inventory-operations/",
+          "title": "Productive navigation, analysis and inventory operations"
+        },
+        {
+          "path": "/courses/mb-800-exam-preparation/module-08-cash-and-close/",
+          "title": "Payments, reconciliation, foreign currency and period close"
+        }
+      ]
+    }
+  ]
+}

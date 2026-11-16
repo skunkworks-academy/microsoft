@@ -7,7 +7,8 @@
 
   const academyCatalog = [
     { title:"Solution Architect: Design Microsoft Power Platform solutions", type:"Learning path", level:["Advanced"], products:["Power Platform","Dynamics 365","Power Apps","Power Automate","Microsoft Copilot"], summary:"Admin Recommended: eight Microsoft Learn modules covering solution architecture, governance, automation, Copilot Studio, security, analytics and testing.", url:"https://learn.microsoft.com/en-us/training/paths/solution-architect-data/", duration:0 },
-    { title:"MB-800: Business Central Functional Consultant", type:"Course with labs", level:["Intermediate"], products:["Dynamics 365","Business Central"], summary:"Configure Microsoft Dynamics 365 Business Central with 26 guided labs covering companies, finance, purchasing, inventory, sales and Copilot.", url:"https://microsoft.skunkworksacademy.com/MB-800/", duration:0 }
+    { title:"MB-800: Business Central Functional Consultant", type:"Course with labs", level:["Intermediate"], products:["Dynamics 365","Business Central"], summary:"Configure Microsoft Dynamics 365 Business Central with 26 guided labs covering companies, finance, purchasing, inventory, sales and Copilot.", url:"https://microsoft.skunkworksacademy.com/MB-800/", duration:0 },
+    { title:"MB-800 Certification Exam Preparation", type:"Exam preparation", level:["Intermediate"], products:["Dynamics 365","Business Central"], summary:"Eight study modules, sandbox exercises and an original weighted 100-minute mock exam with detailed answer review. Course code MB-800-PREP.", url:"https://www.skunkworksacademy.com/courses/mb-800-exam-preparation/", duration:1800 }
   ];
   const fallbackCatalog = [
     ...academyCatalog,

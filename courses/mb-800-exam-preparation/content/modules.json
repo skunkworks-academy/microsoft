@@ -1,0 +1,1042 @@
+[
+  {
+    "slug": "module-01-foundations",
+    "title": "Company foundations, migration and security",
+    "domain": "setup",
+    "minutes": 150,
+    "objectives": [
+      "Create an appropriate company through Assisted Setup and distinguish production from a sandbox.",
+      "Build a configuration worksheet and package, validate dependent master records and reconcile opening journals.",
+      "Create users, assign profiles and company-scoped permission sets through security groups, apply security filters and inspect security auditing."
+    ],
+    "sections": [
+      {
+        "heading": "Start with the implementation decision",
+        "html": "<p>Northstar Supplies is a fictional distributor preparing to move to Business Central. Its implementation team needs a working company, trustworthy opening data and controlled access before the first sale. Treat setup as a sequence of business decisions. Record the legal entity, local currency, country or region, financial year, inventory policy and required business processes. A company is an accounting and operational boundary within an environment. An environment is the application and service boundary. Creating another company does not create a separately isolated tenant.</p><p>Use Assisted Setup for supported guided tasks. Select a company creation experience that matches the purpose: demonstration data helps learning, setup data provides a starting configuration, and an empty company requires more decisions. Check the available options in your environment rather than memorising one screenshot. Keep training changes in a clearly named sandbox company. Regional functionality, extensions, licensing and the company experience influence the fields and features available. A profile changes a person’s workspace; it does not decide their licence entitlement or grant data permissions.</p>"
+      },
+      {
+        "heading": "Move data in a controlled dependency order",
+        "html": "<p>A configuration worksheet helps organise the tables and sequence of an implementation. A configuration package carries selected table fields and records for migration. Choose only needed fields, preserve primary keys and validate relationships before applying imported records. Load supporting lookup records before the master records that depend on them. For example, create payment terms, posting groups, units of measure and dimension values before customers, vendors and items. Otherwise, a valid spreadsheet row can fail because its referenced code is absent.</p><p>Run a small trial import, review errors, correct the source and revalidate. Keep a mapping log that records source column, destination field, transformation, owner and reconciliation check. Never assume that importing a row proves that its posting setup is usable. Test one customer, one vendor and one item through posting preview. Configuration packages move and validate records; they do not replace every application process or justify bypassing business rules. Compare record counts, duplicate keys and control totals before accepting the migration.</p>"
+      },
+      {
+        "heading": "Opening balances must agree across ledgers",
+        "html": "<p>Assume the approved conversion trial balance contains bank 30,000, receivables 12,000, inventory 18,000 and payables 15,000, with equity 45,000. The assets total 60,000 and liabilities plus equity total 60,000. These are invented local-currency values with tax excluded. A balanced G/L import is necessary, but it is insufficient if the customer ledger, vendor ledger, bank ledger or inventory valuation contains no supporting detail.</p><p>Plan the opening journals and migration method together so each control account receives its corresponding subledger entries exactly once. If detailed customer invoices already create the receivables control total, a separate 12,000 direct G/L posting would duplicate the balance. Reconcile customer ageing to receivables, vendor ageing to payables, bank ledger to the bank G/L account and inventory valuation to inventory control. Retain document numbers and dates needed for later application. Investigate a mismatch by ledger and source batch before adjusting a balancing account.</p>"
+      },
+      {
+        "heading": "Separate workspace convenience from authority",
+        "html": "<p>Create or synchronise a suitably licensed user using the supported Business Central online process. Assign a profile to provide relevant Role Center actions, cues and reports. Then assign permission sets that match the person’s tasks, ideally through managed security groups with company scope where required. Test with a nonadministrator account. A hidden action or filtered list is not a substitute for an enforced permission or security filter.</p><p>A security filter restricts accessible records within a permission assignment. Evaluate the user’s effective permissions across all assigned sets: a broad assignment can undermine the intended restriction. For separation of duties, a purchaser should create orders without automatically receiving authority to approve their own requests or alter payment details. Use the change log for configured business-data auditing and inspect the security audit trail for changes to users and permissions. Record who changed access and when. Do not put real learner identities, customer records or exported audit data in a public course repository.</p>"
+      }
+    ],
+    "visual": {
+      "title": "Implementation evidence gates",
+      "steps": [
+        {
+          "label": "Design",
+          "detail": "Define company, region, licence and accounting decisions."
+        },
+        {
+          "label": "Prepare",
+          "detail": "Create lookup data and map dependent master records."
+        },
+        {
+          "label": "Validate",
+          "detail": "Trial-import, preview posting and reconcile subledgers."
+        },
+        {
+          "label": "Authorize",
+          "detail": "Test effective permissions with a limited user."
+        },
+        {
+          "label": "Accept",
+          "detail": "Record agreed opening totals and release evidence."
+        }
+      ]
+    },
+    "lab": {
+      "title": "Build a disposable company and prove the opening controls",
+      "steps": [
+        "Validate an authorised sandbox and record its application version. Use fictitious data only.",
+        "Create a company with a training name through the available Assisted Setup experience. Record which starting-data option you chose and why.",
+        "Prepare a five-record customer import in a configuration worksheet/package. Include an intentionally invalid payment-term code, validate it and document the error before correcting it.",
+        "Design opening journal entries for the example trial balance. Preview posting and explain how receivables, payables, inventory and bank detail will reconcile without duplication.",
+        "Assign one test user a role profile and limited permission sets in the training company. Test a permitted read, permitted task and denied task.",
+        "Inspect the security audit/change-log evidence for a controlled permission change. Follow the existing environment-validation and migration labs where applicable."
+      ],
+      "expected": [
+        "The corrected package validates and produces five intended customer records with no duplicate keys.",
+        "The proposed journal debits equal credits and each control account has a documented subledger reconciliation.",
+        "The test user can perform the intended task and receives an access denial for the prohibited task."
+      ],
+      "cleanup": "Export only synthetic evidence, revoke temporary user permissions and remove the disposable company if authorised. Do not delete a shared instructor company.",
+      "evidence": [
+        "Company-creation decision record",
+        "Redacted import validation and before/after counts",
+        "Opening balance reconciliation table",
+        "Effective-permission positive and negative test results"
+      ]
+    },
+    "pitfalls": [
+      "Using a demonstration company as production without validating configuration and data.",
+      "Posting opening control balances twice through both direct G/L and subledger migration.",
+      "Treating a profile, hidden field or saved view as a security boundary."
+    ],
+    "checks": [
+      {
+        "prompt": "A new user can see the correct Role Center but cannot post a purchase invoice. What should you inspect?",
+        "answer": "The user’s licence/entitlement and effective permission sets, including company scope.",
+        "explanation": "The profile provides the workspace. Posting authority comes from applicable entitlements and permissions."
+      },
+      {
+        "prompt": "The G/L receivables balance is 24,000 but detailed customer entries total 12,000 after migration. What is a likely cause?",
+        "answer": "The 12,000 opening receivables balance was loaded both through customer entries and directly to G/L.",
+        "explanation": "Trace the migration batches. Correct the duplicate through an approved accounting process instead of forcing the subledger to match."
+      }
+    ],
+    "sources": [
+      {
+        "title": "Business Central setup overview",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/setup"
+      },
+      {
+        "title": "Create users according to licences",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/ui-how-users-permissions"
+      },
+      {
+        "title": "Security auditing",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/security/security-auditing"
+      },
+      {
+        "title": "Academy environment validation lab",
+        "url": "https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab00_Validate_Lab_Environment.html"
+      },
+      {
+        "title": "Academy master-data migration lab",
+        "url": "https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab04_Migrate_Master_data.html"
+      }
+    ]
+  },
+  {
+    "slug": "module-02-implementation",
+    "title": "Dimensions, workflows and core implementation controls",
+    "domain": "setup",
+    "minutes": 150,
+    "objectives": [
+      "Configure dimensions, values, global/shortcut dimensions, default rules, blocked combinations and priorities.",
+      "Set up reports/layouts, number series and monitored job queues.",
+      "Enable available Copilot/agent capabilities with appropriate data-governance and permissions, and configure approval users, groups and notifications."
+    ],
+    "sections": [
+      {
+        "heading": "Design analysis before the first posting",
+        "html": "<p>Northstar wants profit reporting by department and region without creating a new G/L account for every combination. Dimensions add analytical labels to transactions. Define a DEPARTMENT dimension with SALES and ADMIN values, and a REGION dimension with SOUTH and NORTH values. Agree definitions with finance: if two teams use SOUTH differently, a technically valid report is still misleading.</p><p>Choose the most widely used dimensions for the two global positions and the available shortcut positions. The two global dimensions are also shortcut dimensions; eight shortcut positions do not mean eight plus two separate shortcut fields. Default dimensions on customers, vendors, items and G/L accounts can populate transaction values. Value-posting rules can require a value, enforce a particular value or prohibit a dimension. Defaults improve consistency but must be tested against the actual posting scenario.</p><p>Use account-type defaults and the Default Dimensions-Multiple workspace where appropriate to apply a consistent rule across a selected set of accounts. Review the selected records before applying a bulk change. A requirement for every expense account to carry a department should become a tested value-posting rule, not a reminder in a spreadsheet.</p>"
+      },
+      {
+        "heading": "Resolve competing defaults and invalid combinations",
+        "html": "<p>An ADMIN expense account defaults DEPARTMENT=ADMIN, while the document customer defaults DEPARTMENT=SALES. Before deciding which wins, inspect default-dimension priorities for the relevant source and account types. A priority rule resolves a conflict between defaults; it does not remove mandatory-value checks or legalise a blocked combination. Use dimension combinations to prohibit a whole pairing, or selected value combinations to block a narrower case.</p><p>For example, the business permits SOUTH with SALES but never NORTH with ADMIN for a restricted project. Enter one valid and one invalid training journal. Posting preview should accept the valid combination and reject the prohibited one. Then make a required department blank and verify that it also fails. A report filter cannot repair inconsistent dimensions after posting. Document the intended defaults, their precedence and a small table of positive and negative acceptance tests before users start entering live transactions.</p>"
+      },
+      {
+        "heading": "Make background and document services observable",
+        "html": "<p>Number series control document identity. Decide which records need separate series, permitted manual numbering, date ranges and relationships before posting. Do not assume that every series guarantees gapless legal numbering. Validate local requirements and the selected numbering behaviour. Reusing the same number convention for unrelated documents makes investigation harder, even when the system permits it.</p><p>Report selection chooses which report is used for a document context; a layout controls the presentation of a report’s dataset. Changing a logo in a layout does not add a missing dataset field. Test the selected report and layout in the correct company and against representative documents. Job queues run scheduled application tasks. Configure recurrence, execution identity, category and retry expectations, then inspect status and log entries. A job marked Ready is scheduled, not proof of successful business processing. Investigate permissions, filters, dates and the application error before repeatedly restarting a failed task.</p>"
+      },
+      {
+        "heading": "Approval is a controlled business transition",
+        "html": "<p>A native workflow combines an event, conditions and responses. For purchase approval, define who can request, the amount limit, approver or workflow group sequence, substitute and notification method. Enable the workflow only after testing. Northstar’s buyer requests an order for 8,000 while the buyer’s approval limit is 5,000. The expected result is an approval request to the authorised approver, a controlled document status and a usable notification, not silent self-approval.</p><p>Test the threshold boundary, cancellation, rejection and substitute path. A notification failure and an approval-routing failure are different defects. Inspect approval entries and workflow steps before changing email setup. Keep the requester and approver distinct where the control requires independent approval. When the needed event or response is unsupported by native workflow, evaluate an appropriate extension or Power Automate process rather than inventing a native switch.</p>"
+      },
+      {
+        "heading": "Deploy Copilot and agents as governed capabilities",
+        "html": "<p>Use the Copilot & agent capabilities page to inspect features actually available to the Business Central online environment. Check prerequisites, regional availability, feature state and the user’s required permissions. Data movement controls may be relevant when processing crosses geographies. Never assume a missing capability is solved by granting SUPER or that every capability has identical permission controls.</p><p>Try one supported low-risk action, such as a number-series suggestion, with synthetic data. Compare the proposal with business rules before applying it. For a built-in agent, identify its permissions, supervision and actions that need review from that agent’s current documentation. A generated suggestion is not evidence that posting setup is correct. E-document mapping can be useful adjacent practice when available, but it is not a separate June 2026 skills-group heading. Keep any optional extension or preview exercise clearly separate from the core exam coverage.</p>"
+      }
+    ],
+    "visual": {
+      "title": "Choose the control that fits the requirement",
+      "steps": [
+        {
+          "label": "Need analytical labels?",
+          "detail": "Dimensions, defaults and priority rules."
+        },
+        {
+          "label": "Need invalid combinations blocked?",
+          "detail": "Dimension combinations and value-posting validation."
+        },
+        {
+          "label": "Need independent authority?",
+          "detail": "Approval user setup plus enabled workflow."
+        },
+        {
+          "label": "Need unattended execution?",
+          "detail": "Job queue entry with status and execution logs."
+        },
+        {
+          "label": "Need AI assistance?",
+          "detail": "Available capability, governance, permissions and human review."
+        }
+      ]
+    },
+    "lab": {
+      "title": "Configure and challenge an approval-and-dimension policy",
+      "steps": [
+        "In a disposable company create DEPARTMENT and REGION values. Assign defaults and one mandatory-value rule.",
+        "Set global/shortcut positions deliberately and record a conflicting default scenario with its expected priority.",
+        "Block one dimension-value combination. Preview a valid journal, a missing-value journal and a blocked-combination journal.",
+        "Create a purchase approval workflow with two distinct test users, an amount limit and a substitute. Configure notifications using only an authorised test destination.",
+        "Test requests immediately below and above the limit, then rejection and cancellation. Record approval entries and document statuses.",
+        "Review a report/layout selection and a safe job queue execution. Inspect one available Copilot capability and record whether it is active and accessible without changing production policy."
+      ],
+      "expected": [
+        "Three dimension tests produce their documented accept/reject outcomes.",
+        "Requests follow the intended approval authority and notifications reach only the test destination.",
+        "Report output uses the intended layout and the job queue has a successful execution log."
+      ],
+      "cleanup": "Disable the training workflow and job queue, remove temporary notification destinations and restore capability settings if changed with permission. Keep synthetic evidence only.",
+      "evidence": [
+        "Dimension policy and test table",
+        "Approval transition log",
+        "Report-layout sample with fictitious data",
+        "Job-queue execution result and capability checklist"
+      ]
+    },
+    "pitfalls": [
+      "Counting global dimensions as additional positions beyond the eight shortcut positions.",
+      "Expecting priority rules to override mandatory dimensions or blocked combinations.",
+      "Treating notification delivery, Ready queue status or an AI suggestion as proof of successful approval/posting."
+    ],
+    "checks": [
+      {
+        "prompt": "A report displays the wrong logo but the values are correct. Which control is the first candidate?",
+        "answer": "The report layout selected for that company and report.",
+        "explanation": "The presentation layout governs appearance. The report dataset governs available data."
+      },
+      {
+        "prompt": "A job queue entry is Ready. Has its scheduled business task succeeded?",
+        "answer": "No. Inspect its execution and error logs after it runs.",
+        "explanation": "Ready indicates scheduling state. Business success requires a completed run and expected output."
+      },
+      {
+        "prompt": "Two master records suggest different department values. What should you investigate?",
+        "answer": "Default-dimension priorities and the relevant value-posting and combination rules.",
+        "explanation": "Conflicting defaults, mandatory values and blocked combinations solve different validation needs."
+      }
+    ],
+    "sources": [
+      {
+        "title": "Work with dimensions",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-dimensions"
+      },
+      {
+        "title": "Set up approval users",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/across-how-to-set-up-approval-users"
+      },
+      {
+        "title": "Create approval workflows",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/across-how-to-create-workflows"
+      },
+      {
+        "title": "Set the report layout",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/ui-set-report-layout"
+      },
+      {
+        "title": "Schedule job queues",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/admin-job-queues-schedule-tasks"
+      },
+      {
+        "title": "Configure Copilot and agent capabilities",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/enable-ai"
+      },
+      {
+        "title": "Academy dimensions lab",
+        "url": "https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab11_Set_up_dimensions.html"
+      }
+    ]
+  },
+  {
+    "slug": "module-03-financial-setup",
+    "title": "General ledger, posting architecture and recognition",
+    "domain": "financials",
+    "minutes": 180,
+    "objectives": [
+      "Configure G/L setup, accounting periods, payment terms/methods, currencies and deferral schedules.",
+      "Design posting accounts, categories, subcategories, financial reports and G/L allocations.",
+      "Configure general/specific/inventory posting groups and controlled alternatives."
+    ],
+    "sections": [
+      {
+        "heading": "Translate policy into a chart and posting model",
+        "html": "<p>Begin with the accounting policy rather than a list of account numbers. Separate assets, liabilities, equity, income and expenses, then decide which accounts accept postings and which organise totals. Account categories and subcategories support a consistent reporting structure. A financial report combines row definitions and column logic with dates, dimensions and other filters. A plausible total can still be wrong because a row range omits an account or the column compares the wrong period.</p><p>Northstar buys office equipment for resale and also purchases equipment for internal use. Both may come from the same vendor, but their business purpose differs. Document the transaction type before selecting accounts. For allocations, define an explainable driver such as floor area or a fixed agreed percentage. A 2,000 shared expense allocated 60% to SALES and 40% to ADMIN produces 1,200 and 800. Confirm that allocation totals preserve the original amount and that dimensions identify the intended recipients.</p>"
+      },
+      {
+        "heading": "Distinguish posting groups by the question they answer",
+        "html": "<p>General business posting groups classify the trading party. General product posting groups classify what is sold or purchased. Their combination in General Posting Setup selects relevant sales and purchase accounts. Specific posting groups link a subledger type, such as a customer, vendor or bank, to its control accounts. Inventory Posting Setup combines inventory posting group and location to select inventory balance-sheet accounts. Tax posting uses its own setup and local rules.</p><p>Suppose customer C100 is DOMESTIC and item CHAIR has product group FURNITURE. The sales revenue account comes from that general business/product combination. The receivables account comes from the customer posting group. The inventory account follows the item’s inventory posting group and location. A missing revenue account is therefore not repaired by changing the customer’s receivables control account. Follow the error to the applicable setup matrix, correct the missing combination in the sandbox and preview posting again.</p><p>Where multiple customer or vendor posting groups are required, configure the supported allow-multiple controls and permitted alternatives, including the relevant master record. Do not tell users to choose any convenient control account. Test both allowed substitution and a prohibited alternative so the policy remains consistent across documents, journals and later application.</p>"
+      },
+      {
+        "heading": "Dates, terms and methods solve different problems",
+        "html": "<p>Accounting periods define the financial calendar. Allowed posting dates limit when transactions may post and can be refined for individual users. Closing an accounting period or fiscal year is not the same control as preventing all posting to historical dates. Check both the calendar and the allowed-date configuration when diagnosing a rejected journal.</p><p>Payment terms determine due-date and discount-date behaviour. A payment method describes how settlement occurs and can carry balancing behaviour where configured. A customer’s 30-day terms do not identify the bank account that received the payment. Work date, document date, posting date and due date can differ. In scenario questions, write down which date drives the requirement before choosing a setup page. Avoid relying on the device’s current date in repeatable training exercises.</p>"
+      },
+      {
+        "heading": "Recognition and foreign currency need explicit calculations",
+        "html": "<p>An annual service purchased for 12,000 at the start of a twelve-month period should recognise 1,000 per month in a simple equal-period example. Use an appropriate deferral template and inspect the generated schedule, dates, accounts and rounding before posting. The original invoice remains the commercial document; the deferral schedule controls recognition across periods. A prepayment secures part of a purchase or sale before final invoicing and is a different process.</p><p>For foreign currency, configure the currency and effective exchange rates, then distinguish transaction conversion from later revaluation. In a simplified example, a 1,000 foreign-currency payable initially converts at 18 local units per foreign unit, producing 18,000 LCY. At an approved closing rate of 18.5, the liability is 18,500 and the increase is 500. The sign and posting account depend on whether the exposure is an asset or liability and the configured gain/loss setup. Do not infer the direction from an ambiguous rate-entry convention: read the fields and verify the LCY result with a known amount.</p>"
+      },
+      {
+        "heading": "Prove configuration using traceable posting preview",
+        "html": "<p>Prepare one small sales transaction, one purchase and one deferral. Before committing, use posting preview to identify the proposed G/L accounts, subledgers, tax treatment and dimensions. Compare these entries with a written expected-entry table. If the preview disagrees, inspect posting groups and dates before adjusting the document to hide the problem. In a real implementation, an authorised finance reviewer approves the accounting mapping. The course’s examples teach application reasoning and do not prescribe a company’s accounting policy.</p>"
+      }
+    ],
+    "visual": {
+      "title": "Posting account decision map",
+      "steps": [
+        {
+          "label": "Who is trading?",
+          "detail": "Customer/vendor general business posting group."
+        },
+        {
+          "label": "What is traded?",
+          "detail": "Item/resource general product posting group."
+        },
+        {
+          "label": "Which revenue or purchase account?",
+          "detail": "General Posting Setup combines business and product."
+        },
+        {
+          "label": "Which control account?",
+          "detail": "Specific customer/vendor/bank posting group."
+        },
+        {
+          "label": "Which inventory account?",
+          "detail": "Inventory Posting Setup combines location and inventory posting group."
+        }
+      ]
+    },
+    "lab": {
+      "title": "Trace a sale, an annual expense and an allocation",
+      "steps": [
+        "Create a written account map in a disposable company. Mark posting accounts, categories and reporting groupings.",
+        "Configure a customer, item and location using separate general, customer and inventory posting groups.",
+        "Create a small sales document and use posting preview. Explain every proposed revenue, receivables and inventory account.",
+        "Create a 12,000 annual expense using a twelve-period deferral schedule. Check total, monthly recognition and allowed posting dates.",
+        "Prepare a 2,000 allocation with 60/40 recipients and verify 1,200 plus 800. Review dimensions.",
+        "Configure a foreign currency and a known test rate. Verify a 1,000-unit transaction’s LCY conversion. Build a financial-report check for the affected accounts."
+      ],
+      "expected": [
+        "The account mapping explains the preview without confusing general and specific posting groups.",
+        "The deferral schedule totals 12,000 and the allocation totals 2,000.",
+        "The foreign-currency test converts to the independently calculated LCY amount."
+      ],
+      "cleanup": "Delete unposted training documents and restore date restrictions. If posting was authorised, reverse through supported processes and preserve the audit trail rather than deleting ledger records.",
+      "evidence": [
+        "Account mapping table",
+        "Posting-preview explanation",
+        "Deferral schedule and allocation calculations",
+        "Financial report filter and total checks"
+      ]
+    },
+    "pitfalls": [
+      "Changing a receivables posting group to fix a missing revenue account.",
+      "Confusing payment terms with payment method or a deferral with a prepayment.",
+      "Assuming year-end closure alone blocks historical posting."
+    ],
+    "checks": [
+      {
+        "prompt": "A customer pays in 30 days by bank transfer. Which setup governs the due date?",
+        "answer": "Payment terms.",
+        "explanation": "The payment method describes settlement; the terms determine due and applicable discount dates."
+      },
+      {
+        "prompt": "The sale’s revenue account is wrong but receivables is correct. Which combination should you inspect?",
+        "answer": "The general business and general product posting groups in General Posting Setup.",
+        "explanation": "The customer posting group controls receivables, so changing it would target the wrong part of the entry."
+      },
+      {
+        "prompt": "A twelve-month 12,000 expense has twelve equal periods and no rounding complications. What is the expected monthly recognition?",
+        "answer": "1,000 per month.",
+        "explanation": "Confirm both the total and period dates in the generated deferral schedule."
+      }
+    ],
+    "sources": [
+      {
+        "title": "Set up posting groups",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-posting-groups"
+      },
+      {
+        "title": "Defer revenue and expenses",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-how-defer-revenue-expenses"
+      },
+      {
+        "title": "Update currency exchange rates",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-how-update-currencies"
+      },
+      {
+        "title": "Academy chart and posting groups lab",
+        "url": "https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab07_Configure_Chart_of_Accts.html"
+      },
+      {
+        "title": "Academy financial reporting lab",
+        "url": "https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab12_Prepare_Financial_Reporting.html"
+      },
+      {
+        "title": "Academy accounting periods lab",
+        "url": "https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab13_Manage_Accounting_Period.html"
+      }
+    ]
+  },
+  {
+    "slug": "module-04-financial-control",
+    "title": "Journals, receivables, payables and fixed-asset controls",
+    "domain": "financials",
+    "minutes": 165,
+    "objectives": [
+      "Configure bank accounts, journal templates, number series, batches and recurring journal templates.",
+      "Set up customer/vendor accounts, related banking records, sales/purchase setup and payment/receipt workspaces.",
+      "Explain master records, ledger entries, detailed entries and G/L relationships, and configure fixed asset books/classes/components/methods."
+    ],
+    "sections": [
+      {
+        "heading": "Create safe journal workspaces",
+        "html": "<p>A journal template establishes a journal’s purpose and behaviour. A batch provides a working subdivision within the template, often with its own numbering and balancing settings. Northstar’s two finance clerks should not accidentally edit the same working lines. Give them appropriate batches and permission scope, then test numbering, balancing account, source context and posting preview. Separate workspaces reduce mistakes; they do not provide independent authorisation by themselves.</p><p>Recurring journals add a repetition model. Select the recurring method according to whether the amount stays, is cleared, or needs a reversing pattern. Configure frequency and dates deliberately. A monthly expense journal that remains available after posting is useful only when its dates and amounts are reviewed before the next run. An allocation can distribute an amount across accounts or dimensions. Record the allocation basis so another person can reproduce the total rather than trusting the journal because it balanced.</p>"
+      },
+      {
+        "heading": "Configure the bank subledger",
+        "html": "<p>Create a bank account card with the intended currency, identifiers, posting group and supported statement import/export configuration. The bank account ledger records bank transactions; the G/L account records their financial effect. A direct entry to the bank’s G/L control account does not automatically create a matching bank ledger entry. This is why a plausible G/L opening balance can still fail the first reconciliation.</p><p>Test supported file formats with a harmless sample and validate references, signs and dates. Exporting a payment file, posting the payment journal and receiving settlement confirmation are distinct events. A test should never send a real payment instruction. Use an approved simulation or isolated test workflow and ensure fictitious account details cannot be mistaken for real beneficiary instructions.</p>"
+      },
+      {
+        "heading": "Build customer and vendor controls around their ledgers",
+        "html": "<p>A customer or vendor card holds master settings: posting group, currency, payment terms, method and relevant bank/address records. The ledger entry represents a posted commercial or settlement transaction, such as an invoice or payment. Detailed ledger entries track subsequent applications and related adjustments. G/L entries record the accounting effect. When an ageing balance is wrong, investigate remaining amounts and applications rather than editing the master record’s name or payment term.</p><p>Example: customer invoice INV-100 is 1,200. A receipt of 900 is applied to it with no discounts or exchange differences. The invoice’s original amount remains 1,200 while its remaining amount becomes 300. The customer’s net open balance is 300. Application evidence explains the change. Posting the same receipt without application can leave an open invoice and an open payment even though the net customer balance is 300. An ageing report and a simple net balance therefore answer different questions.</p><p>Configure Sales & Receivables Setup and Purchases & Payables Setup with the number series, defaults and controls needed for the business. Create cash receipt and payment journal batches with appropriate bank balancing and numbering. Payment Registration is a supported workspace for registering incoming customer payments; it is not a substitute for defining the customer’s payment terms. Validate a partial payment, a credit memo and an unapplied amount before accepting the design.</p>"
+      },
+      {
+        "heading": "Use fixed assets as a maintained subledger",
+        "html": "<p>A fixed asset card identifies an asset and its classifications. A depreciation book defines depreciation and G/L integration choices for the relevant accounting purpose. Classes and subclasses organise reporting; a main asset and components represent a related asset structure. These classifications do not by themselves determine every posting account. Inspect the fixed-asset posting setup and integration settings.</p><p>Compare methods conceptually before calculating. Straight-line spreads depreciable cost over useful life under the selected settings. Declining-balance methods accelerate recognition by applying a rate to a reducing basis. A user-defined method follows an agreed pattern. Do not confuse book value with market value, or assume that one method satisfies every accounting and tax requirement. In a simplified straight-line example, an asset cost of 24,000 and residual value of 4,000 over five years gives a 20,000 depreciable basis and 4,000 per full year. Business Central’s actual schedule also depends on dates, method settings and depreciation-day conventions.</p><p>Plan a test that acquires a small asset, calculates depreciation into a journal, previews it and inspects the fixed-asset ledger alongside G/L. If a depreciation book is intentionally not integrated with G/L, the absence of a G/L entry is not automatically a defect. Explain the selected book’s purpose before deciding whether the result is correct.</p>"
+      }
+    ],
+    "visual": {
+      "title": "Follow the customer balance from invoice to application",
+      "steps": [
+        {
+          "label": "Customer card",
+          "detail": "Defaults and control-account mapping."
+        },
+        {
+          "label": "Invoice ledger entry",
+          "detail": "Original obligation: 1,200."
+        },
+        {
+          "label": "Receipt ledger entry",
+          "detail": "Payment: 900."
+        },
+        {
+          "label": "Detailed application",
+          "detail": "Links payment to invoice and reduces remaining amount."
+        },
+        {
+          "label": "Reconciliation",
+          "detail": "Open balance 300 agrees with G/L control under the test assumptions."
+        }
+      ]
+    },
+    "lab": {
+      "title": "Design settlement workspaces and a depreciation book",
+      "steps": [
+        "Create separate test journal batches and a bank card in a disposable company. Review number series and balancing fields.",
+        "Configure one synthetic customer and vendor with terms, method, posting groups and related bank/address records.",
+        "Inspect or post authorised small invoice and receipt examples. Apply a 900 receipt against a 1,200 invoice and compare original versus remaining amounts.",
+        "Create a recurring-journal example, select its method and explain what should remain after posting. Do not schedule unattended posting.",
+        "Create a fixed asset, classification and depreciation book. Specify whether G/L integration is intended.",
+        "Calculate the simple 24,000 cost, 4,000 residual, five-year example independently. Compare it with the configured method and dates using posting preview."
+      ],
+      "expected": [
+        "Each batch is identifiable and uses the intended numbering and balancing settings.",
+        "Application leaves 300 on the customer invoice under the no-tax/no-discount assumptions.",
+        "The depreciation-book design and expected ledger effects are documented before posting."
+      ],
+      "cleanup": "Remove unposted training lines and fictitious banking records. Reverse authorised posted entries using supported actions. Revoke temporary permissions and retain no real beneficiary data.",
+      "evidence": [
+        "Journal template/batch design",
+        "Customer/vendor-to-ledger trace",
+        "Partial payment application evidence",
+        "Fixed-asset method comparison and preview"
+      ]
+    },
+    "pitfalls": [
+      "Treating bank G/L postings as a complete bank-subledger implementation.",
+      "Mistaking a net customer balance for proof that invoices and payments are applied.",
+      "Assuming all depreciation books are integrated with G/L or that classifications select all posting accounts."
+    ],
+    "checks": [
+      {
+        "prompt": "A 1,200 invoice receives an applied 900 payment with no other adjustments. What are original and remaining amounts?",
+        "answer": "Original amount 1,200; remaining amount 300.",
+        "explanation": "Application changes the amount still open. It does not rewrite the original invoice amount."
+      },
+      {
+        "prompt": "Two clerks need distinct journal working lines within the same journal type. What is appropriate?",
+        "answer": "Separate batches within a suitable journal template, with appropriate permissions.",
+        "explanation": "The template defines the journal context; batches organise working lines and settings."
+      },
+      {
+        "prompt": "A fixed asset has no G/L depreciation entry. What must be checked before declaring an error?",
+        "answer": "Whether the selected depreciation book is configured for G/L integration.",
+        "explanation": "A deliberately nonintegrated book serves a different reporting purpose."
+      }
+    ],
+    "sources": [
+      {
+        "title": "Work with general journals",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/ui-work-general-journals"
+      },
+      {
+        "title": "Set up bank accounts",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/bank-how-setup-bank-accounts"
+      },
+      {
+        "title": "Depreciation methods",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/fa-depreciation-methods"
+      },
+      {
+        "title": "Academy general journals lab",
+        "url": "https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab09_Set_up_General_Journals.html"
+      },
+      {
+        "title": "Academy accounts payable lab",
+        "url": "https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab08_Set_up_Accounts_Payable.html"
+      },
+      {
+        "title": "Academy accounts receivable lab",
+        "url": "https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab15_Set_up_Accounts_Receivable.html"
+      }
+    ]
+  },
+  {
+    "slug": "module-05-trade-configuration",
+    "title": "Inventory, trading master data, prices and discounts",
+    "domain": "trade",
+    "minutes": 150,
+    "objectives": [
+      "Configure inventory, items, categories, attributes, units, variants, locations and stockkeeping units.",
+      "Trace quantity to item ledger entries, valuation to value entries and accounting to G/L, and distinguish costing methods.",
+      "Configure customer/vendor fulfilment data and test date/quantity/currency/unit-sensitive prices and discounts."
+    ],
+    "sections": [
+      {
+        "heading": "Model a product before adding a price",
+        "html": "<p>Northstar sells a chair in blue and grey, purchases it in boxes of four and sells individual units. Create one appropriate item model, then use variants for meaningful versions and units of measure for packaging. Categories organise the product hierarchy; attributes describe searchable characteristics such as colour or material. An attribute is not a stock quantity and does not automatically create a separately stocked variant.</p><p>Confirm the base unit before posting transactions. If the base is EACH and BOX contains four, a receipt of three BOX represents twelve EACH. Test the conversion through the document and ledger, including rounding where relevant. A wrong unit conversion can make purchasing appear cheaper and availability appear larger than reality. Use consistent master definitions across the vendor price, sales price and order lines.</p>"
+      },
+      {
+        "heading": "Location and SKU are different levels of configuration",
+        "html": "<p>Locations identify where stock is held. A stockkeeping unit records item configuration for a particular location and/or variant, enabling appropriate replenishment and planning differences. Northstar may replenish the same chair differently in Johannesburg and a smaller branch. This does not mean creating two unrelated item cards is always necessary. Identify the requirement first: distinguish physical location, product variant, unit conversion and replenishment policy.</p><p>Review Inventory Setup before testing posting. Decisions about automatic cost adjustment, cost posting and related controls affect when values appear in G/L. Test stock availability by the relevant location and date. Twenty units somewhere in the company do not prove that a specific location can fulfil an order tomorrow. A transfer and an adjustment solve different business events and should leave different evidence.</p>"
+      },
+      {
+        "heading": "Separate quantity, value and financial effect",
+        "html": "<p>Item ledger entries track inventory quantity movements. Value entries carry valuation associated with item transactions. G/L entries carry the financial impact once the applicable costs are posted. For a purchase of ten items at 50 each, the physical receipt and final invoiced cost can occur at different times. An item quantity of ten with expected cost is not the same state as ten with final actual cost.</p><p>Costing methods decide how costs flow to outbound transactions. In a deliberately simplified example, ten units are acquired at 10 and another ten at 14 before a sale of twelve units. FIFO assigns 10 × 10 plus 2 × 14 = 128 to the issue. LIFO, where supported and suitable for the application scenario, would use 10 × 14 plus 2 × 10 = 160. A simple average across all twenty units is 12 each, giving 144 for twelve, but Business Central’s actual average-cost calculation depends on its configured period and calculation type. Standard uses the configured standard with variance handling; Specific follows identified cost where the tracking/application requirements support it. Physical picking order is not automatically the costing method.</p><p>Before accepting a valuation result, check the method, applications, invoice status, adjustment state and valuation date. The learner’s task is to explain the expected result under stated assumptions, not to choose whichever method produces the preferred profit.</p>"
+      },
+      {
+        "heading": "Fulfilment data makes documents usable",
+        "html": "<p>Customers need delivery details such as ship-to addresses, location and shipping agent/service where applicable. Vendors need order addresses, lead time and location defaults suitable for purchasing. The bill-to or pay-to relationship can differ from the delivery or ordering party. Trace the selected address and dates onto a test document rather than assuming the card default always wins.</p><p>A vendor lead time can inform planning and expected receipts. It does not guarantee the supplier will deliver on that date. Document external commitments separately. Test a vendor with an alternative order address and a customer with two ship-to addresses so the distinction remains visible during exam-style scenarios.</p>"
+      },
+      {
+        "heading": "Test prices as a matrix of conditions",
+        "html": "<p>A price or discount may depend on customer/vendor, group, item, date, currency, unit and minimum quantity. Prepare a small matrix that names each condition and expected result. For example, a chair’s test sales price is 100 per EACH and a ten-unit offer provides a 5% line discount. Ten units produce 1,000 before discount and 950 after line discount, excluding tax. If the document also qualifies for a 2% invoice discount on that eligible net amount, the illustrative total becomes 931. Do not assume invoice discount applies to every line or that all discounts simply add together.</p><p>Change one condition at a time: quantity nine versus ten, a date outside the offer, or BOX instead of EACH. Review which price and discounts Business Central actually selects. A purchase price is a supplier cost agreement, while a sales price is what the customer is charged. Updating one does not imply that the other will change. Record how an approved price is activated and how old orders are handled.</p>"
+      }
+    ],
+    "visual": {
+      "title": "Quantity-to-accounting reconciliation ladder",
+      "steps": [
+        {
+          "label": "Document quantity",
+          "detail": "Convert order units into base units."
+        },
+        {
+          "label": "Item ledger",
+          "detail": "Confirm signed movement at the correct location/variant."
+        },
+        {
+          "label": "Value entries",
+          "detail": "Explain expected and actual cost."
+        },
+        {
+          "label": "Cost adjustment",
+          "detail": "Propagate subsequent cost changes where applicable."
+        },
+        {
+          "label": "General ledger",
+          "detail": "Reconcile posted inventory cost to control accounts."
+        }
+      ]
+    },
+    "lab": {
+      "title": "Prove packaging, location and price boundaries",
+      "steps": [
+        "Create a synthetic item with EACH as base unit and BOX=4 EACH. Add two variants, category and attributes.",
+        "Create two locations and a suitable stockkeeping-unit record with deliberately different replenishment settings.",
+        "Prepare a purchase document for three BOX. Verify that the intended base quantity is twelve before posting.",
+        "Create customer ship-to and vendor order-address examples; verify the selected document addresses and location.",
+        "Set up a ten-unit sales offer and test nine, ten and eleven units, a date outside the offer and an alternative unit. Record expected versus selected prices.",
+        "Calculate the simplified FIFO/average examples independently, then inspect item/value/G/L entries for an authorised posted training transaction."
+      ],
+      "expected": [
+        "Three BOX resolves to twelve EACH with the intended variant and location.",
+        "Pricing boundary tests are explained by the configured conditions.",
+        "Quantity and value are reconciled separately and any not-yet-posted G/L cost is identified."
+      ],
+      "cleanup": "Remove unposted quotes/orders and inactive training prices. If transactions were posted, preserve entries and use authorised returns/adjustments instead of deleting history.",
+      "evidence": [
+        "Item/unit/variant/location model",
+        "Pricing decision matrix",
+        "Independent costing calculations",
+        "Ledger trace for one posted transaction"
+      ]
+    },
+    "pitfalls": [
+      "Using attributes as though they automatically create separately stocked variants.",
+      "Assuming company-wide availability guarantees fulfilment at one location.",
+      "Adding line and invoice discount percentages without calculating their eligible bases."
+    ],
+    "checks": [
+      {
+        "prompt": "The base unit is EACH and a BOX contains four. What is the base quantity of three BOX?",
+        "answer": "Twelve EACH.",
+        "explanation": "Unit conversion must be validated before valuation or availability can be trusted."
+      },
+      {
+        "prompt": "Where should you look for inventory quantity versus inventory valuation?",
+        "answer": "Quantity: item ledger entries. Valuation: value entries.",
+        "explanation": "G/L entries show accounting effects after cost posting and are a separate reconciliation layer."
+      },
+      {
+        "prompt": "Ten units at 100 receive 5% line discount then 2% invoice discount on the eligible net. What is the illustrative tax-exclusive total?",
+        "answer": "931.",
+        "explanation": "1,000 × 0.95 × 0.98 = 931. Eligibility and rounding still require configuration review."
+      }
+    ],
+    "sources": [
+      {
+        "title": "Set up inventory",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/inventory-setup-inventory"
+      },
+      {
+        "title": "General inventory setup",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/inventory-how-setup-general"
+      },
+      {
+        "title": "Set up stockkeeping units",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/inventory-how-to-set-up-stockkeeping-units"
+      },
+      {
+        "title": "Inventory cost reconciliation",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-how-to-post-inventory-costs-to-the-general-ledger"
+      },
+      {
+        "title": "Academy inventory setup lab",
+        "url": "https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab16_Set_up_Inventory.html"
+      },
+      {
+        "title": "Academy sales configuration lab",
+        "url": "https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab17_Configure_Sales.html"
+      }
+    ]
+  },
+  {
+    "slug": "module-06-sales-purchasing",
+    "title": "Purchasing, sales and document corrections",
+    "domain": "operations",
+    "minutes": 180,
+    "objectives": [
+      "Process quotes, orders, receipts, shipments, over-receipts, reversals, recurring lines and blanket orders.",
+      "Create invoices from orders, combine eligible shipments/receipts, use document deferrals and process prepayments.",
+      "Release/reopen documents and choose a supported correction, credit memo or return path for posted transactions."
+    ],
+    "sections": [
+      {
+        "heading": "Read the document state before choosing an action",
+        "html": "<p>Commercial intent, physical fulfilment and financial posting are different stages. A quote records a proposal. An order records an agreed requirement. Receiving or shipping records physical movement. Invoicing records the financial transaction. A released document has passed the applicable business-control transition; it is not necessarily received, shipped, invoiced or paid. Reopening permits permitted editing and does not reverse posted entries.</p><p>Northstar orders twenty chairs but the supplier delivers twelve today and eight next week. Set Qty. to Receive deliberately and post only the actual receipt. If the supplier invoices twelve, invoice the eligible received quantity. Do not use one full receive-and-invoice action simply to close the order early. Review quantities ordered, received, invoiced and outstanding after each stage. On sales orders, use the corresponding shipment and invoice quantities. Read the exact action before confirming it.</p>"
+      },
+      {
+        "heading": "Purchasing exceptions require explicit controls",
+        "html": "<p>Over-receipt allows a controlled quantity above the order where an over-receipt code and tolerance permit it. If ten units are ordered and the test tolerance is 10%, an eleven-unit receipt is within that simple limit. Approval requirements may add another condition. The presence of an extra unit on the dock is not permission to bypass the tolerance or receive against the wrong item.</p><p>An uninvoiced receipt can use a supported undo process when its conditions are met. Once invoiced, evaluate a return order or credit memo process instead. The exact path depends on the posted state and item/application constraints. A credit memo is a financial correction; a return order also models the physical return workflow. Recurring purchase lines insert a repeatable set of document lines. A blanket purchase order records an ongoing agreement and can create call-off orders. Neither is an automatic recurring journal.</p>"
+      },
+      {
+        "heading": "Selling requires availability and fulfilment reasoning",
+        "html": "<p>Convert an accepted quote into the appropriate sales order or invoice according to the business process. Before promising stock, inspect availability by date, location and relevant variant. A purchase expected next week may not cover tomorrow’s shipment. Review reservations and other commitments where applicable. Use partial shipment when that is the actual fulfilment event rather than silently changing the ordered quantity.</p><p>An uninvoiced shipment may qualify for supported undo actions. An invoiced return requires the appropriate corrective sales process. Recurring sales lines provide reusable line content; blanket sales orders represent longer-running agreements. If the customer needs one invoice for multiple eligible shipments, use the supported combine/get-shipment-lines process and check customer, currency and other compatibility conditions. The equivalent purchase process combines eligible receipts. Combining is not a licence to merge unrelated customers or override incompatible header data.</p>"
+      },
+      {
+        "heading": "Financial corrections preserve the audit trail",
+        "html": "<p>Never edit a posted invoice as though it were an unposted draft. First identify whether it is paid, whether physical items moved and whether only part is being returned. Correct and Cancel actions have eligibility restrictions and produce corrective posted documents when supported. Use a corrective credit memo or return process for other cases, including scenarios where the paid state prevents the direct action. Read the current documentation when a scenario includes partial posting.</p><p>For example, an invoice for six chairs was paid and the customer returns two. The business needs an approved partial return, a credit for two and a refund or application arrangement. Cancelling the whole sale would misstate the four chairs the customer kept. Select lines, quantities, cost application and original-document references intentionally. Compare posted customer/vendor, item, value and G/L entries after the correction. A return’s financial value should be traceable to its original transaction where the costing/application design requires it.</p>"
+      },
+      {
+        "heading": "Prepayments and deferrals have different timing",
+        "html": "<p>Northstar requires a 20% prepayment on a tax-exclusive order value of 5,000. The simple deposit amount is 1,000. Configure the relevant prepayment settings/accounts, create and post the prepayment invoice through the supported order process, and verify settlement before final fulfilment where the policy requires it. At final invoicing, ensure the prepayment is deducted correctly so the customer is not charged 6,000 in total.</p><p>A deferral allocates revenue or expense across accounting periods. It does not collect a deposit. A sales document can therefore raise a recognition question independently of its payment schedule. Use posting preview to examine both. In practice exercises, isolate taxes and rounding first, then add realistic complications only after the learner can explain the base transaction. For exam reasoning, identify the requested outcome: physical movement, liability/receivable, recognition timing or settlement. That usually narrows the correct action more reliably than matching a familiar button label.</p>"
+      }
+    ],
+    "visual": {
+      "title": "Choose a correction using the posted state",
+      "steps": [
+        {
+          "label": "Still unposted?",
+          "detail": "Reopen if permitted, edit and validate again."
+        },
+        {
+          "label": "Received/shipped but not invoiced?",
+          "detail": "Check whether the supported Undo action is eligible."
+        },
+        {
+          "label": "Posted invoice and eligible?",
+          "detail": "Evaluate Correct or Cancel and the generated audit documents."
+        },
+        {
+          "label": "Paid, partial return or other restriction?",
+          "detail": "Use an appropriate credit memo/return workflow."
+        },
+        {
+          "label": "Validate the result",
+          "detail": "Reconcile quantities, application, cost and G/L effects."
+        }
+      ]
+    },
+    "lab": {
+      "title": "Run a partial fulfilment and a controlled return",
+      "steps": [
+        "In a disposable company create a purchase order for twenty units. Receive twelve and inspect outstanding quantities.",
+        "Invoice the eligible twelve, then receive/invoice the remaining eight in a separate step. Retain document references.",
+        "Create a sales quote, convert to an order and review availability at the intended location/date. Ship and invoice a deliberate partial quantity.",
+        "Prepare separate scenarios for an uninvoiced shipment undo and an invoiced partial return. Determine eligibility before attempting an action.",
+        "Prepare a 5,000 order with 20% prepayment and verify the 1,000 deposit calculation and final deduction in posting preview.",
+        "Demonstrate recurring document lines, a blanket call-off and eligible combined shipment/receipt invoicing using synthetic records."
+      ],
+      "expected": [
+        "Ordered, received/shipped, invoiced and outstanding quantities remain explainable after each step.",
+        "The return corrects only the intended quantity and retains links to the original posting.",
+        "Prepayment and final invoice together represent the intended 5,000 order value under the simplified assumptions."
+      ],
+      "cleanup": "Cancel unposted test requests and delete only eligible unposted documents. Use supported credit/return/reversal actions for posted transactions. Do not erase ledger history.",
+      "evidence": [
+        "Document-state timeline",
+        "Quantity reconciliation after partial fulfilment",
+        "Correction-path decision record",
+        "Prepayment deduction and final balance calculation"
+      ]
+    },
+    "pitfalls": [
+      "Equating Released with posted, paid or physically fulfilled.",
+      "Using Cancel for every posted invoice regardless of payment or return state.",
+      "Confusing recurring document lines, blanket orders and recurring journals."
+    ],
+    "checks": [
+      {
+        "prompt": "Twenty units were ordered and only twelve arrived. What should Qty. to Receive represent?",
+        "answer": "Twelve, assuming that is the verified delivery.",
+        "explanation": "Posting should represent the actual event and leave eight outstanding."
+      },
+      {
+        "prompt": "A paid invoice contains six units and only two are returned. What type of process should be evaluated?",
+        "answer": "An appropriate partial sales return/credit memo process.",
+        "explanation": "A whole-document cancellation would not represent the four units retained by the customer."
+      },
+      {
+        "prompt": "Is a 20% prepayment on a 5,000 order a deferral schedule?",
+        "answer": "No. The simple prepayment is 1,000; a deferral controls recognition periods.",
+        "explanation": "Collection timing and revenue/expense recognition solve separate requirements."
+      }
+    ],
+    "sources": [
+      {
+        "title": "Correct or cancel sales invoices",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/sales-how-correct-cancel-sales-invoice"
+      },
+      {
+        "title": "Process sales returns or cancellations",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/sales-how-process-sales-returns-cancellations"
+      },
+      {
+        "title": "Academy purchasing operations lab",
+        "url": "https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab19_Process_Purchase.html"
+      },
+      {
+        "title": "Academy sales operations lab",
+        "url": "https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab20_Process_Sales.html"
+      },
+      {
+        "title": "Microsoft purchasing documentation",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/purchasing-manage-purchasing"
+      },
+      {
+        "title": "Microsoft sales documentation",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/sales-manage-sales"
+      }
+    ]
+  },
+  {
+    "slug": "module-07-inventory-operations",
+    "title": "Productive navigation, analysis and inventory operations",
+    "domain": "operations",
+    "minutes": 150,
+    "objectives": [
+      "Distinguish personalization, profile customization and extension design; inspect pages and find related entries.",
+      "Apply/save filters, use Edit in Excel and configure data analysis mode with appropriate permissions.",
+      "Process inventory receipts/shipments, transfers, adjustments, counts, reclassification and item cost adjustment."
+    ],
+    "sections": [
+      {
+        "heading": "Choose the right level of user-interface change",
+        "html": "<p>Personalization adapts an individual user’s workspace, such as moving a field or hiding an action. Profile customization provides an agreed workspace for users assigned that role. Extension design changes application objects and behaviour through the supported development model. A requirement to move one user’s field should not automatically become a development project. A requirement for a new validated business rule is not satisfied by hiding a field.</p><p>Use Tell Me to locate pages and actions, then inspect the relevant page when identifying the underlying table or extension. Page inspection helps distinguish similar captions and diagnose where a field comes from. It is a diagnostic tool, not permission to modify posted table data. From documents, follow related entries or Find Entries to trace postings. Keep the document number, posting date and transaction references together so that a learner can navigate from the business event to its accounting evidence.</p>"
+      },
+      {
+        "heading": "Filtering and analysis answer explicit questions",
+        "html": "<p>Northstar wants open customer invoices for a defined month and a region. Apply a posting-date range and the relevant dimension or other supported filter, then check which entries remain. Multiple field filters generally narrow to records meeting all those field conditions. Within one field, an OR expression can select alternatives. A saved view preserves a useful working selection; it does not change the user’s effective security permissions.</p><p>Use unambiguous dates matching the environment’s regional input format. In a document-number field, a range such as INV100..INV120 follows the field’s sorting/format behaviour, so verify the displayed records rather than assuming every numeric-looking code is a number. Remove stale filters before deciding data is missing. FlowFilters used for totals can affect calculated balances without being the same as filtering the visible underlying rows.</p><p>Data analysis mode provides grouping, pivot-style summaries and saved analysis tabs on supported lists. Start with a defined question, choose fields and aggregations, and reconcile a sample total to source entries. A count of rows and a sum of amounts are different measures. Do not sum both invoice headers and their lines as though they were independent revenue. Analysis assists diagnosis; it does not post corrections.</p><p>On supported current versions, analysis mode requires the applicable data-analysis execution permission. A developer can also disable the capability on a specific page. Diagnose a missing analysis toggle by checking page support, application version and permissions before assuming it is a browser fault.</p>"
+      },
+      {
+        "heading": "Spreadsheet editing is a controlled write operation",
+        "html": "<p>Open in Excel provides exported data for analysis. Edit in Excel uses the supported add-in experience to publish eligible changes back, subject to permissions and validation. A downloaded workbook is not proof that changes were written to Business Central. Use a small synthetic set, retain record keys, change an allowed field and publish, then refresh the application to verify the result.</p><p>Check errors before retrying a bulk update. If one row fails validation, repeating the whole exercise without understanding the error can create unintended changes. Avoid bulk-changing posting groups, bank details or critical master data without a reviewed plan. Never use this learning exercise to mass-update production or export real personal data into a public repository.</p>"
+      },
+      {
+        "heading": "Record the physical event with the right inventory transaction",
+        "html": "<p>An item journal can record positive and negative adjustments under an authorised inventory process. A transfer moves stock between locations and can model in-transit handling when configured. A reclassification changes supported inventory attributes, such as location, bin, variant or tracking context, according to the applicable process. A physical inventory journal/order supports counting and posting verified differences. These are not interchangeable shortcuts.</p><p>Example: the system shows fifty units at location MAIN. A controlled count finds forty-seven. The investigated shortage is three, so the approved count difference is a negative three. Do not post forty-seven as a new positive receipt; that would inflate stock to ninety-seven. If the three missing units were actually transferred to BRANCH, investigate the unrecorded transfer instead of writing them off. Count timing matters: freeze or control movements during the count, or reconcile the movement cut-off explicitly.</p>"
+      },
+      {
+        "heading": "Close the loop from quantity to adjusted cost",
+        "html": "<p>After receipt or shipment, inspect the signed item ledger quantity, location, variant and remaining quantity. Then inspect value entries. A late supplier invoice or item charge can change the final cost assigned to items already sold. Cost adjustment propagates applicable cost changes to related outbound entries; posting inventory cost to G/L updates the accounting records. These processes are distinct and may run automatically or through controlled batch jobs.</p><p>If quantity agrees but the inventory G/L balance differs, investigate unadjusted or unposted costs, expected-versus-actual amounts, posting dates and setup before entering a quantity adjustment. A quantity journal cannot correctly repair an accounting timing difference. Reconcile a narrow item/date sample first, then broaden the investigation after the causal chain is understood. Preserve the original transaction and adjustment evidence.</p>"
+      }
+    ],
+    "visual": {
+      "title": "Inventory discrepancy diagnostic table",
+      "steps": [
+        {
+          "label": "Quantity wrong at one location",
+          "detail": "Check receipts, shipments, transfers and count cut-off."
+        },
+        {
+          "label": "Quantity correct; value wrong",
+          "detail": "Check invoicing, charges, cost method and adjustment."
+        },
+        {
+          "label": "Value entries correct; G/L different",
+          "detail": "Check cost posting, dates and control-account mapping."
+        },
+        {
+          "label": "Records appear missing",
+          "detail": "Clear stale filters and inspect permissions/location."
+        },
+        {
+          "label": "Fix and recheck",
+          "detail": "Use the transaction matching the actual cause."
+        }
+      ]
+    },
+    "lab": {
+      "title": "Count, trace and explain one discrepancy",
+      "steps": [
+        "Personalize a supported list for one test user, then explain how profile customization and extension design differ.",
+        "Apply and save a date/status view. Clear it, reload it and reconcile five sample records to the expected filter conditions.",
+        "Create a data-analysis tab grouped by a meaningful field and verify a small total manually. Inspect the page/table origin.",
+        "Where available, use Edit in Excel on two harmless synthetic master records. Publish an allowed change and verify it in the application.",
+        "In a disposable company with authorised stock, prepare a count from fifty to forty-seven. Explain why the adjustment is minus three.",
+        "Demonstrate or preview a location transfer and reclassification. Trace an item’s ledger, value entries and cost-posting state."
+      ],
+      "expected": [
+        "The saved view returns the intended records without being described as a security boundary.",
+        "The Excel change is verified after publication, or an actual availability/permission blocker is recorded.",
+        "The count’s approved difference is minus three and its valuation impact is explained separately."
+      ],
+      "cleanup": "Restore personalizations, remove temporary analysis tabs if desired, delete unposted test journals and reverse posted training changes only through approved processes. Remove synthetic exported workbooks from shared devices.",
+      "evidence": [
+        "Filter definition and sample records",
+        "Analysis total reconciliation",
+        "Spreadsheet publish result or precise blocker",
+        "Count/transfer/reclassification decision and ledger trace"
+      ]
+    },
+    "pitfalls": [
+      "Treating a saved view or hidden field as access control.",
+      "Using Open in Excel as though it had published changes.",
+      "Posting counted quantity instead of the difference, or using a quantity adjustment to fix cost timing."
+    ],
+    "checks": [
+      {
+        "prompt": "The system says fifty units and the verified count is forty-seven. What is the quantity difference?",
+        "answer": "Minus three.",
+        "explanation": "Posting forty-seven as a positive adjustment would add stock instead of recording the shortage."
+      },
+      {
+        "prompt": "Quantity is correct, value entries are correct, but inventory G/L is behind. What should be inspected?",
+        "answer": "Inventory cost posting status, dates and setup.",
+        "explanation": "A quantity adjustment would target the wrong layer and distort stock."
+      },
+      {
+        "prompt": "Which change affects only an individual workspace: personalization, profile customization or extension development?",
+        "answer": "Personalization.",
+        "explanation": "Profile changes serve a role; an extension changes application design or behaviour."
+      }
+    ],
+    "sources": [
+      {
+        "title": "Personalize a workspace",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/ui-personalization-user"
+      },
+      {
+        "title": "Customize Business Central",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/ui-customizing-overview"
+      },
+      {
+        "title": "Search and filter data",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/ui-enter-criteria-filters"
+      },
+      {
+        "title": "Managing inventory",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/inventory-manage-inventory"
+      },
+      {
+        "title": "Reconcile inventory costs with G/L",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-how-to-post-inventory-costs-to-the-general-ledger"
+      },
+      {
+        "title": "Academy basic tasks lab",
+        "url": "https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab18_Perform_Basic_Tasks.html"
+      },
+      {
+        "title": "Use data analysis mode",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/analysis-mode"
+      },
+      {
+        "title": "View and edit with Excel",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/across-work-with-excel"
+      }
+    ]
+  },
+  {
+    "slug": "module-08-cash-and-close",
+    "title": "Payments, reconciliation, foreign currency and period close",
+    "domain": "operations",
+    "minutes": 180,
+    "objectives": [
+      "Process payment/cash-receipt journals and Payment Registration; apply/unapply entries and reverse eligible journals.",
+      "Reconcile bank accounts, post recurring journals/allocations, adjust exchange rates, correct posted dimensions and revalue eligible G/L balances.",
+      "Process fixed-asset acquisition, depreciation and disposal with traceable ledger effects."
+    ],
+    "sections": [
+      {
+        "heading": "Settlement is more than entering a bank amount",
+        "html": "<p>A payment journal records outgoing settlements and a cash receipt journal records incoming receipts in the applicable workflow. Confirm account type, balancing bank, document type, currency, date and application before posting. Payment Registration can streamline supported customer receipts. In all cases, distinguish a posted payment from its application to open invoices and from its appearance on a bank statement.</p><p>Northstar owes a vendor 2,000 and has an approved credit memo for 300. Under a simple same-currency, no-discount example, the net settlement is 1,700. Apply the intended entries deliberately and verify remaining amounts after posting. If a receipt was applied to the wrong invoice, use the supported unapply process, inspect reversal of related application effects, then reapply correctly. Do not create a second bank receipt to repair an application mistake: that would duplicate cash.</p>"
+      },
+      {
+        "heading": "Reconciliation explains the difference; it does not hide it",
+        "html": "<p>Bank reconciliation compares the bank statement with bank account ledger entries. Matching a statement line to an existing ledger entry avoids posting it twice. Unrecorded bank charges may require a supported journal/transfer process before reconciliation. Outstanding items explain timing differences. A zero difference is meaningful only when each match and adjustment has evidence.</p><p>Example: the bank statement ends at 9,850. The bank ledger shows 10,000 because a 150 fee is on the statement but not yet in Business Central. After reviewing the fee, post the approved charge through the bank-aware process and reconcile. If instead a 150 payment has already been posted and is simply unmatched, match it; posting another fee would be wrong. For automatic payment reconciliation, review proposed matches, ambiguous references and tolerances before posting. An amount match alone can connect the wrong invoice when two invoices share a value.</p>"
+      },
+      {
+        "heading": "Recurring postings and reversals must preserve meaning",
+        "html": "<p>Review recurring journal dates, methods and allocation settings before each run. A reversal for an accrual creates the intended opposite effect in the appropriate period; it is not the same as deleting history. Supported Reverse Transaction actions have restrictions, including origin and application state. Inspect the source journal and related entries before choosing a correction path. Some transaction types require their own cancellation or credit process.</p><p>Use an allocation test whose driver is explicit. A 3,000 shared service allocated 50%, 30% and 20% produces 1,500, 900 and 600, preserving 3,000. Verify dimensions and recipients as well as the total. A balanced journal with swapped departments is still wrong. Retain the source policy, independent calculation and posting references.</p>"
+      },
+      {
+        "heading": "Foreign currency and dimension corrections are distinct close tasks",
+        "html": "<p>Adjust exchange rates using the correct effective rates, posting date, scope and configured gain/loss accounts. Open customer/vendor balances and foreign-currency bank balances can have revaluation effects. A simplified 1,000 foreign-currency receivable moving from 18 to 18.5 LCY per unit increases its LCY value by 500. That illustrates exposure direction only; actual Business Central entries depend on its rate convention, rounding, application and setup. Inspect detailed ledger and G/L effects rather than changing the original invoice.</p><p>G/L balance revaluation is a separate supported process with its own eligibility and configuration. Do not assume that adjusting subledger exchange rates automatically meets every G/L revaluation requirement. Write the close checklist by account and process. For a posted department error on G/L entries, use the Dimension Correction Tool where appropriate. It corrects supported dimension analysis without being a general edit of the transaction’s amount or posting account. Review scope, blocked dimensions, validation and analysis-view updates. Do not promise that changing a G/L dimension automatically rewrites every operational subledger document.</p><p>For G/L revaluation, inspect source-currency tracking on the relevant balance-sheet account and confirm the posted entries retain the currency information needed by the process. Agree which accounts are in scope, preview the adjustment and compare source-currency amounts with their LCY values. Do not mix this task with additional-reporting-currency translation or a routine customer/vendor adjustment without checking the process documented for each requirement.</p>"
+      },
+      {
+        "heading": "Complete the fixed-asset lifecycle",
+        "html": "<p>Acquisition establishes the asset cost in the selected depreciation book. Calculate Depreciation proposes entries based on the asset’s method and dates; review the journal before posting. Disposal removes the relevant asset values and records proceeds and the resulting gain or loss using the configured setup. Trace the fixed-asset ledger and integrated G/L entries through all three stages.</p><p>In a simplified example, an asset cost 24,000 and has accumulated depreciation of 16,000, so book value is 8,000. Disposal proceeds of 9,500 produce a gain of 1,500 before tax and transaction costs. The proceeds are not the gain. If the disposal journal shows 9,500 income without removing cost and depreciation, investigate the process and posting setup. Complete depreciation to the approved disposal date before evaluating the final book value.</p>"
+      },
+      {
+        "heading": "Finish with an evidence-based readiness decision",
+        "html": "<p>Use the capstone to connect configuration, document processing, settlement and reconciliation. Review every wrong mock answer by objective and explain why the selected option failed the scenario constraints. Then repeat the relevant practical task with different values. The timed mock score is a learning signal. It is not Microsoft’s scaled score or a guarantee of certification success. A useful readiness decision combines consistent practice performance, successful sandbox evidence and the ability to explain the ledger effects without relying on memorised wording.</p>"
+      }
+    ],
+    "visual": {
+      "title": "Close control map by evidence",
+      "steps": [
+        {
+          "label": "Open entries",
+          "detail": "Apply payments/credits and explain remaining amounts."
+        },
+        {
+          "label": "Bank",
+          "detail": "Match statement lines, post authorised differences and reconcile."
+        },
+        {
+          "label": "Currency",
+          "detail": "Validate rates, scope, date and gain/loss effects."
+        },
+        {
+          "label": "Analysis",
+          "detail": "Correct supported dimensions and refresh relevant views."
+        },
+        {
+          "label": "Assets",
+          "detail": "Reconcile acquisition, depreciation, disposal and book value."
+        }
+      ]
+    },
+    "lab": {
+      "title": "Perform a miniature period close",
+      "steps": [
+        "Create synthetic invoice/credit/payment examples and calculate the 2,000 less 300 net settlement. Apply entries and verify remaining amounts.",
+        "Unapply one deliberate wrong application in the sandbox and reapply it correctly. Confirm that no second cash transaction is created.",
+        "Prepare a reconciliation with a 150 unrecorded fee and a separate already-posted unmatched payment. Explain why the required actions differ.",
+        "Prepare a recurring 3,000 allocation using 50/30/20 recipients and inspect the 1,500/900/600 result.",
+        "Run or preview an authorised exchange-rate adjustment on a small foreign-currency balance. Compare before/after ledger evidence and identify the relevant gain/loss.",
+        "Use a disposable G/L dimension-correction example. Then calculate depreciation and a fixed-asset disposal using the 24,000/16,000/9,500 scenario."
+      ],
+      "expected": [
+        "Settlement/application, bank matching and currency effects reconcile independently.",
+        "The allocation preserves 3,000 and the simplified asset disposal gain is 1,500.",
+        "Dimension correction changes the intended analytical classification without being described as changing the original amount."
+      ],
+      "cleanup": "Remove unposted training journals, restore test rates/settings when authorised, and retain only redacted synthetic evidence. Keep posted audit trails and follow supported reversal processes.",
+      "evidence": [
+        "Application/unapplication trace",
+        "Bank reconciliation explanation",
+        "Allocation and exchange-rate calculations",
+        "Dimension correction scope",
+        "Fixed-asset lifecycle ledger reconciliation"
+      ]
+    },
+    "pitfalls": [
+      "Duplicating cash to fix a wrong invoice application.",
+      "Posting an adjustment for an entry that only needed matching.",
+      "Treating disposal proceeds as gain, or a mock percentage as Microsoft’s scaled exam score."
+    ],
+    "checks": [
+      {
+        "prompt": "An invoice was paid correctly but the payment was applied to the wrong invoice. Is another bank receipt needed?",
+        "answer": "No. Use the supported unapply and reapply process.",
+        "explanation": "A second receipt would duplicate cash rather than fix the application relationship."
+      },
+      {
+        "prompt": "Asset cost is 24,000, accumulated depreciation 16,000 and disposal proceeds 9,500. What is the simplified gain?",
+        "answer": "1,500.",
+        "explanation": "Book value is 8,000, so proceeds exceed book value by 1,500 before tax and other costs."
+      },
+      {
+        "prompt": "A bank statement line matches an already-posted payment. Should you post it again?",
+        "answer": "No. Match the statement line to the existing eligible bank ledger entry.",
+        "explanation": "Reconciliation should establish correspondence without duplicating the transaction."
+      }
+    ],
+    "sources": [
+      {
+        "title": "Automatic payment application and reconciliation",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/receivables-apply-payments-auto-reconcile-bank-accounts"
+      },
+      {
+        "title": "Update exchange rates",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-how-update-currencies"
+      },
+      {
+        "title": "Revalue general ledger account balances",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-revalue-account-balances"
+      },
+      {
+        "title": "Troubleshoot and correct dimensions",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/finance-troubleshooting-correcting-dimensions"
+      },
+      {
+        "title": "Depreciation methods",
+        "url": "https://learn.microsoft.com/en-us/dynamics365/business-central/fa-depreciation-methods"
+      },
+      {
+        "title": "Academy finance operations lab",
+        "url": "https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab23_Perform_Finance_Operations.html"
+      },
+      {
+        "title": "Academy customer/vendor reconciliation lab",
+        "url": "https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab24_Reconcile_Customer_Vendor.html"
+      },
+      {
+        "title": "Academy bank reconciliation lab",
+        "url": "https://microsoft.skunkworksacademy.com/MB-800/Instructions/Labs/Lab25_Process_Cash_Management.html"
+      }
+    ]
+  }
+]

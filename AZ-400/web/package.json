@@ -37,6 +37,7 @@
     "@testing-library/user-event": "^14.6.1",
     "@types/jsdom": "^21.1.7",
     "@types/node": "^24.5.2",
+    "axe-core": "4.10.3",
     "jsdom": "^27.0.0",
     "typescript": "^5.9.2",
     "vitest": "^3.2.4"
