@@ -61,3 +61,8 @@ test('reviewing history preserves an unfinished attempt',async()=>{
   click('Practice centre');assert.equal(intervals.size,1);const historyButton=[...root().querySelectorAll('button')].find(b=>b.textContent.includes('0%')&&b.textContent.includes('Untimed practice'));assert(historyButton);historyButton.click();assert.match(root().textContent,/Your practice results/);
   click('Return to current session');assert.match(root().textContent,/Resume current attempt/);assert.equal(JSON.parse(localStorage.getItem('swa.mb800.attempt.v1')).id,active.id);click('Resume current attempt');assert.match(root().textContent,/Question 1 of 50/);
 });
+test('leaving stale completed results preserves a newer attempt from another tab',async()=>{
+  const old=createAttempt(bank,'practice',11,Date.now()-10000);old.submittedAt=Date.now()-5000;await load({'swa.mb800.attempt.v1':JSON.stringify(old),'swa.mb800.history.v1':JSON.stringify([old])});
+  const newer=createAttempt(bank,'exam',22);newer.index=4;localStorage.setItem('swa.mb800.attempt.v1',JSON.stringify(newer));
+  click('Choose another session');assert.equal(JSON.parse(localStorage.getItem('swa.mb800.attempt.v1')).id,newer.id);click('Resume current attempt');assert.match(root().textContent,/Question 5 of 50/);
+});

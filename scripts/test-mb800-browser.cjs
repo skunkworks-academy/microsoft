@@ -24,7 +24,9 @@ const evidence=path.resolve(__dirname,'../test-results/mb800');fs.mkdirSync(evid
         assert(await page.locator('a[href*="course-registration/?course=MB-800-PREP"]').count()>0);
         assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'Horizontal overflow '+slug);
         await page.addScriptTag({path:axePath});const result=await page.evaluate(()=>axe.run(document.querySelector('main'),{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa','wcag22aa']}}));
-        report.push({width,theme,slug,violations:result.violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.map(n=>n.target)}))});assert.equal(result.violations.length,0,JSON.stringify(report.at(-1)));
+        report.push({width,theme,slug,violations:result.violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.map(n=>({target:n.target,summary:n.failureSummary,checks:n.any.map(c=>({id:c.id,data:c.data}))}))}))});
+        if(result.violations.length)await page.screenshot({path:path.join(evidence,`failure-${width}-${theme}-${slug.replaceAll('/','')||'overview'}.png`),fullPage:true});
+        assert.equal(result.violations.length,0,JSON.stringify(report.at(-1)));
         assert.deepEqual(errors,[],'Page script errors '+slug);
         if(!slug||slug==='mock-exam/'||slug===modules[0].slug+'/')await page.screenshot({path:path.join(evidence,`${slug.replaceAll('/','')||'overview'}-${width}-${theme}.png`),fullPage:true});
       }

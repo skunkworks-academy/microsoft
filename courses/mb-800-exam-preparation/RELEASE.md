@@ -10,7 +10,7 @@ State: **authored and tested; rendered CI verification in progress**.
 - Primary/additional question references: 83 distinct official URLs returned HTTP 200.
 - Course validator: identity, safe nested routes, local assets, remediation links,
   exact domain counts, shared-shell entries, manifest and eleven unique sitemap routes.
-- Fifteen engine/DOM workflow tests: 500 random blueprint forms, unique selection,
+- Sixteen engine/DOM workflow tests: 500 random blueprint forms, unique selection,
   stable restore, marking, multi-select/order, expiry, feedback boundary, flagging,
   complete report retention and unavailable/corrupt storage behaviour.
 - Existing Microsoft hub test suite: three tests pass. Existing MB-800 route
