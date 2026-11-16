@@ -9,3 +9,5 @@ html[data-theme=dark] .bc-course,html[data-swa-theme=dark] .bc-course{--bc-bg:va
 
 /* Pair inverse links and action foregrounds against the canonical important-link rules. */
 .bc-course a.bc-button{color:#fff!important}.bc-course a.bc-button-secondary{color:var(--bc-ink)!important}.bc-course .bc-hero a:not(.bc-button){color:#a6c8ff!important}
+
+.bc-course .bc-hero a.bc-button-secondary{background:#fff!important;color:#161616!important;border-color:#fff!important}.bc-course .bc-hero a.bc-button-secondary:hover{background:#e0e7f2!important;color:#161616!important;border-color:#e0e7f2!important}
